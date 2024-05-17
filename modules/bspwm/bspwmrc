@@ -1,0 +1,6 @@
+#!/bin/sh
+
+bspc wm -O HDMI-1 DP-2
+
+bspc monitor HDMI-1 -d I II III IV V
+bspc monitor DP-2 -d VI VII VIII IX X
