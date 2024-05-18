@@ -9,7 +9,7 @@ with lib;
     };
     user_home = mkOption {
       type = types.path;
-      default = "/home/${config.user}/";
+      default = "/home/${config.user}";
       internal = true;
       description = "Home directory of the default user";
     };

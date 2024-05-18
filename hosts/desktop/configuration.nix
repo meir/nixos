@@ -20,9 +20,9 @@
       rofi.enable = true;
       steam.enable = true;
       zsh.enable = true;
+      feh.enable = true;
 
       packages = with pkgs; [
-        feh
         pywal
         prismlauncher
         btop
