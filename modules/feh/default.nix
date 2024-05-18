@@ -11,9 +11,9 @@ with lib;
       feh
     ];
 
-    system.activationScripts.homedirectory = stringAfter [ "users" "groups" ] ''
-      if [ -d "${config.modules.user_home}/.fehbg" ] then
-        ${config.modules.user_home}/.fehbg
+    services.xserver.displayManager.sessionCommands = ''
+      if [ -f "${config.user_home}/.fehbg" ]; then
+        ${config.user_home}/.fehbg ;
       fi
     '';
   };
