@@ -42,6 +42,8 @@
         libsForQt5.kdenlive
         spotify
         stremio
+        xclip
+        onefetch
       ];
     };
   };

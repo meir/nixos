@@ -8,7 +8,6 @@ with lib;
 
   config = mkIf config.modules.discord.enable {
     modules.packages = with pkgs; [
-      discord
     ];
   };
 }
