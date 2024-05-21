@@ -1,4 +1,4 @@
-{ config, options, pkgs, lib, ... }:
+{ unstable, config, options, pkgs, lib, ... }:
 with lib;
 {
   options.modules.packages = mkOption {

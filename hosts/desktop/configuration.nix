@@ -23,7 +23,7 @@
       feh.enable = true;
 
       packages = with pkgs; [
-        pywal
+        wallust
         prismlauncher
         btop
         fastfetch
