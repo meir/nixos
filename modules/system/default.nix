@@ -3,34 +3,27 @@ let
   timezone = "Europe/Amsterdam";
   locale = "en_US.UTF-8";
 in {
-  environment.defaultPackages = with pkgs; [
-    git
-    curl
-  ];
+  environment.defaultPackages = with pkgs; [ git curl ];
 
   users.users."${config.user}" = {
     isNormalUser = true;
     home = config.user_home;
     initialPassword = "nixos";
-    extraGroups = [ 
-      "networkmanager"
-      "wheel"
-      "desktop"
-    ];
+    extraGroups = [ "networkmanager" "wheel" "desktop" ];
   };
-  
+
   nix = {
     settings = {
       auto-optimise-store = true;
       allowed-users = [ config.user ];
     };
-    
+
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    
+
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true
@@ -83,7 +76,7 @@ in {
     pulse.enable = true;
     jack.enable = true;
     wireplumber.enable = true;
-  }; 
+  };
 
   system.stateVersion = "23.11";
 }

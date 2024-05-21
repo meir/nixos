@@ -1,15 +1,12 @@
 { config, options, pkgs, lib, ... }:
-with lib;
-{
+with lib; {
   options.modules.feh.enable = mkOption {
     type = types.bool;
     default = false;
   };
 
   config = mkIf config.modules.feh.enable {
-    modules.packages = with pkgs; [
-      feh
-    ];
+    modules.packages = with pkgs; [ feh ];
 
     services.xserver.displayManager.sessionCommands = ''
       if [ -f "${config.user_home}/.fehbg" ]; then

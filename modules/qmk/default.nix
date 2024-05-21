@@ -1,20 +1,13 @@
 { config, options, pkgs, lib, ... }:
-with lib;
-{
+with lib; {
   options.modules.qmk.enable = mkOption {
     type = types.bool;
     default = false;
   };
 
   config = mkIf config.modules.qmk.enable {
-    modules.packages = with pkgs; [
-      udev
-      vial
-      qmk
-    ];
+    modules.packages = with pkgs; [ udev vial qmk ];
 
-    services.udev.packages = with pkgs; [
-      vial
-    ];
+    services.udev.packages = with pkgs; [ vial ];
   };
 }

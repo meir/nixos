@@ -1,10 +1,5 @@
-{ pkgs, ... }:
-{
-  imports = [
-     ../../lib/user.nix
-     ../../modules
-  ];
-
+{ pkgs, ... }: {
+  imports = [ ../../lib/user.nix ../../modules ];
 
   config = {
 

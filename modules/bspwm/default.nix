@@ -1,25 +1,20 @@
 { config, options, pkgs, lib, ... }:
-with lib;
-{
+with lib; {
   services.xserver = {
     enable = true;
-    videoDrivers = [
-      "nvidia"
-    ];
+    videoDrivers = [ "nvidia" ];
 
     windowManager.bspwm = {
       enable = true;
       configFile = "${config.user_home}/.config/bspwm/bspwmrc";
       sxhkd.configFile = "${config.user_home}/.config/sxhkd/sxhkdrc";
     };
-    
+
     desktopManager.xterm.enable = true;
-    
+
     displayManager = {
       defaultSession = "none+bspwm";
-      lightdm = {
-        enable = true;
-      };
+      lightdm = { enable = true; };
     };
   };
 

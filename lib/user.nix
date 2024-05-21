@@ -1,6 +1,5 @@
 { config, options, pkgs, lib, ... }:
-with lib;
-{ 
+with lib; {
   options = {
     user = mkOption {
       type = types.str;
@@ -12,6 +11,15 @@ with lib;
       default = "/home/${config.user}";
       internal = true;
       description = "Home directory of the default user";
+    };
+  };
+
+  config = {
+    users.users."${config.user}" = {
+      isNormalUser = true;
+      home = config.user_home;
+      initialPassword = "nixos";
+      extraGroups = [ "networkmanager" "wheel" "desktop" ];
     };
   };
 }
