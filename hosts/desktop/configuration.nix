@@ -34,6 +34,7 @@
         rustup
         ripgrep
         obs-studio
+        obs-studio-plugins.obs-vkcapture
         libsForQt5.kdenlive
         spotify
         stremio
