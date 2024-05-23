@@ -16,6 +16,7 @@
       steam.enable = true;
       zsh.enable = true;
       feh.enable = true;
+      obs.enable = true;
 
       packages = with pkgs; [
         wallust
@@ -33,8 +34,6 @@
         fzf
         rustup
         ripgrep
-        obs-studio
-        obs-studio-plugins.obs-vkcapture
         libsForQt5.kdenlive
         spotify
         stremio

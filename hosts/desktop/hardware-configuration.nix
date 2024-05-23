@@ -14,6 +14,8 @@
     supportedFilesystems = [ "ntfs" ];
   };
 
+  powerManagement.enable = false;
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/61460dbb-4194-4477-ac70-ecfe30396e8c";
     fsType = "ext4";
