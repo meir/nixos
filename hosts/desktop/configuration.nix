@@ -6,18 +6,6 @@
     user = "human";
 
     modules = {
-      _1password.enable = true;
-      discord.enable = true;
-      kitty.enable = true;
-      polybar.enable = true;
-      qmk.enable = true;
-      qutebrowser.enable = true;
-      rofi.enable = true;
-      steam.enable = true;
-      zsh.enable = true;
-      feh.enable = true;
-      obs.enable = true;
-
       packages = with pkgs; [
         wallust
         prismlauncher

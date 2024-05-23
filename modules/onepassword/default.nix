@@ -2,7 +2,7 @@
 with lib; {
   options.modules._1password.enable = mkOption {
     type = types.bool;
-    default = false;
+    default = true;
   };
 
   config = mkIf config.modules._1password.enable {

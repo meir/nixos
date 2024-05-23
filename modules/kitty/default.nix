@@ -2,7 +2,7 @@
 with lib; {
   options.modules.kitty.enable = mkOption {
     type = types.bool;
-    default = false;
+    default = true;
   };
 
   config = mkIf config.modules.kitty.enable {

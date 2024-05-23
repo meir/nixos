@@ -1,7 +1,7 @@
 { config, options, pkgs, lib, ... }:
 with lib; {
 
-  modules.packages = [ alsa-utils ];
+  modules.packages = with pkgs; [ alsa-utils libdrm ];
 
   services.pipewire = {
     enable = true;

@@ -2,7 +2,7 @@
 with lib; {
   options.modules.polybar.enable = mkOption {
     type = types.bool;
-    default = false;
+    default = true;
   };
 
   config = mkIf config.modules.polybar.enable {

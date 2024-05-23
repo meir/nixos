@@ -2,7 +2,7 @@
 with lib; {
   options.modules.rofi.enable = mkOption {
     type = types.bool;
-    default = false;
+    default = true;
   };
 
   config =

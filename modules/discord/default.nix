@@ -2,7 +2,7 @@
 with lib; {
   options.modules.discord.enable = mkOption {
     type = types.bool;
-    default = false;
+    default = true;
   };
 
   config = mkIf config.modules.discord.enable {
