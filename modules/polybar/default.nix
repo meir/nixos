@@ -7,5 +7,10 @@ with lib; {
 
   config = mkIf config.modules.polybar.enable {
     modules.packages = with pkgs; [ polybar ];
+
+    environment.file.polybar = {
+      source = ./polybar;
+      target = ".config/polybar";
+    };
   };
 }
