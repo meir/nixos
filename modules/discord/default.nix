@@ -9,6 +9,6 @@ with lib; {
     modules.packages = with pkgs;
       [ (unstable.discord.override { withVencord = true; }) ];
 
-    services.picom.opacityRules = [ "80:class_g = 'discord'" ];
+    services.picom.opacityRules = [ "90:class_g = 'discord'" ];
   };
 }

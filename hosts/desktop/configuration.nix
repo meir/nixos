@@ -27,6 +27,7 @@
         stremio
         xclip
         onefetch
+        nixfmt
       ];
     };
   };
