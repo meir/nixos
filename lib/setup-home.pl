@@ -28,8 +28,8 @@ sub atomicSymlink {
 # current configuration.
 atomicSymlink $store, $static or die;
 
-# Returns 1 if the argument points to the files in /etc/static.  That
-# means either argument is a symlink to a file in /etc/static or a
+# Returns 1 if the argument points to the files in $HOME/static.  That
+# means either argument is a symlink to a file in $HOME/static or a
 # directory with all children being static.
 sub isStatic {
     my $path = shift;
@@ -56,10 +56,9 @@ sub isStatic {
     return 0;
 }
 
-# Remove dangling symlinks that point to /etc/static.  These are
+# Remove dangling symlinks that point to $HOME/static.  These are
 # configuration files that existed in a previous configuration but not
-# in the current one.  For efficiency, don't look under /etc/nixos
-# (where all the NixOS sources live).
+# in the current one.
 sub cleanup {
     if ($File::Find::name eq "$home/.nixos-profile") {
         $File::Find::prune = 1;
@@ -80,13 +79,13 @@ sub cleanup {
 find(\&cleanup, "$home");
 
 
-# Use /etc/.clean to keep track of copied files.
+# Use $HOME/.clean to keep track of copied files.
 my @oldCopied = read_file("$home/.clean", chomp => 1, err_mode => 'quiet');
 open CLEAN, ">>$home/.clean";
 
 
 # For every file in the etc tree, create a corresponding symlink in
-# /etc to /etc/static.  The indirection through /etc/static is to make
+# /etc to $HOME/static.  The indirection through $HOME/static is to make
 # switching to a new configuration somewhat more atomic.
 my %created;
 my @copied;
@@ -145,12 +144,7 @@ foreach my $fn (@oldCopied) {
 }
 
 
-# Rewrite /etc/.clean.
+# Rewrite $HOME/.clean.
 close CLEAN;
 write_file("$home/.clean", map { "$_\n" } sort @copied);
 
-# Create /etc/NIXOS tag if not exists.
-# When /etc is not on a persistent filesystem, it will be wiped after reboot,
-# so we need to check and re-create it during activation.
-open TAG, ">>$home/NIXOS";
-close TAG;

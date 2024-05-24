@@ -29,4 +29,15 @@ with lib; {
       };
     };
   };
+
+  environment.file = {
+    bspwm = {
+      source = ./bspwmrc;
+      target = ".config/bspwm/bspwmrc";
+    };
+    sxhkd = {
+      source = ./sxhkdrc;
+      target = ".config/sxhkd/sxhkdrc";
+    };
+  };
 }

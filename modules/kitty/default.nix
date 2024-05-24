@@ -7,5 +7,10 @@ with lib; {
 
   config = mkIf config.modules.kitty.enable {
     modules.packages = with pkgs; [ kitty ];
+
+    environment.file.kitty = {
+      source = ./kitty.conf;
+      target = ".config/kitty/kitty.conf";
+    };
   };
 }
