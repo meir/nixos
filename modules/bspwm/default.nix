@@ -21,6 +21,8 @@ with lib; {
   services.picom = {
     enable = true;
 
+    vSync = true;
+
     settings = {
       blur = {
         method = "gaussian";
