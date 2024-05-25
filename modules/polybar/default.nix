@@ -10,12 +10,12 @@ with lib; {
 
     systemd.user.services.polybar = {
       enable = true;
+      wantedBy = [ "default.target" ];
       description = "Polybar";
       script = ''
         ${pkgs.polybar}/bin/polybar mon0 &
         ${pkgs.polybar}/bin/polybar mon1 
       '';
-      wantedBy = [ "graphical.target" ];
     };
 
     environment.file.polybar = {

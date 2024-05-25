@@ -42,4 +42,11 @@ with lib; {
       target = ".config/sxhkd/sxhkdrc";
     };
   };
+
+  systemd.targets = {
+    sleep.enable = false;
+    suspend.enable = false;
+    hibernate.enable = false;
+    hybridSleep.enable = false;
+  };
 }
