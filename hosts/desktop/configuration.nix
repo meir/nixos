@@ -28,6 +28,7 @@
         xclip
         onefetch
         nixfmt
+        lmms
       ];
     };
   };
