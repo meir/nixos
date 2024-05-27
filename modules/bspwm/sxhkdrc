@@ -37,3 +37,6 @@ super + {_,shift + }{h,j,k,l}
 super + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
 
+# open clipcat-menu
+shift + super + v
+  clipcat-menu

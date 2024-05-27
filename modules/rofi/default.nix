@@ -7,6 +7,10 @@ with lib; {
 
   config = mkIf config.modules.rofi.enable {
     modules.packages = with pkgs; [ rofi clipcat ];
+    environment.file.rofi = {
+      source = ./rofi.rasi;
+      target = ".config/rofi/rofi.rasi";
+    };
 
     services.clipcat.enable = true;
     environment.file.clipcat = {
