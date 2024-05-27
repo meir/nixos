@@ -27,7 +27,7 @@ with lib; {
       serviceConfig = let
         scriptPkg = pkgs.writeShellScriptBin "polybar-start" ''
           ${pkgs.polybar}/bin/polybar mon0 &
-          ${pkgs.polybar}/bin/polybar mon1 
+          ${pkgs.polybar}/bin/polybar mon1 &
         '';
       in {
         Type = "forking";

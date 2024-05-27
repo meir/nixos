@@ -1,5 +1,5 @@
-from qutebrowser.config.configfiles import ConfigAPI
-from qutebrowser.config.config import ConfigContainer
+
+config.load_autoconfig()
 
 c.auto_save.session = True
 
