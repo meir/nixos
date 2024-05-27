@@ -1,9 +1,9 @@
 { config, options, pkgs, lib, ... }:
 with lib; {
   config = {
-    modules.packages = with pkgs; [
+    fonts.packages = with pkgs; [
       mononoki
-      (nerdfonts.override { fonts = [ "Mononoki" ]; })
+      (nerdfonts.override { fonts = [ "Mononoki" "RobotoMono" ]; })
     ];
   };
 }

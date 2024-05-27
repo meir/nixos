@@ -10,7 +10,6 @@
         wallust
         prismlauncher
         btop
-        fastfetch
         nvtop
         neovim
         git
