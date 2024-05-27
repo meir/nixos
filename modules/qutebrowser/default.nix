@@ -12,5 +12,10 @@ with lib; {
       source = ./config.py;
       target = ".config/qutebrowser/config.py";
     };
+
+    environment.file.qutebrowser_homepage = {
+      source = ./homepage;
+      target = ".config/qutebrowser/homepage";
+    };
   };
 }

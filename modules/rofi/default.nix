@@ -5,6 +5,9 @@ with lib; {
     default = true;
   };
 
-  config =
-    mkIf config.modules.rofi.enable { modules.packages = with pkgs; [ rofi ]; };
+  config = mkIf config.modules.rofi.enable {
+    modules.packages = with pkgs; [ rofi clipcat ];
+
+    services.clipcat.enable = true;
+  };
 }
