@@ -9,5 +9,9 @@ with lib; {
     modules.packages = with pkgs; [ rofi clipcat ];
 
     services.clipcat.enable = true;
+    environment.file.clipcat = {
+      source = ./clipcatd.toml;
+      target = ".config/clipcat/clipcatd.toml";
+    };
   };
 }

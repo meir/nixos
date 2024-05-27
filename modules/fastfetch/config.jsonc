@@ -9,8 +9,6 @@
         "shell",
         "de",
         "wm",
-        "wmtheme",
-        "theme",
         "terminal",
         {
             "type": "terminalfont",
