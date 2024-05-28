@@ -20,10 +20,6 @@ with lib; {
         plugins = [ "git" ];
       };
 
-      plugins = [
-
-      ];
-
       shellAliases = {
         cdd = "cd ~/Documents";
         bye = "exit";

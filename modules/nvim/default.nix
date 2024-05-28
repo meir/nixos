@@ -1,12 +1,5 @@
 { config, options, pkgs, lib, ... }:
-with lib;
-let
-  nvimfiles = fetchFromGitHub {
-    owner = "meir";
-    repo = ".nvim";
-    rev = "main";
-  };
-in {
+with lib; {
   options.nvim.enable = mkOption {
     type = types.bool;
     default = true;
@@ -14,7 +7,7 @@ in {
   };
 
   config = mkIf config.nvim.enable {
-    modules.packages = [
+    modules.packages = with pkgs; [
       neovim
       git
       curl
@@ -29,9 +22,5 @@ in {
       nixfmt
     ];
 
-    environment.file.nvim_config = {
-      source = nvimfiles;
-      target = "./config/nvim";
-    };
   };
 }
