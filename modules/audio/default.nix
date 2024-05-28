@@ -1,7 +1,7 @@
 { config, options, pkgs, lib, ... }:
 with lib; {
 
-  modules.packages = with pkgs; [ alsa-utils libdrm ];
+  modules.packages = with pkgs; [ alsa-utils libdrm pwvucontrol ];
 
   services.pipewire = {
     enable = true;

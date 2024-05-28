@@ -19,6 +19,17 @@ with lib; {
         enable = true;
         plugins = [ "git" ];
       };
+
+      plugins = [
+
+      ];
+
+      shellAliases = {
+        cdd = "cd ~/Documents";
+        bye = "exit";
+        clear = "clear && printf '\\e[3J'";
+        c = "clear";
+      };
     };
 
     users.defaultUserShell = pkgs.zsh;
