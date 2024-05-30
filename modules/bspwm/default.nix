@@ -7,7 +7,7 @@ with lib; {
     windowManager.bspwm = {
       enable = true;
       configFile = "${config.user_home}/.config/bspwm/bspwmrc";
-      sxhkd.configFile = "${config.user_home}/.config/sxhkd/sxhkdrc";
+      sxhkd.configFile = ./sxhkdrc;
     };
 
     desktopManager.xterm.enable = true;
@@ -36,10 +36,6 @@ with lib; {
     bspwm = {
       source = ./bspwmrc;
       target = ".config/bspwm/bspwmrc";
-    };
-    sxhkd = {
-      source = ./sxhkdrc;
-      target = ".config/sxhkd/sxhkdrc";
     };
   };
 
