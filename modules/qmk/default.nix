@@ -6,7 +6,7 @@ with lib; {
   };
 
   config = mkIf config.modules.qmk.enable {
-    modules.packages = with pkgs; [ udev vial qmk ];
+    environment.packages = with pkgs; [ udev vial qmk ];
 
     services.udev.packages = with pkgs; [ vial ];
   };

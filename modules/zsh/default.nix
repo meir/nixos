@@ -6,7 +6,7 @@ with lib; {
   };
 
   config = mkIf config.modules.zsh.enable {
-    modules.packages = with pkgs; [ zsh oh-my-zsh bash gnugrep ];
+    environment.packages = with pkgs; [ zsh oh-my-zsh bash gnugrep ];
 
     programs.zsh = {
       enable = true;

@@ -6,10 +6,16 @@ with lib; {
   };
 
   config = mkIf config.modules.rofi.enable {
-    modules.packages = with pkgs; [ rofi clipcat ];
+    environment.packages = with pkgs; [ rofi clipcat ];
+
+    sxhkd.keybind = {
+      "super + @space" = "rofi -show drun";
+      "shift + super + v" = "clipcat-menu";
+    };
+
     environment.file.rofi = {
-      source = ./config.rasi;
-      target = ".config/rofi/config.rasi";
+      source = ./rofi;
+      target = ".config/rofi";
     };
 
     services.clipcat.enable = true;

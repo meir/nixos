@@ -6,7 +6,7 @@ with lib; {
   };
 
   config = mkIf config.modules.steam.enable {
-    modules.packages = with pkgs; [ steam ];
+    environment.packages = with pkgs; [ steam ];
 
     nixpkgs.config.allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) [ "steam" "steam-original" "steam-run" ];

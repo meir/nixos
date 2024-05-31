@@ -6,7 +6,7 @@ with lib; {
   };
 
   config = mkIf config.modules.qutebrowser.enable {
-    modules.packages = with pkgs; [ qutebrowser ];
+    environment.packages = with pkgs; [ qutebrowser ];
 
     environment.file.qutebrowser = {
       source = ./config.py;

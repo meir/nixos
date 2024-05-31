@@ -13,8 +13,7 @@ in {
   inherit system;
   specialArgs = { inherit unstable; };
   modules = [
-    ./file.nix # TODO: add file.nix once code is complete in there.
-    ./user.nix
+    ./file.nix
 
     overlayModule
     ../hosts/${name}/hardware-configuration.nix

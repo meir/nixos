@@ -7,7 +7,7 @@ with lib; {
   };
 
   config = mkIf config.nvim.enable {
-    modules.packages = with pkgs; [
+    environment.packages = with pkgs; [
       neovim
       git
       curl

@@ -10,7 +10,7 @@ super + @space
 # reload bspwm
 super + alt + r
   pkill -x sxhkd && sxhkd &
-  bspc wm -r
+  ${BSPWM_PATH}/bspwmrc
   pkill -x picom
 
 # close, kill app
@@ -40,3 +40,4 @@ super + {_,shift + }{1-9,0}
 # open clipcat-menu
 shift + super + v
   clipcat-menu
+

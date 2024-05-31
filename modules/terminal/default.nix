@@ -6,11 +6,23 @@ with lib; {
   };
 
   config = mkIf config.modules.kitty.enable {
-    modules.packages = with pkgs; [ kitty ];
+    environment.packages = with pkgs; [
+      kitty
+
+      # terminal tools
+      btop
+      nvtop
+      fastfetch
+      onefetch
+      wallust
+      xdotool
+    ];
 
     environment.file.kitty = {
       source = ./kitty.conf;
       target = ".config/kitty/kitty.conf";
     };
+
+    sxhkd.keybind."super + Return" = "kitty";
   };
 }

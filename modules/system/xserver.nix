@@ -3,13 +3,6 @@ with lib; {
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
-
-    windowManager.bspwm = {
-      enable = true;
-      configFile = "${config.user_home}/.config/bspwm/bspwmrc";
-      sxhkd.configFile = "${config.user_home}/.config/sxhkd/sxhkdrc";
-    };
-
     desktopManager.xterm.enable = true;
 
     displayManager = {
@@ -34,19 +27,12 @@ with lib; {
 
   environment.file = {
     bspwm = {
-      source = ./bspwmrc;
+      source = ./assets/bspwm/bspwmrc;
       target = ".config/bspwm/bspwmrc";
     };
     sxhkd = {
-      source = ./sxhkdrc;
+      source = ./assets/sxhkd/sxhkdrc;
       target = ".config/sxhkd/sxhkdrc";
     };
-  };
-
-  systemd.targets = {
-    sleep.enable = false;
-    suspend.enable = false;
-    hibernate.enable = false;
-    hybridSleep.enable = false;
   };
 }

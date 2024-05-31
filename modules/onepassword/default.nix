@@ -6,7 +6,7 @@ with lib; {
   };
 
   config = mkIf config.modules._1password.enable {
-    modules.packages = with pkgs; [ _1password ];
+    environment.packages = with pkgs; [ _1password ];
 
     nixpkgs.config.allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) [ "1password-gui" "1password" ];

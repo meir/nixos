@@ -6,7 +6,7 @@ with lib; {
   };
 
   config = mkIf config.modules.polybar.enable {
-    modules.packages = with pkgs; [ polybar ];
+    environment.packages = with pkgs; [ polybar ];
 
     systemd.user.services.polybar = {
       enable = true;

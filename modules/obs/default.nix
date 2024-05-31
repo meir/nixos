@@ -6,12 +6,10 @@ with lib; {
   };
 
   config = mkIf config.modules.obs.enable {
-    modules.packages = with pkgs;
+    environment.packages = with pkgs;
       [
         (wrapOBS {
-          plugins = with obs-studio-plugins; [
-            obs-pipewire-audio-capture
-          ];
+          plugins = with obs-studio-plugins; [ obs-pipewire-audio-capture ];
         })
       ];
   };
