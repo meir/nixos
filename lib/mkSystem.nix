@@ -18,5 +18,6 @@ in {
     overlayModule
     ../hosts/${name}/hardware-configuration.nix
     ../hosts/${name}/configuration.nix
+    ../modules
   ];
 })

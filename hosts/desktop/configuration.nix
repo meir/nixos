@@ -1,5 +1,1 @@
-{ pkgs, ... }: {
-  imports = [ ../../modules ];
-
-  config = { user = "human"; };
-}
+{ pkgs, ... }: { config = { user = "human"; }; }

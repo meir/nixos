@@ -10,9 +10,13 @@ in {
     ./nixos.nix
     ./security.nix
     ./user.nix
-    ./xserver.nix
     ./fonts.nix
     ./packages.nix
+
+    # desktop
+    ./xserver.nix
+    ./bspwm.nix
+    ./sxhkd.nix
   ];
 
   environment.defaultPackages = with pkgs; [ git curl ];
