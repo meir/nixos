@@ -1,7 +1,19 @@
-{ config, options, pkgs, lib, ... }:
-with lib; {
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+{
 
-  environment.packages = with pkgs; [ alsa-utils libdrm pavucontrol ];
+  environment.packages = with pkgs; [
+    alsa-utils
+    libdrm
+    pavucontrol
+    alsa-oss
+  ];
 
   services.pipewire = {
     enable = true;
@@ -14,4 +26,3 @@ with lib; {
     wireplumber.enable = true;
   };
 }
-
