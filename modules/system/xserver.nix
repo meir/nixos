@@ -5,6 +5,13 @@ with lib; {
     videoDrivers = [ "nvidia" ];
     desktopManager.xterm.enable = true;
 
+    serverFlagsSection = ''
+      Option "BlankTime" "0"
+      Option "StandbyTime" "0"
+      Option "SuspendTime" "0"
+      Option "OffTime" "0"
+    '';
+
     displayManager = {
       defaultSession = "none+bspwm";
       lightdm = { enable = true; };

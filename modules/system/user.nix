@@ -1,4 +1,5 @@
-{ options, config, pkgs, lib, ... }: {
+{ options, config, pkgs, lib, ... }:
+with lib; {
   options = {
     user = mkOption {
       type = types.str;

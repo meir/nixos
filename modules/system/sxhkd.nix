@@ -1,17 +1,19 @@
 { config, options, pkgs, lib, ... }:
+with lib;
 let
-  buildSxhkd = pkgs.writeScript "sxhkdrc" (lib.concatStringsSep "\n"
-    (mapAttrsToList (name: value: ''
+  buildSxhkd = pkgs.writeScript "sxhkdrc" (concatStringsSep "\n" (mapAttrsToList
+    (name: value: ''
       ${name}
-      	${value}'') options.sxhkd.keybind));
-in with lib; {
+        ${value}
+    '') config.sxhkd.keybind));
+in {
   options.sxhkd.keybind = mkOption {
-    type = types.attrsOf types.string;
+    type = types.attrsOf types.str;
     default = { };
   };
 
-  config = mkIf options.sxhkd.enable {
-    environment.packages = [ sxhkd ];
+  config = {
+    environment.packages = with pkgs; [ sxhkd ];
     services.xserver.displayManager.sessionCommands = ''
       sxhkd -c ${buildSxhkd} &
     '';
