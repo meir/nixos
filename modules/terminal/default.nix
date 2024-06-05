@@ -11,7 +11,7 @@ with lib; {
 
       # terminal tools
       btop
-      nvtop
+      nvtopPackages.full
       fastfetch
       onefetch
       wallust

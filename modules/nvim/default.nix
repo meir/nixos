@@ -19,7 +19,7 @@ with lib; {
       rustup
       ripgrep
       xclip
-      nixfmt
+      nixfmt-rfc-style
     ];
 
   };

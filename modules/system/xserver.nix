@@ -12,11 +12,10 @@ with lib; {
       Option "OffTime" "0"
     '';
 
-    displayManager = {
-      defaultSession = "none+bspwm";
-      lightdm = { enable = true; };
-    };
+    displayManager = { lightdm = { enable = true; }; };
   };
+
+  services.displayManager.defaultSession = "none+bspwm";
 
   services.picom = {
     enable = true;
