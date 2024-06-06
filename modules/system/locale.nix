@@ -1,8 +1,14 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   timezone = "Europe/Amsterdam";
   locale = "en_US.UTF-8";
-in {
+in
+{
   time.timeZone = timezone;
 
   i18n = {

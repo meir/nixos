@@ -1,5 +1,12 @@
-{ config, options, pkgs, lib, ... }:
-with lib; {
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+{
   options.modules.prismlauncher.enable = mkOption {
     type = types.bool;
     default = true;
@@ -9,4 +16,3 @@ with lib; {
     environment.packages = with pkgs; [ prismlauncher ];
   };
 }
-

@@ -1,5 +1,12 @@
-{ config, options, pkgs, lib, ... }:
-with lib; {
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+{
   options.modules.polybar.enable = mkOption {
     type = types.bool;
     default = true;
@@ -24,16 +31,18 @@ with lib; {
       };
       wantedBy = [ "graphical-session.target" ];
       description = "Polybar";
-      serviceConfig = let
-        scriptPkg = pkgs.writeShellScriptBin "polybar-start" ''
-          ${pkgs.polybar}/bin/polybar mon0 &
-          ${pkgs.polybar}/bin/polybar mon1 &
-        '';
-      in {
-        Type = "forking";
-        ExecStart = "${scriptPkg}/bin/polybar-start";
-        Restart = "on-failure";
-      };
+      serviceConfig =
+        let
+          scriptPkg = pkgs.writeShellScriptBin "polybar-start" ''
+            ${pkgs.polybar}/bin/polybar mon0 &
+            ${pkgs.polybar}/bin/polybar mon1 &
+          '';
+        in
+        {
+          Type = "forking";
+          ExecStart = "${scriptPkg}/bin/polybar-start";
+          Restart = "on-failure";
+        };
     };
 
     environment.file.polybar = {

@@ -1,5 +1,12 @@
-{ config, options, pkgs, lib, ... }:
-with lib; {
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+{
   options.modules.feh.enable = mkOption {
     type = types.bool;
     default = true;

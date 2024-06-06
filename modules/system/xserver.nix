@@ -1,5 +1,12 @@
-{ config, options, pkgs, lib, ... }:
-with lib; {
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+{
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
@@ -12,7 +19,11 @@ with lib; {
       Option "OffTime" "0"
     '';
 
-    displayManager = { lightdm = { enable = true; }; };
+    displayManager = {
+      lightdm = {
+        enable = true;
+      };
+    };
   };
 
   services.displayManager.defaultSession = "none+bspwm";

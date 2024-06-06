@@ -1,8 +1,14 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   timezone = "Europe/Amsterdam";
   locale = "en_US.UTF-8";
-in {
+in
+{
   imports = [
     ./audio.nix
     ./locale.nix
@@ -19,7 +25,10 @@ in {
     ./sxhkd.nix
   ];
 
-  environment.defaultPackages = with pkgs; [ git curl ];
+  environment.defaultPackages = with pkgs; [
+    git
+    curl
+  ];
 
   system.stateVersion = "24.05";
 }

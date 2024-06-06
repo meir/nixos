@@ -1,5 +1,12 @@
-{ options, config, pkgs, lib, ... }:
-with lib; {
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+{
   options = {
     user = mkOption {
       type = types.str;
@@ -19,7 +26,11 @@ with lib; {
       isNormalUser = true;
       home = config.user_home;
       initialPassword = "nixos";
-      extraGroups = [ "networkmanager" "wheel" "desktop" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "desktop"
+      ];
     };
   };
 }

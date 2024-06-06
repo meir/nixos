@@ -1,5 +1,12 @@
-{ config, options, pkgs, lib, ... }:
-with lib; {
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+{
   services.xserver.windowManager.bspwm = {
     enable = true;
     configFile = ./assets/bspwm/bspwmrc;
@@ -36,5 +43,4 @@ with lib; {
       bspc {desktop -f,node -d} '^{1-9,10}'
     '';
   };
-
 }

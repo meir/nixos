@@ -1,12 +1,24 @@
-{ config, options, pkgs, lib, ... }:
-with lib; {
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+{
   options.modules.zsh.enable = mkOption {
     type = types.bool;
     default = true;
   };
 
   config = mkIf config.modules.zsh.enable {
-    environment.packages = with pkgs; [ zsh oh-my-zsh bash gnugrep ];
+    environment.packages = with pkgs; [
+      zsh
+      oh-my-zsh
+      bash
+      gnugrep
+    ];
 
     programs.zsh = {
       enable = true;
