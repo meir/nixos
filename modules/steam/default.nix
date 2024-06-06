@@ -13,7 +13,11 @@ with lib;
   };
 
   config = mkIf config.modules.steam.enable {
-    environment.packages = with pkgs; [ steam ];
+
+    environment.packages = with pkgs; [
+      steam
+      ffmpeg # add ffmpeg for ingame video players
+    ];
 
     nixpkgs.config.allowUnfreePredicate =
       pkg:
