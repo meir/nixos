@@ -13,6 +13,7 @@ with lib;
     libdrm
     pavucontrol
     alsa-oss
+    paprefs
   ];
 
   services.pipewire = {
