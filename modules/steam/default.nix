@@ -21,14 +21,23 @@ with lib;
 
   config = mkIf config.modules.steam.enable {
 
-    environment.packages = with pkgs; let
-      vrPackages = mkIf config.modules.steam.steamvr.enable [
-        wlx-overlay-s
-      ];
-    in [
-      steam
-      ffmpeg # add ffmpeg for ingame video players
-    ] ++ vrPackages;
+    environment.packages =
+      with pkgs;
+      let
+        vrPackages =
+          if config.modules.steam.steamvr.enable then
+            [
+              openvr
+              wlx-overlay-s
+            ]
+          else
+            [ ];
+      in
+      [
+        steam
+        ffmpeg # add ffmpeg for ingame video players
+      ]
+      ++ vrPackages;
 
     nixpkgs.config.allowUnfreePredicate =
       pkg:
