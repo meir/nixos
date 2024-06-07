@@ -7,17 +7,28 @@
 }:
 with lib;
 {
-  options.modules.steam.enable = mkOption {
-    type = types.bool;
-    default = true;
+  options.modules.steam = {
+    enable = mkOption {
+      type = types.bool;
+      default = true;
+    };
+
+    steamvr.enable = mkOption {
+      type = types.bool;
+      default = true;
+    };
   };
 
   config = mkIf config.modules.steam.enable {
 
-    environment.packages = with pkgs; [
+    environment.packages = with pkgs; let
+      vrPackages = mkIf config.modules.steam.steamvr.enable [
+        wlx-overlay-s
+      ];
+    in [
       steam
       ffmpeg # add ffmpeg for ingame video players
-    ];
+    ] ++ vrPackages;
 
     nixpkgs.config.allowUnfreePredicate =
       pkg:
