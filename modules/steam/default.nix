@@ -57,7 +57,7 @@ with lib;
     hardware.steam-hardware.enable = true;
 
     # patch steamvr
-    services.xserver.displayManager.sessionCommands =
+    services.xserver.displayManager.sessionCommands = mkIf config.modules.steam.steamvr.enable (
       let
         vrcompositor = "${config.user_home}/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrcompositor-launcher";
       in
@@ -65,6 +65,11 @@ with lib;
         if [ -f "${vrcompositor}" ]; then
           setcap CAP_SYS_NICE+ep ${vrcompositor}
         fi
-      '';
+      '');
+
+    environment.file.wlx_keyboard = mkIf config.modules.steam.steamvr.enable {
+      source = ./keyboard.yaml;
+      target = ".config/wlxoverlay/keyboard.yaml";
+    };
   };
 }
