@@ -2,5 +2,5 @@
 
 bspc wm -O HDMI-1 DP-2
 
-bspc monitor HDMI-1 -d I II III IV V
-bspc monitor DP-2 -d VI VII VIII IX X
+bspc monitor HDMI-1 -d 一 二 三 四 五
+bspc monitor DP-2 -d 六 七 八 九 十

@@ -9,7 +9,10 @@ with lib;
 {
   config = {
     fonts.packages = with pkgs; [
+      nerd-font-patcher
+
       mononoki
+      dina-font
       (nerdfonts.override {
         fonts = [
           "Mononoki"
@@ -17,5 +20,9 @@ with lib;
         ];
       })
     ];
+
+    services.xserver.displayManager.sessionCommands = ''
+      nerd-font-patcher Dina
+    '';
   };
 }
