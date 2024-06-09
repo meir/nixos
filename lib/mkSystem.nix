@@ -9,10 +9,18 @@ inputs.nixpkgs.lib.nixosSystem (
       };
     };
 
+    customPkgs = final: prev: {
+      cozette-nerdfont = import ../pkgs/cozette-nerdfont final;
+      dina-remastered = import ../pkgs/dina-remastered final;
+    };
+
     overlayModule = (
       { config, pkgs, ... }:
       {
-        nixpkgs.overlays = [ overlay ];
+        nixpkgs.overlays = [
+          overlay
+          customPkgs
+        ];
       }
     );
   in

@@ -1,4 +1,10 @@
-{ stdenv, lib }:
+{
+  stdenv,
+  lib,
+  nerd-font-patcher,
+  cozette,
+  ...
+}:
 let
   name = "cozette-nerdfont";
   version = "1.0";
@@ -7,7 +13,7 @@ stdenv.mkDerivation rec {
   inherit name version;
 
   buildInputs = [
-    nerdfont-patcher
+    nerd-font-patcher
     cozette
   ];
 
@@ -16,15 +22,12 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p "$out/share/fonts/"
 
-    ${nerd-font-patcher} ${cozette}/share/fonts/misc/cozette.otb -out "$out/share/fonts"
-
-    install -Dm644 -t "$out/share/fonts" "$out"/share/fonts/*.otb
+    ${nerd-font-patcher}/bin/nerd-font-patcher ${cozette}/share/fonts/misc/cozette.otb -out "$out/share/fonts"
   '';
 
   meta = {
     homepage = "";
     description = "Cozette font with Nerd Font patch";
-    license = lib.licenses.ofPackage cozette;
     platforms = lib.platforms.all;
     maintainers = [ ];
   };
