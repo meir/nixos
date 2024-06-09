@@ -23,6 +23,7 @@ with lib;
       onefetch
       wallust
       xdotool
+      cdl
     ];
 
     environment.file.kitty = {

@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
     owner = "zshoals";
     repo = "Dina-Font-TTF-Remastered";
     rev = "master";
-    hash = "sha256-0ZJ0Z2Y6wvZJm1YQr4O2Rr5Q9vJtLW1u3m6Tl4Z1n3w=";
+    hash = "sha256-TwK1Mh5+8arSQ6K9OFtJfigRae3ovYpNZJgmW6yjt0c=";
   };
 
   buildInputs = [ nerd-font-patcher ];
@@ -26,7 +26,7 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p "$out/share/fonts/"
 
-    ${nerd-font-patcher}/bin/nerd-font-patcher $out/Fonts/DinaRemasterII.ttc -out "$out/share/fonts"
+    ${nerd-font-patcher}/bin/nerd-font-patcher ${src}/Fonts/DinaRemasterII.ttc -out "$out/share/fonts"
   '';
 
   meta = {

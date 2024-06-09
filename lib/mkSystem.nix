@@ -12,6 +12,7 @@ inputs.nixpkgs.lib.nixosSystem (
     customPkgs = final: prev: {
       cozette-nerdfont = import ../pkgs/cozette-nerdfont final;
       dina-remastered = import ../pkgs/dina-remastered final;
+      cdl = import ../pkgs/cdl final;
     };
 
     overlayModule = (
