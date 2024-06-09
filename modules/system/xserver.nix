@@ -7,6 +7,8 @@
 }:
 with lib;
 {
+  environment.defaultPackages = with pkgs; [ xorg.xf86videonouveau ];
+
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];

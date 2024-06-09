@@ -5,8 +5,8 @@ row_size: 13
 
 # Specifies the size of each key. The sum of any given row must equal RowSize
 key_sizes:
-  - [ 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-  - [ 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  - [ 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5]
+  - [ 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5]
   - [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   - [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   - [ 1.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5]
@@ -27,8 +27,8 @@ main_layout:
 # Shift    Z    X    C    V    B    N    M    .    ,    /    Enter
 # Ctrl  Alt Super    Space      Backspace       <    v    ^    >
 
-    - [ ~, "WS1", "WS2", "WS3", "WS4", "WS5", "WS6", "WS7", "WS8", "WS9", "WS10", "Kill", "Exec"]
-    - [ ~, "N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "N10", "Minus", "Plus"]
+    - [ ~, "WS1", "WS2", "WS3", "WS4", "WS5", "WS6", "WS7", "WS8", "WS9", "WS10", "Kill", "Exec", ~]
+    - [ ~, "N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "N10", "Minus", "Plus", ~]
     - [ "Escape", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Oem4", "Oem6"]
     - [ "Tab", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Oem1", "Oem7", "Oem5"]
     - [ "LShift", "Z", "X", "C", "V", "B", "N", "M", "Period", "Comma", "Oem2", "Return"]

@@ -28,6 +28,8 @@ with lib;
           if config.modules.steam.steamvr.enable then
             [
               openvr
+              appimage-run
+              fuse
               wlx-overlay-s
             ]
           else
@@ -65,7 +67,8 @@ with lib;
         if [ -f "${vrcompositor}" ]; then
           setcap CAP_SYS_NICE+ep ${vrcompositor}
         fi
-      '');
+      ''
+    );
 
     environment.file.wlx_keyboard = mkIf config.modules.steam.steamvr.enable {
       source = ./keyboard.yaml;
