@@ -2,7 +2,7 @@
   stdenv,
   lib,
   gcc,
-  environment,
+  fetchFromGitHub,
   ...
 }:
 let
@@ -15,8 +15,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "meir";
     repo = "cdl";
-    rev = "v${version}"; # https://github.com/meir/cdl/tree/v0.1.0
-    hash = "sha256-TwK1Mh5+8arSQ6K9OFtJfigRae3ovYpNZJgmW6yjt0c=";
+    rev = "main"; # https://github.com/meir/cdl/tree/v0.1.0
+    sha256 = "sha256-kaazkqHDzUxuz4RpK7SQg17h3cswtHcU7y8Funf1yh0=";
   };
 
   buildInputs = [ gcc ];
@@ -25,11 +25,12 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/bin
+    rm -rf $out/bin/*
 
-    gcc -o $out/bin/cdl src/cache/cache.c src/cdls.c
-    gcc -o $out/bin/cdl src/cache/cache.c src/cdp.c
-    gcc -o $out/bin/cdl src/cache/cache.c src/cdr.c
-    gcc -o $out/bin/cdl src/cache/cache.c src/cds.c
+    gcc -o $out/bin/cdls ${src}/src/cache/cache.c ${src}/src/cdls.c
+    gcc -o $out/bin/cdp ${src}/src/cache/cache.c ${src}/src/cdp.c
+    gcc -o $out/bin/cdr ${src}/src/cache/cache.c ${src}/src/cdr.c
+    gcc -o $out/bin/cds ${src}/src/cache/cache.c ${src}/src/cds.c
 
     chmod +x $out/bin/cdls
     chmod +x $out/bin/cdp
@@ -37,11 +38,13 @@ stdenv.mkDerivation rec {
     chmod +x $out/bin/cds
   '';
 
-  environment.shellInit = ''
+  shellHook = ''
     cdl() {
       cd "$(cdp $1)";
     }
   '';
+
+  outputs = [ "out" ];
 
   meta = {
     homepage = "https://github.com/meir/cdl";
