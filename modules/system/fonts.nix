@@ -5,11 +5,12 @@
   lib,
   ...
 }:
+
 with lib;
 {
   config = {
     fonts.packages = with pkgs; [
-      ../../pkgs/cozette-nerdfont/default.nix
+      (pkgs.callPackage ../../pkgs/cozette-nerdfont { })
       (nerdfonts.override {
         fonts = [
           "Mononoki"
