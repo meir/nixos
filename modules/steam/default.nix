@@ -31,6 +31,7 @@ with lib;
               appimage-run
               fuse
               wlx-overlay-s
+              monado
             ]
           else
             [ ];

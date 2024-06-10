@@ -38,6 +38,10 @@ with lib;
         clear = "clear && printf '\\e[3J'";
         c = "clear";
       };
+
+      shellInit = ''
+        source $(which cdl-alias)
+      '';
     };
 
     users.defaultUserShell = pkgs.zsh;

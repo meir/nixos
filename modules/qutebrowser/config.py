@@ -10,6 +10,7 @@ c.tabs.position = "left"
 c.tabs.padding = {"top": 5, "bottom": 5, "left": 5, "right": 5}
 c.tabs.mousewheel_switching = False
 c.fonts.default_family = "DinaRemasterII Nerd Font"
+c.fonts.default_size = "12pt"
 # colors
 c.colors.tabs.bar.bg = "#000"
 c.colors.tabs.even.bg = "#000"

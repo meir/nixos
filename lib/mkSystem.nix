@@ -13,7 +13,6 @@ inputs.nixpkgs.lib.nixosSystem (
       cozette-nerdfont = import ../pkgs/cozette-nerdfont final;
       dina-remastered = import ../pkgs/dina-remastered final;
       cdl = import ../pkgs/cdl final;
-      wlx-overlay-s = import ../pkgs/wlx-overlay-s final;
     };
 
     overlayModule = (
