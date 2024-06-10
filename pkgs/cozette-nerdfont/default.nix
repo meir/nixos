@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p "$out/share/fonts/"
 
-    ${nerd-font-patcher}/bin/nerd-font-patcher ${cozette}/share/fonts/misc/cozette.otb -out "$out/share/fonts"
+    ${lib.getExe nerd-font-patcher} ${cozette}/share/fonts/misc/cozette.otb -out "$out/share/fonts"
   '';
 
   meta = {

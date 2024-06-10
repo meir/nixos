@@ -43,15 +43,4 @@ with lib;
       };
     };
   };
-
-  environment.file = {
-    bspwm = {
-      source = ./assets/bspwm/bspwmrc;
-      target = ".config/bspwm/bspwmrc";
-    };
-    sxhkd = {
-      source = ./assets/sxhkd/sxhkdrc;
-      target = ".config/sxhkd/sxhkdrc";
-    };
-  };
 }

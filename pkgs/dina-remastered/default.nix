@@ -26,7 +26,7 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p "$out/share/fonts/"
 
-    ${nerd-font-patcher}/bin/nerd-font-patcher ${src}/Fonts/DinaRemasterII.ttc -out "$out/share/fonts"
+    ${lib.getExe nerd-font-patcher} ${src}/Fonts/DinaRemasterII.ttc -out "$out/share/fonts"
   '';
 
   meta = {

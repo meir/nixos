@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "meir";
     repo = "cdl";
-    rev = "main"; # https://github.com/meir/cdl/tree/v0.1.0
+    rev = "main";
     sha256 = "sha256-kaazkqHDzUxuz4RpK7SQg17h3cswtHcU7y8Funf1yh0=";
   };
 
@@ -27,10 +27,10 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin
     rm -rf $out/bin/*
 
-    gcc -o $out/bin/cdls ${src}/src/cache/cache.c ${src}/src/cdls.c
-    gcc -o $out/bin/cdp ${src}/src/cache/cache.c ${src}/src/cdp.c
-    gcc -o $out/bin/cdr ${src}/src/cache/cache.c ${src}/src/cdr.c
-    gcc -o $out/bin/cds ${src}/src/cache/cache.c ${src}/src/cds.c
+    ${lib.getExe gcc} -o $out/bin/cdls ${src}/src/cache/cache.c ${src}/src/cdls.c
+    ${lib.getExe gcc} -o $out/bin/cdp ${src}/src/cache/cache.c ${src}/src/cdp.c
+    ${lib.getExe gcc} -o $out/bin/cdr ${src}/src/cache/cache.c ${src}/src/cdr.c
+    ${lib.getExe gcc} -o $out/bin/cds ${src}/src/cache/cache.c ${src}/src/cds.c
 
     chmod +x $out/bin/cdls
     chmod +x $out/bin/cdp

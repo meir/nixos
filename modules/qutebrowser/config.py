@@ -9,8 +9,8 @@ c.tabs.min_width = 200
 c.tabs.position = "left"
 c.tabs.padding = {"top": 5, "bottom": 5, "left": 5, "right": 5}
 c.tabs.mousewheel_switching = False
-c.fonts.default_family = "Dina"
-#colors
+c.fonts.default_family = "DinaRemasterII Nerd Font"
+# colors
 c.colors.tabs.bar.bg = "#000"
 c.colors.tabs.even.bg = "#000"
 c.colors.tabs.even.fg = "#fff"
@@ -25,4 +25,3 @@ c.url.default_page = "~/.config/qutebrowser/homepage/index.html"
 c.url.start_pages = [c.url.default_page]
 
 c.content.autoplay = False
-
