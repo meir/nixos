@@ -1,4 +1,4 @@
-{ unstable, ... }@inputs:
+{ unstable, nixpkgs-xr, ... }@inputs:
 system: name:
 inputs.nixpkgs.lib.nixosSystem (
   let
@@ -29,11 +29,13 @@ inputs.nixpkgs.lib.nixosSystem (
     inherit system;
     specialArgs = {
       inherit unstable;
+      inherit nixpkgs-xr;
     };
     modules = [
       ./file.nix
 
       overlayModule
+      nixpkgs-xr.nixosModules.nixpkgs-xr
       ../hosts/${name}/hardware-configuration.nix
       ../hosts/${name}/configuration.nix
       ../modules
