@@ -27,6 +27,7 @@ with lib;
         vrPackages =
           if config.modules.steam.steamvr.enable then
             [
+              appimage-run
               monado
               opencomposite
               wlx-overlay-s
@@ -48,15 +49,15 @@ with lib;
         "steam-run"
       ];
 
-
-    services.xserver.displayManager.sessionCommands = let
-      vrpathreg = "${config.user_home}/.steam/steam/steamapps/common/SteamVR/bin/vrpathreg.sh";
-    in mkIf config.modules.steam.steamvr.enable
-    ''
-      if [ -f "${vrpathreg}" ]; then
-        ${lib.getExe pkgs.steam-run} ${vrpathreg} ${pkgs.monado}/share/steamvr-monado
-      fi
-    '';
+    services.xserver.displayManager.sessionCommands =
+      let
+        vrpathreg = "${config.user_home}/.steam/steam/steamapps/common/SteamVR/bin/vrpathreg.sh";
+      in
+      mkIf config.modules.steam.steamvr.enable ''
+        if [ -f "${vrpathreg}" ]; then
+          ${lib.getExe pkgs.steam-run} ${vrpathreg} ${pkgs.monado}/share/steamvr-monado
+        fi
+      '';
 
     programs.steam = {
       enable = true;
