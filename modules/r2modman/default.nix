@@ -7,10 +7,10 @@
 }:
 with lib;
 {
-  options.modules.dunst.enable = mkOption {
+  options.modules.r2modman.enable = mkOption {
     type = types.bool;
     default = true;
   };
 
-  config = mkIf config.modules.dunst.enable { environment.packages = with pkgs; [ r2modman ]; };
+  config = mkIf config.modules.r2modman.enable { environment.packages = with pkgs; [ r2modman ]; };
 }
