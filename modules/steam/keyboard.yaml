@@ -27,35 +27,36 @@ main_layout:
 # Shift    Z    X    C    V    B    N    M    .    ,    /    Enter
 # Ctrl  Alt Super    Space      Backspace       <    v    ^    >
 
-    - [ ~, "WS1", "WS2", "WS3", "WS4", "WS5", "WS6", "WS7", "WS8", "WS9", "WS10", "Kill", "Exec", ~]
-    - [ ~, "N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "N10", "Minus", "Plus", ~]
+    - [ ~, "WS1", "WS2", "WS3", "WS4", "WS5", "WS6", "WS7", "WS8", "WS9", "WS10", "Close", "Open", ~]
+    - [ ~, "N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "N0", "Minus", "Plus", ~]
     - [ "Escape", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Oem4", "Oem6"]
     - [ "Tab", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Oem1", "Oem7", "Oem5"]
-    - [ "LShift", "Z", "X", "C", "V", "B", "N", "M", "Period", "Comma", "Oem2", "Return"]
+    - [ "LShift", "Z", "X", "C", "V", "B", "N", "M", "Comma", "Period", "Oem2", "Return"]
     - [ "LCtrl", "LAlt", "LSuper", "Space", "BackSpace", "Left", "Down", "Up", "Right"]
 
 # Shell commands to be used in a layout.
 # Value is an array of string arguments.
 exec_commands:
     STT: [ "whisper_stt", "--lang", "en" ]
+    WS1: [ "bspc", "desktop", "-f", "1" ]
+    WS2: [ "bspc", "desktop", "-f", "2" ]
+    WS3: [ "bspc", "desktop", "-f", "3" ]
+    WS4: [ "bspc", "desktop", "-f", "4" ]
+    WS5: [ "bspc", "desktop", "-f", "5" ]
+    WS6: [ "bspc", "desktop", "-f", "6" ]
+    WS7: [ "bspc", "desktop", "-f", "7" ]
+    WS8: [ "bspc", "desktop", "-f", "8" ]
+    WS9: [ "bspc", "desktop", "-f", "9" ]
+    WS0: [ "bspc", "desktop", "-f", "10" ]
+    Close: [ "bspc", "node", "-c" ]
+
 
 # Series of keypresses to be used in a layout.
 # Format: keyName [DOWN|UP]
 # keyName must be a valid virtual key from the VirtualKey enum (see above)
 # DOWN|UP: can be omitted for an implicit "keyName DOWN, keyName UP"
 macros:
-    Kill: [ "LSuper DOWN", "LShift DOWN", "Q", "LShift UP", "LSuper UP" ]
-    WS1: [ "LSuper DOWN", "1", "LSuper UP" ]
-    WS2: [ "LSuper DOWN", "2", "LSuper UP" ]
-    WS3: [ "LSuper DOWN", "3", "LSuper UP" ]
-    WS4: [ "LSuper DOWN", "4", "LSuper UP" ]
-    WS5: [ "LSuper DOWN", "5", "LSuper UP" ]
-    WS6: [ "LSuper DOWN", "6", "LSuper UP" ]
-    WS7: [ "LSuper DOWN", "7", "LSuper UP" ]
-    WS8: [ "LSuper DOWN", "8", "LSuper UP" ]
-    WS9: [ "LSuper DOWN", "9", "LSuper UP" ]
-    WS10: [ "LSuper DOWN", "0", "LSuper UP" ]
-    Exec: [ "LSuper DOWN", "Space", "LSuper UP" ]
+  Open: ["LSuper DOWN", "Space", "LSuper Uo"]
 
 # Custom labels to use.
 # Key: element of main_layout
@@ -68,4 +69,36 @@ labels:
     "LCtrl":        ["Ctrl"]
     "LSuper":       ["Super"]
     "LShift":       ["Shift"]
-    "BackSpace":    ["<<"]
+    "BackSpace":    ["⌫"]
+    "N1": ["1", "!"]
+    "N2": ["2", "@"]
+    "N3": ["3", "#"]
+    "N4": ["4", "$"]
+    "N5": ["5", "%"]
+    "N6": ["6", "^"]
+    "N7": ["7", "&"]
+    "N8": ["8", "*"]
+    "N9": ["9", "("]
+    "N0": ["0", ")"]
+    "Period": [".", ">"]
+    "Comma": [",", "<"]
+    "Oem2": ["/", "?"]
+    "Minus": ["-", "_"]
+    "Plus": ["=", "+"]
+    "Oem4": ["[", "{"]
+    "Oem6": ["]", "}"]
+    "Oem1": [";", ":"]
+    "Oem7": ["'", "\""]
+    "Oem5": ["\\", "|"]
+    "Return": ["⏎"]
+    #  一 二 三 四 五 六 七 八 九 十
+    "WS1": ["一"]
+    "WS2": ["二"]
+    "WS3": ["三"]
+    "WS4": ["四"]
+    "WS5": ["五"]
+    "WS6": ["六"]
+    "WS7": ["七"]
+    "WS8": ["八"]
+    "WS9": ["九"]
+    "WS10": ["十"]
