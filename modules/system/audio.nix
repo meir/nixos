@@ -16,6 +16,9 @@ with lib;
     paprefs
   ];
 
+  # otherwise paprefs wont work
+  programs.dconf.enable = true;
+
   services.pipewire = {
     enable = true;
 
