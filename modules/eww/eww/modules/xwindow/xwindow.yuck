@@ -8,5 +8,5 @@
 
 (defpoll xtitle
   :interval "1s"
-  "./xtitle"
+  "modules/xwindow/xtitle"
 )

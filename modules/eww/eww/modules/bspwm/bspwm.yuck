@@ -1,19 +1,20 @@
 
-(defwidget bspwm [workspaces]
-  :class "bspwm"
-  (children)
+(defwidget bspwm []
+  (box
+    (children)
+  )
 )
 
+;(defpoll workspace_update
+;  :interval "1s"
+;  "./workspace \"${name}\""
+;)
+
 (defwidget workspace [name ?label]
-  (defpoll workspace_update
-    :interval "1s"
-    "./workspace \"${name}\""
-  )
-  
   (button
     :onclick "bspc desktop -f \"${name}\""
-    :class "workspace ${workspace_update}"
+    :class "workspace"
 
-    (or label name)
+    {label ? label : name}
   )
 )

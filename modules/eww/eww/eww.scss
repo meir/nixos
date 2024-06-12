@@ -4,3 +4,8 @@
 }
 
 @import "colors.scss";
+
+bar {
+  background-color: $bg;
+  color: $fg;
+}

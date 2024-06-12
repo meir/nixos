@@ -1,11 +1,6 @@
 #!/bin/bash
 
-window=$(cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm)
+window=$(xdotool getactivewindow getwindowclassname)
 title=$(xdotool getactivewindow getwindowname)
-
-if [[ $window == "" || $title == "" ]]; then
-  echo "Desktop"
-  exit 0
-fi
 
 echo "$window - $title"
