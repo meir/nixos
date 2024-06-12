@@ -13,11 +13,9 @@ with lib;
     libdrm
     pavucontrol
     alsa-oss
-    paprefs
+    helvum
+    playerctl
   ];
-
-  # otherwise paprefs wont work
-  programs.dconf.enable = true;
 
   services.pipewire = {
     enable = true;
@@ -28,5 +26,11 @@ with lib;
     pulse.enable = true;
     jack.enable = true;
     wireplumber.enable = true;
+  };
+
+  sxhkd.keybind = with pkgs; {
+    "XF86AudioPrev" = "${lib.getExe playerctl} previous";
+    "XF86AudioPlay" = "${lib.getExe playerctl} play-pause";
+    "XF86AudioNext" = "${lib.getExe playerctl} next";
   };
 }
