@@ -29,8 +29,6 @@ with lib;
   };
 
   sxhkd.keybind = with pkgs; {
-    "XF86AudioPrev" = "${lib.getExe playerctl} previous";
-    "XF86AudioPlay" = "${lib.getExe playerctl} play-pause";
-    "XF86AudioNext" = "${lib.getExe playerctl} next";
+    "XF86Audio{Prev,Play,Next}" = "${lib.getExe playerctl} {previous,play-pause,next}";
   };
 }
