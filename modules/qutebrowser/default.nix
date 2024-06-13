@@ -24,5 +24,10 @@ with lib;
       source = ./homepage;
       target = ".config/qutebrowser/homepage";
     };
+
+    environment.file.qutebrowser_greasemonkey = {
+      source = ./greasemonkey;
+      target = ".config/qutebrowser/greasemonkey";
+    };
   };
 }
