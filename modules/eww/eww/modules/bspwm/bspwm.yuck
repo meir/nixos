@@ -8,7 +8,6 @@
 
 (defwidget workspace [name ?label]
   (deflisten state
-    :initial ""
     "modules/bspwm/workspace \"${name}\""
   )
 

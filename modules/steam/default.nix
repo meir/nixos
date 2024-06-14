@@ -59,6 +59,14 @@ with lib;
         fi
       '';
 
+    xdg.mime = {
+      enable = true;
+      addedAssociations = {
+        "x-scheme-handler/steamvr" = "valve-URI-steamvr.desktop";
+        "x-scheme-handler/vrmonitor" = "valve-URI-vrmonitor.desktop";
+      };
+    };
+
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;
