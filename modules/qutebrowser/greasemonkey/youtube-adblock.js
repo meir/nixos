@@ -9,8 +9,7 @@ document.addEventListener('load', () => {
   const ad = document.querySelectorAll('.ad-showing')[0];
   if (ad) {
     const video = document.querySelector('video');
-    const hyperdrive = 299792458; // speed of light in meters per second
-    video.defaultPlaybackRate = hyperdrive;
-    video.playbackRate = hyperdrive;
+    // replace video with a videoProxy
+    video.playbackRate = 5;
   }
 }, true);
