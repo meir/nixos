@@ -1,9 +1,10 @@
 
-(defwidget music [format]
-  (deflisten music_status
-    "playerctl --follow metadata --format ${format}"
-  )
+(deflisten music_status
+  :initial ""
+  "playerctl --follow metadata --format '{{ title }} - {{ artist }} ({{position}})'"
+)
 
+(defwidget music []
   (box
     { music_status }
   )

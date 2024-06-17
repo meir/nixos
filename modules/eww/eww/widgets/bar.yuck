@@ -1,6 +1,6 @@
 (include "modules/bspwm/bspwm.yuck")
 (include "modules/xwindow/xwindow.yuck")
-(include "modules/audio/audio.yuck")
+(include "modules/audio/music.yuck")
 
 (defwidget bar []
   (centerbox 
@@ -15,7 +15,7 @@
 		  (workspace :name "5" :label "五")
 	  )
     (xwindow)
-    (audio :format "{{ title }} - {{ artist }} ({{position}})")
+    (music)
   )
 )
 

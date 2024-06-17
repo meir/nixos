@@ -19,6 +19,6 @@
     :onclick "bspc desktop -f \"${name}\""
     :class "workspace ws-${name} ${states[name]}"
 
-    {label ? label : name}
+    {name ?: name}
   )
 )

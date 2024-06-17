@@ -1,7 +1,13 @@
-{ options, config, pkgs, lib, ... }:
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
 let
-  enableVr = options.modules.steamvr.enable;
+  enableVr = config.modules.steamvr.enable;
 in
 {
   options.modules.steamvr.enable = mkOption {
@@ -10,7 +16,7 @@ in
   };
 
   config = mkIf enableVr {
-    environment.packages = [
+    environment.packages = with pkgs; [
       appimage-run
       monado
       opencomposite

@@ -8,7 +8,7 @@
 with lib;
 let
   buildBspwm = pkgs.writeScript "bspwmrc" (
-    concatStringsSep "\n\n" [ "#!/bin/sh" ] ++ config.bswpm.rules
+    concatStringsSep "\n\n" ([ "#!/bin/sh" ] ++ config.bspwm.rules)
   );
 in
 {
