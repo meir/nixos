@@ -1,0 +1,10 @@
+
+(defwidget music [format]
+  (deflisten music_status
+    "playerctl --follow metadata --format ${format}"
+  )
+
+  (box
+    { music_status }
+  )
+)

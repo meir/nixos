@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    ./bootloader.nix
     ./audio.nix
     ./locale.nix
     ./network.nix

@@ -6,10 +6,20 @@
   ...
 }:
 with lib;
+let
+  buildBspwm = pkgs.writeScript "bspwmrc" (
+    concatStringsSep "\n\n" ["#!/bin/sh"] ++ config.bswpm.rules
+  );
+in
 {
+  options.bspwm.rules = mkOption {
+    type = types.listOf types.str;
+    default = [];
+  };
+
   services.xserver.windowManager.bspwm = {
     enable = true;
-    configFile = ./assets/bspwm/bspwmrc;
+    configFile = buildBspwm;
   };
 
   sxhkd.keybind = {

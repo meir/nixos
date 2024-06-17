@@ -2,18 +2,22 @@
 (defwidget bspwm []
   (box
     :class "bspwm"
+    :orientation "h"
+    :halign "start"
+    :spacing 10
+    :space-evenly true
     (children)
   )
 )
 
-(defwidget workspace [name ?label]
-  (deflisten state
-    "modules/bspwm/workspace \"${name}\""
-  )
+(deflisten states
+  "modules/bspwm/workspaces"
+)
 
+(defwidget workspace [name ?label]
   (button
     :onclick "bspc desktop -f \"${name}\""
-    :class "workspace ws${name} ${state}"
+    :class "workspace ws-${name} ${states[name]}"
 
     {label ? label : name}
   )

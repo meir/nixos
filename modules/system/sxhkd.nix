@@ -23,9 +23,6 @@ in
   };
 
   config = {
-    environment.packages = with pkgs; [ sxhkd ];
-    services.xserver.displayManager.sessionCommands = ''
-      sxhkd -c ${buildSxhkd} &
-    '';
+    services.xserver.windowManager.bspwm.sxhkd.configFile = buildSxhkd;
   };
 }
