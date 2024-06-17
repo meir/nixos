@@ -27,7 +27,7 @@ main_layout:
 # Shift    Z    X    C    V    B    N    M    .    ,    /    Enter
 # Ctrl  Alt Super    Space      Backspace       <    v    ^    >
 
-    - [ ~, "WS1", "WS2", "WS3", "WS4", "WS5", "WS6", "WS7", "WS8", "WS9", "WS10", "Close", "Open", ~]
+    - [ ~, "WS1", "WS2", "WS3", "WS4", "WS5", "WS6", "WS7", "WS8", "WS9", "WS0", "Close", "Open", ~]
     - [ ~, "N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "N0", "Minus", "Plus", ~]
     - [ "Escape", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Oem4", "Oem6"]
     - [ "Tab", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Oem1", "Oem7", "Oem5"]

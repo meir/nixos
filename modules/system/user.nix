@@ -30,6 +30,7 @@ with lib;
         "networkmanager"
         "wheel"
         "desktop"
+        "docker"
       ];
     };
   };
