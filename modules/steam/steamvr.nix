@@ -17,15 +17,19 @@ in
       wlx-overlay-s
     ];
 
-    services.xserver.displayManager.sessionCommands =
+    systemd.user.services.register_steamvr_monado =
       let
         vrpathreg = "${config.user_home}/.steam/steam/steamapps/common/SteamVR/bin/vrpathreg.sh";
       in
-      ''
-        if [ -f "${vrpathreg}" ]; then
-          ${getExe pkgs.steam-run} ${vrpathreg} ${pkgs.monado}/share/steamvr-monado
-        fi
-      '';
+      {
+        description = "register Monado using the SteamVR pathreg";
+        script = ''
+          if [ -f "${vrpathreg}" ]; then
+            ${getExe pkgs.steam-run} ${vrpathreg} ${pkgs.monado}/share/steamvr-monado
+          fi
+        '';
+        wantedBy = [ "multi-user.target" ];
+      };
 
     xdg.mime = {
       enable = true;
