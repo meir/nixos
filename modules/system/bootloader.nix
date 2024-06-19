@@ -1,10 +1,10 @@
 { config, options, pkgs, lib, ... }:
 {
   boot.loader = {
-    grub = {
+    systemd = {
       enable = true;
-      efiSupport = true;
-      device = "nodev";
+      consoleMode = "max";
+      configurationLimit = 50;
     };
     efi.canTouchEfiVariables = true;
   };
