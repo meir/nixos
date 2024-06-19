@@ -1,7 +1,13 @@
-{ config, options, pkgs, lib, ... }:
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  ...
+}:
 {
   boot.loader = {
-    systemd = {
+    systemd-boot = {
       enable = true;
       consoleMode = "max";
       configurationLimit = 50;
