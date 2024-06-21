@@ -1,9 +1,10 @@
-{ config
-, options
-, pkgs
-, lib
-, nixpkgs-xr
-, ...
+{
+  config,
+  options,
+  pkgs,
+  lib,
+  nixpkgs-xr,
+  ...
 }:
 with lib;
 {
@@ -14,17 +15,14 @@ with lib;
     };
   };
 
-  imports = [
-    ./steamvr.nix
-  ];
+  imports = [ ./steamvr.nix ];
 
   config = mkIf config.modules.steam.enable {
-    environment.packages =
-      with pkgs;
-      [
-        steam
-        ffmpeg # add ffmpeg for ingame video players
-      ];
+    environment.packages = with pkgs; [
+      steam
+      protonup-qt
+      ffmpeg # add ffmpeg for ingame video players
+    ];
 
     nixpkgs.config.allowUnfreePredicate =
       pkg:

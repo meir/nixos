@@ -12,6 +12,7 @@
       consoleMode = "max";
       configurationLimit = 50;
     };
+    grub.enable = false;
     efi.canTouchEfiVariables = true;
   };
 }
