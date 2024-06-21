@@ -20,7 +20,7 @@ with lib;
   config = mkIf config.modules.steam.enable {
     environment.packages = with pkgs; [
       steam
-      protonup-qt
+      protonup-ng
       ffmpeg # add ffmpeg for ingame video players
     ];
 
