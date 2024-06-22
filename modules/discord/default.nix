@@ -5,6 +5,9 @@
   lib,
   ...
 }:
+let
+  vencord = false;
+in
 with lib;
 {
   options.modules.discord.enable = mkOption {
@@ -13,7 +16,7 @@ with lib;
   };
 
   config = mkIf config.modules.discord.enable {
-    environment.packages = with pkgs; [ (unstable.discord.override { withVencord = true; }) ];
+    environment.packages = with pkgs; [ (unstable.discord.override { withVencord = vencord; }) ];
 
     services.picom.opacityRules = [ "90:class_g = 'discord'" ];
   };

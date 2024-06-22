@@ -38,7 +38,7 @@ with lib;
     settings = {
       blur = {
         method = "gaussian";
-        size = 10;
+        size = 5;
         deviation = 5.0;
       };
     };
