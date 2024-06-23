@@ -24,6 +24,8 @@ with lib;
       wallust
       xdotool
       cdl
+      cargo
+      rustc
     ];
 
     environment.file.kitty = {
