@@ -1,0 +1,183 @@
+# looking to make changes? 
+# drop me in ~/.config/wlxoverlay/watch.yaml
+#
+
+width: 0.115
+
+size: [400, 200]
+
+elements:
+  # background panel
+  - type: Panel
+    rect: [0, 0, 400, 200]
+    bg_color: "#353535"
+
+  - type: Button
+    rect: [2, 162, 26, 36]
+    font_size: 14
+    bg_color: "#808040"
+    fg_color: "#ffffff"
+    text: "C"
+    click_up: # destroy if exists, otherwise create
+      - type: Window
+        target: settings
+        action: ShowUi # only triggers if not exists
+      - type: Window 
+        target: settings
+        action: Destroy # only triggers if exists since before current frame
+
+  # Keyboard button
+  - type: Button
+    rect: [32, 162, 60, 36]
+    font_size: 14
+    fg_color: "#FFFFFF"
+    bg_color: "#406050"
+    text: Kbd
+    click_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleVisible
+    long_click_up:
+      - type: Overlay
+        target: "kbd"
+        action: Reset
+    right_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleImmovable
+    middle_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleInteraction
+    scroll_up:
+      - type: Overlay
+        target: "kbd"
+        action: 
+          Opacity: { delta: 0.025 }
+    scroll_down:
+      - type: Overlay
+        target: "kbd"
+        action: 
+          Opacity: { delta: -0.025 }
+
+  # bottom row, of keyboard + overlays
+  - type: OverlayList
+    rect: [94, 160, 306, 40]
+    font_size: 14
+    fg_color: "#FFFFFF"
+    bg_color: "#405060"
+    layout: Horizontal
+    click_up: ToggleVisible
+    long_click_up: Reset
+    right_up: ToggleImmovable
+    middle_up: ToggleInteraction
+    scroll_up: 
+      Opacity: { delta: 0.025 }
+    scroll_down: 
+      Opacity: { delta: -0.025 }
+
+  # local clock
+  - type: Label
+    rect: [19, 90, 200, 50]
+    font_size: 46 # Use 32 for 12-hour time
+    fg_color: "#ffffff"
+    source: Clock
+    format: "%H:%M" # 23:59
+    #format: "%I:%M %p" # 11:59 PM
+ 
+  # local date
+  - type: Label
+    rect: [20, 117, 200, 20]
+    font_size: 14
+    fg_color: "#ffffff"
+    source: Clock
+    format: "%x" # local date representation
+
+  # local day-of-week
+  - type: Label
+    rect: [20, 137, 200, 50]
+    font_size: 14
+    fg_color: "#ffffff"
+    source: Clock
+    format: "%A" # Tuesday
+    #format: "%a" # Tue
+
+  # alt clock 1
+  - type: Label
+    rect: [210, 90, 200, 50]
+    font_size: 24 # Use 18 for 12-hour time
+    fg_color: "#99BBAA"
+    source: Clock
+    timezone: "Asia/Tokyo" # change TZ1 here
+    format: "%H:%M" # 23:59
+    #format: "%I:%M %p" # 11:59 PM
+  - type: Label
+    rect: [210, 60, 200, 50]
+    font_size: 14
+    fg_color: "#99BBAA"
+    source: Static
+    text: "Tokyo" # change TZ1 label here
+ 
+  # alt clock 2
+  - type: Label
+    rect: [210, 150, 200, 50]
+    font_size: 24 # Use 18 for 12-hour time
+    fg_color: "#AA99BB"
+    source: Clock
+    timezone: "America/Chicago" # change TZ2 here
+    format: "%H:%M" # 23:59
+    #format: "%I:%M %p" # 11:59 PM
+  - type: Label
+    rect: [210, 120, 200, 50]
+    font_size: 14
+    fg_color: "#AA99BB"
+    source: Static
+    text: "Chicago" # change TZ2 label here
+
+  # batteries
+  - type: BatteryList
+    rect: [0, 0, 400, 30]
+    font_size: 14
+    fg_color: "#99BBAA"
+    fg_color_low: "#B06060"
+    fg_color_charging: "#6080A0"
+    num_devices: 9
+    layout: Horizontal
+    low_threshold: 20
+
+  # playerctl
+  - type: Exec
+    command: [ "playerctl", "metadata", "--format", "\"[{{ album }}] {{ title }} - {{ artist}}\"" ]
+    interval: 0.5
+    rect: [235, 78, 138, 64]
+    font_size: 14
+    fg_color: "#FFFFFF"
+    bg_color: "#505050"
+
+  - type: Button
+    rect: [327, 116, 46, 32]
+    font_size: 14
+    fg_color: "#FFFFFF"
+    bg_color: "#505050"
+    text: "⏭"
+    click_down:
+      - type: Exec
+        command: [ "playerctl", "next" ]
+  - type: Butten
+    react: [281, 116, 46, 32]
+    font_size: 14
+    fg_color: "#FFFFFF"
+    bg_color: "#505050"
+    text: "⏯"
+    click_down:
+      - type: Exec
+        command: [ "playerctl", "play-pause"]
+  - type: Button
+    rect: [235, 116, 46, 32]
+    font_size: 14
+    fg_color: "#FFFFFF"
+    bg_color: "#505050"
+    text: "⏮"
+    click_down:
+      - type: Exec
+        command: [ "playerctl", "previous" ]
