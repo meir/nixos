@@ -101,39 +101,7 @@ elements:
     source: Clock
     format: "%A" # Tuesday
     #format: "%a" # Tue
-
-  # alt clock 1
-  - type: Label
-    rect: [210, 90, 200, 50]
-    font_size: 24 # Use 18 for 12-hour time
-    fg_color: "#99BBAA"
-    source: Clock
-    timezone: "Asia/Tokyo" # change TZ1 here
-    format: "%H:%M" # 23:59
-    #format: "%I:%M %p" # 11:59 PM
-  - type: Label
-    rect: [210, 60, 200, 50]
-    font_size: 14
-    fg_color: "#99BBAA"
-    source: Static
-    text: "Tokyo" # change TZ1 label here
  
-  # alt clock 2
-  - type: Label
-    rect: [210, 150, 200, 50]
-    font_size: 24 # Use 18 for 12-hour time
-    fg_color: "#AA99BB"
-    source: Clock
-    timezone: "America/Chicago" # change TZ2 here
-    format: "%H:%M" # 23:59
-    #format: "%I:%M %p" # 11:59 PM
-  - type: Label
-    rect: [210, 120, 200, 50]
-    font_size: 14
-    fg_color: "#AA99BB"
-    source: Static
-    text: "Chicago" # change TZ2 label here
-
   # batteries
   - type: BatteryList
     rect: [0, 0, 400, 30]
@@ -146,10 +114,11 @@ elements:
     low_threshold: 20
 
   # playerctl
-  - type: Exec
+  - type: Label
+    source: Exec
     command: [ "playerctl", "metadata", "--format", "\"[{{ album }}] {{ title }} - {{ artist}}\"" ]
     interval: 0.5
-    rect: [235, 78, 138, 64]
+    rect: [200, 78, 138, 64]
     font_size: 14
     fg_color: "#FFFFFF"
     bg_color: "#505050"
@@ -163,8 +132,8 @@ elements:
     click_down:
       - type: Exec
         command: [ "playerctl", "next" ]
-  - type: Butten
-    react: [281, 116, 46, 32]
+  - type: Button
+    rect: [281, 116, 46, 32]
     font_size: 14
     fg_color: "#FFFFFF"
     bg_color: "#505050"

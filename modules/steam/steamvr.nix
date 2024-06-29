@@ -54,5 +54,10 @@ in
       source = ./wlxoverlay/keyboard.yaml;
       target = ".config/wlxoverlay/keyboard.yaml";
     };
+
+    environment.file.wlx_watch = {
+      source = ./wlxoverlay/watch.yaml;
+      target = ".config/wlxoverlay/watch.yaml";
+    };
   };
 }
