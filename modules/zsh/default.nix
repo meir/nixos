@@ -6,45 +6,38 @@
   ...
 }:
 with lib;
-{
-  options.modules.zsh.enable = mkOption {
-    type = types.bool;
-    default = true;
-  };
+mkModule "zsh" {
+  environment.packages = with pkgs; [
+    zsh
+    oh-my-zsh
+    bash
+    gnugrep
+  ];
 
-  config = mkIf config.modules.zsh.enable {
-    environment.packages = with pkgs; [
-      zsh
-      oh-my-zsh
-      bash
-      gnugrep
-    ];
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
 
-    programs.zsh = {
+    histSize = 10000;
+
+    ohMyZsh = {
       enable = true;
-      enableCompletion = true;
-      syntaxHighlighting.enable = true;
-
-      histSize = 10000;
-
-      ohMyZsh = {
-        enable = true;
-        plugins = [ "git" ];
-      };
-
-      shellAliases = {
-        cdd = "cd ~/Documents";
-        bye = "exit";
-        clear = "clear && printf '\\e[3J'";
-        c = "clear";
-      };
-
-      shellInit = ''
-        source $(which cdl-alias)
-      '';
+      plugins = [ "git" ];
     };
 
-    users.defaultUserShell = pkgs.zsh;
-    environment.shells = [ pkgs.zsh ];
+    shellAliases = {
+      cdd = "cd ~/Documents";
+      bye = "exit";
+      clear = "clear && printf '\\e[3J'";
+      c = "clear";
+    };
+
+    shellInit = ''
+      source $(which cdl-alias)
+    '';
   };
+
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = [ pkgs.zsh ];
 }

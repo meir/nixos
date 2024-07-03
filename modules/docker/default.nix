@@ -6,16 +6,8 @@
   ...
 }:
 with lib;
-{
-  options.modules.docker.enable = mkOption {
-    type = types.bool;
-    default = true;
-  };
+mkModule "docker" {
+  virtualisation.docker.enable = true;
 
-  config = mkIf config.modules.docker.enable {
-
-    virtualisation.docker.enable = true;
-
-    environment.packages = with pkgs; [ docker ];
-  };
+  environment.packages = with pkgs; [ docker ];
 }

@@ -3,6 +3,36 @@
   config = {
     user = "human";
 
+    environment.packages = with pkgs; [
+      gimp
+      libsForQt5.kdenlive
+      lmms
+      prismlauncher
+      r2modman
+      spotify
+      stremio
+      gnome.nautilus
+    ];
+
+    modules = {
+      discord.enable = true;
+      docker.enable = true;
+      dunst.enable = true;
+      eww.enable = true;
+      feh.enable = true;
+      nvim.enable = true;
+      obs.enable = true;
+      onepassword.enable = true;
+      polybar.enable = true;
+      qmk.enable = true;
+      qutebrowser.enable = true;
+      rofi.enable = true;
+      steam.enable = true;
+      steamvr.enable = true;
+      kitty.enable = true;
+      zsh.enable = true;
+    };
+
     # additional hardware configuration
     boot.initrd.availableKernelModules = [
       "usb_storage"

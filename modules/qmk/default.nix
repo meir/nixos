@@ -6,19 +6,12 @@
   ...
 }:
 with lib;
-{
-  options.modules.qmk.enable = mkOption {
-    type = types.bool;
-    default = true;
-  };
+mkModule "qmk" {
+  environment.packages = with pkgs; [
+    udev
+    vial
+    qmk
+  ];
 
-  config = mkIf config.modules.qmk.enable {
-    environment.packages = with pkgs; [
-      udev
-      vial
-      qmk
-    ];
-
-    services.udev.packages = with pkgs; [ vial ];
-  };
+  services.udev.packages = with pkgs; [ vial ];
 }

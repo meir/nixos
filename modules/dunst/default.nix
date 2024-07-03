@@ -6,13 +6,4 @@
   ...
 }:
 with lib;
-{
-  options.modules.dunst.enable = mkOption {
-    type = types.bool;
-    default = true;
-  };
-
-  config = mkIf config.modules.dunst.enable {
-    environment.packages = with pkgs; [ dunst ];
-  };
-}
+mkModule "dunst" { environment.packages = with pkgs; [ dunst ]; }
