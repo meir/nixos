@@ -5,20 +5,12 @@
   lib,
   ...
 }:
-with lib;
-{
-  options.modules.feh.enable = mkOption {
-    type = types.bool;
-    default = true;
-  };
+lib.mkModule "feh" {
+  environment.packages = with pkgs; [ feh ];
 
-  config = mkIf config.modules.feh.enable {
-    environment.packages = with pkgs; [ feh ];
-
-    services.xserver.displayManager.sessionCommands = ''
-      if [ -f "${config.user_home}/.fehbg" ]; then
-        ${config.user_home}/.fehbg ;
-      fi
-    '';
-  };
+  services.xserver.displayManager.sessionCommands = ''
+    if [ -f "${config.user_home}/.fehbg" ]; then
+      ${config.user_home}/.fehbg ;
+    fi
+  '';
 }

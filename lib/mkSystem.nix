@@ -1,7 +1,14 @@
-{ unstable, nixpkgs-xr, ... }@inputs:
+{
+  nixpkgs,
+  unstable,
+  nixpkgs-xr,
+  ...
+}@inputs:
 system: name:
-inputs.nixpkgs.lib.nixosSystem (
+nixpkgs.lib.nixosSystem (
   let
+    mkModule = import ./mkModule.nix;
+
     overlay = final: prev: {
       unstable = import unstable {
         inherit system;
@@ -13,7 +20,6 @@ inputs.nixpkgs.lib.nixosSystem (
       cozette-nerdfont = import ../pkgs/cozette-nerdfont final;
       dina-remastered = import ../pkgs/dina-remastered final;
       cdl = import ../pkgs/cdl final;
-      mkModule = import ./mkModule.nix final;
     };
 
     overlayModule = (
@@ -31,7 +37,9 @@ inputs.nixpkgs.lib.nixosSystem (
     specialArgs = {
       inherit unstable;
       inherit nixpkgs-xr;
+      inherit mkModule;
     };
+
     modules = [
       ./file.nix
 

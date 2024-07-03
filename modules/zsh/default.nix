@@ -5,8 +5,7 @@
   lib,
   ...
 }:
-with lib;
-mkModule "zsh" {
+lib.mkModule "zsh" {
   environment.packages = with pkgs; [
     zsh
     oh-my-zsh

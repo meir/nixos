@@ -5,8 +5,7 @@
   lib,
   ...
 }:
-with lib;
-mkModule "qutebrowser" {
+lib.mkModule "qutebrowser" {
   environment.packages = with pkgs; [ qutebrowser ];
 
   environment.file.qutebrowser = {

@@ -5,8 +5,7 @@
   lib,
   ...
 }:
-with lib;
-mkModule "kitty" {
+lib.mkModule "kitty" {
   environment.packages = with pkgs; [
     kitty
 

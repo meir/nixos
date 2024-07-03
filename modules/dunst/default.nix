@@ -5,5 +5,4 @@
   lib,
   ...
 }:
-with lib;
-mkModule "dunst" { environment.packages = with pkgs; [ dunst ]; }
+lib.mkModule "dunst" { environment.packages = with pkgs; [ dunst ]; }

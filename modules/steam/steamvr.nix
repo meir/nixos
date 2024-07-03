@@ -5,8 +5,7 @@
   lib,
   ...
 }:
-with lib;
-mkModule "steamvr" {
+lib.mkModule "steamvr" {
   environment.packages = with pkgs; [
     appimage-run
     monado

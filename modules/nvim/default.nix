@@ -5,8 +5,7 @@
   lib,
   ...
 }:
-with lib;
-mkModule "nvim" {
+lib.mkModule "nvim" {
   environment.packages = with pkgs; [
     neovim
     git

@@ -5,8 +5,7 @@
   lib,
   ...
 }:
-with lib;
-mkModule "rofi" {
+lib.mkModule "rofi" {
   environment.packages = with pkgs; [
     rofi
     clipcat

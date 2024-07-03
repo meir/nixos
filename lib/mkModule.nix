@@ -1,14 +1,9 @@
-{
-  options,
-  config,
-  lib,
-  ...
-}@inputs:
+{ lib, ... }:
 name: cfg: with lib; {
-  options.modules.${name}.enable = mkOption {
+  options.modules."${name}".enable = mkOption {
     type = types.bool;
     default = false;
   };
 
-  config = (mkIf options.modules.${name}.enable cfg);
+  config = mkIf config.modules."${name}".enable cfg;
 }

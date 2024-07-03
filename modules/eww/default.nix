@@ -5,8 +5,7 @@
   lib,
   ...
 }:
-with lib;
-mkModule "eww" {
+lib.mkModule "eww" {
   environment.packages = with pkgs; [ eww ];
 
   systemd.user.services.eww = {

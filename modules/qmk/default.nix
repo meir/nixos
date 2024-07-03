@@ -5,8 +5,7 @@
   lib,
   ...
 }:
-with lib;
-mkModule "qmk" {
+lib.mkModule "qmk" {
   environment.packages = with pkgs; [
     udev
     vial

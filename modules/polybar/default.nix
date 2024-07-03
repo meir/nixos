@@ -5,8 +5,7 @@
   lib,
   ...
 }:
-with lib;
-mkModule "polybar" {
+lib.mkModule "polybar" {
   environment.packages = with pkgs; [ polybar ];
 
   systemd.user.services.polybar = {
