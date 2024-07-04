@@ -1,11 +1,10 @@
 {
   config,
-  options,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "docker" {
+mkModule config "docker" {
   virtualisation.docker.enable = true;
 
   environment.packages = with pkgs; [ docker ];

@@ -1,11 +1,10 @@
 {
-  options,
   config,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "steamvr" {
+mkModule config "steamvr" {
   environment.packages = with pkgs; [
     appimage-run
     monado

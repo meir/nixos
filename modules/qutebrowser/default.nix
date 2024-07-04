@@ -1,11 +1,10 @@
 {
   config,
-  options,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "qutebrowser" {
+mkModule config "qutebrowser" {
   environment.packages = with pkgs; [ qutebrowser ];
 
   environment.file.qutebrowser = {

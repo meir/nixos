@@ -1,5 +1,5 @@
 { lib, ... }:
-name: cfg: {
+config: name: cfg: {
   options.modules."${name}".enable = lib.mkOption {
     type = types.bool;
     default = false;

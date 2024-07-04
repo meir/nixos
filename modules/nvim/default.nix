@@ -1,11 +1,10 @@
 {
   config,
-  options,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "nvim" {
+mkModule config "nvim" {
   environment.packages = with pkgs; [
     neovim
     git

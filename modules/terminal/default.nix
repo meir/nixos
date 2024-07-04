@@ -1,11 +1,10 @@
 {
   config,
-  options,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "kitty" {
+mkModule config "kitty" {
   environment.packages = with pkgs; [
     kitty
 

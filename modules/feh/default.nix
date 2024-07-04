@@ -1,11 +1,10 @@
 {
   config,
-  options,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "feh" {
+mkModule config "feh" {
   environment.packages = with pkgs; [ feh ];
 
   services.xserver.displayManager.sessionCommands = ''

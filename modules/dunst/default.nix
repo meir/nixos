@@ -1,8 +1,7 @@
 {
   config,
-  options,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "dunst" { environment.packages = with pkgs; [ dunst ]; }
+mkModule config "dunst" { environment.packages = with pkgs; [ dunst ]; }

@@ -1,11 +1,10 @@
 {
   config,
-  options,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "rofi" {
+mkModule config "rofi" {
   environment.packages = with pkgs; [
     rofi
     clipcat

@@ -1,11 +1,10 @@
 {
   config,
-  options,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "eww" {
+mkModule config "eww" {
   environment.packages = with pkgs; [ eww ];
 
   systemd.user.services.eww = {

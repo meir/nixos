@@ -1,11 +1,10 @@
 {
   config,
-  options,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "polybar" {
+mkModule config "polybar" {
   environment.packages = with pkgs; [ polybar ];
 
   systemd.user.services.polybar = {

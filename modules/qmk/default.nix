@@ -1,11 +1,10 @@
 {
   config,
-  options,
   pkgs,
-  lib,
+  mkModule,
   ...
 }:
-lib.mkModule "qmk" {
+mkModule config "qmk" {
   environment.packages = with pkgs; [
     udev
     vial
