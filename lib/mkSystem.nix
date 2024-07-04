@@ -7,7 +7,7 @@
 system: name:
 nixpkgs.lib.nixosSystem (
   let
-    mkModule = import ./mkModule.nix;
+    mkModule = import ./mkModule.nix { lib = nixpkgs.lib; };
 
     overlay = final: prev: {
       unstable = import unstable {
