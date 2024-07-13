@@ -14,11 +14,14 @@
       gnome.nautilus
     ];
 
-    programs.noisetorch.enable = true;
+    programs = {
+      noisetorch.enable = true;
+    };
 
     modules = {
       discord.enable = true;
       docker.enable = true;
+      droidcam.enable = true;
       dunst.enable = true;
       eww.enable = true;
       feh.enable = true;
