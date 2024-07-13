@@ -1,6 +1,6 @@
-(include "modules/bspwm/bspwm.yuck")
-(include "modules/xwindow/xwindow.yuck")
-(include "modules/audio/music.yuck")
+(include "modules/bspwm/module.yuck")
+(include "modules/xwindow/module.yuck")
+(include "modules/audio/module.yuck")
 
 (defwidget bar []
   (centerbox 
@@ -20,7 +20,7 @@
 )
 
 (defwindow mon0
-  :monitor 0
+  :monitor "HDMI-1"
   :geometry (geometry
     :x "0%"
     :y "0%"
@@ -30,7 +30,7 @@
   )
   :stacking "fg"
   :reserve (struts
-    :distance "40px"
+    :distance "10px"
     :side "top"
   )
   :windowtype "dock"

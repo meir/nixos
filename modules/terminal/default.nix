@@ -18,6 +18,7 @@ mkModule config "kitty" {
     cdl
     cargo
     rustc
+    gcc12
   ];
 
   environment.file.kitty = {

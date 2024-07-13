@@ -3,4 +3,10 @@
 window=$(xdotool getactivewindow getwindowclassname)
 title=$(xdotool getactivewindow getwindowname)
 
-echo "$window - $title"
+out="$window - $title"
+
+if [ ${#out} -gt 50 ]; then
+  out="${out:0:50}..."
+fi
+
+echo $out

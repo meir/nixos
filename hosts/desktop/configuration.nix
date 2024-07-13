@@ -14,6 +14,8 @@
       gnome.nautilus
     ];
 
+    programs.noisetorch.enable = true;
+
     modules = {
       discord.enable = true;
       docker.enable = true;

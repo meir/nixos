@@ -5,7 +5,11 @@
 
 @import "colors.scss";
 
-bar {
+.mon0 {
   background-color: $bg;
   color: $fg;
+}
+
+.focused {
+  background-color: $contrast;
 }
