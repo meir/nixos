@@ -26,8 +26,9 @@ mkModule config "eww" {
     serviceConfig =
       let
         scriptPkg = pkgs.writeShellScriptBin "eww-start" ''
-          ${pkgs.eww}/bin/polybar mon0 &
-          ${pkgs.eww}/bin/polybar mon1 &
+          ${pkgs.eww}/bin/eww daemon &
+          ${pkgs.eww}/bin/eww open mon0 &
+          ${pkgs.eww}/bin/eww open mon1 &
         '';
       in
       {

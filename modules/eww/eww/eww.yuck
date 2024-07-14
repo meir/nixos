@@ -1,1 +1,11 @@
-(include "widgets/bar.yuck")
+
+; Modules
+(include "modules/bspwm/module.yuck")
+(include "modules/xwindow/module.yuck")
+(include "modules/audio/module.yuck")
+(include "modules/time/module.yuck")
+
+; windows
+(include "widgets/bar_desktop1.yuck")
+(include "widgets/bar_desktop2.yuck")
+

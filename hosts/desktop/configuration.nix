@@ -28,7 +28,6 @@
       nvim.enable = true;
       obs.enable = true;
       onepassword.enable = true;
-      polybar.enable = true;
       qmk.enable = true;
       qutebrowser.enable = true;
       rofi.enable = true;

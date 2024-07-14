@@ -1,6 +1,6 @@
 #!/bin/bash
 
-class_idle=""
+class_idle="idle"
 class_focused="focused"
 class_occupied="occupied"
 
@@ -11,12 +11,14 @@ workspaces() {
 	# turn list into json object
 	IFS=$'\n' read -r -d '' -a lines <<<"$ws"
 	json="{"
-	for line in "${lines[@]}"; do
+	for i in "${!lines[@]}"; do
+    line=${lines[$i]}
 		class=$class_idle
-		if [[ $(bspc query -N -d $i | wc -l) -gt 0 ]]; then
+
+		if [[ $(bspc query -N -d "$line" | wc -l) -gt 0 ]]; then
 			class=$class_occupied
 		fi
-		if [[ $i -eq $active_ws ]]; then
+		if [[ "$i" -eq "$active_ws" ]]; then
 			class=$class_focused
 		fi
 

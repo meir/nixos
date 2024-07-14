@@ -17,7 +17,7 @@
 (defwidget workspace [name ?label]
   (button
     :onclick "bspc desktop -f \"${name}\""
-    :class "workspace ws-${name} ${states[name]}"
+    :class "ws-${states[name]}"
 
     {label ?: name}
   )

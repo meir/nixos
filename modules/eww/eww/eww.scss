@@ -5,11 +5,11 @@
 
 @import "colors.scss";
 
-.mon0 {
-  background-color: $bg;
-  color: $fg;
+.ws-* {
+  padding: 20px;
 }
 
-.focused {
+.ws-focused {
   background-color: $contrast;
+  color: #000;
 }
