@@ -4,6 +4,7 @@
     user = "human";
 
     environment.packages = with pkgs; [
+      discord
       gimp
       libsForQt5.kdenlive
       lmms
@@ -19,7 +20,6 @@
     };
 
     modules = {
-      discord.enable = true;
       docker.enable = true;
       droidcam.enable = true;
       dunst.enable = true;
@@ -43,6 +43,10 @@
       "usb_storage"
       "sd_mod"
     ];
+    boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+    boot.extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
     boot.supportedFilesystems = [ "ntfs" ];
 
     powerManagement.enable = false;
