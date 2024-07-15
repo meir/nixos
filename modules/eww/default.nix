@@ -1,10 +1,34 @@
 {
+  lib,
   config,
   pkgs,
+  options,
   mkModule,
   ...
 }:
-mkModule config "eww" {
+let
+  name = "eww";
+
+  widgetScripts = pkgs.writeScript "eww-start" (
+    concatStringsSetp "\n" (
+      map (widget: ''
+        ${pkgs.eww}/bin/eww open ${widget}
+      '') config.modules."${name}".widgets
+    )
+  );
+in
+{
+  options.modules."${name}".source = lib.mkOption {
+    type = types.path;
+    default = null;
+  };
+
+  options.modules."${name}".widgets = lib.mkOption {
+    type = types.attrsOf types.str;
+    default = [ ];
+  };
+}
+// mkModule config "${name}" {
   environment.packages = with pkgs; [ eww ];
 
   systemd.user.services.eww = {
@@ -27,8 +51,7 @@ mkModule config "eww" {
       let
         scriptPkg = pkgs.writeShellScriptBin "eww-start" ''
           ${pkgs.eww}/bin/eww daemon &
-          ${pkgs.eww}/bin/eww open mon0 &
-          ${pkgs.eww}/bin/eww open mon1 &
+          ${widgetScripts}
         '';
       in
       {
@@ -38,8 +61,8 @@ mkModule config "eww" {
       };
   };
 
-  environment.file.eww = {
-    source = ./eww;
+  environment.file.eww = lib.mkIf config.modules."${name}".source {
+    source = config.modules."${name}".source;
     target = ".config/eww";
   };
 }

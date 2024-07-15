@@ -10,6 +10,9 @@ mkModule config "zsh" {
     oh-my-zsh
     bash
     gnugrep
+    cdl
+    spaceship-prompt
+    onefetch
   ];
 
   programs.zsh = {
@@ -21,7 +24,12 @@ mkModule config "zsh" {
 
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = [
+        "git"
+        "docker"
+        "golang"
+        "kubectl"
+      ];
     };
 
     shellAliases = {
@@ -31,9 +39,7 @@ mkModule config "zsh" {
       c = "clear";
     };
 
-    shellInit = ''
-      source $(which cdl-alias)
-    '';
+    shellInit = ./shell-init.sh;
   };
 
   users.defaultUserShell = pkgs.zsh;

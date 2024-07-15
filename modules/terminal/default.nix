@@ -12,10 +12,7 @@ mkModule config "kitty" {
     btop
     nvtopPackages.full
     fastfetch
-    onefetch
-    wallust
     xdotool
-    cdl
     cargo
     rustc
     gcc12

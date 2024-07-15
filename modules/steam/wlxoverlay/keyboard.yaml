@@ -37,7 +37,6 @@ main_layout:
 # Shell commands to be used in a layout.
 # Value is an array of string arguments.
 exec_commands:
-    STT: [ "whisper_stt", "--lang", "en" ]
     WS1: [ "bspc", "desktop", "-f", "1" ]
     WS2: [ "bspc", "desktop", "-f", "2" ]
     WS3: [ "bspc", "desktop", "-f", "3" ]
@@ -56,7 +55,7 @@ exec_commands:
 # keyName must be a valid virtual key from the VirtualKey enum (see above)
 # DOWN|UP: can be omitted for an implicit "keyName DOWN, keyName UP"
 macros:
-  Open: ["LSuper DOWN", "Space", "LSuper Uo"]
+  Open: ["LSuper DOWN", "Space", "LSuper UP"]
 
 # Custom labels to use.
 # Key: element of main_layout

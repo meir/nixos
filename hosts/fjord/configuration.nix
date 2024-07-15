@@ -8,6 +8,7 @@
       prismlauncher
       spotify
       stremio
+      wirelesstools
     ];
 
     modules = {
@@ -24,6 +25,24 @@
       steam.enable = true;
       kitty.enable = true;
       zsh.enable = true;
+    };
+
+    # set txpower to 10dBm
+    systemd.user.services.txpower = {
+      enable = true;
+      path = [ pkgs.wirelesstools ];
+      unitConfig = {
+        PartOf = [ "graphical-session.target" ];
+      };
+      wantedBy = [ "graphical-session.target" ];
+      description = "wlp2s0 txpower";
+      serviceConfig = {
+        Type = "forking";
+        ExecStart = ''
+          ${pkgs.wirelesstools}/bin/iwconfig wlp2s0 txpower 10
+        '';
+        Restart = "on-failure";
+      };
     };
 
     # additional hardware configuration

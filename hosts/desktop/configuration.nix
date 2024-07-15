@@ -13,6 +13,7 @@
       spotify
       stremio
       gnome.nautilus
+      olive-editor
     ];
 
     programs = {
@@ -23,7 +24,14 @@
       docker.enable = true;
       droidcam.enable = true;
       dunst.enable = true;
-      eww.enable = true;
+      eww = {
+        enable = true;
+        source = ./eww;
+        widgets = [
+          "mon1"
+          "mon2"
+        ];
+      };
       feh.enable = true;
       nvim.enable = true;
       obs.enable = true;
