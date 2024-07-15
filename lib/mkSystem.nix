@@ -45,9 +45,9 @@ nixpkgs.lib.nixosSystem (
 
       overlayModule
       nixpkgs-xr.nixosModules.nixpkgs-xr
+      ../modules
       ../hosts/${name}/hardware-configuration.nix
       ../hosts/${name}/configuration.nix
-      ../modules
     ];
   }
 )

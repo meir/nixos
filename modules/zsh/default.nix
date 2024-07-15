@@ -39,7 +39,7 @@ mkModule config "zsh" {
       c = "clear";
     };
 
-    shellInit = ./shell-init.sh;
+    shellInit = builtins.readFile ./shellinit.sh;
   };
 
   users.defaultUserShell = pkgs.zsh;

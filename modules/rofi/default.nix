@@ -1,38 +1,43 @@
 {
+  lib,
   options,
   config,
   pkgs,
   mkModule,
   ...
 }:
+with lib;
 let
   name = "rofi";
 in
-{
-  options.modules."${name}".source = lib.mkOption {
-    type = lib.types.path;
-    default = null;
-  };
-}
-// mkModule config "${name}" {
-  environment.packages = with pkgs; [
-    rofi
-    clipcat
-  ];
+recursiveUpdate
+  {
+    options.modules."${name}".source = mkOption {
+      type = types.nullOr types.path;
+      default = null;
+    };
+  }
+  (
+    mkModule config "${name}" {
+      environment.packages = with pkgs; [
+        rofi
+        clipcat
+      ];
 
-  sxhkd.keybind = {
-    "super + @space" = "rofi -show drun";
-    "shift + super + v" = "clipcat-menu";
-  };
+      sxhkd.keybind = {
+        "super + @space" = "rofi -show drun";
+        "shift + super + v" = "clipcat-menu";
+      };
 
-  environment.file.rofi = lib.mkIf config.modules."${name}".source {
-    source = config.modules."${name}".source;
-    target = ".config/rofi";
-  };
+      environment.file.rofi = mkIf (config.modules."${name}".source != null) {
+        source = config.modules."${name}".source;
+        target = ".config/rofi";
+      };
 
-  services.clipcat.enable = true;
-  environment.file.clipcat = {
-    source = ./clipcatd.toml;
-    target = ".config/clipcat/clipcatd.toml";
-  };
-}
+      services.clipcat.enable = true;
+      environment.file.clipcat = {
+        source = ./clipcatd.toml;
+        target = ".config/clipcat/clipcatd.toml";
+      };
+    }
+  )

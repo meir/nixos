@@ -6,20 +6,24 @@
   mkModule,
   ...
 }:
+with lib;
 let
   name = "dunst";
 in
-{
-  options.modules."${name}".source = lib.mkOption {
-    type = lib.types.path;
-    default = null;
-  };
-}
-// mkModule config "${name}" {
-  environment.packages = with pkgs; [ dunst ];
+recursiveUpdate
+  {
+    options.modules."${name}".source = mkOption {
+      type = types.nullOr types.path;
+      default = null;
+    };
+  }
+  (
+    mkModule config "${name}" {
+      environment.packages = with pkgs; [ dunst ];
 
-  environment.file.dunst = lib.mkIf config.modules."${name}".source {
-    source = config.modules."${name}".source;
-    target = ".config/dunst/dunstrc";
-  };
-}
+      environment.file.dunst = mkIf (config.modules."${name}".source != null) {
+        source = config.modules."${name}".source;
+        target = ".config/dunst/dunstrc";
+      };
+    }
+  )
