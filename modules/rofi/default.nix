@@ -1,10 +1,20 @@
 {
+  options,
   config,
   pkgs,
   mkModule,
   ...
 }:
-mkModule config "rofi" {
+let
+  name = "rofi";
+in
+{
+  options.modules."${name}".source = {
+    type = lib.types.path;
+    default = null;
+  };
+}
+// mkModule config "${name}" {
   environment.packages = with pkgs; [
     rofi
     clipcat
@@ -15,8 +25,8 @@ mkModule config "rofi" {
     "shift + super + v" = "clipcat-menu";
   };
 
-  environment.file.rofi = {
-    source = ./rofi;
+  environment.file.rofi = lib.mkIf config.modules."${name}".source {
+    source = config.modules."${name}".source;
     target = ".config/rofi";
   };
 
