@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   pkgs,
   mkModule,
@@ -19,5 +20,6 @@ mkModule config "nvim" {
     ripgrep
     xclip
     nixfmt-rfc-style
+    gcc12
   ];
 }

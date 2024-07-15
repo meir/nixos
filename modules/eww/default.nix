@@ -19,12 +19,12 @@ let
 in
 {
   options.modules."${name}".source = lib.mkOption {
-    type = types.path;
+    type = lib.types.path;
     default = null;
   };
 
   options.modules."${name}".widgets = lib.mkOption {
-    type = types.attrsOf types.str;
+    type = lib.types.attrsOf lib.types.str;
     default = [ ];
   };
 }

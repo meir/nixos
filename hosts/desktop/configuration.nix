@@ -50,7 +50,6 @@
       "usb_storage"
       "sd_mod"
     ];
-    boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     boot.supportedFilesystems = [ "ntfs" ];
 
     powerManagement.enable = false;

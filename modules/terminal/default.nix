@@ -15,7 +15,6 @@ mkModule config "kitty" {
     xdotool
     cargo
     rustc
-    gcc12
   ];
 
   environment.file.kitty = {

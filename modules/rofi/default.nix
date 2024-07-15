@@ -9,7 +9,7 @@ let
   name = "rofi";
 in
 {
-  options.modules."${name}".source = {
+  options.modules."${name}".source = lib.mkOption {
     type = lib.types.path;
     default = null;
   };
