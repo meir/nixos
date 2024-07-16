@@ -11,7 +11,7 @@ mkModule config "zsh" {
     bash
     gnugrep
     cdl
-    spaceship-prompt
+    starship
     onefetch
   ];
 
@@ -40,16 +40,16 @@ mkModule config "zsh" {
     };
 
     shellInit =
-      ''
-        source "${pkgs.spaceship-prompt}/lib/spaceship-prompt/spaceship.zsh"
+      builtins.readFile ./shellinit.sh
+      + ''
+        eval "$(starship init zsh)"
         source "${pkgs.cdl}/bin/cdl-alias"
-      ''
-      + builtins.readFile ./shellinit.sh;
+      '';
   };
 
-  environment.file.spaceshiprc = {
-    source = ./spaceshiprc.zsh;
-    target = ".spaceshiprc.zsh";
+  environment.file.starship = {
+    source = ./starship.toml;
+    target = ".config/starship.toml";
   };
 
   users.defaultUserShell = pkgs.zsh;
