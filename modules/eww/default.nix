@@ -36,35 +36,16 @@ recursiveUpdate
     mkModule config "${name}" {
       environment.packages = with pkgs; [ eww ];
 
-      systemd.user.services.eww = {
-        enable = true;
-        path = [
-          pkgs.eww
-          pkgs.coreutils
-          pkgs.dbus
-          pkgs.gnugrep
-          pkgs.xorg.xrandr
-          pkgs.procps
-        ];
-        unitConfig = {
-          PartOf = [ "graphical-session.target" ];
-          X-Restart-Triggers = [ "${config.environment.file.eww.source}" ];
-        };
-        wantedBy = [ "graphical-session.target" ];
-        description = "Eww";
-        serviceConfig =
-          let
-            scriptPkg = pkgs.writeShellScriptBin "eww-start" ''
-              ${pkgs.eww}/bin/eww daemon &
-              ${widgetScripts}
-            '';
-          in
-          {
-            Type = "forking";
-            ExecStart = "${scriptPkg}/bin/eww-start";
-            Restart = "on-failure";
-          };
-      };
+      services.xserver.displayManager.sessionCommands =
+        let
+          scriptPkg = pkgs.writeShellScriptBin "eww-start" ''
+            ${pkgs.eww}/bin/eww daemon &
+            ${widgetScripts}
+          '';
+        in
+        ''
+          ${scriptPkg}/bin/eww-start
+        '';
 
       environment.file.eww = mkIf (config.modules."${name}".source != null) {
         source = config.modules."${name}".source;

@@ -39,7 +39,17 @@ mkModule config "zsh" {
       c = "clear";
     };
 
-    shellInit = builtins.readFile ./shellinit.sh;
+    shellInit =
+      ''
+        source "${pkgs.spaceship-prompt}/lib/spaceship-prompt/spaceship.zsh"
+        source "${pkgs.cdl}/bin/cdl-alias"
+      ''
+      + builtins.readFile ./shellinit.sh;
+  };
+
+  environment.file.spaceshiprc = {
+    source = ./spaceshiprc.zsh;
+    target = ".spaceshiprc.zsh";
   };
 
   users.defaultUserShell = pkgs.zsh;

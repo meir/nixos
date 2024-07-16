@@ -40,9 +40,9 @@
     :height "30px"
     :anchor "top center"
   )
-  :stacking "fg"
+  :stacking "bg"
   :reserve (struts
-    :distance "10px"
+    :distance "30px"
     :side "top"
   )
   :windowtype "desktop"

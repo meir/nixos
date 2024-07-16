@@ -7,10 +7,10 @@
 }:
 mkModule config "nvim" {
   environment.packages = with pkgs; [
-    neovim
+    unstable.neovim
     git
     curl
-    gcc
+    gcc12
     cmake
     go
     gnumake
@@ -20,6 +20,7 @@ mkModule config "nvim" {
     ripgrep
     xclip
     nixfmt-rfc-style
-    gcc12
+    luajitPackages.luarocks
+    lua
   ];
 }
