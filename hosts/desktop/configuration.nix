@@ -12,8 +12,8 @@
       r2modman
       spotify
       stremio
-      gnome.nautilus
       olive-editor
+      thunderbird
     ];
 
     programs = {
