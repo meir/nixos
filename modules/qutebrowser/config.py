@@ -1,6 +1,9 @@
 config.load_autoconfig()
 
 c.auto_save.session = True
+c.url.searchengines = {
+  "DEFAULT": "https://www.google.com/search?q={}",
+}
 
 c.tabs.background = True
 c.tabs.select_on_remove = "prev"
