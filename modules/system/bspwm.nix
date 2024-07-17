@@ -8,13 +8,19 @@
 with lib;
 let
   buildBspwm = pkgs.writeScript "bspwmrc" (
-    concatStringsSep "\n\n" ([ "#!/bin/sh" ] ++ config.bspwm.rules)
+    concatStringsSep "\n\n" ([ "#!/bin/sh" ] ++ config.bspwm.rules ++ config.bspwm.postScript)
   );
 in
 {
-  options.bspwm.rules = mkOption {
-    type = types.listOf types.str;
-    default = [ ];
+  options.bspwm = {
+    rules = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+    };
+    postScript = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+    };
   };
 
   config = {

@@ -36,16 +36,12 @@ recursiveUpdate
     mkModule config "${name}" {
       environment.packages = with pkgs; [ eww ];
 
-      services.xserver.displayManager.sessionCommands =
-        let
-          scriptPkg = pkgs.writeShellScriptBin "eww-start" ''
-            ${pkgs.eww}/bin/eww daemon &
-            ${widgetScripts}
-          '';
-        in
+      bspwm.postScript = [
         ''
-          ${scriptPkg}/bin/eww-start
-        '';
+          ${pkgs.eww}/bin/eww daemon &
+          ${widgetScripts}
+        ''
+      ];
 
       environment.file.eww = mkIf (config.modules."${name}".source != null) {
         source = config.modules."${name}".source;
