@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  unstable,
+  config,
+  ...
+}:
 {
   config = {
     user = "human";
@@ -43,6 +48,7 @@
       steamvr.enable = true;
       kitty.enable = true;
       zsh.enable = true;
+      nexusmods.enable = true;
     };
 
     # additional hardware configuration
