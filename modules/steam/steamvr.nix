@@ -37,6 +37,20 @@ mkModule config "steamvr" (
       };
     };
 
+    environment.file.wlx_overlay_s = {
+      text = ''
+        [Desktop Entry]
+        Name=WLX Overlay S
+        Comment=WLX Overlay for SteamVR
+        Exec=steam-run ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s
+        Icon=${pkgs.wlx-overlay-s}/wlx-overlay-s.png
+        Terminal=false
+        Type=Application
+        Categories=Utility;
+      '';
+      target = ".local/share/applications/WLXOverlayS.desktop";
+    };
+
     bspwm.rules = [
       "bspc rule -a 'SteamVR' state=floating"
       "bspc rule -a 'SteamVR Monitor' state=floating"
