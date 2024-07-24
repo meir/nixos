@@ -11,11 +11,20 @@
 )
 
 (defwidget mon2_center []
-  (xwindow)
+  (box
+    :class "center"
+    :halign "center"
+    
+    (xwindow)
+  )
 )
 
 (defwidget mon2_right []
   (box
+    :class "right"
+    :space-evenly false
+    :halign "end"
+
     (music)
     (time)
   ) 
@@ -36,14 +45,14 @@
   :monitor "DP-2"
   :geometry (geometry
     :x "0%"
-    :y "0%"
-    :width "100%"
-    :height "30px"
+    :y "5px"
+    :width "80%"
+    :height "40px"
     :anchor "top center"
   )
   :stacking "bg"
   :reserve (struts
-    :distance "30px"
+    :distance "45px"
     :side "top"
   )
   :windowtype "desktop"

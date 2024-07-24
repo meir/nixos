@@ -3,14 +3,15 @@
   lib,
   pkgs,
   mkModule,
+  unstable,
   ...
 }:
 mkModule config "nexusmods" (
   with lib;
   {
-    environment.packages = with pkgs; [ nexusmods-app ];
+    environment.packages = with pkgs; [ unstable.nexusmods-app ];
 
-    environment.file.wlx_overlay_s = {
+    environment.file.nexusmods = {
       text = ''
         [Desktop Entry]
         Name=Nexus Mods App

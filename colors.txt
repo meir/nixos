@@ -1,1 +1,6 @@
-#F5A
+$bg: #101A0B;
+$fg: #f7f4f3;
+
+$contrast-low: #131711;
+$contrast-high: #D1496B;
+$accent: #10A070;

@@ -19,6 +19,7 @@
       stremio
       olive-editor
       thunderbird
+      haskellPackages.screenshot-to-clipboard
     ];
 
     programs = {
@@ -43,7 +44,10 @@
       onepassword.enable = true;
       qmk.enable = true;
       qutebrowser.enable = true;
-      rofi.enable = true;
+      rofi = {
+        enable = true;
+        source = ./rofi;
+      };
       steam.enable = true;
       steamvr.enable = true;
       kitty.enable = true;

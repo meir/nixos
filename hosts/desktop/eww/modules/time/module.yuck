@@ -2,12 +2,13 @@
 (defpoll time 
   :interval "1s"
   :initial ""
-  "date '+%d %b(%m) %Y - %H:%M:%S'"
+  "date '+%Y-%m-%d %H:%M:%S'"
 )
 
 (defwidget time []
   (label
     :text time
+    :halign "end"
     :class "time"
   )
 )
