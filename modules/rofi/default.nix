@@ -36,8 +36,8 @@ recursiveUpdate
 
       services.clipcat.enable = true;
       environment.file.clipcat = {
-        source = ./clipcatd.toml;
-        target = ".config/clipcat/clipcatd.toml";
+        source = ./clipcat;
+        target = ".config/clipcat";
       };
     }
   )
