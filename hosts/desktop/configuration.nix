@@ -19,8 +19,14 @@
       stremio
       olive-editor
       thunderbird
-      haskellPackages.screenshot-to-clipboard
+      scrot
     ];
+
+    sxhkd.keybind = {
+      "Print" = ''
+        scrot -s -e 'xclipd -selection clipboard -t image/png -i $f' &
+      '';
+    };
 
     programs = {
       noisetorch.enable = true;
