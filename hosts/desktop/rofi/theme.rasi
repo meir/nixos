@@ -24,8 +24,8 @@ mainbox {
 }
 
 inputbar {
+  background-color: var(bg);
   padding: 0;
-  background-color: var(contrast-high);
   border-radius: 10px;
   margin-bottom: var(h-padding);
 }
@@ -59,15 +59,14 @@ element {
   cursor: pointer;
   spacing: 5px;
   border: 0;
-}
-
-element normal, element selected {
-  padding: 0;
   background-color: var(contrast-low);
+  padding: 0;
+  border-radius: 10px;
 }
 
 normal.normal, alternate.normal, alternate.active {
-  background-color: var(bg);
+  background-color: var(contrast-low);
+  border-radius: 0px 10px 10px 0px;
   color: var(fg);
 }
 
