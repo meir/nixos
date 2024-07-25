@@ -40,8 +40,8 @@ with lib;
 
       # Fading
       fading = true;
-      fade-in-step = 3.0e-2;
-      fade-out-set = 3.0e-2;
+      fade-in-step = 0.2;
+      fade-out-set = 0.2;
       fade-delta = 10;
 
       # Opacity
