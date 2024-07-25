@@ -23,7 +23,6 @@ in
     # desktop
     ./xserver.nix
     ./bspwm.nix
-    ./berry.nix
     ./sxhkd.nix
   ];
 
