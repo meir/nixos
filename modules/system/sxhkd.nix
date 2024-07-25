@@ -24,6 +24,15 @@ in
 
   config = {
     services.xserver.windowManager.bspwm.sxhkd.configFile = buildSxhkd;
+
+    environment.defaultPackages = with pkgs; [ sxhkd ];
+
+    sxhkd.keybind = {
+      "shift + super + r" = ''
+        pkill -x sxhkd && sxhkd &
+      '';
+    };
+
     environment.file.sxhkd = {
       source = buildSxhkd;
       target = ".config/sxhkd/sxhkdrc";

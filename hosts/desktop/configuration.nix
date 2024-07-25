@@ -24,9 +24,19 @@
 
     sxhkd.keybind = {
       "Print" = ''
-        scrot -s -e 'xclipd -selection clipboard -t image/png -i $f' &
+        scrot -s -e 'xclip -selection clipboard -t image/png -i $f' &
       '';
     };
+
+    bspwm.rules = [
+      "bspc wm -O HDMI-1 DP-2"
+      "bspc monitor HDMI-1 -d 1 2 3 4 5"
+      "bspc monitor DP-2 -d 6 7 8 9 10"
+
+      "bspc config normal_border_color '#131711'"
+      "bspc config active_border_color '#10A070'"
+      "bspc config focused_border_color '#D1496B'"
+    ];
 
     programs = {
       noisetorch.enable = true;
@@ -86,11 +96,5 @@
       open = false;
       nvidiaSettings = true;
     };
-
-    bspwm.rules = [
-      "bspc wm -O HDMI-1 DP-2"
-      "bspc monitor HDMI-1 -d 1 2 3 4 5"
-      "bspc monitor DP-2 -d 6 7 8 9 10"
-    ];
   };
 }

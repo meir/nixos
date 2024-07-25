@@ -32,14 +32,19 @@ with lib;
 
   services.picom = {
     enable = true;
+    package = pkgs.picom-ftlabs;
 
     vSync = true;
 
     settings = {
+      backend = "glx";
+
       blur = {
-        method = "gaussian";
-        size = 5;
-        deviation = 5.0;
+        method = "dual_kawase";
+        strength = 10;
+        background = true;
+        background-frame = false;
+        background-fixed = false;
       };
     };
   };

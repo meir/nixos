@@ -29,7 +29,6 @@ in
   environment.defaultPackages = with pkgs; [
     git
     curl
-    sxhkd
   ];
 
   system.stateVersion = "24.05";

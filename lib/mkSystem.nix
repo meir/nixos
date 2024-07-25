@@ -16,6 +16,7 @@ nixpkgs.lib.nixosSystem (
             cozette-nerdfont = import ../pkgs/cozette-nerdfont final;
             dina-remastered = import ../pkgs/dina-remastered final;
             cdl = import ../pkgs/cdl final;
+            picom-ftlabs = import ../pkgs/picom-ftlabs final;
           })
         ];
       }
