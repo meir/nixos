@@ -5,6 +5,12 @@ c.url.searchengines = {
   "DEFAULT": "https://www.google.com/search?q={}",
 }
 
+bg = "#101A0B"
+fg = "#F7F4F3"
+contrast_low = "#131711"
+contrast_high = "#D1496B"
+accent = "#10A070"
+
 c.tabs.background = True
 c.tabs.select_on_remove = "prev"
 c.tabs.new_position.unrelated = "next"
@@ -15,15 +21,15 @@ c.tabs.mousewheel_switching = False
 c.fonts.default_family = "DinaRemasterII Nerd Font"
 c.fonts.default_size = "12pt"
 # colors
-c.colors.tabs.bar.bg = "#000"
-c.colors.tabs.even.bg = "#000"
-c.colors.tabs.even.fg = "#fff"
-c.colors.tabs.odd.bg = "#000"
-c.colors.tabs.odd.fg = "#fff"
-c.colors.tabs.selected.even.bg = "#2FA"
-c.colors.tabs.selected.even.fg = "#fff"
-c.colors.tabs.selected.odd.bg = "#2FA"
-c.colors.tabs.selected.odd.fg = "#fff"
+c.colors.tabs.bar.bg = bg
+c.colors.tabs.even.bg = bg
+c.colors.tabs.even.fg = fg
+c.colors.tabs.odd.bg = bg
+c.colors.tabs.odd.fg = fg
+c.colors.tabs.selected.even.bg = contrast_high
+c.colors.tabs.selected.even.fg = fg
+c.colors.tabs.selected.odd.bg = contrast_high
+c.colors.tabs.selected.odd.fg = fg
 
 c.url.default_page = "~/.config/qutebrowser/homepage/index.html"
 c.url.start_pages = [c.url.default_page]
