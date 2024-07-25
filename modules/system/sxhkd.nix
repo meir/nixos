@@ -24,5 +24,9 @@ in
 
   config = {
     services.xserver.windowManager.bspwm.sxhkd.configFile = buildSxhkd;
+    environment.file.sxhkd = {
+      source = buildSxhkd;
+      target = ".config/sxhkd/sxhkdrc";
+    };
   };
 }
