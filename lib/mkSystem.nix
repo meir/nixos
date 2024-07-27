@@ -17,6 +17,7 @@ nixpkgs.lib.nixosSystem (
             dina-remastered = import ../pkgs/dina-remastered final;
             cdl = import ../pkgs/cdl final;
             picom-ftlabs = import ../pkgs/picom-ftlabs final;
+            walld = import ../pkgs/walld final;
           })
         ];
       }

@@ -20,6 +20,8 @@
       olive-editor
       thunderbird
       scrot
+      walld
+      sxiv
     ];
 
     sxhkd.keybind = {
