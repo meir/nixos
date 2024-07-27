@@ -69,6 +69,7 @@
       kitty.enable = true;
       zsh.enable = true;
       nexusmods.enable = true;
+      walld.enable = true;
     };
 
     # additional hardware configuration

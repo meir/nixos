@@ -10,9 +10,7 @@ mkModule config "walld" {
     sxiv
   ];
 
-  bspwm.rules = [
-    'bspc rule -a Sxiv state=floating'
-  ];
+  bspwm.rules = [ "bspc rule -a sxiv state=floating" ];
 
   sxhkd.keybind = {
     "super + w" = ''
