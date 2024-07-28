@@ -18,6 +18,7 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     cp ./wall-d $out/bin
+    sed -i 's|sxiv|nsxiv|g' $out/bin/wall-d
   '';
 
   meta = {
