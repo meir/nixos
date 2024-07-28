@@ -35,3 +35,4 @@ c.url.default_page = "~/.config/qutebrowser/homepage/index.html"
 c.url.start_pages = [c.url.default_page]
 
 c.content.autoplay = False
+c.content.javascript.clipboard = "access"
