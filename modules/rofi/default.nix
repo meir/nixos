@@ -26,7 +26,7 @@ recursiveUpdate
 
       sxhkd.keybind = {
         "super + {_,shift +} @space" = "rofi -show {drun,run} &";
-        "shift + super + v" = "clipcat-menu &";
+        "shift + super + v" = ''clipcat-menu && xdotool key --clearmodifiers "ctrl+v"'';
       };
 
       environment.file.rofi = mkIf (config.modules."${name}".source != null) {
