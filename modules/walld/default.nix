@@ -6,14 +6,11 @@
 }:
 mkModule config "walld" {
   environment.packages = with pkgs; [
-    (nsxiv.override { conf = ./nsxiv.conf.h; })
+    (nsxiv.override { conf = lib.readFile ./nsxiv.conf.h; })
     walld
   ];
 
-  bspwm.rules = [
-    "bspc rule -a sxiv state=floating"
-    "bspc rule -a nsxiv state=floating"
-  ];
+  bspwm.rules = [ "bspc rule -a Nsxiv state=floating" ];
 
   sxhkd.keybind = {
     "super + w" = ''
