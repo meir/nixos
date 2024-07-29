@@ -2,6 +2,7 @@
   pkgs,
   unstable,
   config,
+  lib,
   ...
 }:
 {
@@ -38,10 +39,16 @@
       "bspc config focused_border_color '#D1496B'"
     ];
 
-    services.xserver.xrandrHeads = [
-      "HDMI-0"
-      "DP-0"
-    ];
+    services.xserver = {
+      xrandrHeads = [
+        "HDMI-0"
+        "DP-0"
+      ];
+
+      displayManager.setupCommands = ''
+        ${lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --right-of DP-0
+      '';
+    };
 
     programs = {
       noisetorch.enable = true;
