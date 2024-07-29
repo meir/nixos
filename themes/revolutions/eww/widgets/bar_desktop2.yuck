@@ -42,7 +42,7 @@
 )
 
 (defwindow mon2
-  :monitor "DP-2"
+  :monitor 1
   :geometry (geometry
     :x "0%"
     :y "5px"
