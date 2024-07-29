@@ -44,11 +44,14 @@
 
     modules = {
       docker.enable = true;
-      droidcam.enable = true;
+      droidcam = {
+        enable = true;
+        source = ../../theme/revolutions/dunst;
+      };
       dunst.enable = true;
       eww = {
         enable = true;
-        source = ./eww;
+        source = ../../themes/revolutions/eww;
         widgets = [
           "mon1"
           "mon2"
@@ -62,7 +65,7 @@
       qutebrowser.enable = true;
       rofi = {
         enable = true;
-        source = ./rofi;
+        source = ../../themes/revolutions/rofi;
       };
       steam.enable = true;
       steamvr.enable = true;

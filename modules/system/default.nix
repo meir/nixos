@@ -22,6 +22,7 @@ in
 
     # desktop
     ./xserver.nix
+    ./greeter.nix
     ./picom.nix
     ./bspwm.nix
     ./sxhkd.nix

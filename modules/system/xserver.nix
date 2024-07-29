@@ -20,12 +20,6 @@ with lib;
       Option "SuspendTime" "0"
       Option "OffTime" "0"
     '';
-
-    displayManager = {
-      lightdm = {
-        enable = true;
-      };
-    };
   };
 
   services.displayManager.defaultSession = "none+bspwm";

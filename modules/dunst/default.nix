@@ -23,7 +23,7 @@ recursiveUpdate
 
       environment.file.dunst = mkIf (config.modules."${name}".source != null) {
         source = config.modules."${name}".source;
-        target = ".config/dunst/dunstrc";
+        target = ".config/dunst";
       };
     }
   )
