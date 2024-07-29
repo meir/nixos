@@ -44,11 +44,11 @@
 
     modules = {
       docker.enable = true;
-      droidcam = {
+      droidcam.enable = true;
+      dunst = {
         enable = true;
         source = ../../theme/revolutions/dunst;
       };
-      dunst.enable = true;
       eww = {
         enable = true;
         source = ../../themes/revolutions/eww;
