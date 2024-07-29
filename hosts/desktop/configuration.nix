@@ -6,7 +6,7 @@
   ...
 }:
 {
-  import = [ ../../themes/revolutions ];
+  imports = [ ../../themes/revolutions ];
 
   config = {
     user = "human";
