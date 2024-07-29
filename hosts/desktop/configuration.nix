@@ -23,6 +23,7 @@
       olive-editor
       thunderbird
       scrot
+      retroarch
     ];
 
     sxhkd.keybind = {
