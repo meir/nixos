@@ -6,6 +6,8 @@
   ...
 }:
 {
+  import = [ ../../themes/revolutions ];
+
   config = {
     user = "human";
 
@@ -33,11 +35,6 @@
       "bspc wm -O HDMI-0 DP-0"
       "bspc monitor HDMI-0 -d 1 2 3 4 5"
       "bspc monitor DP-0 -d 6 7 8 9 10"
-
-      "bspc config normal_border_color '#131711'"
-      "bspc config active_border_color '#10A070'"
-      "bspc config focused_border_color '#D1496B'"
-      "bspc config border_width 2"
     ];
 
     services.xserver = {
@@ -58,13 +55,9 @@
     modules = {
       docker.enable = true;
       droidcam.enable = true;
-      dunst = {
-        enable = true;
-        source = ../../themes/revolutions/dunst;
-      };
+      dunst.enable = true;
       eww = {
         enable = true;
-        source = ../../themes/revolutions/eww;
         widgets = [
           "mon1"
           "mon2"
@@ -76,10 +69,7 @@
       onepassword.enable = true;
       qmk.enable = true;
       qutebrowser.enable = true;
-      rofi = {
-        enable = true;
-        source = ../../themes/revolutions/rofi;
-      };
+      rofi.enable = true;
       steam.enable = true;
       steamvr.enable = true;
       kitty.enable = true;
