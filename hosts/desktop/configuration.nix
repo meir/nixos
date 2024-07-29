@@ -36,6 +36,8 @@
       "bspc wm -O HDMI-0 DP-0"
       "bspc monitor HDMI-0 -d 1 2 3 4 5"
       "bspc monitor DP-0 -d 6 7 8 9 10"
+
+      "bspc rule -a retroarch state=floating"
     ];
 
     services.xserver = {
