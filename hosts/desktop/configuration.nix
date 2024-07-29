@@ -47,7 +47,7 @@
       droidcam.enable = true;
       dunst = {
         enable = true;
-        source = ../../theme/revolutions/dunst;
+        source = ../../themes/revolutions/dunst;
       };
       eww = {
         enable = true;
