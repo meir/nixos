@@ -5,7 +5,10 @@
   ...
 }:
 mkModule config "qutebrowser" {
-  environment.packages = with pkgs; [ qutebrowser ];
+  environment.packages = with pkgs; [
+    qutebrowser
+    jq
+  ];
 
   environment.file = {
     qutebrowser = {
