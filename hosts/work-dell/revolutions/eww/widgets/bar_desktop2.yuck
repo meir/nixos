@@ -1,0 +1,63 @@
+
+(defwidget mon2_left []
+  (bspwm
+		; 一 二 三 四 五 六 七 八 九 十
+		(workspace :name "6" :label "六")
+	  (workspace :name "7" :label "七")
+	  (workspace :name "8" :label "八")
+		(workspace :name "9" :label "九")
+	  (workspace :name "10" :label "十")
+  )
+)
+
+(defwidget mon2_center []
+  (box
+    :class "center"
+    :halign "center"
+    
+    (xwindow)
+  )
+)
+
+(defwidget mon2_right []
+  (box
+    :class "right"
+    :space-evenly false
+    :halign "end"
+
+    (music)
+    (time)
+  ) 
+)
+
+(defwidget mon2_bar []
+  (centerbox 
+    :orientation "h"
+    :class "bar"
+    
+    (mon2_left)
+    (mon2_center)
+    (mon2_right)
+  )
+)
+
+(defwindow mon2
+  :monitor 1
+  :geometry (geometry
+    :x "0%"
+    :y "5px"
+    :width "80%"
+    :height "40px"
+    :anchor "top center"
+  )
+  :stacking "bg"
+  :reserve (struts
+    :distance "45px"
+    :side "top"
+  )
+  :windowtype "desktop"
+  :wm-ignore false
+
+  (mon2_bar)
+)
+

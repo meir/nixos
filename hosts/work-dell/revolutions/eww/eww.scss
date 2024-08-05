@@ -1,0 +1,49 @@
+
+* {
+  all: unset;
+  font-family: 'DinaRemasterII Nerd Font';
+  font-size: 16px;
+}
+
+@import "colors.scss";
+
+$h-padding: 12.5px;
+
+.bar {
+  background-color: $bg;
+  border-radius: 10px;
+  $padding: 20px;
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+.ws-idle, .ws-focused, .ws-occupied {
+  padding-right: $h-padding;
+  padding-left: $h-padding;
+  margin: 0;
+}
+
+.ws-occupied {
+  border-bottom: 2px solid $accent;
+}
+
+.ws-focused {
+  background-color: $contrast-high;
+  color: $fg;
+}
+
+.audio {
+  background-color: $contrast-high;
+  padding-left: $h-padding;
+  padding-right: $h-padding;
+  margin-right: $h-padding;
+}
+
+.xwindow {
+  text-decoration: underline;
+}
+
+.charge {
+  padding-right: $h-padding;
+  padding-left: $h-padding;
+}

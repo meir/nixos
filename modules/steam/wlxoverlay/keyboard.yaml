@@ -1,0 +1,103 @@
+---
+name: "en-us_small"
+
+row_size: 13
+
+# Specifies the size of each key. The sum of any given row must equal RowSize
+key_sizes:
+  - [ 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5]
+  - [ 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5]
+  - [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  - [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  - [ 1.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5]
+  - [ 1, 1, 1, 3, 3, 1, 1, 1, 1]
+
+# The main (blue) layout of the keyboard.
+# Accepted are:
+# - virtual keys. For a full list, look at enum VirtualKey in https://github.com/galister/wlx-overlay-s/blob/main/src/hid.rs
+# - exec_commands (defined below)
+# - macros (defined below)
+# - ~ (null) will leave an empty space with the corresponding size from key_sizes
+main_layout:
+#     WS1  WS2  WS3  WS4  WS5  WS6  WS7  WS8  WS9  WS10  Kill Exec
+#     1    2    3    4    5    6    7    8    9    10    -    =
+#
+# Esc    Q    W    E    R    T    Y    U    I    O    P    [    ]
+# Tab    A    S    D    F    G    H    J    K    L    :    "    \
+# Shift    Z    X    C    V    B    N    M    .    ,    /    Enter
+# Ctrl  Alt Super    Space      Backspace       <    v    ^    >
+
+    - [ ~, "WS1", "WS2", "WS3", "WS4", "WS5", "WS6", "WS7", "WS8", "WS9", "WS0", "Close", "Open", ~]
+    - [ ~, "N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "N0", "Minus", "Plus", ~]
+    - [ "Escape", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Oem4", "Oem6"]
+    - [ "Tab", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Oem1", "Oem7", "Oem5"]
+    - [ "LShift", "Z", "X", "C", "V", "B", "N", "M", "Comma", "Period", "Oem2", "Return"]
+    - [ "LCtrl", "LAlt", "LSuper", "Space", "BackSpace", "Left", "Down", "Up", "Right"]
+
+# Shell commands to be used in a layout.
+# Value is an array of string arguments.
+exec_commands:
+    WS1: [ "bspc", "desktop", "-f", "1" ]
+    WS2: [ "bspc", "desktop", "-f", "2" ]
+    WS3: [ "bspc", "desktop", "-f", "3" ]
+    WS4: [ "bspc", "desktop", "-f", "4" ]
+    WS5: [ "bspc", "desktop", "-f", "5" ]
+    WS6: [ "bspc", "desktop", "-f", "6" ]
+    WS7: [ "bspc", "desktop", "-f", "7" ]
+    WS8: [ "bspc", "desktop", "-f", "8" ]
+    WS9: [ "bspc", "desktop", "-f", "9" ]
+    WS0: [ "bspc", "desktop", "-f", "10" ]
+    Close: [ "bspc", "node", "-c" ]
+
+
+# Series of keypresses to be used in a layout.
+# Format: keyName [DOWN|UP]
+# keyName must be a valid virtual key from the VirtualKey enum (see above)
+# DOWN|UP: can be omitted for an implicit "keyName DOWN, keyName UP"
+macros:
+  Open: ["LSuper DOWN", "Space", "LSuper UP"]
+
+# Custom labels to use.
+# Key: element of main_layout
+# Value: Array of strings. 0th element is the upper row, 1st element is lower row.
+# For empty labels, use [] (do not use ~)
+labels:
+    "Escape":       ["Esc"]
+    "Space":        []
+    "LAlt":         ["Alt"]
+    "LCtrl":        ["Ctrl"]
+    "LSuper":       ["Super"]
+    "LShift":       ["Shift"]
+    "BackSpace":    ["⌫"]
+    "N1": ["1", "!"]
+    "N2": ["2", "@"]
+    "N3": ["3", "#"]
+    "N4": ["4", "$"]
+    "N5": ["5", "%"]
+    "N6": ["6", "^"]
+    "N7": ["7", "&"]
+    "N8": ["8", "*"]
+    "N9": ["9", "("]
+    "N0": ["0", ")"]
+    "Period": [".", ">"]
+    "Comma": [",", "<"]
+    "Oem2": ["/", "?"]
+    "Minus": ["-", "_"]
+    "Plus": ["=", "+"]
+    "Oem4": ["[", "{"]
+    "Oem6": ["]", "}"]
+    "Oem1": [";", ":"]
+    "Oem7": ["'", "\""]
+    "Oem5": ["\\", "|"]
+    "Return": ["⏎"]
+    #  一 二 三 四 五 六 七 八 九 十
+    "WS1": ["一"]
+    "WS2": ["二"]
+    "WS3": ["三"]
+    "WS4": ["四"]
+    "WS5": ["五"]
+    "WS6": ["六"]
+    "WS7": ["七"]
+    "WS8": ["八"]
+    "WS9": ["九"]
+    "WS10": ["十"]
