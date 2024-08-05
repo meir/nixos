@@ -30,6 +30,10 @@ recursiveUpdate
         rustc
       ];
 
+      programs.gnupg.agent = {
+        enable = true;
+      };
+
       environment.file.kitty = {
         source = config.modules."${name}".config;
         target = ".config/kitty/kitty.conf";
