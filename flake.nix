@@ -14,6 +14,7 @@
     {
       nixosConfigurations = {
         desktop = mkSystem inputs system "desktop";
+        work-dell = mkSystem inputs system "work-dell";
       };
     };
 }

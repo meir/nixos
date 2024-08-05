@@ -1,0 +1,12 @@
+
+(deflisten music_status
+  :initial ""
+  "playerctl --follow metadata --format '♫ [{{ trunc(title, 25) }} - {{ trunc(artist,25) }} {{duration(position)}}]'"
+)
+
+(defwidget music []
+  (box
+    :class "audio"
+    { music_status }
+  )
+)
