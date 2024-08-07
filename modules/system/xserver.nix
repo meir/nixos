@@ -12,7 +12,10 @@ with lib;
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
-    desktopManager.xterm.enable = true;
+    desktopManager = {
+      gnome.enable = true;
+      xterm.enable = true;
+    };
 
     serverFlagsSection = ''
       Option "BlankTime" "0"

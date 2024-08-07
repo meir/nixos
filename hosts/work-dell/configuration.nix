@@ -21,11 +21,36 @@
       xlockmore
       blueman
       whatsapp-for-linux
+
+      ruby
+      nodejs
+      php81Packages.composer
+
+      globalprotect-openconnect
+      nodePackages.gulp
     ];
+
+    environment.variables = {
+      GEM_HOME = "$HOME/.ruby";
+      GDK_SCALE = "2";
+      GDK_DPI_SCALE = "0.5";
+      _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
+    };
+
+    services = {
+      globalprotect.enable = true;
+      xserver.xautolock = {
+        enable = true;
+        time = 10;
+      };
+    };
 
     sxhkd.keybind = {
       "Print" = ''
         scrot -s -e 'xclip -selection clipboard -t image/png -i $f' &
+      '';
+      "super + shift + l" = ''
+        xlock
       '';
     };
 
@@ -49,6 +74,8 @@
       walld.enable = true;
     };
 
+    powerManagement.cpuFreqGovernor = "powersave";
+
     boot.initrd.availableKernelModules = [
       "usb_storage"
       "sd_mod"
@@ -61,11 +88,12 @@
       videoDrivers = [ "intel" ];
     };
 
-    services.xserver.dpi = 180;
-    environment.variables = {
-      GDK_SCALE = "2";
-      GDK_DPI_SCALE = "0.5";
-      _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
+    services.xserver = {
+      autorun = true;
+      # 1016 x 635 divided by 1.8 to make up for dpi
+      monitorSection = ''
+        DisplaySize 564 352
+      '';
     };
   };
 }
