@@ -41,9 +41,9 @@
 
       autorun = true;
       # 1016 x 635 divided by 1.8 to make up for dpi
-      monitorSection = ''
-        DisplaySize 564 352
-      '';
+      # monitorSection = ''
+      #   DisplaySize 564 352
+      # '';
 
       xautolock = {
         enable = true;

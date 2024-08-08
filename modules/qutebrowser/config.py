@@ -14,6 +14,8 @@ c.tabs.mousewheel_switching = False
 c.url.default_page = "@homepage@"
 if c.url.default_page == "":
     c.url.default_page = c.url.searchengines['DEFAULT']
+else:
+    c.url.default_page += "/index.html"
 c.url.start_pages = [c.url.default_page]
 
 c.content.autoplay = False

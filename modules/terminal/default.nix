@@ -8,6 +8,12 @@
 with lib;
 let
   name = "kitty";
+
+  configFile = pkgs.writeScript "kitty-config" ''
+    ${readFile ./kitty.conf}
+
+    ${readFile config.modules."${name}".config}
+  '';
 in
 recursiveUpdate
   {
@@ -35,7 +41,7 @@ recursiveUpdate
       };
 
       environment.file.kitty = {
-        source = config.modules."${name}".config;
+        source = configFile;
         target = ".config/kitty/kitty.conf";
       };
 

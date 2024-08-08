@@ -46,11 +46,19 @@ recursiveUpdate
         jq
       ];
 
+      xdg.mime.defaultApplications = {
+        "text/html" = "org.qutebrowser.qutebrowser.desktop";
+        "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+        "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+        "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+        "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+      };
+
       environment.file = {
         qutebrowser_config = {
           source = pkgs.substituteAll {
             src = configFile;
-            homepage = "${config.modules."${name}".homepage}/index.html" or "";
+            homepage = config.modules."${name}".homepage or "";
           };
           target = ".config/qutebrowser/config.py";
         };
