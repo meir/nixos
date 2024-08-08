@@ -1,4 +1,7 @@
 { ... }:
+let
+  replace = src: builtin.substituteAll { inherit src; };
+in
 {
   config = {
     bspwm.rules = [

@@ -11,9 +11,26 @@ let
 in
 recursiveUpdate
   {
-    options.modules."${name}".config = mkOption {
-      type = types.path;
-      default = ./config.py;
+    options.modules."${name}" = {
+      config = mkOption {
+        type = types.path;
+        default = ./config.py;
+      };
+
+      homepage = mkOption {
+        type = types.nullOr types.path;
+        default = null;
+      };
+
+      greaseMonkey = mkOption {
+        type = types.nullOr types.path;
+        default = null;
+      };
+
+      userScripts = mkOption {
+        type = types.nullOr types.path;
+        default = null;
+      };
     };
   }
   (
@@ -25,23 +42,26 @@ recursiveUpdate
 
       environment.file = {
         qutebrowser = {
-          source = config.modules."${name}".config;
+          text = pkgs.substituteAll {
+            src = (readFile ./config.py) ++ (readFile config.modules."${name}".config);
+            homepage = config.modules."${name}".homepage;
+          };
           target = ".config/qutebrowser/config.py";
         };
 
-        qutebrowser_homepage = {
-          source = ./homepage;
+        qutebrowser_homepage = mkIf config.modules."${name}".homepage {
+          source = config.modules."${name}".homepage;
           target = ".config/qutebrowser/homepage";
         };
 
-        qutebrowser_greasemonkey = {
-          source = ./greasemonkey;
+        qutebrowser_greaseMonkey = {
+          source = config.modules."${name}".greaseMonkey;
           target = ".config/qutebrowser/greasemonkey";
         };
 
-        qutebrowser_userscripts = {
-          source = ./userscripts;
-          target = ".local/share/qutebrowser/userscripts";
+        quetebrowser_userScripts = {
+          source = config.modules."${name}".userScripts;
+          target = ".config/qutebrowser/userscripts";
         };
       };
     }

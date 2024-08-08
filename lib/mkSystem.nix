@@ -44,6 +44,7 @@ nixpkgs.lib.nixosSystem (
       extraPackages
       nixpkgs-xr.nixosModules.nixpkgs-xr
       ../modules
+      ../themes
       ../hosts/${name}/hardware-configuration.nix
       ../hosts/${name}/configuration.nix
     ];

@@ -22,6 +22,11 @@ with lib;
   };
 
   config = {
+
+    environment.systemPackages = with pkgs; [ ecryptfs ];
+    security.pam.enableEcryptfs = true;
+    boot.kernelModules = [ "ecryptfs" ];
+
     users.users."${config.user}" = {
       isNormalUser = true;
       home = config.user_home;
