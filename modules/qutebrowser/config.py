@@ -12,6 +12,8 @@ c.tabs.position = "left"
 c.tabs.mousewheel_switching = False
 
 c.url.default_page = "@homepage@"
+if c.url.default_page == "":
+    c.url.default_page = c.url.searchengines['DEFAULT']
 c.url.start_pages = [c.url.default_page]
 
 c.content.autoplay = False

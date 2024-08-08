@@ -10,6 +10,8 @@
 
   theme.evergreen = {
     enable = true;
+    font_size = 22;
+    dpi = 2;
   };
 
   environment.packages = with pkgs; [
@@ -30,13 +32,6 @@
     globalprotect-openconnect
     nodePackages.gulp
   ];
-
-  environment.variables = {
-    GEM_HOME = "$HOME/.ruby";
-    GDK_SCALE = "2";
-    GDK_DPI_SCALE = "0.5";
-    _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
-  };
 
   services = {
     globalprotect.enable = true;

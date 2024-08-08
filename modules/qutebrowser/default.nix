@@ -9,17 +9,11 @@ with lib;
 let
   name = "qutebrowser";
 
-  configFile = pkgs.writeScript "qutebrowser-config" (
-    pkgs.substituteAll {
-      src = ''
-        ${readFile ./config.py}
+  configFile = pkgs.writeScript "qutebrowser-config" ''
+    ${readFile ./config.py}
 
-        ${readFile config.modules."${name}".config}
-      '';
-
-      homepage = config.modules."${name}".homepage;
-    }
-  );
+    ${readFile config.modules."${name}".config}
+  '';
 in
 recursiveUpdate
   {
@@ -54,13 +48,11 @@ recursiveUpdate
 
       environment.file = {
         qutebrowser_config = {
-          source = configFile;
+          source = pkgs.substituteAll {
+            src = configFile;
+            homepage = "${config.modules."${name}".homepage}/index.html" or "";
+          };
           target = ".config/qutebrowser/config.py";
-        };
-
-        qutebrowser_homepage = mkIf (config.modules."${name}".homepage != null) {
-          source = config.modules."${name}".homepage;
-          target = ".config/qutebrowser/homepage";
         };
 
         qutebrowser_greaseMonkey = {
