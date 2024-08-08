@@ -47,7 +47,7 @@ with lib;
       eww.source = ./eww;
       rofi.source = ./rofi;
       qutebrowser = {
-        homepage = replaceAll ./qutebrowser/homepage/;
+        homepage = ./qutebrowser/homepage;
         config = replace ./qutebrowser/config.py;
       };
     };

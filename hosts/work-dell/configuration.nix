@@ -8,7 +8,7 @@
 {
   user = "meir";
 
-  themes.evergreen = {
+  theme.evergreen = {
     enable = true;
   };
 
