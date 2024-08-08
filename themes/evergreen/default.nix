@@ -5,21 +5,37 @@
   pkgs,
   ...
 }:
-let
-  cfg = config.theme.evergreen;
-  replace =
-    src:
-    pkgs.substituteAll {
-      inherit src;
-      inherit (config.theme.evergreen) font_size dpi;
-    };
-
-  replaceAll = src: builtins.map replace src;
-in
 with lib;
 with builtins;
+let
+  name = "evergreen";
+  cfg = config.theme."${name}";
+  substitutes = {
+    inherit (config.theme.evergreen) font_size dpi;
+  };
+
+  isDir = path: builtins.pathExists (toString path + "/.");
+
+  replaceFile =
+    src:
+    pkgs.substituteAll ({
+      inherit src;
+      env = substitutes;
+    });
+
+  replaceDir =
+    src:
+    (pkgs.substituteAllFiles ({
+      name = "${src}-replacement";
+      files = [ src ];
+      env = substitutes;
+    }))
+    + "/${src}";
+
+  replace = src: if isDir src then replaceDir src else replaceFile src;
+in
 {
-  options.theme.evergreen = {
+  options.theme."${name}" = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -52,12 +68,12 @@ with builtins;
     };
 
     modules = {
-      dunst.source = ./dunst;
-      eww.source = ./eww;
-      rofi.source = ./rofi;
+      dunst.source = replace ./dunst;
+      eww.source = replace ./eww;
+      rofi.source = replace ./rofi;
       kitty.config = replace ./kitty/kitty.conf;
       qutebrowser = {
-        homepage = ./qutebrowser/homepage;
+        homepage = replace ./qutebrowser/homepage;
         config = replace ./qutebrowser/config.py;
       };
     };
