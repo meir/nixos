@@ -3,7 +3,6 @@
   lib,
   config,
   pkgs,
-  replace,
   ...
 }:
 with lib;
@@ -14,6 +13,7 @@ let
   values = {
     inherit (config.theme.evergreen) font_size dpi;
   };
+  replace = pkgs.replace;
 in
 {
   options.theme."${name}" = {

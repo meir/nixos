@@ -18,6 +18,7 @@ nixpkgs.lib.nixosSystem (
             cdl = import ../pkgs/cdl final;
             picom-ftlabs = import ../pkgs/picom-ftlabs final;
             walld = import ../pkgs/walld final;
+            replace = import ./replace.nix final;
           })
         ];
       }
@@ -36,7 +37,6 @@ nixpkgs.lib.nixosSystem (
         }
       );
       mkModule = import ./mkModule.nix nixpkgs;
-      replace = import ./replace nixpkgs;
     };
 
     modules = [
