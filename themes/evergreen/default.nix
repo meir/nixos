@@ -3,6 +3,7 @@
   lib,
   config,
   pkgs,
+  replace,
   ...
 }:
 with lib;
@@ -10,29 +11,9 @@ with builtins;
 let
   name = "evergreen";
   cfg = config.theme."${name}";
-  substitutes = {
+  values = {
     inherit (config.theme.evergreen) font_size dpi;
   };
-
-  isDir = path: builtins.pathExists (toString path + "/.");
-
-  replaceFile =
-    src:
-    pkgs.substituteAll ({
-      inherit src;
-      env = substitutes;
-    });
-
-  replaceDir =
-    src:
-    (pkgs.substituteAllFiles ({
-      name = "${src}-replacement";
-      files = [ src ];
-      env = substitutes;
-    }))
-    + "/${src}";
-
-  replace = src: if isDir src then replaceDir src else replaceFile src;
 in
 {
   options.theme."${name}" = {
@@ -68,13 +49,13 @@ in
     };
 
     modules = {
-      dunst.source = replace ./dunst;
-      eww.source = replace ./eww;
-      rofi.source = replace ./rofi;
-      kitty.config = replace ./kitty/kitty.conf;
+      dunst.source = replace ./dunst values;
+      eww.source = replace ./eww values;
+      rofi.source = replace ./rofi values;
+      kitty.config = replace ./kitty/kitty.conf values;
       qutebrowser = {
-        homepage = replace ./qutebrowser/homepage;
-        config = replace ./qutebrowser/config.py;
+        homepage = replace ./qutebrowser/homepage values;
+        config = replace ./qutebrowser/config.py values;
       };
     };
   };

@@ -36,6 +36,7 @@ nixpkgs.lib.nixosSystem (
         }
       );
       mkModule = import ./mkModule.nix nixpkgs;
+      replace = import ./replace nixpkgs;
     };
 
     modules = [
