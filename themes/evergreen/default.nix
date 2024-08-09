@@ -11,9 +11,8 @@ let
   name = "evergreen";
   cfg = config.theme."${name}";
   values = {
-    inherit (config.theme.evergreen) font_size dpi;
+    inherit (cfg) font_size dpi;
   };
-  replace = pkgs.replace;
 in
 {
   options.theme."${name}" = {
@@ -48,7 +47,7 @@ in
       _JAVA_OPTIONS = "-Dsun.java2d.uiScale=${toString cfg.dpi}";
     };
 
-    modules = {
+    modules = with pkgs; {
       dunst.source = replace ./dunst values;
       eww.source = replace ./eww values;
       rofi.source = replace ./rofi values;
