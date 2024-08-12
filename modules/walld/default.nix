@@ -2,8 +2,10 @@
   config,
   pkgs,
   mkModule,
+  lib,
   ...
 }:
+with lib;
 let
   xorg = config.protocol.xorg.enable;
 in
