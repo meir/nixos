@@ -9,6 +9,7 @@
 with lib;
 let
   name = "rofi";
+  xorg = config.protocol.xorg.enable;
 in
 mkModule config "${name}" {
   only = xorg;

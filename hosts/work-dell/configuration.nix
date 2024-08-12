@@ -60,7 +60,7 @@
       "gpclient --now &"
     ];
 
-    rules = [ "output eDPI1 scale 2" ];
+    #rules = [ "output eDPI1 scale 2" ];
   };
 
   modules = {

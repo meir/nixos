@@ -14,6 +14,8 @@ let
 
     ${readFile config.modules."${name}".config}
   '';
+
+  wayland = config.protocol.wayland.enable;
 in
 mkModule config "${name}" {
   options.modules."${name}".config = mkOption {
@@ -33,6 +35,8 @@ mkModule config "${name}" {
       cargo
       rustc
     ];
+
+    protocol.rules = mkIf wayland [ "set $term kitty" ];
 
     programs.gnupg.agent = {
       enable = true;
