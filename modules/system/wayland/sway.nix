@@ -1,4 +1,10 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib;
 let
   buildSway = pkgs.writeScript "init" (''
     ${concatStringsSep "\n" config.protocol.rules}

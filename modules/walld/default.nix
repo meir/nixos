@@ -5,7 +5,7 @@
   ...
 }:
 let
-  xorg = config.protocol.xorg.enable = true;
+  xorg = config.protocol.xorg.enable;
 in
 mkModule config "walld" {
   environment.packages = with pkgs; [
