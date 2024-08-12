@@ -8,8 +8,6 @@
 {
   user = "human";
 
-  protocol.xorg.enable = true;
-
   theme.evergreen = {
     enable = true;
     font_size = 16;
@@ -30,14 +28,15 @@
     retroarch
   ];
 
-  protocol.hotkeys = {
+  protocol = {
+    xorg.enable = true;
+
+    hotkeys = {
     "Print" = ''
       scrot -s -e 'xclip -selection clipboard -t image/png -i $f' &
     '';
-  };
 
-  protocol = {
-    autostart = [ "discord" ];
+    autostart = [ "discord &" ];
 
     rules = [
       "bspc wm -O HDMI-0 DP-0"

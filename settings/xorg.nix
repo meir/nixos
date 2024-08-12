@@ -1,0 +1,11 @@
+{
+  config,
+  options,
+  lib,
+  ...
+}:
+{
+  protocol = {
+
+  };
+}

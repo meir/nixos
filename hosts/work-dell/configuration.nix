@@ -61,12 +61,12 @@
     };
 
     autostart = [
-      "discord"
-      "slack"
-      "whatsapp-for-linux"
-      "thunderbird"
-      "ibus-daemon"
-      "gpclient --now"
+      "discord &"
+      "slack &"
+      "whatsapp-for-linux &"
+      "thunderbird &"
+      "ibus-daemon &"
+      "gpclient --now &"
     ];
 
     rules = [

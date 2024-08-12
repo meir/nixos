@@ -9,7 +9,7 @@ with lib;
 let
   buildBspwm = pkgs.writeScript "bspwmrc" (
     concatStringsSep "\n\n" (
-      [ "#!/bin/sh" ] ++ config.protocol.rules ++ (map (x: x + " &") config.protocol.autostart)
+      [ "#!/bin/sh" ] ++ config.protocol.rules ++ config.protocol.autostart)
     )
   );
 in
