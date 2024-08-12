@@ -49,7 +49,7 @@
   };
 
   protocol = {
-    xorg.enable = true;
+    wayland.enable = true;
 
     hotkeys = {
       "Print" = ''

@@ -6,31 +6,32 @@
   mkModule,
   ...
 }:
-{
+
+mkModule config "steam" {
   imports = [ ./steamvr.nix ];
-}
-// mkModule config "steam" {
 
-  environment.packages = with pkgs; [
-    steam
-    protonup-ng
-    ffmpeg # add ffmpeg for ingame video players
-  ];
-
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-original"
-      "steam-run"
+  config = {
+    environment.packages = with pkgs; [
+      steam
+      protonup-ng
+      ffmpeg # add ffmpeg for ingame video players
     ];
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
-  };
+    nixpkgs.config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "steam"
+        "steam-original"
+        "steam-run"
+      ];
 
-  hardware.steam-hardware.enable = true;
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    };
+
+    hardware.steam-hardware.enable = true;
+  };
 }

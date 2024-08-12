@@ -15,36 +15,34 @@ let
     ${readFile config.modules."${name}".config}
   '';
 in
-recursiveUpdate
-  {
-    options.modules."${name}".config = mkOption {
-      type = types.path;
-      default = ./kitty.conf;
+mkModule config "${name}" {
+  options.modules."${name}".config = mkOption {
+    type = types.path;
+    default = ./kitty.conf;
+  };
+
+  config = {
+    environment.packages = with pkgs; [
+      kitty
+
+      # terminal tools
+      btop
+      nvtopPackages.full
+      fastfetch
+      xdotool
+      cargo
+      rustc
+    ];
+
+    programs.gnupg.agent = {
+      enable = true;
     };
-  }
-  (
-    mkModule config "${name}" {
-      environment.packages = with pkgs; [
-        kitty
 
-        # terminal tools
-        btop
-        nvtopPackages.full
-        fastfetch
-        xdotool
-        cargo
-        rustc
-      ];
+    environment.file.kitty = {
+      source = configFile;
+      target = ".config/kitty/kitty.conf";
+    };
 
-      programs.gnupg.agent = {
-        enable = true;
-      };
-
-      environment.file.kitty = {
-        source = configFile;
-        target = ".config/kitty/kitty.conf";
-      };
-
-      protocol.hotkeys."super + Return" = "kitty";
-    }
-  )
+    protocol.hotkeys."super + Return" = "kitty";
+  };
+}
