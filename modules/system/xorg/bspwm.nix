@@ -9,36 +9,18 @@ with lib;
 let
   buildBspwm = pkgs.writeScript "bspwmrc" (
     concatStringsSep "\n\n" (
-      [ "#!/bin/sh" ]
-      ++ config.bspwm.rules
-      ++ config.bspwm.postScript
-      ++ (map (x: x + " &") config.bspwm.autostart)
+      [ "#!/bin/sh" ] ++ config.protocol.rules ++ (map (x: x + " &") config.protocol.autostart)
     )
   );
 in
 {
-  options.bspwm = {
-    rules = mkOption {
-      type = types.listOf types.str;
-      default = [ ];
-    };
-    postScript = mkOption {
-      type = types.listOf types.str;
-      default = [ ];
-    };
-    autostart = mkOption {
-      type = types.listOf types.str;
-      default = [ ];
-    };
-  };
-
-  config = {
+  config = mkIf config.protocol.xorg.enable {
     services.xserver.windowManager.bspwm = {
       enable = true;
       configFile = buildBspwm;
     };
 
-    sxhkd.keybind = {
+    protocol.hotkeys = {
       # close, kill app
       "super + {_,shift + }q" = ''
         bspc node -{c,k}

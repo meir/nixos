@@ -8,7 +8,7 @@
 
 with lib;
 {
-  config = {
+  config = mkIf config.protocol.xorg.enable {
     services.xserver = {
       displayManager = {
         lightdm = {

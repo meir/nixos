@@ -2,4 +2,4 @@
 [global]
   monitor = 0
 
-  font = DinaRemasterII Nerd Font 12
+  font = DinaRemasterII Nerd Font @font_size@

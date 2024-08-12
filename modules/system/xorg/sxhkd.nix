@@ -12,7 +12,7 @@ let
       mapAttrsToList (name: value: ''
         ${name}
           ${value}
-      '') config.sxhkd.keybind
+      '') config.protocol.hotkeys
     )
   );
 in
@@ -22,12 +22,12 @@ in
     default = { };
   };
 
-  config = {
+  config = mkIf config.protocol.xorg.enable {
     services.xserver.windowManager.bspwm.sxhkd.configFile = buildSxhkd;
 
     environment.defaultPackages = with pkgs; [ sxhkd ];
 
-    sxhkd.keybind = {
+    protocol.hotkeys = {
       "shift + super + r" = ''
         pkill -x sxhkd && sxhkd &
       '';

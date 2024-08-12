@@ -30,7 +30,7 @@ with lib;
     wireplumber.enable = true;
   };
 
-  sxhkd.keybind = with pkgs; {
+  protocol.hotkeys = with pkgs; {
     "XF86Audio{Prev,Play,Next}" = "${lib.getExe playerctl} {previous,play-pause,next}";
   };
 }

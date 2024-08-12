@@ -10,9 +10,9 @@ mkModule config "walld" {
     walld
   ];
 
-  bspwm.rules = [ "bspc rule -a Nsxiv state=floating" ];
+  protocol.rules = [ "bspc rule -a Nsxiv state=floating" ];
 
-  sxhkd.keybind = {
+  protocol.hotkeys = {
     "super + w" = ''
       wall-d -R -f -d ~/Pictures/backgrounds
     '';

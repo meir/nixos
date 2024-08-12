@@ -36,7 +36,7 @@ recursiveUpdate
     mkModule config "${name}" {
       environment.packages = with pkgs; [ eww ];
 
-      bspwm.postScript = [
+      protocol.autostart = [
         ''
           ${pkgs.eww}/bin/eww daemon &
           ${widgetScripts}

@@ -51,7 +51,7 @@ mkModule config "steamvr" (
       target = ".local/share/applications/WLXOverlayS.desktop";
     };
 
-    bspwm.rules = [
+    protocol.rules = [
       "bspc rule -a 'SteamVR' state=floating"
       "bspc rule -a 'SteamVR Monitor' state=floating"
     ];

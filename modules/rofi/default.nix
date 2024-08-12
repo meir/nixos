@@ -24,7 +24,7 @@ recursiveUpdate
         clipcat
       ];
 
-      sxhkd.keybind = {
+      protocol.hotkeys = {
         "super + {_,shift +} @space" = "rofi -show {drun,run} &";
         "shift + super + v" = ''clipcat-menu && xdotool key --clearmodifiers "ctrl+v"'';
       };

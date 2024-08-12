@@ -45,6 +45,6 @@ recursiveUpdate
         target = ".config/kitty/kitty.conf";
       };
 
-      sxhkd.keybind."super + Return" = "kitty";
+      protocol.hotkeys."super + Return" = "kitty";
     }
   )

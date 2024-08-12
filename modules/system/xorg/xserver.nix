@@ -9,7 +9,7 @@ with lib;
 {
   environment.defaultPackages = with pkgs; [ xorg.xf86videonouveau ];
 
-  services.xserver = {
+  services.xserver = mkIf config.protocol.xorg.enable {
     enable = true;
     videoDrivers = [ "nvidia" ];
     desktopManager = {

@@ -21,11 +21,8 @@ in
     ./packages.nix
 
     # desktop
-    ./xserver.nix
-    ./greeter.nix
-    ./picom.nix
-    ./bspwm.nix
-    ./sxhkd.nix
+    ./xorg/default.nix
+    ./wayland/default.nix
   ];
 
   environment.defaultPackages = with pkgs; [

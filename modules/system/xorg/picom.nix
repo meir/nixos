@@ -7,7 +7,7 @@
 }:
 with lib;
 {
-  services.picom = {
+  services.picom = mkIf config.protocol.xorg.enable {
     enable = true;
     package = pkgs.picom-ftlabs;
 

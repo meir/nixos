@@ -30,5 +30,6 @@ in
 
   environment.variables = {
     IBUS_ENABLE_SYNC_MODE = "1";
+    GLFW_IM_MODULE = "ibus";
   };
 }

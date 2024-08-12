@@ -8,6 +8,8 @@
 {
   user = "human";
 
+  protocol.xorg.enable = true;
+
   theme.evergreen = {
     enable = true;
     font_size = 16;
@@ -28,13 +30,13 @@
     retroarch
   ];
 
-  sxhkd.keybind = {
+  protocol.hotkeys = {
     "Print" = ''
       scrot -s -e 'xclip -selection clipboard -t image/png -i $f' &
     '';
   };
 
-  bspwm = {
+  protocol = {
     autostart = [ "discord" ];
 
     rules = [
