@@ -17,11 +17,6 @@ let
   );
 in
 {
-  options.sxhkd.keybind = mkOption {
-    type = types.attrsOf types.str;
-    default = { };
-  };
-
   config = mkIf config.protocol.xorg.enable {
     services.xserver.windowManager.bspwm.sxhkd.configFile = buildSxhkd;
 

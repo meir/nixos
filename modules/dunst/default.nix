@@ -9,6 +9,7 @@
 with lib;
 let
   name = "dunst";
+  xorg = config.protocol.xorg.enable;
 in
 recursiveUpdate
   {
@@ -18,12 +19,15 @@ recursiveUpdate
     };
   }
   (
-    mkModule config "${name}" {
-      environment.packages = with pkgs; [ dunst ];
+    if xorg then
+      mkModule config "${name}" {
+        environment.packages = with pkgs; [ dunst ];
 
-      environment.file.dunst = mkIf (config.modules."${name}".source != null) {
-        source = config.modules."${name}".source;
-        target = ".config/dunst";
-      };
-    }
+        environment.file.dunst = mkIf (config.modules."${name}".source != null) {
+          source = config.modules."${name}".source;
+          target = ".config/dunst";
+        };
+      }
+    else
+      { }
   )

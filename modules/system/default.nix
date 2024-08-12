@@ -19,10 +19,7 @@ in
     ./user.nix
     ./fonts.nix
     ./packages.nix
-
-    # desktop
-    ./xorg/default.nix
-    ./wayland/default.nix
+    ./protocol.nix
   ];
 
   environment.defaultPackages = with pkgs; [
