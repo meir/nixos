@@ -37,19 +37,19 @@
   services = {
     globalprotect.enable = true;
 
-    # xserver = {
-    #   videoDrivers = [ "intel" ];
-    #   autorun = true;
-    #
-    #   xautolock = {
-    #     enable = true;
-    #     time = 10;
-    #   };
-    # };
+    xserver = {
+      videoDrivers = [ "intel" ];
+      autorun = true;
+
+      xautolock = {
+        enable = true;
+        time = 10;
+      };
+    };
   };
 
   protocol = {
-    wayland.enable = true;
+    xorg.enable = true;
 
     hotkeys = {
       "Print" = ''

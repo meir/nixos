@@ -19,15 +19,12 @@ recursiveUpdate
     };
   }
   (
-    if xorg then
-      mkModule config "${name}" {
-        environment.packages = with pkgs; [ dunst ];
+    mkModule config "${name}" {
+      environment.packages = with pkgs; mkIf xorg [ dunst ];
 
-        environment.file.dunst = mkIf (config.modules."${name}".source != null) {
-          source = config.modules."${name}".source;
-          target = ".config/dunst";
-        };
-      }
-    else
-      { }
+      environment.file.dunst = mkIf (xorg && config.modules."${name}".source != null) {
+        source = config.modules."${name}".source;
+        target = ".config/dunst";
+      };
+    }
   )
