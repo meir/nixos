@@ -1,4 +1,0 @@
-{ ... }:
-{
-  programs.river.enable = true;
-}

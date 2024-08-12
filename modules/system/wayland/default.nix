@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./river.nix
+    ./sway.nix
     ./polkit.nix
   ];
 }
