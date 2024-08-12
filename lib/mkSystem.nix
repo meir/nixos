@@ -46,7 +46,6 @@ nixpkgs.lib.nixosSystem (
       nixpkgs-xr.nixosModules.nixpkgs-xr
       ../modules
       ../themes
-      ../settings
       ../hosts/${name}/hardware-configuration.nix
       ../hosts/${name}/configuration.nix
     ];
