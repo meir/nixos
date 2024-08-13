@@ -1,4 +1,5 @@
-{ ... }:
+{ lib, ... }:
+with lib;
 {
-  config = mkIf config.protocol.xorg.enable { security.polkit.enable = true; };
+  config = mkIf config.protocol.wayland.enable { security.polkit.enable = true; };
 }
