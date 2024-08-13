@@ -16,24 +16,26 @@ let
   );
 in
 {
-  program.river = {
-    enable = true;
+  config = mkIf config.protocol.xorg.enable {
+    programs.river = {
+      enable = true;
 
-    xwayland.enable = true;
-  };
+      xwayland.enable = true;
+    };
 
-  environment.file.river = {
-    source = buildRiver;
-    target = ".config/river/init";
-  };
+    environment.file.river = {
+      source = buildRiver;
+      target = ".config/river/init";
+    };
 
-  protocol = {
-    hotkeys = {
-      "Super Q" = "close";
-      "Super+Shift Q" = "kill";
-      "Super + T" = "tile";
-      "Super + F" = "fullscreen";
-      "Super + S" = "float";
+    protocol = {
+      hotkeys = {
+        "Super Q" = "close";
+        "Super+Shift Q" = "kill";
+        "Super + T" = "tile";
+        "Super + F" = "fullscreen";
+        "Super + S" = "float";
+      };
     };
   };
 }
