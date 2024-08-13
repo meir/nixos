@@ -4,7 +4,7 @@ class_idle="idle"
 class_focused="focused"
 class_occupied="occupied"
 
-workspaces() {
+workspaces_bspwm() {
 	ws=$(bspc query -D --names)
 	active_ws=$(xdotool get_desktop)
 
@@ -31,7 +31,37 @@ workspaces() {
 	echo "$json"
 }
 
-workspaces
-bspc subscribe all | while read -r _; do
-	workspaces
-done
+workspaces_sway() {
+  ws=$(swaymsg -rt get_workspaces)
+  active_ws=$(jq '.[] | select(.focused == true).num' <<<"$ws")
+
+  json="{"
+  for i in $(jq -r '.[] | .num' <<<"$ws"); do
+    class=$class_idle
+    if [[ $(jq -r ".[] | select(.num == $i).representation" <<<"$ws") != "null" ]]; then
+      class=$class_occupied
+    fi
+    if [[ "$i" -eq "$active_ws" ]]; then
+      class=$class_focused
+    fi
+    json="${json}\"$i\":\"$class\","
+  done
+
+  json="${json%,}"
+  json="${json}}"
+
+  echo "$json"
+}
+
+if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+  workspaces_sway
+  swaymsg -t subscribe -m '["window"]' | while read -r _; do
+    workspaces_sway
+  done
+else
+  workspaces_bspwm
+  bspc subscribe all | while read -r _; do
+	  workspaces_bspwm
+  done
+fi
+

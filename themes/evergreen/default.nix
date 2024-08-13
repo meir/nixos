@@ -13,6 +13,9 @@ let
   values = {
     inherit (cfg) font_size dpi;
   };
+
+  xorg = config.protocol.xorg.enable;
+  wayland = config.protocol.wayland.enable;
 in
 {
   options.theme."${name}" = {
@@ -33,14 +36,14 @@ in
   };
 
   config = {
-    protocol.rules = [
+    protocol.rules = mkIf xorg [
       "bspc config normal_border_color '#131711'"
       "bspc config active_border_color '#10A070'"
       "bspc config focused_border_color '#D1496B'"
       "bspc config border_width ${toString (2 * cfg.dpi)}"
     ];
 
-    environment.variables = {
+    environment.variables = mkIf xorg {
       XCURSOR_SIZE = "${toString (32 * cfg.dpi)}";
       GDK_SCALE = "${toString cfg.dpi}";
       GDK_DPI_SCALE = "${toString (1 / cfg.dpi)}";

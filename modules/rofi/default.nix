@@ -10,10 +10,9 @@ with lib;
 let
   name = "rofi";
   xorg = config.protocol.xorg.enable;
+  wayland = config.protocol.wayland.enable;
 in
 mkModule config "${name}" {
-  only = xorg;
-
   options.modules."${name}".source = mkOption {
     type = types.nullOr types.path;
     default = null;

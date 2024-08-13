@@ -5,6 +5,9 @@
   lib,
   ...
 }:
+let
+  xorg = config.protocol.xorg.enable;
+in
 with lib;
 {
 
@@ -30,7 +33,7 @@ with lib;
     wireplumber.enable = true;
   };
 
-  protocol.hotkeys = with pkgs; {
-    "XF86Audio{Prev,Play,Next}" = "${lib.getExe playerctl} {previous,play-pause,next}";
-  };
+  protocol.hotkeys =
+    with pkgs;
+    mkIf xorg { "XF86Audio{Prev,Play,Next}" = "${lib.getExe playerctl} {previous,play-pause,next}"; };
 }

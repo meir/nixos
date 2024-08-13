@@ -17,7 +17,7 @@ mkModule config "walld" {
 
   protocol.rules = mkIf xorg [ "bspc rule -a Nsxiv state=floating" ];
 
-  protocol.hotkeys = {
+  protocol.hotkeys = mkIf xorg {
     "super + w" = ''
       wall-d -R -f -d ~/Pictures/backgrounds
     '';

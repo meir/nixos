@@ -15,6 +15,7 @@ let
     ${readFile config.modules."${name}".config}
   '';
 
+  xorg = config.protocol.xorg.enable;
   wayland = config.protocol.wayland.enable;
 in
 mkModule config "${name}" {
@@ -47,6 +48,6 @@ mkModule config "${name}" {
       target = ".config/kitty/kitty.conf";
     };
 
-    protocol.hotkeys."super + Return" = "kitty";
+    protocol.hotkeys = mkIf xorg { "super + Return" = "kitty"; };
   };
 }
