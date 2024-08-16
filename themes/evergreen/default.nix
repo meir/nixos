@@ -14,6 +14,17 @@ let
     inherit (cfg) font_size dpi;
   };
 
+  rules = {
+    xorg = [
+      "bspc config normal_border_color '#131711'"
+      "bspc config active_border_color '#10A070'"
+      "bspc config focused_border_color '#D1496B'"
+      "bspc config border_width ${toString (2 * cfg.dpi)}"
+    ];
+
+    wayland = [ "rivertile -view-padding 6 -outer-padding 6 &" ];
+  };
+
   xorg = config.protocol.xorg.enable;
   wayland = config.protocol.wayland.enable;
 in
@@ -36,12 +47,7 @@ in
   };
 
   config = {
-    protocol.rules = mkIf xorg [
-      "bspc config normal_border_color '#131711'"
-      "bspc config active_border_color '#10A070'"
-      "bspc config focused_border_color '#D1496B'"
-      "bspc config border_width ${toString (2 * cfg.dpi)}"
-    ];
+    protocol.rules = rules."${config.protocol.type}";
 
     environment.variables = mkIf xorg {
       XCURSOR_SIZE = "${toString (32 * cfg.dpi)}";
@@ -51,7 +57,7 @@ in
     };
 
     modules = with pkgs; {
-      dunst.source = replace ./dunst values;
+      dunst.source = mkIf xorg (replace ./dunst values);
       eww.source = replace ./eww values;
       rofi.source = replace ./rofi values;
       kitty.config = replace ./kitty/kitty.conf values;

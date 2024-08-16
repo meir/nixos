@@ -6,7 +6,16 @@
   ...
 }:
 let
-  xorg = config.protocol.xorg.enable;
+  hotkeys = with pkgs; {
+    xorg = {
+      "XF86Audio{Prev,Play,Next}" = "${lib.getExe playerctl} {previous,play-pause,next}";
+    };
+    wayland = {
+      "XF86AudioPrev" = "${lib.getExe playerctl} previous";
+      "XF86AudioPlay" = "${lib.getExe playerctl} play-pause";
+      "XF86AudioNext" = "${lib.getExe playerctl} next";
+    };
+  };
 in
 with lib;
 {
@@ -33,7 +42,5 @@ with lib;
     wireplumber.enable = true;
   };
 
-  protocol.hotkeys =
-    with pkgs;
-    mkIf xorg { "XF86Audio{Prev,Play,Next}" = "${lib.getExe playerctl} {previous,play-pause,next}"; };
+  protocol.hotkeys = hotkeys."${config.protocol.type}";
 }

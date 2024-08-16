@@ -10,8 +10,8 @@ let
     concatStringsSep "\n\n" (
       [ "#!/bin/sh" ]
       ++ config.protocol.rules
-      ++ config.protocol.autostart
       ++ (mapAttrsToList (name: value: "riverctl map normal ${name} ${value}") config.protocol.hotkeys)
+      ++ config.protocol.autostart
     )
   );
 in
@@ -29,10 +29,7 @@ in
     };
 
     protocol = {
-      rules = [
-        "riverctl default-layout rivertile"
-        "rivertile -view-padding 6 -outer-padding 6 &"
-      ];
+      rules = [ "riverctl default-layout rivertile" ];
       hotkeys = {
         "Super Q" = "close";
         "Super+Shift Q" = "kill";

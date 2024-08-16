@@ -38,6 +38,7 @@
 
     globalprotect-openconnect
     nodePackages.gulp
+    nodePackages.asar
     anthy
   ];
 

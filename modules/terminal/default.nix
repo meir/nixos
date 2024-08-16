@@ -15,8 +15,14 @@ let
     ${readFile config.modules."${name}".config}
   '';
 
-  xorg = config.protocol.xorg.enable;
-  wayland = config.protocol.wayland.enable;
+  hotkeys = {
+    xorg = {
+      "super + Return" = "kitty";
+    };
+    wayland = {
+      "Super + Return" = "kitty";
+    };
+  };
 in
 mkModule config "${name}" {
   options.modules."${name}".config = mkOption {
@@ -37,8 +43,6 @@ mkModule config "${name}" {
       rustc
     ];
 
-    protocol.rules = mkIf wayland [ "set $term kitty" ];
-
     programs.gnupg.agent = {
       enable = true;
     };
@@ -48,6 +52,6 @@ mkModule config "${name}" {
       target = ".config/kitty/kitty.conf";
     };
 
-    protocol.hotkeys = mkIf xorg { "super + Return" = "kitty"; };
+    protocol.hotkeys = hotkeys."${config.protocol.type}";
   };
 }
