@@ -14,6 +14,13 @@
     dpi = 2;
   };
 
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 32 * 1024; # 16GB
+    }
+  ];
+
   environment.packages = with pkgs; [
     discord
     spotify
@@ -32,6 +39,7 @@
     globalprotect-openconnect
     nodePackages.gulp
     anthy
+    mpv
   ];
 
   services = {
@@ -46,10 +54,12 @@
         time = 10;
       };
     };
+
+    libinput.mouse.accelProfile = "flat";
   };
 
   protocol = {
-    xorg.enable = true;
+    type = "xorg";
 
     hotkeys = {
       "Print" = ''

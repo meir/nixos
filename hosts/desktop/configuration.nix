@@ -29,7 +29,7 @@
   ];
 
   protocol = {
-    xorg.enable = true;
+    type = "xorg";
 
     hotkeys = {
     "Print" = ''

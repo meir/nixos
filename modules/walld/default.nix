@@ -7,7 +7,19 @@
 }:
 with lib;
 let
-  xorg = config.protocol.xorg.enable;
+  rules = {
+    xorg = [ "bspc rule -a Nsxiv state=floating" ];
+    wayland = [ ];
+  };
+
+  hotkeys = {
+    xorg = {
+      "super + w" = "wall-d -R -f -d ~/Pictures/backgrounds";
+    };
+    wayland = {
+      "Super + W" = "wall-d -R -f -d ~/Pictures/backgrounds";
+    };
+  };
 in
 mkModule config "walld" {
   environment.packages = with pkgs; [
@@ -15,11 +27,6 @@ mkModule config "walld" {
     walld
   ];
 
-  protocol.rules = mkIf xorg [ "bspc rule -a Nsxiv state=floating" ];
-
-  protocol.hotkeys = mkIf xorg {
-    "super + w" = ''
-      wall-d -R -f -d ~/Pictures/backgrounds
-    '';
-  };
+  protocol.rules = rules."${config.protocol.type}";
+  protocol.hotkeys = hotkeys."${config.protocol.type}";
 }

@@ -29,6 +29,10 @@ in
     };
 
     protocol = {
+      rules = [
+        "riverctl default-layout rivertile"
+        "rivertile -view-padding 6 -outer-padding 6 &"
+      ];
       hotkeys = {
         "Super Q" = "close";
         "Super+Shift Q" = "kill";

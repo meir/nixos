@@ -20,3 +20,8 @@ c.url.start_pages = [c.url.default_page]
 
 c.content.autoplay = False
 c.content.javascript.clipboard = "access"
+
+# keybindings
+
+config.bind('pi', 'spawn xdotool key space ;; spawn pinp {url}')
+config.bind('tt', 'config-cycle tabs.show always switching')

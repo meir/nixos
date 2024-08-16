@@ -1,4 +1,9 @@
-{ options, lib, ... }:
+{
+  options,
+  lib,
+  config,
+  ...
+}:
 with lib;
 {
   imports = [
@@ -9,12 +14,20 @@ with lib;
   options.protocol = {
     xorg.enable = mkOption {
       type = types.bool;
-      default = false;
+      default = config.protocol.type == "xorg";
     };
 
     wayland.enable = mkOption {
       type = types.bool;
-      default = false;
+      default = config.protocol.type == "wayland";
+    };
+
+    type = mkOption {
+      type = types.enum [
+        "xorg"
+        "wayland"
+      ];
+      default = "xorg";
     };
 
     hotkeys = mkOption {
