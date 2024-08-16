@@ -32,4 +32,6 @@ in
     IBUS_ENABLE_SYNC_MODE = "1";
     GLFW_IM_MODULE = "ibus";
   };
+
+  protocol.autostart = [ "ibus-daemon -drx" ];
 }

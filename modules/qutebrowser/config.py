@@ -23,5 +23,5 @@ c.content.javascript.clipboard = "access"
 
 # keybindings
 
-config.bind('pi', 'spawn xdotool key space ;; spawn pinp {url}')
+config.bind('pi', 'spawn xdotool key space ;; spawn --userscript pinp {url}')
 config.bind('tt', 'config-cycle tabs.show always switching')

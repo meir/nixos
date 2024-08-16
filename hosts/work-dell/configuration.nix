@@ -39,7 +39,6 @@
     globalprotect-openconnect
     nodePackages.gulp
     anthy
-    mpv
   ];
 
   services = {
@@ -75,7 +74,6 @@
       "slack &"
       "whatsapp-for-linux &"
       "thunderbird &"
-      "ibus-daemon &"
       "gpclient --now &"
     ];
 
@@ -104,6 +102,7 @@
     kitty.enable = true;
     zsh.enable = true;
     walld.enable = true;
+    mpv.enable = true;
   };
 
   powerManagement = {
