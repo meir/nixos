@@ -19,5 +19,6 @@
     ./terminal
     ./walld
     ./zsh
+    ./mpv
   ];
 }
