@@ -49,7 +49,7 @@ in
   config = {
     protocol.rules = rules."${config.protocol.type}";
 
-    environment.variables = mkIf xorg {
+    environment.variables = {
       XCURSOR_SIZE = "${toString (32 * cfg.dpi)}";
       GDK_SCALE = "${toString cfg.dpi}";
       GDK_DPI_SCALE = "${toString (1 / cfg.dpi)}";

@@ -17,7 +17,7 @@ let
       "super + w" = "wall-d -R -f -d ~/Pictures/backgrounds";
     };
     wayland = {
-      "Super + W" = "wall-d -R -f -d ~/Pictures/backgrounds";
+      "Super + W" = "spawn 'wall-d -R -f -d ~/Pictures/backgrounds'";
     };
   };
 in

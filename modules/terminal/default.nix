@@ -20,7 +20,7 @@ let
       "super + Return" = "kitty";
     };
     wayland = {
-      "Super + Return" = "kitty";
+      "Super + Return" = "spawn 'kitty'";
     };
   };
 in

@@ -15,9 +15,9 @@ let
       "shift + super + v" = ''clipcat-menu && xdotool key --clearmodifiers "ctrl+v"'';
     };
     wayland = {
-      "Super Space" = "rofi -show drun &";
-      "Super+Shift Space" = "rofi -show run &";
-      "Super+Shift V" = "clipcat-menu";
+      "Super Space" = "spawn 'rofi -show drun'";
+      "Super+Shift Space" = "spawn 'rofi -show run'";
+      "Super+Shift V" = "spawn 'clipcat-menu'";
     };
   };
 in

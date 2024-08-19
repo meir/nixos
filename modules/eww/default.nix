@@ -33,7 +33,10 @@ mkModule config "${name}" {
   };
 
   config = {
-    environment.packages = with pkgs; [ eww ];
+    environment.packages = with pkgs; [
+      eww
+      zscroll
+    ];
 
     protocol.autostart = [
       ''

@@ -35,8 +35,8 @@
     :space-evenly false
     :halign "end"
 
-    (charge)
     (music)
+    (charge)
     (time)
   ) 
 )

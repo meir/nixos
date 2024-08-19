@@ -5,9 +5,19 @@
   pkgs,
   ...
 }:
+with lib;
 {
-  services.greetd = {
+  services.greetd = mkIf config.protocol.wayland.enable {
     enable = true;
-    package = pkgs.greetd.gtkgreet;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd river";
+      };
+    };
   };
+
+  environment.etc."greetd/environments".text = ''
+    river
+    bash
+  '';
 }
