@@ -82,13 +82,7 @@
       "gpclient --now &"
     ];
 
-    rules = [
-      "bspc monitor -d 1 2 3 4 5 6 7 8 9 10"
-      "bspc rule -a 'discord' desktop='^8'"
-      "bspc rule -a 'Whatsapp-for-linux' desktop='^8'"
-      "bspc rule -a 'thunderbird' desktop='^9'"
-      "bspc rule -a 'Slack' desktop='^10'"
-    ];
+    rules = [ ];
   };
 
   modules = {

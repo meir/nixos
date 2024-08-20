@@ -14,7 +14,6 @@ with lib;
       enable = true;
       videoDrivers = [ "nvidia" ];
       desktopManager = {
-        gnome.enable = true;
         xterm.enable = true;
       };
 

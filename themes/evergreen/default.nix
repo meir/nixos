@@ -22,7 +22,7 @@ let
       "bspc config border_width ${toString (2 * cfg.dpi)}"
     ];
 
-    wayland = [ "rivertile -view-padding 6 -outer-padding 6 &" ];
+    wayland = [ ];
   };
 
   xorg = config.protocol.xorg.enable;
