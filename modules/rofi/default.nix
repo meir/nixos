@@ -9,17 +9,6 @@
 with lib;
 let
   name = "rofi";
-  hotkeys = {
-    xorg = {
-      "super + {_,shift +} @space" = "rofi -show {drun,run} &";
-      "shift + super + v" = ''clipcat-menu && xdotool key --clearmodifiers "ctrl+v"'';
-    };
-    wayland = {
-      "Super Space" = "spawn 'rofi -show drun'";
-      "Super+Shift Space" = "spawn 'rofi -show run'";
-      "Super+Shift V" = "spawn 'clipcat-menu'";
-    };
-  };
 in
 mkModule config "${name}" {
   options.modules."${name}".source = mkOption {
@@ -33,7 +22,10 @@ mkModule config "${name}" {
       clipcat
     ];
 
-    protocol.hotkeys = hotkeys."${config.protocol.type}";
+    protocol.hotkeys = {
+      "super + {_,shift +} @space" = "rofi -show {drun,run} &";
+      "shift + super + v" = ''clipcat-menu && xdotool key --clearmodifiers "ctrl+v"'';
+    };
 
     environment.file.rofi = mkIf (config.modules."${name}".source != null) {
       source = config.modules."${name}".source;

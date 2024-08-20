@@ -11,10 +11,8 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "swhkd";
-  version = "1.2.2";
+  version = "1.3.0-dev-7999a9bcf55e72455afc8c6dbd7c856d54435352";
 
-  # split-output derivation, since there's a fair amount of associated data for
-  # pkexec and such.
   outputs = [
     "bin"
     "man"
@@ -24,9 +22,8 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "waycrate";
     repo = "swhkd";
-    # build from master, since the 1.2.1 makefile is unsutible for packaging
-    rev = "1.2.2";
-    hash = "sha256-zyGyZOG8gAtsRkzSRH1M777fPv1wudbVsBrSTJ5CBnY=";
+    rev = "7999a9bcf55e72455afc8c6dbd7c856d54435352";
+    hash = "sha256-mpE+//a44wwraCCpBTnWXslLROF2dSIcv/kdpxHLD4M=";
   };
 
   nativeBuildInputs = [
@@ -34,32 +31,34 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  # the makefile tries to set the ownership of a file to root.
-  # this will fail, but files are owned by root anyways.
-  postPatch = ''
-    sed -ie 's/-o root//' Makefile
-  '';
-
   buildPhase = ''
     runHook preBuild
-    make build
+    make DESTDIR="$out" POLKIT_DIR="$out/share/polkit-1/actions" MAN1_DIR="$out/share/man/man1" MAN5_DIR="$out/share/man/man5" TARGET_DIR=$out/bin build
     runHook postBuild
   '';
 
   installPhase = ''
-    runHook preInstall
+        runHook preInstall
 
-    mkdir -p $out $bin $man/share
-    make DESTDIR=$out MAN1_DIR=/share/man/man1 MAN5_DIR=/share/man/man5 TARGET_DIR=/bin install
-    mv $out/bin $bin/bin
-    mv $out/share/man $man/share/man
-    mv $out/usr/share/polkit-1 $out/share/polkit-1
-    rm -r $out/etc $out/usr
+        mkdir -p $out $bin $man/share
+        find ./docs -type f -iname "*.1.gz" -exec install -Dm 644 {} -t $out/share/man/man1 \;
+    	  find ./docs -type f -iname "*.5.gz" -exec install -Dm 644 {} -t $out/share/man/man5 \;
+    	  install -Dm 755 ./target/release/swhkd -t $out/bin
+    	  install -Dm 755 ./target/release/swhks -t $out/bin
+    	  install -Dm 644 ./com.github.swhkd.pkexec.policy -t $out/share/polkit-1/actions
 
-    runHook postInstall
+    	  if [ ! -f $out/etc/swhkd/swhkdrc ]; then \
+    		  touch ./swhkdrc; \
+    		  install -Dm 644 ./swhkdrc -t $out/etc/swhkd; \
+    	  fi
+
+        mv $out/bin $bin/bin
+        mv $out/share/man $man/share/man
+
+        runHook postInstall
   '';
 
-  cargoHash = "sha256-d/61hdyooYuqfOSTUcxVUJVhG98uexgPk7h6N1ptIgQ=";
+  cargoHash = "sha256-gQsnb0WzDLYg43sZ8EiTkfRQQAA2LuTGYVR0e+GzRgU=";
 
   buildInputs = [
     systemd

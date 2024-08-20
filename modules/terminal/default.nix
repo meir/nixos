@@ -14,15 +14,6 @@ let
 
     ${readFile config.modules."${name}".config}
   '';
-
-  hotkeys = {
-    xorg = {
-      "super + Return" = "kitty";
-    };
-    wayland = {
-      "Super + Return" = "spawn 'kitty'";
-    };
-  };
 in
 mkModule config "${name}" {
   options.modules."${name}".config = mkOption {
@@ -52,6 +43,8 @@ mkModule config "${name}" {
       target = ".config/kitty/kitty.conf";
     };
 
-    protocol.hotkeys = hotkeys."${config.protocol.type}";
+    protocol.hotkeys = {
+      "super + Return" = "kitty";
+    };
   };
 }
