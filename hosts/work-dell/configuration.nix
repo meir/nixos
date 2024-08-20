@@ -31,6 +31,10 @@
     xlockmore
     blueman
     whatsapp-for-linux
+    teams-for-linux
+    dig
+
+    swhkd
 
     ruby
     nodejs
