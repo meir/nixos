@@ -7,6 +7,8 @@
 with lib;
 {
   imports = [
+    ./common/default.nix
+
     ./xorg/default.nix
     ./wayland/default.nix
   ];

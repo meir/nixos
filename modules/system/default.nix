@@ -20,7 +20,6 @@ in
     ./fonts.nix
     ./packages.nix
     ./protocol.nix
-    ./hotkeys.nix
   ];
 
   environment.defaultPackages = with pkgs; [

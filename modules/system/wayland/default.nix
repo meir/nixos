@@ -2,7 +2,7 @@
 {
   imports = [
     ./greetd.nix
-    ./river.nix
+    ./sway.nix
     ./polkit.nix
   ];
 }

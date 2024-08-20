@@ -31,6 +31,6 @@ with lib;
   };
 
   protocol.hotkeys = {
-    "XF86Audio{Prev,Play,Next}" = "${lib.getExe playerctl} {previous,play-pause,next}";
+    "XF86Audio{Prev,Play,Next}" = "${lib.getExe pkgs.playerctl} {previous,play-pause,next}";
   };
 }

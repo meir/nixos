@@ -18,7 +18,7 @@ let
 
   settings = {
     xorg = {
-      services.xserver.windowManager.bspwm.sxhkd.configFile = buildSxhkd;
+      services.xserver.windowManager.bspwm.sxhkd.configFile = buildHkdrc;
 
       environment.defaultPackages = with pkgs; [ sxhkd ];
 
@@ -33,7 +33,7 @@ let
       };
 
       environment.file.sxhkd = {
-        source = buildHkd;
+        source = buildHkdrc;
         target = ".config/sxhkd/sxhkdrc";
       };
     };
@@ -55,12 +55,12 @@ let
       };
 
       environment.file.swhkd = {
-        source = buildHkd;
+        source = buildHkdrc;
         target = ".config/swhkd/swhkdrc";
       };
     };
   };
 in
 {
-  config = settings."${config.protocol.type}";
+  config = settings.xorg;
 }
