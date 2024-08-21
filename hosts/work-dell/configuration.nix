@@ -33,16 +33,9 @@
     whatsapp-for-linux
     teams-for-linux
     dig
-    cryptsetup
-
-    ruby
-    nodejs
-    php81Packages.composer
-
-    globalprotect-openconnect
-    nodePackages.gulp
-    nodePackages.asar
     anthy
+    globalprotect-openconnect
+    nodePackages.asar
   ];
 
   services = {
