@@ -33,6 +33,7 @@
     whatsapp-for-linux
     teams-for-linux
     dig
+    cryptsetup
 
     ruby
     nodejs

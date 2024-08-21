@@ -1,3 +1,7 @@
+# ignore errors on the rest of the file
+c = c
+config = config
+
 config.load_autoconfig()
 
 c.auto_save.session = True
@@ -20,6 +24,10 @@ c.url.start_pages = [c.url.default_page]
 
 c.content.autoplay = False
 c.content.javascript.clipboard = "access"
+
+c.hints.selectors["all"] += [
+    "[aria-haspopup]",
+]
 
 # keybindings
 
