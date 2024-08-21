@@ -34,8 +34,6 @@
     teams-for-linux
     dig
 
-    swhkd
-
     ruby
     nodejs
     php81Packages.composer

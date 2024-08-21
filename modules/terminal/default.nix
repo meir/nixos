@@ -34,8 +34,9 @@ mkModule config "${name}" {
       rustc
     ];
 
-    programs.gnupg.agent = {
-      enable = true;
+    programs = {
+      gnupg.agent.enable = true;
+      direnv.enable = true;
     };
 
     environment.file.kitty = {

@@ -2,7 +2,7 @@
 {
   imports = [
     ./greetd.nix
-    ./sway.nix
+    ./hyprland.nix
     ./polkit.nix
     ./swhkd.nix
   ];

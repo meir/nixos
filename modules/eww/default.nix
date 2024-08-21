@@ -39,10 +39,8 @@ mkModule config "${name}" {
     ];
 
     protocol.autostart = [
-      ''
-        ${pkgs.eww}/bin/eww daemon &
-        ${widgetScripts}
-      ''
+      "${pkgs.eww}/bin/eww daemon &"
+      "${widgetScripts}"
     ];
 
     environment.file.eww = mkIf (config.modules."${name}".source != null) {

@@ -17,7 +17,7 @@ let
   );
 in
 {
-  config = {
+  config = mkIf config.protocol.wayland.enable {
     environment.defaultPackages = with pkgs; [ swhkd ];
 
     protocol = {
@@ -27,7 +27,7 @@ in
         '';
       };
 
-      autoastart = [
+      autostart = [
         "swhks &"
         "pkexec swhkd &"
       ];
