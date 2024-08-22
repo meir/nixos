@@ -6,5 +6,6 @@ with lib;
     ./picom.nix
     ./greeter.nix
     ./bspwm.nix
+    ./sxhkd.nix
   ];
 }
