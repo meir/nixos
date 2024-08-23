@@ -1,12 +1,17 @@
 
 (deflisten music_status
   :initial ""
-  "zscroll --update-check true \"playerctl metadata --format '[{{ title }} - {{ artist }} {{duration(position)}}]'\""
+  "zscroll --update-check true \"playerctl metadata --format '[{{ title }} - {{ artist }}]'\""
+)
+
+(deflisten music_duration
+  :initial ""
+  "playerctl metadata --follow --format '{{duration(position)}}'"
 )
 
 (defwidget music []
   (box
     :class "audio"
-    { "♫ ${music_status}" }
+    { "♫ ${music_status} ${music_duration}" }
   )
 )

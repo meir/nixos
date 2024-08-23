@@ -5,15 +5,22 @@ ask_prompt() {
 }
 
 view() {
-  times=$(t display | awk '{print $7}')
-  labels=$(t display | sed -re 's,\s+, ,g' | cut -d ' ' -f 9- )
+  logs=$(t display -r -f json | jq -c '
+  def duration($finish; $start):
+    def twodigits: "00" + tostring | .[-2:];
+    [$finish, $start]
+    | map(strptime("%Y-%m-%d %H:%M:%S") | mktime) # seconds
+    | .[0] - .[1]
+    | (. % 60 | twodigits) as $s
+    | (((. / 60) % 60) | twodigits)  as $m
+    | (./3600 | floor) as $h
+    | "\($h):\($m):\($s)" ; 
+    def timestamp($time): $time | strptime("%Y-%m-%d %H:%M:%S") | "\($h)";
+  [.[] | { start: .start, duration: duration(.end; .start), note: .note }]')
 
-  for i in $(seq 0 $((${#times[@]} - 1))); do
-    if [[ "${times[$i]}" == "" ]]; then
-      continue
-    fi
-       
-    echo "${times[$i]} - ${labels[$i]}"
+  count=$(echo "$logs" | jq length)
+  for i in $(seq 0 $((count - 1))); do
+    echo "$logs" | jq -r ".[$i] | .start + \" - \" + .duration + \" - \" + .note"
   done
 }
 
@@ -31,7 +38,7 @@ toggle() {
 
 show_logs() {
   logs=$(view)
-  echo $logs | rofi -dmenu --lines 1 -i -p "Logs"
+  echo "$logs" | rofi -dmenu --lines 1 -i -p "Logs"
 }
 
 case $1 in
