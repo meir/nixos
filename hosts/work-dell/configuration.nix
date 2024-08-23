@@ -35,7 +35,6 @@
     dig
     anthy
     globalprotect-openconnect
-    timetrap
   ];
 
   services = {
@@ -100,6 +99,7 @@
     zsh.enable = true;
     walld.enable = true;
     mpv.enable = true;
+    timer.enable = true;
   };
 
   powerManagement = {

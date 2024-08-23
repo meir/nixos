@@ -20,5 +20,6 @@
     ./walld
     ./zsh
     ./mpv
+    ./timer
   ];
 }
