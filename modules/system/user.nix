@@ -22,10 +22,6 @@ with lib;
   };
 
   config = {
-
-    environment.systemPackages = with pkgs; [ ecryptfs ];
-    security.pam.enableEcryptfs = true;
-    boot.kernelModules = [ "ecryptfs" ];
     environment.variables = {
       "XDG_CONFIG_HOME" = "${config.user_home}/.config";
       "XDG_DATA_HOME" = "${config.user_home}/.local/share";

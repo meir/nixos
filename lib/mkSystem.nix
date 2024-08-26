@@ -19,7 +19,6 @@ nixpkgs.lib.nixosSystem (
             picom-ftlabs = import ../pkgs/picom-ftlabs final;
             walld = import ../pkgs/walld final;
             replace = import ./replace.nix final;
-            swhkd = import ../pkgs/swhkd final;
           })
         ];
       }
