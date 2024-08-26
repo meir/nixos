@@ -1,7 +1,7 @@
 
 (deflisten music_status
   :initial ""
-  "zscroll --update-check true \"playerctl metadata --format '[{{ title }} - {{ artist }}]'\""
+  "zscroll --length 20 --update-check true \"playerctl metadata --format '[{{ title }} - {{ artist }}]'\""
 )
 
 (deflisten music_duration

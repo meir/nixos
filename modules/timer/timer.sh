@@ -15,7 +15,6 @@ view() {
     | (((. / 60) % 60) | twodigits)  as $m
     | (./3600 | floor) as $h
     | "\($h):\($m):\($s)" ; 
-    def timestamp($time): $time | strptime("%Y-%m-%d %H:%M:%S") | "\($h)";
   [.[] | { start: .start, duration: duration(.end; .start), note: .note }]')
 
   count=$(echo "$logs" | jq length)
