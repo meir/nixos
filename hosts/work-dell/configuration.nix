@@ -1,10 +1,4 @@
-{
-  pkgs,
-  unstable,
-  config,
-  lib,
-  ...
-}:
+{ pkgs, ... }:
 {
   user = "meir";
 

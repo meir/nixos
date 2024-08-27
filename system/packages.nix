@@ -1,11 +1,4 @@
-{
-  unstable,
-  config,
-  options,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 with lib;
 {
   options.environment.packages = mkOption { type = types.listOf types.package; };

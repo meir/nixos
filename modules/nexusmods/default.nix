@@ -3,7 +3,6 @@
   lib,
   pkgs,
   mkModule,
-  unstable,
   ...
 }:
 with lib;
