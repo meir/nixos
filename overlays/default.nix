@@ -1,8 +1,8 @@
-{ ... }:
+{ ... }@inputs:
 {
   nixpkgs.overlays = [
-    ./packages.nix
-    ./nixpkgs-unstable.nix
-    ./nixpkgs-xr.nix
+    (import ./nixpkgs-unstable.nix inputs)
+    (import ./nixpkgs-xr.nix inputs)
+    (import ./packages.nix inputs)
   ];
 }

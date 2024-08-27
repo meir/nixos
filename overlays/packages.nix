@@ -5,5 +5,5 @@ final: prev: {
   cdl = import ../pkgs/cdl final;
   picom-ftlabs = import ../pkgs/picom-ftlabs final;
   walld = import ../pkgs/walld final;
-  replace = import ../pkgs/replace.nix final;
+  replace = import ../pkgs/replace final;
 }

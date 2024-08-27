@@ -8,6 +8,8 @@ system: name:
 nixpkgs.lib.nixosSystem {
   inherit system;
   specialArgs = {
+    inherit unstable;
+    inherit nixpkgs-xr;
     mkModule = import ./mkModule.nix nixpkgs;
   };
 
@@ -15,6 +17,7 @@ nixpkgs.lib.nixosSystem {
     ./file.nix
 
     ../overlays
+    ../system
     ../modules
     ../themes
     ../hosts/${name}/hardware-configuration.nix

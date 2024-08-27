@@ -35,6 +35,7 @@
     dig
     anthy
     globalprotect-openconnect
+    unstable.manga-tui
   ];
 
   services = {
