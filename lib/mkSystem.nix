@@ -3,51 +3,21 @@
   unstable,
   nixpkgs-xr,
   ...
-}@inputs:
+}:
 system: name:
-nixpkgs.lib.nixosSystem (
-  let
-    extraPackages = (
-      { config, pkgs, ... }:
-      {
-        nixpkgs.overlays = [
-          (final: prev: {
-            unstable = import unstable (final // { config.allowUnfree = true; });
-            cozette-nerdfont = import ../pkgs/cozette-nerdfont final;
-            dina-remastered = import ../pkgs/dina-remastered final;
-            cdl = import ../pkgs/cdl final;
-            picom-ftlabs = import ../pkgs/picom-ftlabs final;
-            walld = import ../pkgs/walld final;
-            replace = import ./replace.nix final;
-          })
-        ];
-      }
-    );
-  in
-  {
-    inherit system;
-    specialArgs = {
-      inherit nixpkgs-xr;
+nixpkgs.lib.nixosSystem {
+  inherit system;
+  specialArgs = {
+    mkModule = import ./mkModule.nix nixpkgs;
+  };
 
-      unstable = import unstable (
-        nixpkgs
-        // {
-          inherit system;
-          config.allowUnfree = true;
-        }
-      );
-      mkModule = import ./mkModule.nix nixpkgs;
-    };
+  modules = [
+    ./file.nix
 
-    modules = [
-      ./file.nix
-
-      extraPackages
-      nixpkgs-xr.nixosModules.nixpkgs-xr
-      ../modules
-      ../themes
-      ../hosts/${name}/hardware-configuration.nix
-      ../hosts/${name}/configuration.nix
-    ];
-  }
-)
+    ../overlays
+    ../modules
+    ../themes
+    ../hosts/${name}/hardware-configuration.nix
+    ../hosts/${name}/configuration.nix
+  ];
+}

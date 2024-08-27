@@ -1,8 +1,6 @@
 { ... }:
 {
   imports = [
-    ./system
-
     ./docker
     ./droidcam
     ./dunst
