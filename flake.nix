@@ -3,6 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+    nix-darwin.url = "github:LnL7/nix-darwin";
   };
 
   outputs =
@@ -13,8 +14,8 @@
     in
     {
       nixosConfigurations = {
-        desktop = mkSystem inputs system "desktop";
-        work-dell = mkSystem inputs system "work-dell";
+        desktop = mkSystem inputs nixpkgs.lib.nixosSystem system "desktop";
+        work-macos = mkSystem inputs nix-darwin.lib.darwinSystem system "work-macos";
       };
     };
 }

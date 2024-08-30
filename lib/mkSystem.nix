@@ -4,8 +4,8 @@
   nixpkgs-xr,
   ...
 }:
-system: name:
-nixpkgs.lib.nixosSystem {
+nix: system: name:
+nix {
   inherit system;
   specialArgs = {
     inherit unstable;
