@@ -9,7 +9,7 @@
 
   theme.evergreen = {
     enable = true;
-    font_size = 16;
+    font_size = 12;
   };
 
   environment.packages = with pkgs; [
@@ -18,7 +18,7 @@
     libsForQt5.kdenlive
     lmms
     prismlauncher
-    r2modman
+    unstable.r2modman
     spotify
     stremio
     olive-editor
@@ -31,9 +31,10 @@
     type = "xorg";
 
     hotkeys = {
-    "Print" = ''
-      scrot -s -e 'xclip -selection clipboard -t image/png -i $f' &
-    '';
+      "Print" = ''
+        scrot -s -e 'xclip -selection clipboard -t image/png -i $f' &
+      '';
+    };
 
     autostart = [ "discord &" ];
 
