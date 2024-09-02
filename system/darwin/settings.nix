@@ -4,7 +4,7 @@
     dock = {
       # who even needs a dock?
       autohide = true;
-      autohide-delay = 1000;
+      autohide-delay = 1000.0;
       launchanim = false;
       minimize-to-application = false;
     };
