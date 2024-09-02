@@ -17,4 +17,6 @@
     git
     curl
   ];
+
+  system.stateVersion = "4";
 }
