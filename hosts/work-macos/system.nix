@@ -1,9 +1,14 @@
-{ nix-darwin, home-manager, ... }:
+{
+  nix-darwin,
+  unstable,
+  home-manager,
+  ...
+}:
 nix-darwin.lib.darwinSystem {
   system = "aarch64-darwin";
 
   specialArgs = {
-    mkModule = import ./mkModule.nix nix-darwin;
+    inherit unstable;
   };
 
   modules = [
