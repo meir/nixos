@@ -11,14 +11,18 @@ let
     wayland = [ ];
   };
 in
-pkgs.mkModule config "walld" {
-  environment.packages = with pkgs; [
-    (nsxiv.override { conf = lib.readFile ./nsxiv.conf.h; })
-    walld
-  ];
+{
+  options.modules.walld.enable = mkEnableOption "walld";
 
-  protocol.rules = rules."${config.protocol.type}";
-  protocol.hotkeys = {
-    "super + w" = "wall-d -R -f -d ~/Pictures/backgrounds";
+  config = mkIf config.modules.walld.enable {
+    environment.packages = with pkgs; [
+      (nsxiv.override { conf = lib.readFile ./nsxiv.conf.h; })
+      walld
+    ];
+
+    protocol.rules = rules."${config.protocol.type}";
+    protocol.hotkeys = {
+      "super + w" = "wall-d -R -f -d ~/Pictures/backgrounds";
+    };
   };
 }

@@ -16,8 +16,10 @@ let
 
   xorg = config.protocol.xorg.enable;
 in
-pkgs.mkModule config name {
+{
   options.modules."${name}" = {
+    enable = mkEnableOption "qutebrowser";
+
     config = mkOption {
       type = types.path;
       default = ./config.py;
@@ -39,7 +41,7 @@ pkgs.mkModule config name {
     # };
   };
 
-  config = {
+  config = mkIf config.modules."${name}".enable {
     environment.packages = with pkgs; [
       qutebrowser
       jq

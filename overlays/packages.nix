@@ -6,6 +6,4 @@ final: prev: {
   picom-ftlabs = import ../pkgs/picom-ftlabs final;
   walld = import ../pkgs/walld final;
   replace = import ../pkgs/replace final;
-  mkModule = import ../pkgs/mkModule final;
-  file = import ../pkgs/file final;
 }

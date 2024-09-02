@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, ... }@inputs:
 {
   imports = [
+    ./file.nix
     ./bootloader.nix
     ./audio.nix
     ./locale.nix
@@ -11,13 +12,17 @@
     ./fonts.nix
     ./packages.nix
     ./protocol.nix
-    ./file.nix
+    ./home.nix
 
-    ../../overlays
     ../../modules/common
     ../../modules/linux
     ../../themes
-    ../../lib/file.nix
+  ];
+
+  nixpkgs.overlays = [
+    (import ../overlays/nixpkgs-unstable.nix inputs)
+    (import ../overlays/nixpkgs-xr.nix inputs)
+    (import ../packages.nix inputs)
   ];
 
   environment.defaultPackages = with pkgs; [

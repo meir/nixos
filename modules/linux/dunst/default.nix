@@ -9,15 +9,18 @@ let
   name = "dunst";
   xorg = config.protocol.xorg.enable;
 in
-pkgs.mkModule config "${name}" {
-  only = xorg;
+with lib;
+{
+  options.modules."${name}" = {
+    enable = mkEnableOption "${name}";
 
-  options.modules."${name}".source = mkOption {
-    type = types.nullOr types.path;
-    default = null;
+    source = mkOption {
+      type = types.nullOr types.path;
+      default = null;
+    };
   };
 
-  config = {
+  config = mkIf (xorg && config.modules."${name}".enable) {
     environment.packages = with pkgs; [ dunst ];
 
     environment.file.dunst = mkIf (config.modules."${name}".source != null) {

@@ -1,6 +1,16 @@
-{ config, pkgs, ... }:
-pkgs.mkModule config "docker" {
-  virtualisation.docker.enable = true;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+{
+  options.modules.docker.enable = mkEnableOption "docker";
 
-  environment.packages = with pkgs; [ docker ];
+  config = mkIf config.modules.docker.enable {
+    virtualisation.docker.enable = true;
+
+    environment.packages = with pkgs; [ docker ];
+  };
 }

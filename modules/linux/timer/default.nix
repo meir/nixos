@@ -5,11 +5,15 @@
   ...
 }:
 with lib;
-pkgs.mkModule config "timer" {
-  environment.packages = with pkgs; [ timetrap ];
+{
+  options.modules.timer.enable = mkEnableOption "timetrap";
 
-  protocol.hotkeys = {
-    "alt + t" = "${./timer.sh} toggle";
-    "alt + shift + t" = "${./timer.sh} view";
+  config = mkIf config.modules.timer.enable {
+    environment.packages = with pkgs; [ timetrap ];
+
+    protocol.hotkeys = {
+      "alt + t" = "${./timer.sh} toggle";
+      "alt + shift + t" = "${./timer.sh} view";
+    };
   };
 }

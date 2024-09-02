@@ -2,6 +2,7 @@
   nixpkgs,
   unstable,
   nixpkgs-xr,
+  home-manager,
   ...
 }:
 nixpkgs.lib.nixosSystem {
@@ -10,12 +11,12 @@ nixpkgs.lib.nixosSystem {
   specialArgs = {
     inherit unstable;
     inherit nixpkgs-xr;
-    mkModule = import ../../lib/mkModule.nix nixpkgs;
   };
 
   modules = [
-    ../../system/linux
     ./hardware-configuration.nix
     ./configuration.nix
+    ../../system/linux
+    home-manager.darwinModules.home-manager
   ];
 }

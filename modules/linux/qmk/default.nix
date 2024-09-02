@@ -1,10 +1,20 @@
-{ config, pkgs, ... }:
-pkgs.mkModule config "qmk" {
-  environment.packages = with pkgs; [
-    udev
-    vial
-    qmk
-  ];
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+{
+  options.modules.qmk.enable = mkEnableOption "qmk";
 
-  services.udev.packages = with pkgs; [ vial ];
+  config = mkIf config.modules.qmk.enable {
+    environment.packages = with pkgs; [
+      udev
+      vial
+      qmk
+    ];
+
+    services.udev.packages = with pkgs; [ vial ];
+  };
 }

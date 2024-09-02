@@ -14,13 +14,16 @@ let
     ${readFile config.modules."${name}".config}
   '';
 in
-pkgs.mkModule config "${name}" {
-  options.modules."${name}".config = mkOption {
-    type = types.path;
-    default = ./kitty.conf;
+{
+  options.modules."${name}" = {
+    enable = mkEnableOption "kitty terminal emulator";
+    config = mkOption {
+      type = types.path;
+      default = ./kitty.conf;
+    };
   };
 
-  config = {
+  config = mkIf config.modules."${name}".enable {
     environment.packages = with pkgs; [
       kitty
 

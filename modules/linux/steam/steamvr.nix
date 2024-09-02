@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-pkgs.mkModule config "steamvr" (
-  with lib;
-  {
+with lib;
+{
+  options.modules.steamvr.enable = mkEnableOption "SteamVR support";
+
+  config = mkIf config.modules.steamvr.enable {
     environment.packages = with pkgs; [
       appimage-run
       monado
@@ -56,5 +58,5 @@ pkgs.mkModule config "steamvr" (
       source = ./wlxoverlay/watch.yaml;
       target = ".config/wlxoverlay/watch.yaml";
     };
-  }
-)
+  };
+}

@@ -5,11 +5,15 @@
   ...
 }:
 with lib;
-pkgs.mkModule config "mpv" {
-  environment.packages = with pkgs; [ mpv ];
+{
+  options.modules.mpv.enable = mkEnableOption "mpv";
 
-  environment.file.mpv = {
-    source = ./mpv.conf;
-    target = ".config/mpv/mpv.conf";
+  config = mkIf config.modules.mpv.enable {
+    environment.packages = with pkgs; [ mpv ];
+
+    environment.file.mpv = {
+      source = ./mpv.conf;
+      target = ".config/mpv/mpv.conf";
+    };
   };
 }

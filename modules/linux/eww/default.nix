@@ -16,9 +16,10 @@ let
     )
   );
 in
-
-pkgs.mkModule config "${name}" {
+{
   options.modules."${name}" = {
+    enable = mkEnableOption "${name}";
+
     source = mkOption {
       type = types.nullOr types.path;
       default = null;
@@ -30,7 +31,7 @@ pkgs.mkModule config "${name}" {
     };
   };
 
-  config = {
+  config = mkIf config.modules."${name}".enable {
     environment.packages = with pkgs; [
       eww
       zscroll

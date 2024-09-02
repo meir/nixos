@@ -4,11 +4,13 @@
   lib,
   ...
 }:
+with lib;
+{
+  options.modules.steam.enable = mkEnableOption "steam";
 
-pkgs.mkModule config "steam" {
   imports = [ ./steamvr.nix ];
 
-  config = {
+  config = mkIf config.modules.steam.enable {
     environment.packages = with pkgs; [
       steam
       protonup-ng

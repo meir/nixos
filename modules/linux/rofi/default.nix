@@ -8,13 +8,16 @@ with lib;
 let
   name = "rofi";
 in
-pkgs.mkModule config "${name}" {
-  options.modules."${name}".source = mkOption {
-    type = types.nullOr types.path;
-    default = null;
+{
+  options.modules."${name}" = {
+    enable = mkEnableOption "${name}";
+    source = mkOption {
+      type = types.nullOr types.path;
+      default = null;
+    };
   };
 
-  config = {
+  config = mkIf config.modules."${name}".enable {
     environment.packages = with pkgs; [
       rofi
       clipcat
