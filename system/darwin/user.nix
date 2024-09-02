@@ -28,15 +28,7 @@ with lib;
     };
 
     users.users."${config.user}" = {
-      isNormalUser = true;
       home = config.user_home;
-      initialPassword = "nixos";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "desktop"
-        "docker"
-      ];
     };
   };
 }
