@@ -7,7 +7,7 @@ nix-darwin.lib.darwinSystem {
   };
 
   modules = [
-    ../../system
+    ../../system/darwin
     ./configuration.nix
     home-manager.darwinModules.home-manager
     {
