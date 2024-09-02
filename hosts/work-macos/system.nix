@@ -1,4 +1,9 @@
-{ nix-darwin, unstable, ... }:
+{
+  nix-darwin,
+  unstable,
+  home-manager,
+  ...
+}:
 nix-darwin.lib.darwinSystem {
   system = "aarch64-darwin";
 
@@ -9,5 +14,10 @@ nix-darwin.lib.darwinSystem {
   modules = [
     ../../system/darwin
     ./configuration.nix
+    home-manager.darwinModules.home-manager
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+    }
   ];
 }
