@@ -5,6 +5,12 @@
   ...
 }:
 {
+  environment.systemPackages = with pkgs; [ comma ];
+
+  programs.nh = {
+    enable = true;
+  };
+
   nix = {
     settings = {
       auto-optimise-store = true;

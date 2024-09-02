@@ -1,23 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
+let
+  linux = [ ./linux ];
+  darwin = [ ./darwin ];
+in
 {
-  imports = [
-    ./docker
-    ./droidcam
-    ./dunst
-    ./eww
-    ./feh
-    ./nexusmods
-    ./nvim
-    ./obs
-    ./onepassword
-    ./qmk
-    ./qutebrowser
-    ./rofi
-    ./steam
-    ./terminal
-    ./walld
-    ./zsh
-    ./mpv
-    ./timer
-  ];
+  imports = [ ./common ] ++ (if pkgs.stdenv.isDarwin then darwin else linux);
 }
