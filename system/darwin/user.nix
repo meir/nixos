@@ -30,5 +30,10 @@ with lib;
     users.users."${config.user}" = {
       home = config.user_home;
     };
+
+    home-manager.users."${config.user}".home = {
+      username = config.user;
+      homeDirectory = config.user_home;
+    };
   };
 }
