@@ -9,7 +9,7 @@ with lib;
   options.modules.onepassword.enable = mkEnableOption "onepassword";
 
   config = mkIf config.modules.onepassword.enable {
-    environment.packages = with pkgs; [ _1password ];
+    environment.systemPackages = with pkgs; [ _1password ];
 
     nixpkgs.config.allowUnfreePredicate =
       pkg:

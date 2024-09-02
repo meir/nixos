@@ -9,7 +9,7 @@ with lib;
   options.modules.qmk.enable = mkEnableOption "qmk";
 
   config = mkIf config.modules.qmk.enable {
-    environment.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       udev
       vial
       qmk

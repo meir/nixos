@@ -9,7 +9,7 @@ with lib;
   options.modules.nexusmods.enable = mkEnableOption "nexusmods";
 
   config = mkIf config.modules.nexusmods.enable {
-    environment.packages = with pkgs; [ unstable.nexusmods-app ];
+    environment.systemPackages = with pkgs; [ unstable.nexusmods-app ];
 
     environment.file.nexusmods = {
       text = ''

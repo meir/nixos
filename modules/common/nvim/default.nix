@@ -9,7 +9,7 @@ with lib;
   options.modules.nvim.enable = mkEnableOption "nvim";
 
   config = mkIf config.modules.nvim.enable {
-    environment.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       unstable.neovim
       git
       curl

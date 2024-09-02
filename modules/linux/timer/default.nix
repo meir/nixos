@@ -9,7 +9,7 @@ with lib;
   options.modules.timer.enable = mkEnableOption "timetrap";
 
   config = mkIf config.modules.timer.enable {
-    environment.packages = with pkgs; [ timetrap ];
+    environment.systemPackages = with pkgs; [ timetrap ];
 
     protocol.hotkeys = {
       "alt + t" = "${./timer.sh} toggle";

@@ -11,7 +11,7 @@ with lib;
   imports = [ ./steamvr.nix ];
 
   config = mkIf config.modules.steam.enable {
-    environment.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       steam
       protonup-ng
       ffmpeg # add ffmpeg for ingame video players

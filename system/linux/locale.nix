@@ -11,7 +11,7 @@ in
 {
   time.timeZone = timezone;
 
-  environment.packages = with pkgs; [ anthy ];
+  environment.systemPackages = with pkgs; [ anthy ];
 
   i18n = {
     defaultLocale = locale;

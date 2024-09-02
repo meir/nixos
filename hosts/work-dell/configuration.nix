@@ -15,7 +15,7 @@
     }
   ];
 
-  environment.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     discord
     spotify
     stremio

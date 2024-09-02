@@ -21,7 +21,7 @@ with lib;
   };
 
   config = mkIf (xorg && config.modules."${name}".enable) {
-    environment.packages = with pkgs; [ dunst ];
+    environment.systemPackages = with pkgs; [ dunst ];
 
     environment.file.dunst = mkIf (config.modules."${name}".source != null) {
       source = config.modules."${name}".source;

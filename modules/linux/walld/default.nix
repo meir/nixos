@@ -15,7 +15,7 @@ in
   options.modules.walld.enable = mkEnableOption "walld";
 
   config = mkIf config.modules.walld.enable {
-    environment.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       (nsxiv.override { conf = lib.readFile ./nsxiv.conf.h; })
       walld
     ];

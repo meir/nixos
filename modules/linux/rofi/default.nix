@@ -18,7 +18,7 @@ in
   };
 
   config = mkIf config.modules."${name}".enable {
-    environment.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       rofi
       clipcat
     ];

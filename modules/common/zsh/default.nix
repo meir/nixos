@@ -9,7 +9,7 @@ with lib;
   options.modules.zsh.enable = mkEnableOption "zsh";
 
   config = mkIf config.modules.zsh.enable {
-    environment.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       zsh
       oh-my-zsh
       bash

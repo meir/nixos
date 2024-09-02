@@ -11,6 +11,6 @@ with lib;
   config = mkIf config.modules.docker.enable {
     virtualisation.docker.enable = true;
 
-    environment.packages = with pkgs; [ docker ];
+    environment.systemPackages = with pkgs; [ docker ];
   };
 }

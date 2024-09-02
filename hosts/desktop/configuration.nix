@@ -12,7 +12,7 @@
     font_size = 12;
   };
 
-  environment.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     discord
     gimp
     libsForQt5.kdenlive

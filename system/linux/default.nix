@@ -10,7 +10,6 @@
     ./security.nix
     ./user.nix
     ./fonts.nix
-    ./packages.nix
     ./protocol.nix
     ./home.nix
 
@@ -19,13 +18,15 @@
     ../../themes
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   nixpkgs.overlays = [
     (import ../../overlays/nixpkgs-unstable.nix inputs)
     (import ../../overlays/nixpkgs-xr.nix inputs)
     (import ../../overlays/packages.nix inputs)
   ];
 
-  environment.defaultPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     git
     curl
   ];

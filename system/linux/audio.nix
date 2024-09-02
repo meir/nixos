@@ -8,7 +8,7 @@
 with lib;
 {
 
-  environment.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     alsa-utils
     libdrm
     pavucontrol

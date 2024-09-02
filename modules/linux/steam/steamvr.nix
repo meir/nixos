@@ -9,7 +9,7 @@ with lib;
   options.modules.steamvr.enable = mkEnableOption "SteamVR support";
 
   config = mkIf config.modules.steamvr.enable {
-    environment.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       appimage-run
       monado
       opencomposite
