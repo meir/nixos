@@ -4,6 +4,7 @@
     ./nix.nix
     ./file.nix
     ./user.nix
+    ./settings.nix
 
     ../../modules/common
     ../../modules/darwin
