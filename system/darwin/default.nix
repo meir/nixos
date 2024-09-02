@@ -19,5 +19,4 @@
   ];
 
   system.stateVersion = "4";
-  home.stateVersion = "4";
 }
