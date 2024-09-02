@@ -18,7 +18,7 @@ nix-darwin.lib.darwinSystem {
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.stateVersion = "4";
+      home.stateVersion = "4";
     }
   ];
 }
