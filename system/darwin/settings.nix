@@ -45,7 +45,7 @@
     universalaccess = {
       reduceMotion = true;
       reduceTransparency = true;
-      mouseDriverCursorSize = 1;
+      mouseDriverCursorSize = 1.0;
     };
     finder = {
       ShowPathbar = true;
