@@ -17,5 +17,6 @@
     ./walld
     ./mpv
     ./timer
+    ./zsh
   ];
 }
