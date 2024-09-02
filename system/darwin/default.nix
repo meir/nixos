@@ -3,6 +3,7 @@
   imports = [
     ./nix.nix
     ./file.nix
+    ./user.nix
 
     ../../modules/common
     ../../modules/darwin
