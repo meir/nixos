@@ -10,16 +10,11 @@ nixpkgs.lib.nixosSystem {
   specialArgs = {
     inherit unstable;
     inherit nixpkgs-xr;
-    mkModule = import ./mkModule.nix nixpkgs;
+    mkModule = import ../../lib/mkModule.nix nixpkgs;
   };
 
   modules = [
-    ../../lib/file.nix
-
-    ../../overlays
-    ../../system
-    ../../modules
-    ../../themes
+    ../../system/linux
     ./hardware-configuration.nix
     ./configuration.nix
   ];

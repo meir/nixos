@@ -2,8 +2,6 @@
   lib,
   config,
   pkgs,
-  options,
-  mkModule,
   ...
 }:
 with lib;
@@ -19,7 +17,7 @@ let
   );
 in
 
-mkModule config "${name}" {
+pkgs.mkModule config "${name}" {
   options.modules."${name}" = {
     source = mkOption {
       type = types.nullOr types.path;

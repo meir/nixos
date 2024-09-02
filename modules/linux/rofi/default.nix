@@ -1,16 +1,14 @@
 {
   lib,
-  options,
   config,
   pkgs,
-  mkModule,
   ...
 }:
 with lib;
 let
   name = "rofi";
 in
-mkModule config "${name}" {
+pkgs.mkModule config "${name}" {
   options.modules."${name}".source = mkOption {
     type = types.nullOr types.path;
     default = null;

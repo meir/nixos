@@ -2,11 +2,10 @@
   config,
   lib,
   pkgs,
-  mkModule,
   ...
 }:
 with lib;
-mkModule config "nexusmods" {
+pkgs.mkModule config "nexusmods" {
   environment.packages = with pkgs; [ unstable.nexusmods-app ];
 
   environment.file.nexusmods = {

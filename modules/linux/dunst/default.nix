@@ -1,9 +1,7 @@
 {
   lib,
-  options,
   config,
   pkgs,
-  mkModule,
   ...
 }:
 with lib;
@@ -11,7 +9,7 @@ let
   name = "dunst";
   xorg = config.protocol.xorg.enable;
 in
-mkModule config "${name}" {
+pkgs.mkModule config "${name}" {
   only = xorg;
 
   options.modules."${name}".source = mkOption {

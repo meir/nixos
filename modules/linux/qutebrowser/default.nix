@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  mkModule,
   ...
 }:
 with lib;
@@ -17,7 +16,7 @@ let
 
   xorg = config.protocol.xorg.enable;
 in
-mkModule config name {
+pkgs.mkModule config name {
   options.modules."${name}" = {
     config = mkOption {
       type = types.path;

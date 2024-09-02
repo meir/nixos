@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  mkModule,
-  ...
-}:
-mkModule config "qmk" {
+{ config, pkgs, ... }:
+pkgs.mkModule config "qmk" {
   environment.packages = with pkgs; [
     udev
     vial

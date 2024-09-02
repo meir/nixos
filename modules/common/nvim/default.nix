@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  mkModule,
-  ...
-}:
-mkModule config "nvim" {
+{ config, pkgs, ... }:
+pkgs.mkModule config "nvim" {
   environment.packages = with pkgs; [
     unstable.neovim
     git

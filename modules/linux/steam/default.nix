@@ -2,12 +2,10 @@
   config,
   pkgs,
   lib,
-  nixpkgs-xr,
-  mkModule,
   ...
 }:
 
-mkModule config "steam" {
+pkgs.mkModule config "steam" {
   imports = [ ./steamvr.nix ];
 
   config = {

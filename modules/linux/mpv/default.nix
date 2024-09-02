@@ -1,12 +1,11 @@
 {
   config,
   pkgs,
-  mkModule,
   lib,
   ...
 }:
 with lib;
-mkModule config "mpv" {
+pkgs.mkModule config "mpv" {
   environment.packages = with pkgs; [ mpv ];
 
   environment.file.mpv = {

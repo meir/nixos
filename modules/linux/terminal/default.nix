@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  mkModule,
   lib,
   ...
 }:
@@ -15,7 +14,7 @@ let
     ${readFile config.modules."${name}".config}
   '';
 in
-mkModule config "${name}" {
+pkgs.mkModule config "${name}" {
   options.modules."${name}".config = mkOption {
     type = types.path;
     default = ./kitty.conf;

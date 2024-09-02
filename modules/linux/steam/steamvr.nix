@@ -2,10 +2,9 @@
   config,
   lib,
   pkgs,
-  mkModule,
   ...
 }:
-mkModule config "steamvr" (
+pkgs.mkModule config "steamvr" (
   with lib;
   {
     environment.packages = with pkgs; [

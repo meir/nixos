@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  mkModule,
-  ...
-}:
-mkModule config "zsh" {
+{ config, pkgs, ... }:
+pkgs.mkModule config "zsh" {
   environment.packages = with pkgs; [
     zsh
     oh-my-zsh

@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  mkModule,
   lib,
   ...
 }:
@@ -9,7 +8,7 @@ with lib;
 let
   xorg = config.protocol.xorg.enable;
 in
-mkModule config "feh" {
+pkgs.mkModule config "feh" {
   environment.packages = with pkgs; [ feh ];
 
   services.xserver.displayManager.sessionCommands = mkIf xorg ''

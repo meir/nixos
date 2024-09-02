@@ -11,12 +11,13 @@
     ./fonts.nix
     ./packages.nix
     ./protocol.nix
+    ./file.nix
 
-    ../overlays
-    ../modules
-    ../themes
-    ../lib/file.nix
-    ../lib/mkModule.nix
+    ../../overlays
+    ../../modules/common
+    ../../modules/linux
+    ../../themes
+    ../../lib/file.nix
   ];
 
   environment.defaultPackages = with pkgs; [

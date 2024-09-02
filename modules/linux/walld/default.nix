@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  mkModule,
   lib,
   ...
 }:
@@ -12,7 +11,7 @@ let
     wayland = [ ];
   };
 in
-mkModule config "walld" {
+pkgs.mkModule config "walld" {
   environment.packages = with pkgs; [
     (nsxiv.override { conf = lib.readFile ./nsxiv.conf.h; })
     walld

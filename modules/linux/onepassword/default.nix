@@ -2,10 +2,9 @@
   config,
   lib,
   pkgs,
-  mkModule,
   ...
 }:
-mkModule config "onepassword" {
+pkgs.mkModule config "onepassword" {
   environment.packages = with pkgs; [ _1password ];
 
   nixpkgs.config.allowUnfreePredicate =
