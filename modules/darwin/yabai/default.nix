@@ -9,6 +9,8 @@ with lib;
   options.modules.yabai.enable = mkEnableOption "yabai";
 
   config = mkIf config.modules.yabai.enable {
+    environment.systemPackages = with pkgs; [ jq ];
+
     services.yabai = {
       enable = true;
       config = {
