@@ -59,7 +59,7 @@ let
         ) homefiles'}
       '';
 
-  perlScript = ''
+  perlScript = pkgs.writeScript "userfiles" ''
     # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/system/etc/setup-etc.pl
     use strict;
     use File::Find;
