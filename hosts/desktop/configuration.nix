@@ -23,7 +23,6 @@
     stremio
     olive-editor
     thunderbird
-    scrot
     retroarch
   ];
 
@@ -32,7 +31,7 @@
 
     hotkeys = {
       "Print" = ''
-        scrot -s -e 'xclip -selection clipboard -t image/png -i $f' &
+        ${lib.getExe pkgs.flameshot} gui
       '';
     };
 
