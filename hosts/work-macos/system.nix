@@ -22,7 +22,6 @@ nix-darwin.lib.darwinSystem {
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = false;
-        home-manager.users.meir.home.stateVersion = "24.05";
 
         nix-homebrew = {
           enable = true;

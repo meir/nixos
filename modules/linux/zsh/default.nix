@@ -44,7 +44,7 @@ with lib;
       };
 
       shellInit =
-        builtins.readFile ./shellinit.sh
+        builtins.readFile ../../../config/zsh/shellinit.sh
         + ''
           eval "$(starship init zsh)"
           source "${pkgs.cdl}/bin/cdl-alias"
@@ -52,7 +52,7 @@ with lib;
     };
 
     environment.file.starship = {
-      source = ./starship.toml;
+      source = ../../../config/zsh/starship.toml;
       target = ".config/starship.toml";
     };
 

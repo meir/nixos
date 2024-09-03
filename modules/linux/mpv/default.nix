@@ -12,7 +12,7 @@ with lib;
     environment.systemPackages = with pkgs; [ mpv ];
 
     environment.file.mpv = {
-      source = ./mpv.conf;
+      source = ../../../config/mpv/mpv.conf;
       target = ".config/mpv/mpv.conf";
     };
   };

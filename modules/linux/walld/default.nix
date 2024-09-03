@@ -16,7 +16,7 @@ in
 
   config = mkIf config.modules.walld.enable {
     environment.systemPackages = with pkgs; [
-      (nsxiv.override { conf = lib.readFile ./nsxiv.conf.h; })
+      (nsxiv.override { conf = lib.readFile ../../../config/nsxiv/nsxiv.conf.h; })
       walld
     ];
 

@@ -27,8 +27,20 @@ with lib;
       "XDG_DATA_HOME" = "${config.user_home}/.local/share";
     };
 
+    home-manager = {
+      users."${config.user}".home = {
+        username = config.user;
+        homeDirectory = config.user_home;
+        stateVersion = "21.11";
+      };
+
+      useUserPackages = true;
+      useGlobalPkgs = true;
+    };
+
     users.users."${config.user}" = {
       isNormalUser = true;
+      name = config.user;
       home = config.user_home;
       initialPassword = "nixos";
       extraGroups = [

@@ -11,7 +11,6 @@
     ./user.nix
     ./fonts.nix
     ./protocol.nix
-    ./home.nix
 
     ../../modules/common
     ../../modules/linux
@@ -31,5 +30,5 @@
     curl
   ];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

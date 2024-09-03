@@ -35,7 +35,7 @@ in
 
     services.clipcat.enable = true;
     environment.file.clipcat = {
-      source = ./clipcat;
+      source = ../../../config/clipcat;
       target = ".config/clipcat";
     };
   };

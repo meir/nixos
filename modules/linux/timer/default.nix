@@ -12,8 +12,8 @@ with lib;
     environment.systemPackages = with pkgs; [ timetrap ];
 
     protocol.hotkeys = {
-      "alt + t" = "${./timer.sh} toggle";
-      "alt + shift + t" = "${./timer.sh} view";
+      "alt + t" = "${../../../config/timetrap/timer.sh} toggle";
+      "alt + shift + t" = "${../../../config/timetrap/timer.sh} view";
     };
   };
 }
