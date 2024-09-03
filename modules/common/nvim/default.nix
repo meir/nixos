@@ -10,7 +10,7 @@ with lib;
 
   config = mkIf config.modules.nvim.enable {
     environment.systemPackages = with pkgs; [
-      unstable.neovim
+      neovim
       git
       curl
       gcc12
