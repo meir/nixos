@@ -5,6 +5,7 @@
 
   modules = {
     nvim.enable = true;
+    zsh.enable = true;
   };
 
   home-manager.users.meir = {
