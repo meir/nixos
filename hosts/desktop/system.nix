@@ -2,6 +2,7 @@
   nixpkgs,
   unstable,
   nixpkgs-xr,
+  home-manager,
   ...
 }:
 nixpkgs.lib.nixosSystem {
@@ -16,5 +17,6 @@ nixpkgs.lib.nixosSystem {
     ./hardware-configuration.nix
     ./configuration.nix
     ../../system/linux
+    home-manager.nixosModules.home-manager
   ];
 }
