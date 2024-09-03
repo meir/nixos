@@ -50,11 +50,11 @@ with lib;
       };
 
       ".config/wlxoverlay/keyboard.yaml" = {
-        source = ./wlxoverlay/keyboard.yaml;
+        source = ../../../config/wlxoverlay/keyboard.yaml;
       };
 
       ".config/wlxoverlay/watch.yaml" = {
-        source = ./wlxoverlay/watch.yaml;
+        source = ../../../config/wlxoverlay/watch.yaml;
       };
     };
   };
