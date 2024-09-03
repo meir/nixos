@@ -5,8 +5,27 @@
   ...
 }:
 with lib;
+let
+  configFile = pkgs.writeScript "qutebrowser-config" ''
+    ${readFile ../../../config/qutebrowser/config.py}
+
+    ${readFile config.modules.qutebrowser.config}
+  '';
+in
 {
-  options.modules.qutebrowser.enable = mkEnableOption "qutebrowser";
+  options.modules.qutebrowser = {
+    enable = mkEnableOption "qutebrowser";
+
+    config = mkOption {
+      type = types.path;
+      default = ../../../config/qutebrowser/config.py;
+    };
+
+    homepage = mkOption {
+      type = types.nullOr types.path;
+      default = null;
+    };
+  };
 
   config = mkIf config.modules.qutebrowser.enable {
     homebrew = {
@@ -14,25 +33,20 @@ with lib;
       casks = [ "qutebrowser" ];
     };
 
-    environment.file = {
-      qutebrowser_config = {
+    home-manager.users."${config.user}".home.file = {
+      ".qutebrowser/config.py" = {
         source = pkgs.substituteAll {
           src = configFile;
-          homepage = config.modules."${name}".homepage or "";
+          homepage = config.modules.qutebrowser.homepage or "";
         };
-        target = ".config/qutebrowser/config.py";
       };
 
-      qutebrowser_greaseMonkey = {
-        # source = config.modules."${name}".greaseMonkey;
+      ".qutebrowser/greasemonkey" = {
         source = ../../../config/qutebrowser/greasemonkey;
-        target = ".config/qutebrowser/greasemonkey";
       };
 
-      quetebrowser_userScripts = {
-        # source = config.modules."${name}".userScripts;
+      ".qutebrowser/userscripts" = {
         source = ../../../config/qutebrowser/userscripts;
-        target = ".config/qutebrowser/userscripts";
       };
     };
   };
