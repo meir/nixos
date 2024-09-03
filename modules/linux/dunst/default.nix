@@ -23,9 +23,8 @@ with lib;
   config = mkIf (xorg && config.modules."${name}".enable) {
     environment.systemPackages = with pkgs; [ dunst ];
 
-    environment.file.dunst = mkIf (config.modules."${name}".source != null) {
+    hm.home.file.".config/dunst" = mkIf (config.modules."${name}".source != null) {
       source = config.modules."${name}".source;
-      target = ".config/dunst";
     };
   };
 }

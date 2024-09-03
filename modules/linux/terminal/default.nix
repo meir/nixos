@@ -41,9 +41,8 @@ in
       direnv.enable = true;
     };
 
-    environment.file.kitty = {
+    hm.home.file.".config/kitty/kitty.conf" = {
       source = configFile;
-      target = ".config/kitty/kitty.conf";
     };
 
     protocol.hotkeys = {

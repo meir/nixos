@@ -11,9 +11,8 @@ with lib;
   config = mkIf config.modules.mpv.enable {
     environment.systemPackages = with pkgs; [ mpv ];
 
-    environment.file.mpv = {
+    hm.home.file.".config/mpv/mpv.conf" = {
       source = ../../../config/mpv/mpv.conf;
-      target = ".config/mpv/mpv.conf";
     };
   };
 }

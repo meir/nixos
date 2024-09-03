@@ -32,9 +32,8 @@ in
       autostart = [ "sxhkd &" ];
     };
 
-    environment.file.sxhkd = {
+    hm.home.file.".config/sxhkd/sxhkdrc" = {
       source = buildHkdrc;
-      target = ".config/sxhkd/sxhkdrc";
     };
   };
 }

@@ -28,15 +28,15 @@ in
       "shift + super + v" = ''clipcat-menu && xdotool key --clearmodifiers "ctrl+v"'';
     };
 
-    environment.file.rofi = mkIf (config.modules."${name}".source != null) {
-      source = config.modules."${name}".source;
-      target = ".config/rofi";
-    };
-
     services.clipcat.enable = true;
-    environment.file.clipcat = {
-      source = ../../../config/clipcat;
-      target = ".config/clipcat";
+
+    hm.home.file = mkIf (config.modules."${name}".source != null) {
+      ".config/rofi" = {
+        source = config.modules."${name}".source;
+      };
+      ".config/clipcat" = {
+        source = ../../../config/clipcat;
+      };
     };
   };
 }

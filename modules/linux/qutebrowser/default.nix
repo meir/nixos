@@ -55,25 +55,22 @@ in
       "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
     };
 
-    environment.file = {
-      qutebrowser_config = {
+    hm.home.file = {
+      ".config/qutebrowser/config.py" = {
         source = pkgs.substituteAll {
           src = configFile;
           homepage = config.modules."${name}".homepage or "";
         };
-        target = ".config/qutebrowser/config.py";
       };
 
-      qutebrowser_greaseMonkey = {
+      ".config/qutebrowser/greasemonkey" = {
         # source = config.modules."${name}".greaseMonkey;
         source = ../../../config/qutebrowser/greasemonkey;
-        target = ".config/qutebrowser/greasemonkey";
       };
 
-      quetebrowser_userScripts = {
+      ".config/qutebrowser/userscripts" = {
         # source = config.modules."${name}".userScripts;
         source = ../../../config/qutebrowser/userscripts;
-        target = ".config/qutebrowser/userscripts";
       };
     };
   };

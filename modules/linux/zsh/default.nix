@@ -51,9 +51,8 @@ with lib;
         '';
     };
 
-    environment.file.starship = {
+    hm.home.file.".config/starship.toml" = {
       source = ../../../config/zsh/starship.toml;
-      target = ".config/starship.toml";
     };
 
     users.defaultUserShell = pkgs.zsh;

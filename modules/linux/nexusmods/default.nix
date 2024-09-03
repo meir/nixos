@@ -11,7 +11,7 @@ with lib;
   config = mkIf config.modules.nexusmods.enable {
     environment.systemPackages = with pkgs; [ unstable.nexusmods-app ];
 
-    environment.file.nexusmods = {
+    hm.home.file.".local/share/applications/NexusMods.desktop" = {
       text = ''
         [Desktop Entry]
         Name=Nexus Mods App
@@ -21,7 +21,6 @@ with lib;
         Type=Application
         Categories=Utility;
       '';
-      target = ".local/share/applications/NexusMods.desktop";
     };
   };
 }

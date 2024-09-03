@@ -1,7 +1,6 @@
 { pkgs, ... }@inputs:
 {
   imports = [
-    ./file.nix
     ./bootloader.nix
     ./audio.nix
     ./locale.nix
@@ -30,5 +29,5 @@
     curl
   ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "24.05";
 }

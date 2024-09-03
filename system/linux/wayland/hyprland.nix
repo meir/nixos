@@ -17,9 +17,8 @@ in
       enable = true;
     };
 
-    environment.file.hyprland = {
+    hm.home.file.".config/hypr/hyprland.conf" = {
       source = hyprconfig;
-      target = ".config/hypr/hyprland.conf";
     };
   };
 }

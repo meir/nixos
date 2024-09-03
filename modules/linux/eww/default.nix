@@ -42,9 +42,8 @@ in
       "${widgetScripts}"
     ];
 
-    environment.file.eww = mkIf (config.modules."${name}".source != null) {
+    hm.home.file.".config/eww" = mkIf (config.modules."${name}".source != null) {
       source = config.modules."${name}".source;
-      target = ".config/eww";
     };
   };
 }

@@ -30,33 +30,32 @@ with lib;
         wantedBy = [ "multi-user.target" ];
       };
 
-    environment.file.wlx_overlay_s = {
-      text = ''
-        [Desktop Entry]
-        Name=WLX Overlay S
-        Comment=WLX Overlay for SteamVR
-        Exec=steam-run ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s
-        Icon=${pkgs.wlx-overlay-s}/wlx-overlay-s.png
-        Terminal=false
-        Type=Application
-        Categories=Utility;
-      '';
-      target = ".local/share/applications/WLXOverlayS.desktop";
-    };
-
     protocol.rules = [
       "bspc rule -a 'SteamVR' state=floating"
       "bspc rule -a 'SteamVR Monitor' state=floating"
     ];
 
-    environment.file.wlx_keyboard = {
-      source = ./wlxoverlay/keyboard.yaml;
-      target = ".config/wlxoverlay/keyboard.yaml";
-    };
+    hm.home.file = {
+      ".local/share/applications/WLXOverlayS.desktop" = {
+        text = ''
+          [Desktop Entry]
+          Name=WLX Overlay S
+          Comment=WLX Overlay for SteamVR
+          Exec=steam-run ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s
+          Icon=${pkgs.wlx-overlay-s}/wlx-overlay-s.png
+          Terminal=false
+          Type=Application
+          Categories=Utility;
+        '';
+      };
 
-    environment.file.wlx_watch = {
-      source = ./wlxoverlay/watch.yaml;
-      target = ".config/wlxoverlay/watch.yaml";
+      ".config/wlxoverlay/keyboard.yaml" = {
+        source = ./wlxoverlay/keyboard.yaml;
+      };
+
+      ".config/wlxoverlay/watch.yaml" = {
+        source = ./wlxoverlay/watch.yaml;
+      };
     };
   };
 }

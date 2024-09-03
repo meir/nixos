@@ -17,6 +17,6 @@ nixpkgs.lib.nixosSystem {
     ./hardware-configuration.nix
     ./configuration.nix
     ../../system/linux
-    home-manager.darwinModules.home-manager
+    home-manager.nixosModules.home-manager
   ];
 }

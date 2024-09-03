@@ -21,6 +21,14 @@ with lib;
     };
   };
 
+  imports = [
+    (mkAliasOptionModule [ "hm" ] [
+      "home-manager"
+      "users"
+      config.user
+    ])
+  ];
+
   config = {
     environment.variables = {
       "XDG_CONFIG_HOME" = "${config.user_home}/.config";
@@ -31,7 +39,7 @@ with lib;
       users."${config.user}".home = {
         username = config.user;
         homeDirectory = config.user_home;
-        stateVersion = "21.11";
+        stateVersion = "24.05";
       };
 
       useUserPackages = true;
