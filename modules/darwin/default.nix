@@ -1,4 +1,7 @@
 { ... }:
 {
-  imports = [ ./zsh ];
+  imports = [
+    ./zsh
+    ./yabai
+  ];
 }
