@@ -7,11 +7,7 @@
     nvim.enable = true;
     zsh.enable = true;
     yabai.enable = true;
-  };
-
-  homebrew = {
-    enable = true;
-    casks = [ "qutebrowser" ];
+    qutebrowser.enable = true;
   };
 
   home-manager.users.meir = {
