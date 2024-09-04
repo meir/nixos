@@ -16,7 +16,7 @@ c.tabs.position = "left"
 c.tabs.mousewheel_switching = False
 
 c.url.default_page = "@homepage@"
-if c.url.default_page == "" or c.url.default_page == "@homepage@":
+if c.url.default_page == "" or c.url.default_page == "@" + "homepage@": # to escape the nix replacer
     c.url.default_page = c.url.searchengines['DEFAULT']
 else:
     c.url.default_page += "/index.html"
