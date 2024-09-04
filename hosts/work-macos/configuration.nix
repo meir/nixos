@@ -13,6 +13,7 @@
     zsh.enable = true;
     yabai.enable = true;
     qutebrowser.enable = true;
+    onepassword.enable = true;
   };
 
   home-manager.users.meir = {

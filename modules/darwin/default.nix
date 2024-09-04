@@ -4,5 +4,6 @@
     ./zsh
     ./yabai
     ./qutebrowser
+    ./onepassword
   ];
 }
