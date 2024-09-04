@@ -16,32 +16,43 @@ with lib;
       cdl
       starship
       onefetch
+      fastfetch
     ];
 
-    programs.zsh = {
+    hm.programs.zsh = {
       enable = true;
       enableCompletion = true;
-      # syntaxHighlighting.enable = true;
+      syntaxHighlighting.enable = true;
+      history.size = 10000;
 
-      # shellAliases = {
-      #   cdd = "cd ~/Documents";
-      #   bye = "exit";
-      #   clear = "clear && printf '\\e[3J'";
-      #   c = "clear";
-      # };
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+          "git"
+          "docker"
+          "golang"
+          "kubectl"
+        ];
+      };
 
-      # shellInit =
-      #   builtins.readFile ./shellinit.sh
-      #   + ''
-      #     eval "$(starship init zsh)"
-      #     source "${pkgs.cdl}/bin/cdl-alias"
-      #   '';
+      shellAliases = {
+        cdd = "cd ~/Documents";
+        bye = "exit";
+        clear = "clear && printf '\\e[3J'";
+        c = "clear";
+      };
+
+      initExtra =
+        builtins.readFile ../../../config/zsh/shellinit.sh
+        + ''
+          eval "$(${lib.getExe pkgs.starship} init zsh)"
+          source "${pkgs.cdl}/bin/cdl-alias"
+        '';
     };
-    #
-    # environment.file.starship = {
-    #   source = ./starship.toml;
-    #   target = ".config/starship.toml";
-    # };
+
+    hm.home.file.".config/starship.toml" = {
+      source = ../../../config/zsh/starship.toml;
+    };
 
     # users.defaultUserShell = pkgs.zsh;
     environment.shells = [ pkgs.zsh ];

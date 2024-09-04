@@ -17,6 +17,7 @@ with lib;
       cdl
       starship
       onefetch
+      fastfetch
     ];
 
     programs.zsh = {

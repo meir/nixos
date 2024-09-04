@@ -16,6 +16,10 @@
     onepassword.enable = true;
   };
 
+  homebrew = {
+    enable = true;
+  };
+
   home-manager.users.meir = {
     programs = {
       wezterm.enable = true;
