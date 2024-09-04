@@ -20,9 +20,6 @@ nix-darwin.lib.darwinSystem {
     (
       { config, ... }:
       {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = false;
-
         nix-homebrew = {
           enable = true;
           enableRosetta = true;

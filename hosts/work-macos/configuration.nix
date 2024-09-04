@@ -3,6 +3,11 @@
   user = "meir";
   user_home = "/Users/meir";
 
+  environment.systemPackages = with pkgs; [
+    discord
+    spotify
+  ];
+
   modules = {
     nvim.enable = true;
     zsh.enable = true;

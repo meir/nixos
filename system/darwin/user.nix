@@ -21,19 +21,34 @@ with lib;
     };
   };
 
+  imports = [
+    (mkAliasOptionModule [ "hm" ] [
+      "home-manager"
+      "users"
+      config.user
+    ])
+  ];
+
   config = {
     environment.variables = {
       "XDG_CONFIG_HOME" = "${config.user_home}/.config";
       "XDG_DATA_HOME" = "${config.user_home}/.local/share";
     };
 
-    users.users."${config.user}" = {
-      home = config.user_home;
+    home-manager = {
+      users."${config.user}".home = {
+        username = config.user;
+        homeDirectory = config.user_home;
+        stateVersion = "24.05";
+      };
+
+      useUserPackages = true;
+      useGlobalPkgs = true;
     };
 
-    home-manager.users."${config.user}".home = {
-      username = config.user;
-      homeDirectory = config.user_home;
+    users.users."${config.user}" = {
+      name = config.user;
+      home = config.user_home;
     };
   };
 }
