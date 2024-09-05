@@ -24,6 +24,7 @@
     olive-editor
     thunderbird
     retroarch
+    unstable.manga-tui
   ];
 
   protocol = {

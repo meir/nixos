@@ -8,6 +8,8 @@ with lib;
 {
   options.modules.steamvr.enable = mkEnableOption "SteamVR support";
 
+  imports = [ ./envision.nix ];
+
   config = mkIf config.modules.steamvr.enable {
     environment.systemPackages = with pkgs; [
       appimage-run
@@ -15,6 +17,8 @@ with lib;
       opencomposite
       wlx-overlay-s
     ];
+
+    programs.envision.enable = true;
 
     systemd.user.services.register_steamvr_monado =
       let
