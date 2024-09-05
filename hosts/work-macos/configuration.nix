@@ -2,6 +2,7 @@
 {
   user = "meir";
   user_home = "/Users/meir";
+  theme.evergreen.enable = true;
 
   environment.systemPackages = with pkgs; [
     discord

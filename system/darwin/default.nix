@@ -6,6 +6,9 @@
     ./settings.nix
     ./fonts.nix
 
+    # themes
+    ../../themes/evergreen/darwin.nix
+
     ../../modules/common
     ../../modules/darwin
   ];

@@ -11,6 +11,9 @@
     ./fonts.nix
     ./protocol.nix
 
+    # themes
+    ../../themes/evergreen/linux.nix
+
     ../../modules/common
     ../../modules/linux
     ../../themes
