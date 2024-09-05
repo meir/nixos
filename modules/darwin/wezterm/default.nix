@@ -18,7 +18,7 @@ with lib;
         local wezterm = require 'wezterm'
                 local config = wezterm.config_builder()
 
-                config.font_size = 15.0
+                config.font_size = 12.0
                 config.window_decorations = "RESIZE"
                 config.hide_tab_bar_if_only_one_tab = true
                 config.window_background_opacity = 0.6
@@ -54,7 +54,7 @@ with lib;
                     '#ffffff', -- white
                   }
                 }
-                config.font = wezterm.font { family = "JetBrainsMonoNL Nerd Font Mono" }
+                config.font = wezterm.font { family = "DinaRemasterII Nerd Font" }
 
                 return config
       '';
