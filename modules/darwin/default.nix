@@ -5,5 +5,6 @@
     ./yabai
     ./qutebrowser
     ./onepassword
+    ./wezterm
   ];
 }

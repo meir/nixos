@@ -15,15 +15,10 @@
     yabai.enable = true;
     qutebrowser.enable = true;
     onepassword.enable = true;
+    wezterm.enable = true;
   };
 
   homebrew = {
     enable = true;
-  };
-
-  home-manager.users.meir = {
-    programs = {
-      wezterm.enable = true;
-    };
   };
 }
