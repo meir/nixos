@@ -19,8 +19,10 @@ with lib;
       fastfetch
     ];
 
+    programs.zsh.enable = true;
     hm.programs.zsh = {
       enable = true;
+      package = pkgs.zsh;
       enableCompletion = true;
       syntaxHighlighting.enable = true;
       history.size = 10000;
@@ -53,8 +55,5 @@ with lib;
     hm.home.file.".config/starship.toml" = {
       source = ../../../config/zsh/starship.toml;
     };
-
-    # users.defaultUserShell = pkgs.zsh;
-    environment.shells = [ pkgs.zsh ];
   };
 }
