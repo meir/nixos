@@ -16,7 +16,6 @@
 
     ../../modules/common
     ../../modules/linux
-    ../../themes
   ];
 
   nixpkgs.config.allowUnfree = true;
