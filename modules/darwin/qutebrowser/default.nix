@@ -30,7 +30,10 @@ in
   config = mkIf config.modules.qutebrowser.enable {
     homebrew = {
       enable = true;
-      casks = [ "qutebrowser" ];
+      casks = [
+        "qutebrowser"
+        "firefox"
+      ];
     };
 
     home-manager.users."${config.user}".home.file = {
