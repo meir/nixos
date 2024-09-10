@@ -13,7 +13,6 @@ with lib;
       unstable.neovim
       git
       curl
-      gcc12
       cmake
       go
       gnumake

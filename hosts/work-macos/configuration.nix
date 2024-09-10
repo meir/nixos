@@ -8,6 +8,9 @@
     discord
     spotify
     comma
+    gnused
+    gnupg
+    direnv
   ];
 
   modules = {
