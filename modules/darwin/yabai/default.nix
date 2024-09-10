@@ -28,6 +28,8 @@ with lib;
         };
         enableScriptingAddition = true;
         extraConfig = ''
+          yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+          yabai -m signal --add event=space_changed action="pkill -x borders"
           launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
 
         '';
