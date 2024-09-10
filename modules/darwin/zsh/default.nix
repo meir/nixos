@@ -47,6 +47,7 @@ with lib;
       initExtra =
         builtins.readFile ../../../config/zsh/shellinit.sh
         + ''
+          eval "$(${lib.getExe pkgs.direnv} hook zsh)"
           eval "$(${lib.getExe pkgs.starship} init zsh)"
           source "${pkgs.cdl}/bin/cdl-alias"
         '';
