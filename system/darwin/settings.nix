@@ -20,9 +20,9 @@
       TrackpadRightClick = true;
       TrackpadThreeFingerDrag = false;
       TrackpadThreeFingerTapGesture = 0;
-      ActuationStrength = 1;
-      FirstClickThreshold = 0;
-      SecondClickThreshold = 0;
+      ActuationStrength = 2;
+      FirstClickThreshold = 1;
+      SecondClickThreshold = 1;
     };
     smb = {
       ServerDescription = "${config.user}";
