@@ -20,7 +20,7 @@
       TrackpadRightClick = true;
       TrackpadThreeFingerDrag = false;
       TrackpadThreeFingerTapGesture = 0;
-      ActuationStrength = 2;
+      ActuationStrength = 1;
       FirstClickThreshold = 1;
       SecondClickThreshold = 1;
     };
