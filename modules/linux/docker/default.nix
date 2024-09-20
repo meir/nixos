@@ -34,7 +34,12 @@ with lib;
 
     environment.systemPackages = with pkgs; [
       docker
-      osx-kvm
+      (osx-kvm.override {
+        diskSize = 40;
+        ramSize = 12;
+        cores = 12;
+        resolution = "2560x1080";
+      })
     ];
   };
 }
