@@ -14,12 +14,27 @@ with lib;
     virtualisation.libvirtd.enable = true;
     users.extraUsers.youruser.extraGroups = [ "libvirtd" ];
 
-    boot.extraModprobeConfig = ''
-      options kvm_intel nested=1
-      options kvm_intel emulate_invalid_guest_state=0
-      options kvm ignore_msrs=1
-    '';
+    boot = {
+      extraModprobeConfig = ''
+        options vfio-pci ids=1002:67df,1002:aaf0
+        options kvm_amd nested=1
+        options kvm ignore_msrs=1
+      '';
 
-    environment.systemPackages = with pkgs; [ docker ];
+      kernelParams = [ "amd_iommu=on" ];
+      kernelModules = [
+        "vfio"
+        "vfio_iommu_type1"
+        "vfio_pci"
+        "vfio_virqfd"
+        "kvm"
+        "kvm_amd"
+      ];
+    };
+
+    environment.systemPackages = with pkgs; [
+      docker
+      osx-kvm
+    ];
   };
 }

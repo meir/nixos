@@ -12,7 +12,7 @@
   outputs = inputs: {
     nixosConfigurations = {
       desktop = import ./hosts/desktop/system.nix inputs;
-      work-dell = import ./hosts/work-dell/system.nix inputs;
+      server = import ./hosts/hp-server/system.nix inputs;
     };
     darwinConfigurations = {
       work-laptop = import ./hosts/work-macos/system.nix inputs;
