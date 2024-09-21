@@ -12,7 +12,7 @@ with lib;
     virtualisation.docker.enable = true;
 
     virtualisation.libvirtd.enable = true;
-    users.extraUsers.youruser.extraGroups = [ "libvirtd" ];
+    users.extraUsers."${config.user}".extraGroups = [ "libvirtd" ];
 
     boot = {
       extraModprobeConfig = ''
