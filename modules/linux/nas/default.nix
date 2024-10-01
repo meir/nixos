@@ -14,7 +14,7 @@ with lib;
     services.samba = {
       enable = true;
       package = pkgs.samba;
-      security = "user"; # Use user-level security
+      securityType = "user"; # Use user-level security
       extraConfig = ''
         [global]
         workgroup = WORKGROUP
