@@ -18,5 +18,6 @@
     ./mpv
     ./timer
     ./zsh
+    ./nas
   ];
 }
