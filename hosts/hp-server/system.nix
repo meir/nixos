@@ -10,6 +10,7 @@ nixpkgs.lib.nixosSystem {
 
   specialArgs = {
     inherit unstable;
+    inherit nixpkgs-xr;
   };
 
   modules = [
