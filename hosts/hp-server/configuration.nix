@@ -28,9 +28,9 @@
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
+    displayManager.lightdm.enable = false;
     desktopManager.gnome.enable = true;
     xkb.layout = "us";
-    lightdm.enable = false;
   };
 
   powerManagement.enable = true;
