@@ -1,7 +1,6 @@
 { pkgs, ... }@inputs:
 {
   imports = [
-    ./bootloader.nix
     ./audio.nix
     ./locale.nix
     ./network.nix
