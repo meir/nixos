@@ -30,6 +30,7 @@
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
     xkb.layout = "us";
+    lightdm.enable = false;
   };
 
   powerManagement.enable = true;
