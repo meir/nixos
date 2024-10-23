@@ -2,6 +2,11 @@
 {
   user = "server";
 
+  protocol = {
+    type = "xorg";
+    xorg.wm = "gnome";
+  };
+
   modules = {
     docker.enable = true;
     nvim.enable = true;
@@ -23,14 +28,6 @@
     configurationLimit = 5;
 
     device = "/dev/sda";
-  };
-
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    displayManager.lightdm.enable = false;
-    desktopManager.gnome.enable = true;
-    xkb.layout = "us";
   };
 
   powerManagement.enable = true;

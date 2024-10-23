@@ -16,6 +16,13 @@ with lib;
       type = types.bool;
       default = config.protocol.type == "xorg";
     };
+    xorg.wm = mkOption {
+      type = types.enum [
+        "bspwm"
+        "gnome"
+      ];
+      default = "bspwm";
+    };
 
     wayland.enable = mkOption {
       type = types.bool;

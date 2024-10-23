@@ -25,6 +25,6 @@ with lib;
       '';
     };
 
-    services.displayManager.defaultSession = "none+bspwm";
+    services.displayManager.defaultSession = "none+${config.protocol.xorg.wm}";
   };
 }

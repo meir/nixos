@@ -7,5 +7,6 @@ with lib;
     ./greeter.nix
     ./bspwm.nix
     ./sxhkd.nix
+    ./gnome.nix
   ];
 }

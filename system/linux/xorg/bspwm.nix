@@ -12,7 +12,7 @@ let
   );
 in
 {
-  config = mkIf config.protocol.xorg.enable {
+  config = mkIf (config.protocol.xorg.enable && config.protocol.xorg.wm == "bspwm") {
     services.xserver.windowManager.bspwm = {
       enable = true;
       configFile = buildBspwm;
