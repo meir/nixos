@@ -24,7 +24,5 @@ with lib;
         Option "OffTime" "0"
       '';
     };
-
-    services.displayManager.defaultSession = "none+${config.protocol.xorg.wm}";
   };
 }

@@ -18,6 +18,8 @@ in
       configFile = buildBspwm;
     };
 
+    services.displayManager.defaultSession = "none+bspwm";
+
     protocol.hotkeys = {
       # close, kill app
       "super + {_,shift + }q" = ''
