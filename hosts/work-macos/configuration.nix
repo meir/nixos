@@ -16,7 +16,7 @@
   modules = {
     nvim.enable = true;
     zsh.enable = true;
-    yabai.enable = true;
+    aerospace.enable = true;
     qutebrowser.enable = true;
     onepassword.enable = true;
     wezterm.enable = true;
