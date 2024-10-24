@@ -2,7 +2,7 @@
 {
   imports = [
     ./zsh
-    ./yabai
+    ./aerospace
     ./qutebrowser
     ./onepassword
     ./wezterm
