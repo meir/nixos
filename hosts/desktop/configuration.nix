@@ -25,6 +25,7 @@
     thunderbird
     retroarch
     unstable.manga-tui
+    unityhub
   ];
 
   protocol = {
