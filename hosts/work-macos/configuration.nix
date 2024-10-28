@@ -24,5 +24,6 @@
 
   homebrew = {
     enable = true;
+    casks = [ "vial" ];
   };
 }
