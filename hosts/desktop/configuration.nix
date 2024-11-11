@@ -56,7 +56,7 @@
     ];
 
     displayManager.setupCommands = ''
-      ${lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --right-of DP-0
+      ${lib.getExe pkgs.xorg.xrandr} --output DP-0 --right-of HDMI-0
     '';
   };
 
