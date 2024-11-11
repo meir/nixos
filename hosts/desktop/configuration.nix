@@ -57,6 +57,10 @@
         primary = true;
       }
     ];
+
+    displayManager.setupCommands = ''
+      ${lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --right-of DP-2
+    '';
   };
 
   programs = {
