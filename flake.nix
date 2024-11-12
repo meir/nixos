@@ -7,6 +7,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    osx-kvm.url = "github:ngi-nix/osx-kvm";
+    izu.url = "github:meir/izu";
   };
 
   outputs = inputs: {

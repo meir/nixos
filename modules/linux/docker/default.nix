@@ -2,8 +2,12 @@
   config,
   lib,
   pkgs,
+  osx-kvm,
   ...
 }:
+let
+  osx = osx-kvm.packages."x86_64-linux";
+in
 with lib;
 {
   options.modules.docker.enable = mkEnableOption "docker";
@@ -32,6 +36,11 @@ with lib;
       ];
     };
 
-    environment.systemPackages = with pkgs; [ docker ];
+    environment.systemPackages = with pkgs; [
+      docker
+      pciutils
+      osx.init
+      osx.start
+    ];
   };
 }

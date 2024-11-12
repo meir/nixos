@@ -3,6 +3,8 @@
   unstable,
   nixpkgs-xr,
   home-manager,
+  osx-kvm,
+  izu,
   ...
 }:
 nixpkgs.lib.nixosSystem {
@@ -11,6 +13,8 @@ nixpkgs.lib.nixosSystem {
   specialArgs = {
     inherit unstable;
     inherit nixpkgs-xr;
+    inherit osx-kvm;
+    inherit izu;
   };
 
   modules = [
