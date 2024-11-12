@@ -51,16 +51,12 @@
 
   services.xserver = {
     xrandrHeads = [
-      "DP-0"
+      "DP-2"
       {
         output = "HDMI-0";
         primary = true;
       }
     ];
-
-    displayManager.setupCommands = ''
-      ${lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --right-of DP-2
-    '';
   };
 
   programs = {
