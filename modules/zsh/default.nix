@@ -45,7 +45,7 @@ with lib;
       };
 
       shellInit =
-        builtins.readFile ../../../config/zsh/shellinit.sh
+        builtins.readFile ../../config/zsh/shellinit.sh
         + ''
           eval "$(starship init zsh)"
           source "${pkgs.cdl}/bin/cdl-alias"
@@ -53,7 +53,7 @@ with lib;
     };
 
     hm.home.file.".config/starship.toml" = {
-      source = ../../../config/zsh/starship.toml;
+      source = ../../config/zsh/starship.toml;
     };
 
     users.defaultUserShell = pkgs.zsh;

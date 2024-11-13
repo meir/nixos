@@ -19,5 +19,6 @@
     ./timer
     ./zsh
     ./nas
+    ./nvim
   ];
 }

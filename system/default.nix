@@ -11,18 +11,18 @@
     ./protocol.nix
 
     # themes
-    ../../themes/evergreen/linux.nix
+    ../themes/evergreen/linux.nix
 
-    ../../modules/common
-    ../../modules/linux
+    ../modules/common
+    ../modules/linux
   ];
 
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
-    (import ../../overlays/nixpkgs-unstable.nix inputs)
-    (import ../../overlays/nixpkgs-xr.nix inputs)
-    (import ../../overlays/packages.nix inputs)
+    (import ../overlays/nixpkgs-unstable.nix inputs)
+    (import ../overlays/nixpkgs-xr.nix inputs)
+    (import ../overlays/packages.nix inputs)
   ];
 
   environment.systemPackages = with pkgs; [

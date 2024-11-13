@@ -9,7 +9,7 @@ let
   name = "kitty";
 
   configFile = pkgs.writeScript "kitty-config" ''
-    ${readFile ../../../config/kitty/kitty.conf}
+    ${readFile ../../config/kitty/kitty.conf}
 
     ${readFile config.modules."${name}".config or ""}
   '';

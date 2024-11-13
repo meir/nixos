@@ -13,7 +13,7 @@ nix-darwin.lib.darwinSystem {
   };
 
   modules = [
-    ../../system/darwin
+    ../../darwin/system
     ./configuration.nix
     home-manager.darwinModules.home-manager
     nix-homebrew.darwinModules.nix-homebrew

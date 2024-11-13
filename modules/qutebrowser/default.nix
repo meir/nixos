@@ -9,7 +9,7 @@ let
   name = "qutebrowser";
 
   configFile = pkgs.writeScript "qutebrowser-config" ''
-    ${readFile ../../../config/qutebrowser/config.py}
+    ${readFile ../../config/qutebrowser/config.py}
 
     ${readFile config.modules."${name}".config}
   '';
@@ -22,7 +22,7 @@ in
 
     config = mkOption {
       type = types.path;
-      default = ../../../config/qutebrowser/config.py;
+      default = ../../config/qutebrowser/config.py;
     };
 
     homepage = mkOption {
@@ -65,12 +65,12 @@ in
 
       ".config/qutebrowser/greasemonkey" = {
         # source = config.modules."${name}".greaseMonkey;
-        source = ../../../config/qutebrowser/greasemonkey;
+        source = ../../config/qutebrowser/greasemonkey;
       };
 
       ".config/qutebrowser/userscripts" = {
         # source = config.modules."${name}".userScripts;
-        source = ../../../config/qutebrowser/userscripts;
+        source = ../../config/qutebrowser/userscripts;
       };
     };
   };

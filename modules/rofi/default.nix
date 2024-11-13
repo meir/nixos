@@ -35,7 +35,7 @@ in
         source = config.modules."${name}".source;
       };
       ".config/clipcat" = {
-        source = ../../../config/clipcat;
+        source = ../../config/clipcat;
       };
     };
   };

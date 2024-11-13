@@ -20,7 +20,7 @@ nixpkgs.lib.nixosSystem {
   modules = [
     ./hardware-configuration.nix
     ./configuration.nix
-    ../../system/linux
+    ../../system
     home-manager.nixosModules.home-manager
   ];
 }

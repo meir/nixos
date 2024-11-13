@@ -2,6 +2,7 @@
   options,
   lib,
   config,
+  pkgs,
   ...
 }:
 with lib;
@@ -51,5 +52,9 @@ with lib;
       type = types.listOf types.str;
       default = [ ];
     };
+  };
+
+  config = {
+    environment.systemPackages = with pkgs; [ izu ];
   };
 }
