@@ -57,6 +57,9 @@
         primary = true;
       }
     ];
+    displayManager.setupCommands = ''
+      ${lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --right-of DP-2
+    '';
   };
 
   programs = {
@@ -65,6 +68,13 @@
 
   modules = {
     docker.enable = true;
+    vfio = {
+      enable = true;
+      pci_ids = [
+        "10de:2482"
+        "10de:228b"
+      ];
+    };
     droidcam.enable = true;
     dunst.enable = true;
     eww = {

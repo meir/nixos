@@ -6,20 +6,18 @@
 }:
 with lib;
 {
-  options.modules.virtualisation = {
-    vfio = {
-      enable = mkEnableOption "vfio";
-      pci_ids = mkOption {
-        type = types.listOf types.string;
-        default = [ ];
-        example = [
-          "1002:67df"
-          "1002:aaf0"
-        ];
-        description = ''
-          List of PCI IDs to bind to vfio-pci.
-        '';
-      };
+  options.modules.vfio = {
+    enable = mkEnableOption "vfio";
+    pci_ids = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+      example = [
+        "1002:67df"
+        "1002:aaf0"
+      ];
+      description = ''
+        List of PCI IDs to bind to vfio-pci.
+      '';
     };
   };
 
@@ -28,8 +26,10 @@ with lib;
       enable = true;
       onBoot = "ignore";
       onShutdown = "shutdown";
-      qemuOvmf = true;
-      qemuRunAsRoot = true;
+      qemu = {
+        ovmf.enable = true;
+        runAsRoot = true;
+      };
     };
 
     programs.dconf.profiles.user.databases = [
@@ -48,16 +48,9 @@ with lib;
     programs.virt-manager.enable = true;
     users.extraUsers."${config.user}".extraGroups = [ "libvirtd" ];
 
-    service.udev = {
-      enable = true;
-      extraRules = ''
-        SUBSYSTEM=="vfio", OWNER="root", GROUP="kvm"
-      '';
-    };
-
     boot =
       let
-        ids = lib.concatStringsSep "," config.modules.virtualisation.vfio.pci_ids;
+        ids = lib.concatStringsSep "," config.modules.vfio.pci_ids;
       in
       {
         extraModprobeConfig = ''
@@ -80,7 +73,6 @@ with lib;
       };
 
     environment.systemPackages = with pkgs; [
-      kvm
       pciutils
       qemu
       virt-manager

@@ -55,6 +55,6 @@ with lib;
   };
 
   config = {
-    environment.systemPackages = with pkgs; [ izu ];
+    # environment.systemPackages = with pkgs; [ izu ];
   };
 }

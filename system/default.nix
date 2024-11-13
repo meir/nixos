@@ -13,8 +13,7 @@
     # themes
     ../themes/evergreen/linux.nix
 
-    ../modules/common
-    ../modules/linux
+    ../modules
   ];
 
   nixpkgs.config.allowUnfree = true;
