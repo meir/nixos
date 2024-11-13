@@ -9,7 +9,7 @@
     # themes
     ../../themes/evergreen/darwin.nix
 
-    ../../modules
+    ../modules
   ];
 
   nixpkgs.overlays = [
