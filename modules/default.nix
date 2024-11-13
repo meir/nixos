@@ -16,7 +16,6 @@
     ./terminal
     ./walld
     ./mpv
-    ./timer
     ./zsh
     ./nas
     ./nvim
