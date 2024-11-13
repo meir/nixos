@@ -60,12 +60,15 @@ with lib;
           options kvm ignore_msrs=1
         '';
 
-        kernelParams = [ "amd_iommu=on" ];
+        kernelParams = [
+          "amd_iommu=on"
+          "iommu=pt"
+          "vfio-pci.ids=${ids}"
+        ];
         kernelModules = [
           "vfio"
           "vfio_iommu_type1"
           "vfio_pci"
-          "vfio_pci.ids=${ids}"
           "vfio_virqfd"
           "kvm"
           "kvm_amd"
