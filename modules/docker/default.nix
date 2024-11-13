@@ -2,12 +2,8 @@
   config,
   lib,
   pkgs,
-  osx-kvm,
   ...
 }:
-let
-  osx = osx-kvm.packages."x86_64-linux";
-in
 with lib;
 {
   options.modules.docker.enable = mkEnableOption "docker";
@@ -18,29 +14,6 @@ with lib;
     virtualisation.libvirtd.enable = true;
     users.extraUsers."${config.user}".extraGroups = [ "libvirtd" ];
 
-    boot = {
-      extraModprobeConfig = ''
-        options vfio-pci ids=1002:67df,1002:aaf0
-        options kvm_amd nested=1
-        options kvm ignore_msrs=1
-      '';
-
-      kernelParams = [ "amd_iommu=on" ];
-      kernelModules = [
-        "vfio"
-        "vfio_iommu_type1"
-        "vfio_pci"
-        "vfio_virqfd"
-        "kvm"
-        "kvm_amd"
-      ];
-    };
-
-    environment.systemPackages = with pkgs; [
-      docker
-      pciutils
-      osx.init
-      osx.start
-    ];
+    environment.systemPackages = with pkgs; [ docker ];
   };
 }
