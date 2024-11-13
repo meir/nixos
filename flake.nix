@@ -11,13 +11,25 @@
     izu.url = "github:meir/izu";
   };
 
-  outputs = inputs: {
-    nixosConfigurations = {
-      desktop = import ./hosts/desktop/system.nix inputs;
-      server = import ./hosts/hp-server/system.nix inputs;
+  outputs =
+    inputs:
+    let
+      specialArgs = {
+        inherit (inputs)
+          unstable
+          nixpkgs-xr
+          osx-kvm
+          izu
+          ;
+      };
+    in
+    {
+      nixosConfigurations = {
+        desktop = import ./hosts/desktop/system.nix inputs specialArgs;
+        server = import ./hosts/hp-server/system.nix inputs specialArgs;
+      };
+      darwinConfigurations = {
+        work-laptop = import ./hosts/work-macos/system.nix inputs specialArgs;
+      };
     };
-    darwinConfigurations = {
-      work-laptop = import ./hosts/work-macos/system.nix inputs;
-    };
-  };
 }

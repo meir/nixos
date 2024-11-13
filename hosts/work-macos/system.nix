@@ -1,16 +1,13 @@
 {
   nix-darwin,
-  unstable,
   home-manager,
   nix-homebrew,
   ...
 }:
+specialArgs:
 nix-darwin.lib.darwinSystem {
   system = "aarch64-darwin";
-
-  specialArgs = {
-    inherit unstable;
-  };
+  inherit specialArgs;
 
   modules = [
     ../../darwin/system

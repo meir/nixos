@@ -1,21 +1,8 @@
-{
-  nixpkgs,
-  unstable,
-  nixpkgs-xr,
-  home-manager,
-  osx-kvm,
-  izu,
-  ...
-}:
+{ nixpkgs, home-manager, ... }:
+specialArgs:
 nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
-
-  specialArgs = {
-    inherit unstable;
-    inherit nixpkgs-xr;
-    inherit osx-kvm;
-    inherit izu;
-  };
+  inherit specialArgs;
 
   modules = [
     ./hardware-configuration.nix
