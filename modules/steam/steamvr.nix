@@ -24,10 +24,13 @@ with lib;
 
     systemd.user.services.monado.environment = {
       U_PACING_COMP_MIN_TIME_MS = "5";
+      STEAMVR_LH_ENABLE = "1";
+      XRT_COMPOSITOR_COMPUTE = "1";
     };
 
     services.monado = {
       enable = true;
+      defaultRuntime = true;
     };
 
     programs.envision.enable = true;
@@ -42,6 +45,9 @@ with lib;
           if [ -f "${vrpathreg}" ]; then
             ${getExe pkgs.steam-run} ${vrpathreg} ${pkgs.monado}/share/steamvr-monado
           fi
+
+          mkdir -p ${config.user_home}/.local/share/monado
+          ${getExe pkgs.git} clone https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models ${config.user_home}/.local/share/monado/hand-tracking-models
         '';
         wantedBy = [ "multi-user.target" ];
       };
