@@ -37,14 +37,13 @@ with lib;
     services.openssh = {
       enable = true;
       settings = {
-        passwordAuthentication = false; # Disable password authentication
-        permitRootLogin = "prohibit-password"; # Disable root login with password
-        # Add your public keys here
-        extraConfig = ''
-          PubkeyAuthentication yes
-          AuthorizedKeysFile .ssh/authorized_keys
-        '';
+        PasswordAuthentication = false;
+        PermitRootLogin = "prohibit-password";
       };
+      extraConfig = ''
+        PubkeyAuthentication yes
+        AuthorizedKeysFile .ssh/authorized_keys
+      '';
     };
 
     # Ensure the shared directory exists with appropriate permissions
