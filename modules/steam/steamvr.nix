@@ -18,6 +18,18 @@ with lib;
       wlx-overlay-s
     ];
 
+    environment.variables = {
+      STEAMVR_EMULATE_INDEX_CONTROLLER = "1";
+    };
+
+    systemd.user.services.monado.environment = {
+      U_PACING_COMP_MIN_TIME_MS = "5";
+    };
+
+    services.monado = {
+      enable = true;
+    };
+
     programs.envision.enable = true;
 
     systemd.user.services.register_steamvr_monado =
@@ -47,6 +59,32 @@ with lib;
           Comment=WLX Overlay for SteamVR
           Exec=steam-run ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s
           Icon=${pkgs.wlx-overlay-s}/wlx-overlay-s.png
+          Terminal=false
+          Type=Application
+          Categories=Utility;
+        '';
+      };
+
+      ".local/share/applications/StartMonado.desktop" = {
+        text = ''
+          [Desktop Entry]
+          Name=Start Monado
+          Comment=Start Monado
+          Exec=systemctl --user start monado.service
+          Icon=${pkgs.monado}/share/monado/icons/monado.svg
+          Terminal=false
+          Type=Application
+          Categories=Utility;
+        '';
+      };
+
+      ".local/share/applications/StopMonado.desktop" = {
+        text = ''
+          [Desktop Entry]
+          Name=Stop Monado
+          Comment=Stop Monado
+          Exec=systemctl --user stop monado.service
+          Icon=${pkgs.monado}/share/monado/icons/monado.svg
           Terminal=false
           Type=Application
           Categories=Utility;
