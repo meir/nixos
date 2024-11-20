@@ -24,10 +24,12 @@
     (import ../overlays/packages.nix inputs)
   ];
 
-  environment.systemPackages = with pkgs; [
-    git
-    curl
-  ];
+  environment.systemPackages = with pkgs; [ curl ];
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
 
   system.stateVersion = "24.05";
 }

@@ -18,6 +18,8 @@ with lib;
       wlx-overlay-s
     ];
 
+    hardware.opengl.extraPackages = [ pkgs.unstable.monado-vulkan-layers ];
+
     environment.variables = {
       STEAMVR_EMULATE_INDEX_CONTROLLER = "1";
     };
@@ -26,6 +28,7 @@ with lib;
       U_PACING_COMP_MIN_TIME_MS = "5";
       STEAMVR_LH_ENABLE = "1";
       XRT_COMPOSITOR_COMPUTE = "1";
+      ENABLE_TIMELINE_SEMAPHORE_LOG = "1";
     };
 
     services.monado = {
@@ -63,7 +66,7 @@ with lib;
           [Desktop Entry]
           Name=WLX Overlay S
           Comment=WLX Overlay for SteamVR
-          Exec=steam-run ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s
+          Exec=steam-run ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace
           Icon=${pkgs.wlx-overlay-s}/wlx-overlay-s.png
           Terminal=false
           Type=Application

@@ -8,8 +8,6 @@
 with lib;
 {
   config = mkIf config.protocol.xorg.enable {
-    environment.defaultPackages = with pkgs; [ xorg.xf86videonouveau ];
-
     services.xserver = {
       enable = true;
       videoDrivers = [ "nvidia" ];
