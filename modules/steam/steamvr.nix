@@ -20,13 +20,7 @@ with lib;
 
     environment.variables = {
       STEAMVR_EMULATE_INDEX_CONTROLLER = "1";
-    };
-
-    systemd.user.services.monado.environment = {
-      U_PACING_COMP_MIN_TIME_MS = "5";
       STEAMVR_LH_ENABLE = "1";
-      XRT_COMPOSITOR_COMPUTE = "1";
-      ENABLE_TIMELINE_SEMAPHORE_LOG = "1";
     };
 
     services.monado = {
