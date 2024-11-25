@@ -68,22 +68,18 @@
 
   modules = {
     docker.enable = true;
-    vfio = {
-      enable = true;
-      pci_ids = [
-        "10de:2482"
-        "10de:228b"
-      ];
-    };
+    vfio.enable = true;
+    vfio.pci_ids = [
+      "10de:2482"
+      "10de:228b"
+    ];
     droidcam.enable = true;
     dunst.enable = true;
-    eww = {
-      enable = true;
-      widgets = [
-        "mon1"
-        "mon2"
-      ];
-    };
+    eww.enable = true;
+    eww.widgets = [
+      "mon1"
+      "mon2"
+    ];
     feh.enable = true;
     nvim.enable = true;
     obs.enable = true;
