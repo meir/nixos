@@ -8,8 +8,6 @@ with lib;
 {
   options.modules.steamvr.enable = mkEnableOption "SteamVR support";
 
-  imports = [ ./envision.nix ];
-
   config = mkIf config.modules.steamvr.enable {
     environment.systemPackages = with pkgs; [
       appimage-run
@@ -61,6 +59,24 @@ with lib;
     ];
 
     hm.home.file = {
+      ".local/share/openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+      ".local/share/openvr/openvrpaths.vrpath".text = ''
+        {
+          "config": [
+            "${config.user_home}/Steam/config"
+          ],
+          "external_drivers": null,
+          "jsonid": "vrpathreg",
+          "log": [
+            "${config.user_home}/Steam/logs"
+          ],
+          "runtime": [
+            "${pkgs.opencomposite}/lib/opencomposite"
+          ],
+          "version": 1
+        }
+      '';
+
       ".local/share/applications/WLXOverlayS.desktop" = {
         text = ''
           [Desktop Entry]
