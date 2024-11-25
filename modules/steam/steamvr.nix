@@ -28,8 +28,6 @@ with lib;
       defaultRuntime = true;
     };
 
-    programs.envision.enable = true;
-
     systemd.user.services.register_steamvr_monado =
       let
         vrpathreg = "${config.user_home}/.steam/steam/steamapps/common/SteamVR/bin/vrpathreg.sh";
