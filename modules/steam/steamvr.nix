@@ -5,6 +5,9 @@
   ...
 }:
 with lib;
+let
+  vrpathreg = "${config.user_home}/.steam/steam/steamapps/common/SteamVR/bin/vrpathreg.sh";
+in
 {
   options.modules.steamvr.enable = mkEnableOption "SteamVR support";
 
@@ -28,22 +31,9 @@ with lib;
       defaultRuntime = true;
     };
 
-    systemd.user.services.register_steamvr_monado =
-      let
-        vrpathreg = "${config.user_home}/.steam/steam/steamapps/common/SteamVR/bin/vrpathreg.sh";
-      in
-      {
-        description = "register Monado using the SteamVR pathreg";
-        script = ''
-          if [ -f "${vrpathreg}" ]; then
-            ${getExe pkgs.steam-run} ${vrpathreg} ${pkgs.monado}/share/steamvr-monado
-          fi
-
-          mkdir -p ${config.user_home}/.local/share/monado
-          ${getExe pkgs.git} clone https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models ${config.user_home}/.local/share/monado/hand-tracking-models
-        '';
-        wantedBy = [ "multi-user.target" ];
-      };
+    protocol.autostart = [
+      ''[ -f "${vrpathreg}" ] && ${getExe pkgs.steam-run} ${vrpathreg} ${pkgs.monado}/share/steamvr-monado''
+    ];
 
     protocol.rules = [
       "bspc rule -a 'SteamVR' state=floating"
@@ -51,8 +41,10 @@ with lib;
     ];
 
     hm.home.file = {
+      ".config/wlxoverlay/keyboard.yaml".source = ../../config/wlxoverlay/keyboard.yaml;
+      ".config/wlxoverlay/watch.yaml".source = ../../config/wlxoverlay/watch.yaml;
       ".local/share/openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
-      ".local/share/openvr/openvrpaths.vrpath".text = ''
+      ".config/openvr/openvrpaths.vrpath".text = ''
         {
           "config": [
             "${config.user_home}/Steam/config"
@@ -68,53 +60,21 @@ with lib;
           "version": 1
         }
       '';
+    };
 
-      ".local/share/applications/WLXOverlayS.desktop" = {
-        text = ''
-          [Desktop Entry]
-          Name=WLX Overlay S
-          Comment=WLX Overlay for SteamVR
-          Exec=steam-run ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace
-          Icon=${pkgs.wlx-overlay-s}/wlx-overlay-s.png
-          Terminal=false
-          Type=Application
-          Categories=Utility;
-        '';
+    desktop.entry = {
+      wlx-overlay-s = {
+        name = "WLX Overlay S";
+        comment = "WLX Overlay for SteamVR";
+        exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace";
       };
-
-      ".local/share/applications/StartMonado.desktop" = {
-        text = ''
-          [Desktop Entry]
-          Name=Start Monado
-          Comment=Start Monado
-          Exec=systemctl --user start monado.service
-          Icon=${pkgs.monado}/share/monado/icons/monado.svg
-          Terminal=false
-          Type=Application
-          Categories=Utility;
-        '';
-      };
-
-      ".local/share/applications/StopMonado.desktop" = {
-        text = ''
-          [Desktop Entry]
-          Name=Stop Monado
-          Comment=Stop Monado
-          Exec=systemctl --user stop monado.service
-          Icon=${pkgs.monado}/share/monado/icons/monado.svg
-          Terminal=false
-          Type=Application
-          Categories=Utility;
-        '';
-      };
-
-      ".config/wlxoverlay/keyboard.yaml" = {
-        source = ../../config/wlxoverlay/keyboard.yaml;
-      };
-
-      ".config/wlxoverlay/watch.yaml" = {
-        source = ../../config/wlxoverlay/watch.yaml;
+      monado = {
+        name = "Monado";
+        comment = "Monado";
+        exec = "${pkgs.monado}/bin/monado-service";
+        terminal = true;
       };
     };
+
   };
 }

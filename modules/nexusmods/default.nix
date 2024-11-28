@@ -11,16 +11,10 @@ with lib;
   config = mkIf config.modules.nexusmods.enable {
     environment.systemPackages = with pkgs; [ unstable.nexusmods-app ];
 
-    hm.home.file.".local/share/applications/NexusMods.desktop" = {
-      text = ''
-        [Desktop Entry]
-        Name=Nexus Mods App
-        Comment=The Nexus Mods App
-        Exec=NexusMods.App
-        Terminal=false
-        Type=Application
-        Categories=Utility;
-      '';
+    desktop.entry.nexusmods = {
+      name = "Nexus Mods App";
+      comment = "The Nexus Mods App";
+      Exec = "NexusMods.App";
     };
   };
 }

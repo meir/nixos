@@ -9,6 +9,7 @@
     ./user.nix
     ./fonts.nix
     ./protocol.nix
+    ./applications.nix
 
     # themes
     ../themes/evergreen/linux.nix
