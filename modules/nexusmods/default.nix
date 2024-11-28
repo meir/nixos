@@ -14,7 +14,7 @@ with lib;
     desktop.entry.nexusmods = {
       name = "Nexus Mods App";
       comment = "The Nexus Mods App";
-      Exec = "NexusMods.App";
+      exec = "NexusMods.App";
     };
   };
 }
