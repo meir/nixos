@@ -12,24 +12,22 @@ in
   options.modules.steamvr.enable = mkEnableOption "SteamVR support";
 
   config = mkIf config.modules.steamvr.enable {
-    environment.systemPackages = with pkgs; [
-      appimage-run
-      monado
-      opencomposite
-      wlx-overlay-s
-    ];
+    environment.systemPackages = with pkgs; [ wlx-overlay-s ];
 
     hardware.opengl.extraPackages = [ pkgs.unstable.monado-vulkan-layers ];
 
     environment.variables = {
       STEAMVR_EMULATE_INDEX_CONTROLLER = "1";
       STEAMVR_LH_ENABLE = "1";
+      XRT_COMPOSITOR_COMPUTE = "1";
     };
 
     services.monado = {
       enable = true;
       defaultRuntime = true;
     };
+
+    programs.envision.enable = true;
 
     protocol.autostart = [
       ''[ -f "${vrpathreg}" ] && ${getExe pkgs.steam-run} ${vrpathreg} ${pkgs.monado}/share/steamvr-monado''
