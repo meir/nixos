@@ -14,8 +14,6 @@ in
   config = mkIf config.modules.steamvr.enable {
     environment.systemPackages = with pkgs; [ wlx-overlay-s ];
 
-    hardware.opengl.extraPackages = [ pkgs.unstable.monado-vulkan-layers ];
-
     environment.variables = {
       STEAMVR_EMULATE_INDEX_CONTROLLER = "1";
       STEAMVR_LH_ENABLE = "1";
