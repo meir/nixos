@@ -65,12 +65,20 @@ in
         comment = "WLX Overlay for SteamVR";
         exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace";
       };
-      monado = {
-        name = "Monado";
-        comment = "Monado";
-        exec = "${pkgs.monado}/bin/monado-service";
-        terminal = true;
-      };
+      monado =
+        let
+          script = pkgs.writeScript "start-monado" ''
+            ${pkgs.monado}/bin/monado-service &
+            wait 15
+            ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace --openxr --show
+          '';
+        in
+        {
+          name = "Monado";
+          comment = "Monado";
+          exec = script;
+          terminal = true;
+        };
     };
 
   };
