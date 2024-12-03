@@ -9,7 +9,7 @@ with lib;
 {
   services.picom = mkIf config.protocol.xorg.enable {
     enable = true;
-    package = pkgs.picom-ftlabs;
+    package = pkgs.picom-pijulius;
 
     vSync = true;
 

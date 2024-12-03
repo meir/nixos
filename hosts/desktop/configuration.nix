@@ -100,9 +100,8 @@
   powerManagement.enable = false;
   hardware.bluetooth.enable = true;
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
   };
 
   hardware.nvidia = {
