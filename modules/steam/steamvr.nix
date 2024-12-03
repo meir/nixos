@@ -76,7 +76,7 @@ in
         {
           name = "Monado";
           comment = "Monado";
-          exec = script;
+          exec = "${script}";
           terminal = true;
         };
     };
