@@ -32,8 +32,6 @@ in
       options nvidia NVreg_EnableGpuFirmware=0
     '';
 
-    programs.envision.enable = true;
-
     protocol.autostart = [
       ''[ -f "${vrpathreg}" ] && ${getExe pkgs.steam-run} ${vrpathreg} adddriver ${pkgs.monado}/share/steamvr-monado''
     ];
@@ -54,19 +52,6 @@ in
         comment = "WLX Overlay for SteamVR";
         exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace";
       };
-      monado =
-        let
-          script = pkgs.writeScript "start-monado" ''
-            ${pkgs.monado}/bin/monado-service
-          '';
-        in
-        {
-          name = "Monado";
-          comment = "Monado";
-          exec = "${script}";
-          terminal = true;
-        };
     };
-
   };
 }
