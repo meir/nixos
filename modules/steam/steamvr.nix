@@ -25,6 +25,13 @@ in
       defaultRuntime = true;
     };
 
+    boot.extraModprobeConfig = ''
+      options nvidia_drm modeset=1
+      options nvidia_drm fbdev=1
+      options nvidia NVreg_PreserveVideoMemoryAllocations=1
+      options nvidia NVreg_EnableGpuFirmware=0
+    '';
+
     programs.envision.enable = true;
 
     protocol.autostart = [
