@@ -39,24 +39,24 @@ in
     hm.home.file = {
       ".config/wlxoverlay/keyboard.yaml".source = ../../config/wlxoverlay/keyboard.yaml;
       ".config/wlxoverlay/watch.yaml".source = ../../config/wlxoverlay/watch.yaml;
-      ".config/openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
-      ".config/openvr/openvrpaths.vrpath".text = ''
-        {
-          "config": [
-            "${config.user_home}/.steam/steam/config"
-          ],
-          "external_drivers": null,
-          "jsonid": "vrpathreg",
-          "log": [
-            "${config.user_home}/Steam/logs"
-          ],
-          "runtime": [
-            "${pkgs.opencomposite}/lib/opencomposite",
-            "${config.user_home}/.steam/steam/steamapps/common/SteamVR"
-          ],
-          "version": 1
-        }
-      '';
+      # ".config/openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+      # ".config/openvr/openvrpaths.vrpath".text = ''
+      #   {
+      #     "config": [
+      #       "${config.user_home}/.steam/steam/config"
+      #     ],
+      #     "external_drivers": null,
+      #     "jsonid": "vrpathreg",
+      #     "log": [
+      #       "${config.user_home}/Steam/logs"
+      #     ],
+      #     "runtime": [
+      #       "${pkgs.opencomposite}/lib/opencomposite",
+      #       "${config.user_home}/.steam/steam/steamapps/common/SteamVR"
+      #     ],
+      #     "version": 1
+      #   }
+      # '';
     };
 
     desktop.entry = {
@@ -68,9 +68,7 @@ in
       monado =
         let
           script = pkgs.writeScript "start-monado" ''
-            ${pkgs.monado}/bin/monado-service &
-            wait 15
-            ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace --openxr --show
+            ${pkgs.monado}/bin/monado-service
           '';
         in
         {
