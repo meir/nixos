@@ -25,6 +25,7 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/bin
+    mkdir -p $out/shared/.oh-my-zsh/completions
     rm -rf $out/bin/*
 
     ${lib.getExe gcc} -o $out/bin/cdls ${src}/src/cache/cache.c ${src}/src/cdls.c
