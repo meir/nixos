@@ -45,8 +45,11 @@ in
       source = configFile;
     };
 
-    protocol.hotkeys = {
-      "super + Return" = "kitty";
-    };
+    protocol.hotkeys = [
+      ''
+        super + Return
+          kitty
+      ''
+    ];
   };
 }

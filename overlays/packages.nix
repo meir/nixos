@@ -5,4 +5,5 @@ final: prev: {
   cdl = import ../pkgs/cdl final;
   walld = import ../pkgs/walld final;
   replace = import ../pkgs/replace final;
+  izu = izu.packages.${final.system}.default;
 }

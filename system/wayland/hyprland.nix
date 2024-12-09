@@ -35,8 +35,9 @@ in
 {
   config = mkIf config.protocol.wayland.enable {
     programs.hyprland = {
-      xwayland.enable = true;
       enable = true;
+      xwayland.enable = true;
+      withUWSM = true;
     };
 
     hm.home.file.".config/hypr/hyprland.conf" = {

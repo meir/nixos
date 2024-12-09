@@ -21,8 +21,11 @@ in
     ];
 
     protocol.rules = rules."${config.protocol.type}";
-    protocol.hotkeys = {
-      "super + w" = "wall-d -R -f -d ~/Pictures/backgrounds";
-    };
+    protocol.hotkeys = [
+      ''
+        super + w
+          wall-d -R -f -d ~/Pictures/backgrounds
+      ''
+    ];
   };
 }

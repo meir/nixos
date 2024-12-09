@@ -30,7 +30,10 @@ with lib;
     wireplumber.enable = true;
   };
 
-  protocol.hotkeys = {
-    "XF86Audio{Prev,Play,Next}" = "${lib.getExe pkgs.playerctl} {previous,play-pause,next}";
-  };
+  protocol.hotkeys = [
+    ''
+      XF86Audio{Prev,Play,Next}
+        ${lib.getExe pkgs.playerctl} {previous,play-pause,next}
+    ''
+  ];
 }

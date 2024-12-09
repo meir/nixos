@@ -23,10 +23,16 @@ in
       clipcat
     ];
 
-    protocol.hotkeys = {
-      "super + {_,shift +} @space" = "rofi -show {drun,run} &";
-      "shift + super + v" = ''clipcat-menu && xdotool key --clearmodifiers "ctrl+v"'';
-    };
+    protocol.hotkeys = [
+      ''
+        super + {_,shift +} space
+          rofi -show {drun,run} &
+      ''
+      ''
+        shift + super + v
+          clipcat-menu && xdotool key --clearmodifiers "ctrl+v"
+      ''
+    ];
 
     services.clipcat.enable = true;
 

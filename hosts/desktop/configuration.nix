@@ -31,11 +31,12 @@
   protocol = {
     type = "xorg";
 
-    hotkeys = {
-      "Print" = ''
-        ${lib.getExe pkgs.flameshot} gui
-      '';
-    };
+    hotkeys = [
+      ''
+        Print
+          ${lib.getExe pkgs.flameshot} gui
+      ''
+    ];
 
     autostart = [ "discord &" ];
 

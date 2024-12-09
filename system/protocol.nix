@@ -39,8 +39,8 @@ with lib;
     };
 
     hotkeys = mkOption {
-      type = types.attrsOf types.str;
-      default = { };
+      type = types.listOf types.str;
+      default = [ ];
     };
 
     rules = mkOption {
