@@ -9,6 +9,7 @@
     ./user.nix
     ./fonts.nix
     ./protocol.nix
+    ./izu.nix
     ./applications.nix
 
     # themes
