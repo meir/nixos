@@ -31,6 +31,7 @@ stdenv.mkDerivation rec {
     ${lib.getExe gcc} -o $out/bin/cdp ${src}/src/cache/cache.c ${src}/src/cdp.c
     ${lib.getExe gcc} -o $out/bin/cdr ${src}/src/cache/cache.c ${src}/src/cdr.c
     ${lib.getExe gcc} -o $out/bin/cds ${src}/src/cache/cache.c ${src}/src/cds.c
+    cp ${src}/_cdl $out/shared/.oh-my-zsh/completions/_cdl
 
     echo 'cdl() { cd "$(cdp $1)" }' > $out/bin/cdl-alias
 
@@ -39,6 +40,7 @@ stdenv.mkDerivation rec {
     chmod +x $out/bin/cdr
     chmod +x $out/bin/cds
     chmod +x $out/bin/cdl-alias
+    chmod +x $out/shared/.oh-my-zsh/completions/_cdl
   '';
 
   outputs = [ "out" ];

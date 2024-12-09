@@ -52,8 +52,9 @@ with lib;
         '';
     };
 
-    hm.home.file.".config/starship.toml" = {
-      source = ../../config/zsh/starship.toml;
+    hm.home.file = {
+      ".config/starship.toml".source = ../../config/zsh/starship.toml;
+      ".oh-my-zsh/completions/_cdl" = "${pkgs.cdl}/shared/.oh-my-zsh/completions/_cdl";
     };
 
     users.defaultUserShell = pkgs.zsh;
