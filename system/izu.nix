@@ -1,17 +1,10 @@
 {
-  options,
   lib,
   config,
   pkgs,
   ...
 }:
 with lib;
-let
-  cfg = pkgs.writeScript "config" (concatStringsSep "\n\n" config.protocol.hotkeys);
-  generate = runCommand "izu" { buildInputs = [ pkgs.izu ]; } ''
-    izu --config ${cfg} --formatter ${config.system.izu.formatter} > $out
-  '';
-in
 {
   options.system.izu = {
     formatter = mkOption {
@@ -25,6 +18,13 @@ in
   };
 
   config = {
-    system.izu.hotkeys = "${generate}";
+    system.izu.hotkeys =
+      with pkgs;
+      readFile "${
+        (izu.override {
+          inherit hotkeys;
+          formatter = config.system.izu.formatter;
+        })
+      }";
   };
 }
