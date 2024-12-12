@@ -4,6 +4,7 @@
   izu,
   hotkeys ? [ ],
   formatter ? "sxhkd",
+  system,
 }:
 with lib;
 let
