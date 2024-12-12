@@ -12,19 +12,8 @@ with lib;
 
     environment.defaultPackages = with pkgs; [ sxhkd ];
 
-    protocol = {
-      hotkeys = [
-        ''
-          shift + super + r
-            sxhkd | pkill -x sxhkd && sxhkd &
-        ''
-      ];
+    protocol.autostart = [ "sxhkd &" ];
 
-      autostart = [ "sxhkd &" ];
-    };
-
-    hm.home.file.".config/sxhkd/sxhkdrc" = {
-      source = config.system.izu.hotkeys;
-    };
+    hm.home.file.".config/sxhkd/sxhkdrc".source = config.system.izu.hotkeys;
   };
 }
