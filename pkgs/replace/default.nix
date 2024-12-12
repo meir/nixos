@@ -1,7 +1,8 @@
-{ lib, stdenv }:
-
-src: args:
-
+{
+  stdenv,
+  src,
+  args ? { },
+}:
 stdenv.mkDerivation (
   {
     inherit src;

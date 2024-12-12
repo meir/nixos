@@ -57,13 +57,33 @@ in
     };
 
     modules = with pkgs; {
-      dunst.source = mkIf xorg (replace ./dunst values);
-      eww.source = replace ./eww values;
-      rofi.source = replace ./rofi values;
-      kitty.config = replace ./kitty/kitty.conf values;
+      dunst.source = mkIf xorg (
+        replace.override {
+          src = ./dunst;
+          args = values;
+        }
+      );
+      eww.source = replace.override {
+        src = ./eww;
+        args = values;
+      };
+      rofi.source = replace.override {
+        src = ./rofi;
+        args = values;
+      };
+      kitty.config = replace.override {
+        src = ./kitty/kitty.conf;
+        args = values;
+      };
       qutebrowser = {
-        homepage = replace ./qutebrowser/homepage values;
-        config = replace ./qutebrowser/config.py values;
+        homepage = replace.override {
+          src = ./qutebrowser/homepage;
+          args = values;
+        };
+        config = replace.override {
+          src = ./qutebrowser/config.py;
+          args = values;
+        };
       };
     };
   };

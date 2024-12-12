@@ -1,5 +1,4 @@
 {
-  options,
   lib,
   config,
   pkgs,
@@ -35,8 +34,14 @@ in
   config = {
     modules = with pkgs; {
       qutebrowser = {
-        homepage = replace ./qutebrowser/homepage values;
-        config = replace ./qutebrowser/config.py values;
+        homepage = replace.override {
+          src = ./qutebrowser/homepage;
+          args = values;
+        };
+        config = replace.override {
+          src = ./qutebrowser/config.py;
+          args = values;
+        };
       };
     };
   };
