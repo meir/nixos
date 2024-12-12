@@ -7,8 +7,6 @@
 with lib;
 {
   config = mkIf config.protocol.xorg.enable {
-    services.xserver.windowManager.bspwm.sxhkd.configFile = buildHkdrc;
-
     environment.defaultPackages = with pkgs; [ sxhkd ];
 
     protocol.autostart = [ "sxhkd &" ];
