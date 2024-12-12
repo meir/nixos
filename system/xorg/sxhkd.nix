@@ -11,11 +11,6 @@ with lib;
 
     protocol.autostart = [ "sxhkd &" ];
 
-    hm.home.file.".config/sxhkd/sxhkdrc".source = "${
-      (pkgs.izu.override {
-        hotkeys = config.protocol.hotkeys;
-        formatter = "sxhkd";
-      })
-    }";
+    hm.home.file.".config/sxhkd/sxhkdrc".source = pkgs.izuGenerate "sxhkd" config.protocol.hotkeys;
   };
 }
