@@ -1,4 +1,9 @@
-{ pkgs, izu, ... }@inputs:
+{
+  pkgs,
+  izu,
+  system,
+  ...
+}@inputs:
 {
   imports = [
     ./audio.nix
@@ -23,7 +28,7 @@
     (import ../overlays/nixpkgs-unstable.nix inputs)
     (import ../overlays/nixpkgs-xr.nix inputs)
     (import ../overlays/packages.nix inputs)
-    izu.overlays.default
+    izu.overlays.${system}.default
   ];
 
   environment.systemPackages = with pkgs; [ curl ];
