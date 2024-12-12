@@ -6,5 +6,5 @@ final: prev: {
   cdl = callPackage ../pkgs/cdl { };
   walld = callPackage ../pkgs/walld { };
   replace = callPackage ../pkgs/replace { };
-  izu = callPackage ../pkgs/izu { inherit izu; };
+  izu = callPackage ../pkgs/izu { inherit izu system; };
 }
