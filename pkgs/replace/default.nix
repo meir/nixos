@@ -1,4 +1,4 @@
-{ lib, stdenv, ... }:
+{ lib, stdenv }:
 
 src: args:
 

@@ -1,9 +1,10 @@
 { pkgs, izu, ... }:
+with pkgs;
 final: prev: {
-  cozette-nerdfont = import ../pkgs/cozette-nerdfont final;
-  dina-remastered = import ../pkgs/dina-remastered final;
-  cdl = import ../pkgs/cdl final;
-  walld = import ../pkgs/walld final;
-  replace = import ../pkgs/replace final;
-  izu = import ../pkgs/izu final;
+  cozette-nerdfont = callPackage ../pkgs/cozette-nerdfont final;
+  dina-remastered = callPackage ../pkgs/dina-remastered final;
+  cdl = callPackage ../pkgs/cdl final;
+  walld = callPackage ../pkgs/walld final;
+  replace = callPackage ../pkgs/replace final;
+  izu = callPackage ../pkgs/izu final;
 }

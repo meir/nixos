@@ -3,7 +3,6 @@
   lib,
   nerd-font-patcher,
   cozette,
-  ...
 }:
 let
   name = "cozette-nerdfont";

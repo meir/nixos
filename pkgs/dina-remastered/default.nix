@@ -3,7 +3,6 @@
   lib,
   nerd-font-patcher,
   fetchFromGitHub,
-  ...
 }:
 let
   name = "dina-remastered";

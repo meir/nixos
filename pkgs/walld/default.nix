@@ -1,9 +1,4 @@
-{
-  stdenv,
-  lib,
-  fetchFromGitHub,
-  ...
-}:
+{ stdenv, fetchFromGitHub }:
 stdenv.mkDerivation {
   pname = "walld";
   version = "02db1883195dbd27509b9a87e20e898201ba0140";
