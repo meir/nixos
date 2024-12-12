@@ -22,7 +22,7 @@ with lib;
       with pkgs;
       readFile "${
         (izu.override {
-          inherit hotkeys;
+          hotkeys = config.system.izu.hotkeys;
           formatter = config.system.izu.formatter;
         })
       }";
