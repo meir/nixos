@@ -13,7 +13,7 @@ with lib;
 
     protocol.autostart = [ "sxhkd &" ];
 
-    hm.home.file.".config/sxhkd/sxhkdrc".source = readFile "${
+    hm.home.file.".config/sxhkd/sxhkdrc".source = "${
       (pkgs.izu.override {
         hotkeys = config.protocol.hotkeys;
         formatter = "sxhkd";
