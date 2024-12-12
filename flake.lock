@@ -140,10 +140,7 @@
     },
     "gomod2nix": {
       "inputs": {
-        "flake-utils": [
-          "izu",
-          "flake-utils"
-        ],
+        "flake-utils": "flake-utils",
         "nixpkgs": [
           "izu",
           "nixpkgs"
@@ -186,17 +183,16 @@
     },
     "izu": {
       "inputs": {
-        "flake-utils": "flake-utils",
         "gomod2nix": "gomod2nix",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1734027966,
-        "narHash": "sha256-PBK8cs7WA43I5G0YHsANkyx18AnZJEtmiJ9EtzTCy5I=",
+        "lastModified": 1734029176,
+        "narHash": "sha256-gGrdTFHgkrhVFjpatBCcM+qjyvci87UT4LEsNWgXdhs=",
         "owner": "meir",
         "repo": "izu",
-        "rev": "bbb08967d8eb547742b59ef687ca69d99a3f67f5",
+        "rev": "81ca0d81550190042b37934ef1475ba1d9a3d021",
         "type": "github"
       },
       "original": {
