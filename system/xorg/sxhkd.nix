@@ -1,6 +1,5 @@
 {
   config,
-  options,
   pkgs,
   lib,
   ...
@@ -14,6 +13,11 @@ with lib;
 
     protocol.autostart = [ "sxhkd &" ];
 
-    hm.home.file.".config/sxhkd/sxhkdrc".source = config.system.izu.hotkeys;
+    hm.home.file.".config/sxhkd/sxhkdrc".source = readFile "${
+      (izu.override {
+        hotkeys = config.protocol.hotkeys;
+        formatter = "sxhkd";
+      })
+    }";
   };
 }
