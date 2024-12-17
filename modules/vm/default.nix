@@ -28,22 +28,29 @@ with lib;
 
     virtualisation.libvirtd.enable = true;
     virtualisation.spiceUSBRedirection.enable = true;
-    users.extraUsers."${config.user}".extraGroups = [ "libvirtd" ];
+    users.users.${config.user}.extraGroups = [
+      "libvirtd"
+      "kvm"
+    ];
 
     boot = {
-      kernelParams = [
-        "amd_iommu=on"
-        "iommu=pt"
-        "vfio-pci.ids=${concatStringsSep "," config.modules.vm.pciIds}"
-      ];
-      kernelModules = [
+      initrd.kernelModules = [
         "vfio_pci"
         "vfio"
         "vfio_iommu_type1"
         "vfio_virqfd"
       ];
-      blacklistedKernelModules = [ "nouveau" ];
+      kernelParams = [
+        "amd_iommu=on"
+        "iommu=pt"
+      ] ++ optional (cfg.pciIds != [ ]) "vfio-pci.ids=${concatStringsSep "," cfg.pciIds}";
+      kernelModules = [ "kvm-amd" ]; # Use "kvm-intel" for Intel CPUs
     };
+
+    boot.blacklistedKernelModules = [
+      "nouveau"
+      "nvidia"
+    ];
 
     systemd.tmpfiles.rules = [ "f /dev/shm/looking-glass 0660 ${config.user} kvm -" ];
   };
