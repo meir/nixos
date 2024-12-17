@@ -89,6 +89,7 @@
     zsh.enable = true;
     nexusmods.enable = true;
     walld.enable = true;
+    vm.enable = true;
   };
 
   # additional hardware configuration
