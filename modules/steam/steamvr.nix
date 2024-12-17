@@ -11,11 +11,6 @@ with lib;
   config = mkIf config.modules.steamvr.enable {
     environment.systemPackages = with pkgs; [ wlx-overlay-s ];
 
-    services.monado = {
-      enable = true;
-      defaultRuntime = true;
-    };
-
     boot.extraModprobeConfig = ''
       options nvidia_drm modeset=1
       options nvidia_drm fbdev=1
