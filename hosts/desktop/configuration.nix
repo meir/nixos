@@ -90,6 +90,10 @@
     nexusmods.enable = true;
     walld.enable = true;
     vm.enable = true;
+    vm.pciIds = [
+      "10de:2482"
+      "10de:228b"
+    ];
   };
 
   # additional hardware configuration
