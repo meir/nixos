@@ -33,7 +33,7 @@ with lib;
       kernelParams = [
         "amd_iommu=on"
         "iommu=pt"
-        "vfio-pci.ids=${toString config.modules.vm.pciIds}"
+        "vfio-pci.ids=${concatStringsSep "," config.modules.vm.pciIds}"
       ];
       kernelModules = [
         "vfio_pci"
