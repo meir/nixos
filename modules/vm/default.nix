@@ -34,20 +34,22 @@ with lib;
     ];
 
     boot = {
-      initrd.kernelModules = [
-        "vfio_pci"
+      kernelParams = [
+        "amd_iommu=on"
+        "iommu=pt"
+        "vfio_iommu_type1.allow_unsafe_interrupts=1"
+      ];
+
+      kernelModules = [
+        "kvm-amd"
         "vfio"
         "vfio_iommu_type1"
+        "vfio_pci"
       ];
-      kernelParams =
-        [
-          "amd_iommu=on"
-          "iommu=pt"
-        ]
-        ++ optional (
-          config.modules.vm.pciIds != [ ]
-        ) "vfio-pci.ids=${concatStringsSep "," config.modules.vm.pciIds}";
-      kernelModules = [ "kvm-amd" ]; # Use "kvm-intel" for Intel CPUs
+
+      extraModprobeConfig = optionalString (cfg.pciIds != [ ]) ''
+        options vfio-pci ids=${concatStringsSep "," cfg.pciIds}
+      '';
     };
 
     boot.blacklistedKernelModules = [
