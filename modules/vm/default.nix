@@ -33,32 +33,10 @@ with lib;
       "kvm"
     ];
 
-    boot = {
-      initrd.kernelModules = [
-        "vfio_pci"
-        "vfio"
-        "vfio_iommu_type1"
-      ];
-      kernelParams = [
-        "amd_iommu=on"
-        "iommu=pt"
-        "vfio-pci.disable_vga=1"
-        "video=efifb:off"
-      ];
-      kernelModules = [ "kvm-amd" ];
-
-      extraModprobeConfig = optionalString (config.modules.vm.pciIds != [ ]) ''
-        options vfio-pci ids=${concatStringsSep "," config.modules.vm.pciIds}
-      '';
-    };
-
-    boot.blacklistedKernelModules = [
-      "nouveau"
-      "nvidia"
-      "radeon"
-      "amdgpu"
-    ];
-
-    systemd.tmpfiles.rules = [ "f /dev/shm/looking-glass 0660 ${config.user} kvm -" ];
+    virtualisation.libvirtd.qemu.verbatimConfig = ''
+      nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ]
+      spice_gl = 1
+      gfx_gl = 1
+    '';
   };
 }
