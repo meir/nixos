@@ -34,15 +34,18 @@ with lib;
     ];
 
     boot = {
+      initrd.kernelModules = [
+        "vfio_pci"
+        "vfio"
+        "vfio_iommu_type1"
+      ];
       kernelParams = [
         "amd_iommu=on"
         "iommu=pt"
-        "rd.driver.pre=vfio-pci"
         "vfio-pci.disable_vga=1"
+        "video=efifb:off"
       ];
-
       kernelModules = [ "kvm-amd" ];
-      extraModulePackages = [ config.boot.kernelPackages.vfio-pci ];
 
       extraModprobeConfig = optionalString (config.modules.vm.pciIds != [ ]) ''
         options vfio-pci ids=${concatStringsSep "," config.modules.vm.pciIds}
