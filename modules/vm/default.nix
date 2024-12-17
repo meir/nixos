@@ -23,6 +23,7 @@ with lib;
       virt-manager
       looking-glass-client
       pciutils
+      OVMF
     ];
 
     virtualisation.libvirtd.enable = true;
@@ -46,5 +47,7 @@ with lib;
         "nouveau"
       ];
     };
+
+    systemd.tmpfiles.rules = [ "f /dev/shm/looking-glass 0660 ${config.user} kvm -" ];
   };
 }
