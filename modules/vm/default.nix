@@ -40,10 +40,14 @@ with lib;
         "vfio_iommu_type1"
         "vfio_virqfd"
       ];
-      kernelParams = [
-        "amd_iommu=on"
-        "iommu=pt"
-      ] ++ optional (cfg.pciIds != [ ]) "vfio-pci.ids=${concatStringsSep "," cfg.pciIds}";
+      kernelParams =
+        [
+          "amd_iommu=on"
+          "iommu=pt"
+        ]
+        ++ optional (
+          config.modules.vm.pciIds != [ ]
+        ) "vfio-pci.ids=${concatStringsSep "," config.modules.vm.pciIds}";
       kernelModules = [ "kvm-amd" ]; # Use "kvm-intel" for Intel CPUs
     };
 
