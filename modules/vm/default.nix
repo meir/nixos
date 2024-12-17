@@ -37,15 +37,12 @@ with lib;
       kernelParams = [
         "amd_iommu=on"
         "iommu=pt"
-        "vfio_iommu_type1.allow_unsafe_interrupts=1"
+        "rd.driver.pre=vfio-pci"
+        "vfio-pci.disable_vga=1"
       ];
 
-      kernelModules = [
-        "kvm-amd"
-        "vfio"
-        "vfio_iommu_type1"
-        "vfio_pci"
-      ];
+      kernelModules = [ "kvm-amd" ];
+      extraModulePackages = [ config.boot.kernelPackages.vfio-pci ];
 
       extraModprobeConfig = optionalString (config.modules.vm.pciIds != [ ]) ''
         options vfio-pci ids=${concatStringsSep "," config.modules.vm.pciIds}
@@ -55,6 +52,8 @@ with lib;
     boot.blacklistedKernelModules = [
       "nouveau"
       "nvidia"
+      "radeon"
+      "amdgpu"
     ];
 
     systemd.tmpfiles.rules = [ "f /dev/shm/looking-glass 0660 ${config.user} kvm -" ];
