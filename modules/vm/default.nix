@@ -47,8 +47,8 @@ with lib;
         "vfio_pci"
       ];
 
-      extraModprobeConfig = optionalString (cfg.pciIds != [ ]) ''
-        options vfio-pci ids=${concatStringsSep "," cfg.pciIds}
+      extraModprobeConfig = optionalString (config.modules.vm.pciIds != [ ]) ''
+        options vfio-pci ids=${concatStringsSep "," config.modules.vm.pciIds}
       '';
     };
 
