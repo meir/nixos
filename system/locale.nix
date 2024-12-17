@@ -21,7 +21,8 @@ in
     };
 
     inputMethod = {
-      enabled = "ibus";
+      type = "ibus";
+      enabled = true;
       ibus = {
         engines = with pkgs.ibus-engines; [ anthy ];
       };

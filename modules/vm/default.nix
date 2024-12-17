@@ -9,7 +9,7 @@ with lib;
   options.modules.vm = {
     enable = mkEnableOption "vm";
     pciIds = mkOption {
-      type = types.listOf types.string;
+      type = types.listOf types.str;
       default = [
         "10de:XXXX"
         "10de:YYYY"
