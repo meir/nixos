@@ -22,7 +22,7 @@ in
 
     inputMethod = {
       type = "ibus";
-      enabled = true;
+      enable = true;
       ibus = {
         engines = with pkgs.ibus-engines; [ anthy ];
       };
