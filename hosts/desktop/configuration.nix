@@ -26,6 +26,7 @@
     retroarch
     unstable.manga-tui
     unityhub
+    unigine-superposition
   ];
 
   protocol = {
