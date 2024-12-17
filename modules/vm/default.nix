@@ -6,17 +6,7 @@
 }:
 with lib;
 {
-  options.modules.vm = {
-    enable = mkEnableOption "vm";
-    pciIds = mkOption {
-      type = types.listOf types.str;
-      default = [
-        "10de:XXXX"
-        "10de:YYYY"
-      ];
-      description = "List of PCI IDs to passthrough to the VM";
-    };
-  };
+  options.modules.vm.enable = mkEnableOption "vm";
 
   config = mkIf config.modules.vm.enable {
     environment.systemPackages = with pkgs; [
