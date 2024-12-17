@@ -42,10 +42,7 @@ with lib;
         "vfio_iommu_type1"
         "vfio_virqfd"
       ];
-      blacklistedKernelModules = [
-        "nvidia"
-        "nouveau"
-      ];
+      blacklistedKernelModules = [ "nouveau" ];
     };
 
     systemd.tmpfiles.rules = [ "f /dev/shm/looking-glass 0660 ${config.user} kvm -" ];
