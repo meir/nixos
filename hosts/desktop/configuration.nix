@@ -33,8 +33,8 @@
     type = "wayland";
 
     rules = [
-      "monitor = HDMI-A-2, 2560x1080, 1920x0, 1"
-      "monitor = DP-1, 1920x1080, 0x0, 1"
+      "monitor = HDMI-A-2, 2560x1080, 0x0, 1"
+      "monitor = DP-1, 1920x1080, -2560x0, 1"
     ];
 
     hotkeys = [

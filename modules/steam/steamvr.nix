@@ -18,10 +18,10 @@ with lib;
       options nvidia NVreg_EnableGpuFirmware=0
     '';
 
-    protocol.rules = [
-      "bspc rule -a 'SteamVR' state=floating"
-      "bspc rule -a 'SteamVR Monitor' state=floating"
-    ];
+    # protocol.rules = [
+    #   "bspc rule -a 'SteamVR' state=floating"
+    #   "bspc rule -a 'SteamVR Monitor' state=floating"
+    # ];
 
     hm.home.file = {
       ".config/wlxoverlay/keyboard.yaml".source = ../../config/wlxoverlay/keyboard.yaml;
