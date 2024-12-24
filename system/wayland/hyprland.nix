@@ -7,6 +7,7 @@
 with lib;
 let
   startup = concatStringsSep "\n" (map (value: "exec-once = ${value}") config.protocol.autostart);
+  rules = concatStringsSep "\n\n" config.protocol.rules;
   binds = pkgs.izuGenerate "hyprland" config.protocol.hotkeys;
 
   # bind = Super, Return, exec, kitty
@@ -35,6 +36,7 @@ let
 
   hyprconfig = pkgs.writeScript "hyprland" (''
     ${readFile binds}
+    ${rules}
     ${startup}
   '');
 in
@@ -45,6 +47,11 @@ in
       xwayland.enable = true;
       withUWSM = true;
     };
+
+    boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+
+    hardware.nvidia.powerManagement.enable = true;
+    hardware.nvidia.open = false;
 
     hm.home.file.".config/hypr/hyprland.conf" = {
       source = hyprconfig;
