@@ -1,11 +1,7 @@
 # init all completions
-autoload -U compinit
+autoload -U compinit && compinit
 compinit
 
 HIST_STAMPS="yyyy/mm/dd"
-
-spaceship_prechar() {
-  spaceship::section "" "" " " ""
-}
 
 [ -d ".git" ] && onefetch || fastfetch

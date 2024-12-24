@@ -30,39 +30,88 @@
   ];
 
   protocol = {
-    type = "xorg";
+    type = "wayland";
 
     hotkeys = [
       ''
         Print
           ${lib.getExe pkgs.flameshot} gui
       ''
+      # close, kill app
+      ''
+        super + {_,shift + }q
+          sxhkd | bspc node -{c,k}
+          hyprland | {closewindow,killactive}
+      ''
+
+      # change mode
+      ''
+        super + {t,shift + t,s,f}
+          sxhkd | bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+          hyprland | {settiled,pseudo,setfloating,fullscreen}
+      ''
+
+      # resize window
+      ''
+        Super + mouse_lmb | hyprland[m]
+          hyprland | movewindow
+
+        Super + mouse_rmb | hyprland[m]
+          hyprland | resizewindow
+      ''
+
+      # set flag
+      ''
+        super + shift + {m,x,y,z}
+          sxhkd | bspc node -g {marked,locked,sticky,private}
+      ''
+
+      # focus/move the node in given direction
+      ''
+        super + {_,shift + }{h,j,k,l}
+          sxhkd | bspc node -{f,s} {west,south,north,east}
+          hyprland | movefocus, {l,d,u,r}
+      ''
+
+      # move (node) to desktop
+      ''
+        super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
+          sxhkd | bspc {desktop -f,node -d} '^{1,2,3,4,5,6,7,8,9,10}'
+          hyprland | movetoworkspace, {1,2,3,4,5,6,7,8,9,10}
+      ''
+
+      # reload sxhkd config
+      ''
+        shift + super + r
+          sxhkd | pkill -x sxhkd && sxhkd &
+          hyprland | exec, hyprctl reload
+      ''
     ];
 
     autostart = [ "discord &" ];
 
     rules = [
-      "bspc wm -O HDMI-0 DP-2"
-      "bspc monitor HDMI-0 -d 1 2 3 4 5"
-      "bspc monitor DP-2 -d 6 7 8 9 10"
-
-      "bspc rule -a retroarch state=floating"
-      "bspc rule -a 'discord' desktop='^6'"
+      # "bspc wm -O HDMI-0 DP-2"
+      # "bspc monitor HDMI-0 -d 1 2 3 4 5"
+      # "bspc monitor DP-2 -d 6 7 8 9 10"
+      #
+      # "bspc rule -a retroarch state=floating"
+      # "bspc rule -a 'discord' desktop='^6'"
     ];
   };
 
-  services.xserver = {
-    xrandrHeads = [
-      "DP-2"
-      {
-        output = "HDMI-0";
-        primary = true;
-      }
-    ];
-    displayManager.setupCommands = ''
-      ${lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --right-of DP-2
-    '';
-  };
+  # services.xserver = {
+  #   xrandrHeads = [
+  #     "DP-2"
+  #     {
+  #       output = "HDMI-0";
+  #       primary = true;
+  #     }
+  #   ];
+  #   displayManager.setupCommands = ''
+  #     ${lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --right-of DP-2
+  #   '';
+  # };
 
   programs = {
     noisetorch.enable = true;
@@ -90,7 +139,6 @@
     zsh.enable = true;
     nexusmods.enable = true;
     walld.enable = true;
-    vm.enable = true;
   };
 
   # additional hardware configuration

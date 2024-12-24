@@ -1,10 +1,4 @@
-{
-  config,
-  options,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 with lib;
 {
   config = mkIf (config.protocol.xorg.enable && config.protocol.xorg.wm == "gnome") {

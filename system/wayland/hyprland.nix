@@ -6,30 +6,36 @@
 }:
 with lib;
 let
+  startup = concatStringsSep "\n\n" (concatMap "exec-once = " config.protocol.autostart);
+  binds = pkgs.izuGenerate "hyprland" config.protocol.hotkeys;
+
+  # bind = Super, Return, exec, kitty
+  # bind = Super, Space, exec, rofi -show drun
+  # bind = Super+Shift, Space, exec, rofi -show run
+  # bind = Super, 1, workspace, 1
+  # bind = Super, 2, workspace, 2
+  # bind = Super, 3, workspace, 3
+  # bind = Super, 4, workspace, 4
+  # bind = Super, 5, workspace, 5
+  # bind = Super, 6, workspace, 6
+  # bind = Super, 7, workspace, 7
+  # bind = Super, 8, workspace, 8
+  # bind = Super, 9, workspace, 9
+  # bind = Super, 0, workspace, 10
+  # bind = Super+Shift, 1, move, 1
+  # bind = Super+Shift, 2, move, 2
+  # bind = Super+Shift, 3, move, 3
+  # bind = Super+Shift, 4, move, 4
+  # bind = Super+Shift, 5, move, 5
+  # bind = Super+Shift, 6, move, 6
+  # bind = Super+Shift, 7, move, 7
+  # bind = Super+Shift, 8, move, 8
+  # bind = Super+Shift, 9, move, 9
+  # bind = Super+Shift, 0, move, 10
+
   hyprconfig = pkgs.writeScript "hyprland" (''
-    bind = SUPER, RETURN, exec, kitty
-    bind = SUPER, SPACE, exec, rofi -show drun
-    bind = SUPER, SHIFT, Space, exec, rofi -show run
-    bind = SUPER, KP_1, workspace, 1
-    bind = SUPER, KP_2, workspace, 2
-    bind = SUPER, KP_3, workspace, 3
-    bind = SUPER, KP_4, workspace, 4
-    bind = SUPER, KP_5, workspace, 5
-    bind = SUPER, KP_6, workspace, 6
-    bind = SUPER, KP_7, workspace, 7
-    bind = SUPER, KP_8, workspace, 8
-    bind = SUPER, KP_9, workspace, 9
-    bind = SUPER, KP_0, workspace, 10
-    bind = SUPER, SHIFT, KP_1, move, 1
-    bind = SUPER, SHIFT, KP_2, move, 2
-    bind = SUPER, SHIFT, KP_3, move, 3
-    bind = SUPER, SHIFT, KP_4, move, 4
-    bind = SUPER, SHIFT, KP_5, move, 5
-    bind = SUPER, SHIFT, KP_6, move, 6
-    bind = SUPER, SHIFT, KP_7, move, 7
-    bind = SUPER, SHIFT, KP_8, move, 8
-    bind = SUPER, SHIFT, KP_9, move, 9
-    bind = SUPER, SHIFT, KP_0, move, 10
+    ${binds}
+    ${startup}
   '');
 in
 {

@@ -11,7 +11,6 @@
     gnused
     gnupg
     direnv
-    izu
   ];
 
   modules = {

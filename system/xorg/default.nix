@@ -1,5 +1,4 @@
-{ options, lib, ... }:
-with lib;
+{ ... }:
 {
   imports = [
     ./xserver.nix

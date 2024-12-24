@@ -14,10 +14,8 @@ in
   config = mkIf (xorg && config.modules.feh.enable) {
     environment.systemPackages = with pkgs; [ feh ];
 
-    services.xserver.displayManager.sessionCommands = mkIf xorg ''
-      if [ -f "${config.user_home}/.fehbg" ]; then
-        ${config.user_home}/.fehbg ;
-      fi
-    '';
+    protocol.autostart = mkIf xorg [
+      "[ -f ${config.user_home}/.fehbg ] && ${config.user_home}/.fehbg"
+    ];
   };
 }

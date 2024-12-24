@@ -1,10 +1,4 @@
-{
-  config,
-  options,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 
 with lib;
 {
@@ -13,18 +7,9 @@ with lib;
       displayManager = {
         lightdm = {
           enable = true;
-
           greeters.gtk = {
             enable = true;
-
-            theme = {
-
-            };
           };
-
-          extraConfig = ''
-
-          '';
         };
       };
     };

@@ -19,6 +19,5 @@
     ./zsh
     ./nas
     ./nvim
-    ./vm
   ];
 }
