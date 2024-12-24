@@ -47,7 +47,8 @@ in
 
     protocol.hotkeys = [
       ''
-        super + Return
+        Super + Return
+          hyprland | exec, kitty
           kitty
       ''
     ];

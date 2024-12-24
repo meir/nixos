@@ -35,18 +35,19 @@
     hotkeys = [
       ''
         Print
+          hyprland | exec, ${lib.getExe pkgs.flameshot} gui
           ${lib.getExe pkgs.flameshot} gui
       ''
       # close, kill app
       ''
-        super + {_,shift + }q
+        Super + {_,Shift + }q
           sxhkd | bspc node -{c,k}
           hyprland | {closewindow,killactive}
       ''
 
       # change mode
       ''
-        super + {t,shift + t,s,f}
+        Super + {t,Shift + t,s,f}
           sxhkd | bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
           hyprland | {settiled,pseudo,setfloating,fullscreen}
       ''
@@ -62,27 +63,27 @@
 
       # set flag
       ''
-        super + shift + {m,x,y,z}
+        Super + Shift + {m,x,y,z}
           sxhkd | bspc node -g {marked,locked,sticky,private}
       ''
 
       # focus/move the node in given direction
       ''
-        super + {_,shift + }{h,j,k,l}
+        Super + {_,Shift + }{h,j,k,l}
           sxhkd | bspc node -{f,s} {west,south,north,east}
           hyprland | movefocus, {l,d,u,r}
       ''
 
       # move (node) to desktop
       ''
-        super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
+        Super + {_,Shift + }{1,2,3,4,5,6,7,8,9,0}
           sxhkd | bspc {desktop -f,node -d} '^{1,2,3,4,5,6,7,8,9,10}'
           hyprland | movetoworkspace, {1,2,3,4,5,6,7,8,9,10}
       ''
 
       # reload sxhkd config
       ''
-        shift + super + r
+        Shift + Super + r
           sxhkd | pkill -x sxhkd && sxhkd &
           hyprland | exec, hyprctl reload
       ''

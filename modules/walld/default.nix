@@ -23,7 +23,8 @@ in
     protocol.rules = rules."${config.protocol.type}";
     protocol.hotkeys = [
       ''
-        super + w
+        Super + w
+          hyprland | exec, "not implemented yet"
           wall-d -R -f -d ~/Pictures/backgrounds
       ''
     ];

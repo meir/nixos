@@ -26,10 +26,12 @@ in
     protocol.hotkeys = [
       ''
         super + {_,shift +} space
+          hyprland | exec, rofi -show {drun,run} &
           rofi -show {drun,run} &
       ''
       ''
         shift + super + v
+          hyprland | exec, echo "not implemented yet"
           clipcat-menu && xdotool key --clearmodifiers "ctrl+v"
       ''
     ];
