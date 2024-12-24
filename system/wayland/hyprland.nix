@@ -6,7 +6,7 @@
 }:
 with lib;
 let
-  startup = concatMap (value: "exec-once = ${value}") config.protocol.autostart;
+  startup = concatStringsSep "\n" (map (value: "exec-once = ${value}") config.protocol.autostart);
   binds = pkgs.izuGenerate "hyprland" config.protocol.hotkeys;
 
   # bind = Super, Return, exec, kitty
