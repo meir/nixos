@@ -30,12 +30,12 @@
   ];
 
   protocol = {
-    type = "wayland";
+    type = "xorg";
 
-    rules = [
-      "monitor = HDMI-A-2, 2560x1080, 0x0, 1"
-      "monitor = DP-1, 1920x1080, -2560x0, 1"
-    ];
+    # rules = [
+    #   "monitor = HDMI-A-2, 2560x1080, 0x0, 1"
+    #   "monitor = DP-1, 1920x1080, -2560x0, 1"
+    # ];
 
     hotkeys = [
       ''
@@ -96,14 +96,14 @@
 
     autostart = [ "discord &" ];
 
-    # rules = [
-    # "bspc wm -O HDMI-0 DP-2"
-    # "bspc monitor HDMI-0 -d 1 2 3 4 5"
-    # "bspc monitor DP-2 -d 6 7 8 9 10"
-    #
-    # "bspc rule -a retroarch state=floating"
-    # "bspc rule -a 'discord' desktop='^6'"
-    # ];
+    rules = [
+      "bspc wm -O HDMI-0 DP-2"
+      "bspc monitor HDMI-0 -d 1 2 3 4 5"
+      "bspc monitor DP-2 -d 6 7 8 9 10"
+
+      "bspc rule -a retroarch state=floating"
+      "bspc rule -a 'discord' desktop='^6'"
+    ];
   };
 
   # services.xserver = {
