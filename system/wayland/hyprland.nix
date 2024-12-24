@@ -34,7 +34,7 @@ let
   # bind = Super+Shift, 0, move, 10
 
   hyprconfig = pkgs.writeScript "hyprland" (''
-    ${binds}
+    ${readFile binds}
     ${startup}
   '');
 in
