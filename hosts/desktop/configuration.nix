@@ -142,6 +142,7 @@
     zsh.enable = true;
     nexusmods.enable = true;
     walld.enable = true;
+    lact.enable = true;
   };
 
   # additional hardware configuration
