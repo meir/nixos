@@ -9,7 +9,9 @@ with lib;
   options.modules.steamvr.enable = mkEnableOption "SteamVR support";
 
   config = mkIf config.modules.steamvr.enable {
-    environment.systemPackages = with pkgs; [ wlx-overlay-s ];
+    environment.systemPackages = with pkgs; [
+      wlx-overlay-s
+    ];
 
     protocol.rules = [
       "bspc rule -a 'SteamVR' state=floating"
