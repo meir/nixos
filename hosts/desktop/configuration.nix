@@ -82,7 +82,7 @@
       # move (node) to desktop
       ''
         super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
-          sxhkd | bspc {desktop -f,node -d} '^{1,2,3,4,5,6,7,8,9,10}'
+          sxhkd | bspc {desktop -f,node -d} {1,2,3,4,5,6,7,8,9,10}
           hyprland | movetoworkspace, {1,2,3,4,5,6,7,8,9,10}
       ''
 
@@ -97,7 +97,7 @@
     autostart = [ "discord &" ];
 
     rules = [
-      "bspc wm -O HDMI-A-1 DisplayPort-0"
+      "bspc wm -O DisplayPort-0 HDMI-A-1"
       "bspc monitor HDMI-A-1 -d 1 2 3 4 5"
       "bspc monitor DisplayPort-0 -d 6 7 8 9 10"
 
