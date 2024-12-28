@@ -48,11 +48,6 @@ in
       withUWSM = true;
     };
 
-    boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
-
-    hardware.nvidia.powerManagement.enable = true;
-    hardware.nvidia.open = false;
-
     hm.home.file.".config/hypr/hyprland.conf" = {
       source = hyprconfig;
     };

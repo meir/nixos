@@ -10,7 +10,7 @@ with lib;
   config = mkIf config.protocol.xorg.enable {
     services.xserver = {
       enable = true;
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = [ "amdgpu" ];
       desktopManager = {
         xterm.enable = true;
       };
