@@ -97,27 +97,24 @@
     autostart = [ "discord &" ];
 
     rules = [
-      "bspc wm -O HDMI-0 DP-2"
-      "bspc monitor HDMI-0 -d 1 2 3 4 5"
-      "bspc monitor DP-2 -d 6 7 8 9 10"
+      "bspc wm -O HDMI-A-1 DisplayPort-0"
+      "bspc monitor HDMI-A-1 -d 1 2 3 4 5"
+      "bspc monitor DisplayPort-0 -d 6 7 8 9 10"
 
       "bspc rule -a retroarch state=floating"
       "bspc rule -a 'discord' desktop='^6'"
     ];
   };
 
-  # services.xserver = {
-  #   xrandrHeads = [
-  #     "DP-2"
-  #     {
-  #       output = "HDMI-0";
-  #       primary = true;
-  #     }
-  #   ];
-  #   displayManager.setupCommands = ''
-  #     ${lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --right-of DP-2
-  #   '';
-  # };
+  services.xserver = {
+    xrandrHeads = [
+      "DisplayPort-0"
+      {
+        output = "HDMI-A-1";
+        primary = true;
+      }
+    ];
+  };
 
   programs = {
     noisetorch.enable = true;
