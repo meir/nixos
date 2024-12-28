@@ -28,8 +28,7 @@ in
       kitty
 
       # terminal tools
-      btop
-      nvtopPackages.full
+      btop-rocm
       fastfetch
       xdotool
       cargo
