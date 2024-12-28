@@ -27,6 +27,7 @@
     unstable.manga-tui
     unityhub
     unigine-superposition
+    rocmPackages.rocm-smi
   ];
 
   protocol = {
