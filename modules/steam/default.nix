@@ -14,6 +14,7 @@ with lib;
     environment.systemPackages = with pkgs; [
       steam
       protonup-qt
+      protontricks
       ffmpeg # add ffmpeg for ingame video players
     ];
 
