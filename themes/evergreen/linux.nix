@@ -23,10 +23,10 @@ let
     ];
 
     wayland = [
-      "env HYPRCURSOR_THEME,Adwaita"
+      "env = HYPRCURSOR_THEME,Adwaita"
       ''
         general {
-          col.active_border rgba(D1496B);
+          col.active_border = rgba(D1496B);
         }
 
         decoration {
@@ -52,7 +52,7 @@ let
         }
 
         dwindle {
-          psuedotile = true
+          pseudotile = true
         }
       ''
     ];
