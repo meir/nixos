@@ -113,6 +113,7 @@
     autostart = [
       "discord &"
       "${lib.getExe pkgs.hyprpaper} &"
+      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
     ];
 
     # rules = [
