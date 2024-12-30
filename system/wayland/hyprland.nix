@@ -42,6 +42,10 @@ let
 in
 {
   config = mkIf config.protocol.wayland.enable {
+    environment.systemPackages = with pkgs; [
+      socat
+    ];
+
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;

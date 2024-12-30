@@ -10,14 +10,14 @@
   )
 )
 
-(deflisten states
+(deflisten states_hyprland
   "modules/hyprland/workspaces"
 )
 
-(defwidget workspace [name ?label]
+(defwidget workspace_hyprland [name ?label]
   (button
     :onclick "hyprctl dispatch workspace \"${name}\""
-    :class "ws-${states[name] ?: "idle"}"
+    :class "ws-${states_hyprland[name] ?: "idle"}"
     :width "40px"
     :height "40px"
 

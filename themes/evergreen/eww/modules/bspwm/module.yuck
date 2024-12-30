@@ -10,14 +10,14 @@
   )
 )
 
-(deflisten states
+(deflisten states_bspwm
   "modules/bspwm/workspaces"
 )
 
-(defwidget workspace [name ?label]
+(defwidget workspace_bspwm [name ?label]
   (button
     :onclick "bspc desktop -f \"${name}\""
-    :class "ws-${states[name] ?: "idle"}"
+    :class "ws-${states_bspwm[name] ?: "idle"}"
     :width "40px"
     :height "40px"
 

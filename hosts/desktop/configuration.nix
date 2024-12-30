@@ -33,8 +33,18 @@
     type = "wayland";
 
     rules = [
-      "monitor = HDMI-A-1, 2560x1080, 0x0, 1"
-      "monitor = DisplayPort-0, 1920x1080, -2560x0, 1"
+      "monitor = HDMI-A-2, 2560x1080, 0x0, 1"
+      "monitor = DP-1, 1920x1080, -2560x0, 1"
+      "workspace = 1, monitor:HDMI-A-2, default:true"
+      "workspace = 2, monitor:HDMI-A-2"
+      "workspace = 3, monitor:HDMI-A-2"
+      "workspace = 4, monitor:HDMI-A-2"
+      "workspace = 5, monitor:HDMI-A-2"
+      "workspace = 6, monitor:DP-1, default:true"
+      "workspace = 7, monitor:DP-1"
+      "workspace = 8, monitor:DP-1"
+      "workspace = 9, monitor:DP-1"
+      "workspace = 10, monitor:DP-1"
     ];
 
     hotkeys = [
@@ -43,11 +53,17 @@
           hyprland | exec, ${lib.getExe pkgs.flameshot} gui
           ${lib.getExe pkgs.flameshot} gui
       ''
-      # close, kill app
+      # close app
       ''
-        super + {_,shift + }q
-          sxhkd | bspc node -{c,k}
-          hyprland | {closewindow,killactive}
+        super + q
+          sxhkd | bspc node -c
+          hyprland | killactive
+      ''
+      # kill app
+      ''
+        super + shift + q
+          sxhkd | bspc node -k
+          hyprland | exec, hyprctl activewindow -j | jq -r '.pid' | xargs kill
       ''
 
       # change mode
@@ -96,7 +112,6 @@
 
     autostart = [
       "discord &"
-      "kitty &"
     ];
 
     # rules = [
@@ -109,15 +124,15 @@
     # ];
   };
 
-  # services.xserver = {
-  #   xrandrHeads = [
-  #     "DisplayPort-0"
-  #     {
-  #       output = "HDMI-A-1";
-  #       primary = true;
-  #     }
-  #   ];
-  # };
+  services.xserver = {
+    xrandrHeads = [
+      "DP-1"
+      {
+        output = "HDMI-A-2";
+        primary = true;
+      }
+    ];
+  };
 
   programs = {
     noisetorch.enable = true;
@@ -132,7 +147,6 @@
       "mon1"
       "mon2"
     ];
-    feh.enable = true;
     nvim.enable = true;
     obs.enable = true;
     onepassword.enable = true;

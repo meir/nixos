@@ -34,5 +34,5 @@ in
     GLFW_IM_MODULE = "ibus";
   };
 
-  protocol.autostart = [ "ibus-daemon -drx" ];
+  # protocol.autostart = [ "ibus-daemon -drx" ];
 }
