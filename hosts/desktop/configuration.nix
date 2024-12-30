@@ -112,6 +112,7 @@
 
     autostart = [
       "discord &"
+      "${lib.getExe pkgs.hyprpaper} &"
     ];
 
     # rules = [
