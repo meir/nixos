@@ -15,6 +15,7 @@ with lib;
       steam
       protonup-qt
       protontricks
+      steamtinkerlaunch
       ffmpeg # add ffmpeg for ingame video players
     ];
 

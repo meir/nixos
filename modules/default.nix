@@ -6,7 +6,6 @@
     ./dunst
     ./eww
     ./feh
-    ./nexusmods
     ./obs
     ./onepassword
     ./qmk

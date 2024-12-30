@@ -159,7 +159,6 @@
     steamvr.enable = true;
     kitty.enable = true;
     zsh.enable = true;
-    nexusmods.enable = true;
     walld.enable = true;
     lact.enable = true;
   };
