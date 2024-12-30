@@ -1,6 +1,7 @@
 
 ; Modules
 (include "modules/bspwm/module.yuck")
+(include "modules/hyprland/module.yuck")
 (include "modules/xwindow/module.yuck")
 (include "modules/audio/module.yuck")
 (include "modules/time/module.yuck")

@@ -83,7 +83,7 @@
       ''
         super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
           sxhkd | bspc {desktop -f,node -d} {1,2,3,4,5,6,7,8,9,10}
-          hyprland | movetoworkspace, {1,2,3,4,5,6,7,8,9,10}
+          hyprland | {workspace,movetoworkspace}, {1,2,3,4,5,6,7,8,9,10}
       ''
 
       # reload sxhkd config

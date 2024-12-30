@@ -1,0 +1,35 @@
+#!/bin/bash
+
+class_idle="idle"
+class_focused="focused"
+class_occupied="occupied"
+
+workspaces_hyprland() {
+	ws=$(hyprctl workspaces -j | jq -r '.[].id')
+	active_ws=$(hyprctl activeworkspace -j | jq -r '.id')
+
+	# turn list into json object
+	json="{"
+  while read -r line; do
+		class=$class_idle
+
+    if [[ $(hyprctl clients -j | jq -r ".[] | select(.workspace.id == $line) | .workspace.id" | wc -l) -gt 0 ]]; then
+			class=$class_occupied
+		fi
+		if [[ "$line" -eq "$active_ws" ]]; then
+			class=$class_focused
+		fi
+
+		json="${json}\"${line}\":\"$class\","
+	done <<< "$ws"
+
+	json="${json%,}"
+	json="${json}}"
+
+	echo "$json"
+}
+
+workspaces_hyprland
+socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r _; do
+  workspaces_hyprland
+done
