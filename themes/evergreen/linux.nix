@@ -22,7 +22,40 @@ let
       "bspc config border_width ${toString (2 * cfg.dpi)}"
     ];
 
-    wayland = [ ];
+    wayland = [
+      "env HYPRCURSOR_THEME,Adwaita"
+      ''
+        general {
+          col.active_border rgba(D1496B);
+        }
+
+        decoration {
+          rounding = 10
+
+          active_opacity = 1.0
+          inactive_opacity = 0.8
+
+          shadow {
+            enabled = false
+          }
+
+          blur {
+            enabled = true
+            size = 10
+            passes = 1
+            vibrancy = 0.2
+          }
+        }
+
+        animations {
+          enabled = false
+        }
+
+        dwindle {
+          psuedotile = true
+        }
+      ''
+    ];
   };
 
   xorg = config.protocol.xorg.enable;

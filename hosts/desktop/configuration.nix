@@ -45,7 +45,6 @@
       "workspace = 8, monitor:DP-1"
       "workspace = 9, monitor:DP-1"
       "workspace = 10, monitor:DP-1"
-      "env HYPRCURSOR_THEME,Adwaita"
     ];
 
     hotkeys = [
