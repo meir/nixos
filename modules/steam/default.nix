@@ -36,7 +36,7 @@ with lib;
 
     desktop.entry.vortex = {
       name = "Vortex Mod Manager";
-      description = "Vortex Mod Manager for Nexus Mods";
+      comment = "Vortex Mod Manager for Nexus Mods";
       exec = "${lib.getExe pkgs.steam-run} ${lib.getExe pkgs.steamtinkerlaunch} vortex start";
     };
 
