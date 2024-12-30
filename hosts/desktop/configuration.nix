@@ -94,7 +94,10 @@
       ''
     ];
 
-    autostart = [ "discord &" ];
+    autostart = [
+      "discord &"
+      "kitty &"
+    ];
 
     # rules = [
     #   "bspc wm -O DisplayPort-0 HDMI-A-1"
