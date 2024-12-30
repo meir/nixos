@@ -44,6 +44,8 @@ in
   config = mkIf config.protocol.wayland.enable {
     environment.systemPackages = with pkgs; [
       socat
+      hyprpaper
+      waypaper
     ];
 
     programs.hyprland = {

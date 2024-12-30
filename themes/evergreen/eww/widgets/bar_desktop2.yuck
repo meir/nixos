@@ -50,7 +50,7 @@
     :height "40px"
     :anchor "top center"
   )
-  :stacking "bg"
+  :stacking "fg"
   :reserve (struts
     :distance "45px"
     :side "top"
