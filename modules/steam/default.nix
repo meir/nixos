@@ -34,6 +34,12 @@ with lib;
       extraCompatPackages = with pkgs; [ proton-ge-bin ];
     };
 
+    desktop.entry.vortex = {
+      name = "Vortex Mod Manager";
+      description = "Vortex Mod Manager for Nexus Mods";
+      exec = "${lib.getExe pkgs.steam-run} ${lib.getExe pkgs.steamtinkerlaunch} vortex start";
+    };
+
     hardware.steam-hardware.enable = true;
   };
 }
