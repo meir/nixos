@@ -27,6 +27,7 @@ let
       ''
         general {
           col.active_border = rgba(D1496B);
+          border_size = ${toString (2 * cfg.dpi)}
         }
 
         decoration {
