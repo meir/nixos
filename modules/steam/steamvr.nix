@@ -13,10 +13,10 @@ with lib;
       wlx-overlay-s
     ];
 
-    protocol.rules = [
-      "bspc rule -a 'SteamVR' state=floating"
-      "bspc rule -a 'SteamVR Monitor' state=floating"
-    ];
+    # protocol.rules = [
+    #   "bspc rule -a 'SteamVR' state=floating"
+    #   "bspc rule -a 'SteamVR Monitor' state=floating"
+    # ];
 
     boot.kernelPatches = [
       {

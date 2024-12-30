@@ -1,4 +1,4 @@
-result/
+.result/
 .DS_Store
 .pre-commit-config.yaml
 *.qcow2

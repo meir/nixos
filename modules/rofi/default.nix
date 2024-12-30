@@ -25,7 +25,7 @@ in
 
     protocol.hotkeys = [
       ''
-        super + {_,shift +} space
+        super + {_,shift +} Space
           hyprland | exec, rofi -show {drun,run} &
           rofi -show {drun,run} &
       ''

@@ -7,18 +7,11 @@
 }:
 with lib;
 {
-  services.greetd = mkIf config.protocol.wayland.enable {
-    package = pkgs.unstable.greetd;
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${lib.getExe pkgs.greetd.tuigreet} --time --asterisks --user-menu --cmd 'dbus-run-session Hyprland'";
-      };
+  config = mkIf config.protocol.wayland.enable {
+    services.xserver.displayManager.gdm = {
+      enable = true;
+      wayland = true;
     };
+    services.xserver.displayManager.defaultSession = "hyprland-uwsm";
   };
-
-  environment.etc."greetd/environments".text = ''
-    hyprland
-    bash
-  '';
 }
