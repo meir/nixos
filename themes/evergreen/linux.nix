@@ -26,7 +26,8 @@ let
       "env = HYPRCURSOR_THEME,Adwaita"
       ''
         general {
-          col.active_border = rgba(D1496B);
+          col.active_border = rgb(d1496b) rgb(d1496b) 0deg;
+          col.inactive_border = rgb(131711) rgb(131711) 0deg;
           border_size = ${toString (2 * cfg.dpi)}
         }
 
@@ -34,7 +35,7 @@ let
           rounding = 10
 
           active_opacity = 1.0
-          inactive_opacity = 0.8
+          inactive_opacity = 0.9
 
           shadow {
             enabled = false
@@ -43,8 +44,8 @@ let
           blur {
             enabled = true
             size = 10
-            passes = 1
-            vibrancy = 0.2
+            passes = 2
+            vibrancy = 0.1
           }
         }
 
@@ -54,6 +55,10 @@ let
 
         dwindle {
           pseudotile = true
+        }
+
+        input {
+          follow_mouse = 0
         }
       ''
     ];
