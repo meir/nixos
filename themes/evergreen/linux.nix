@@ -24,6 +24,7 @@ let
 
     wayland = [
       "env = HYPRCURSOR_THEME,Adwaita"
+      "env = XCURSOR_THEME,Adwaita"
       ''
         general {
           col.active_border = rgb(d1496b) rgb(d1496b) 0deg;
