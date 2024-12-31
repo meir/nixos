@@ -8,7 +8,10 @@ final: prev: {
   replace = callPackage ../pkgs/replace { };
   discord_wayland = pkgs.symlinkJoin {
     name = "discord-wrapped";
-    paths = [ discord ];
+    paths = [
+      discord.override
+      { withOpenASAR = true; }
+    ];
     buildInputs = [ makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/Discord --set XDG_SESSION_TYPE x11
