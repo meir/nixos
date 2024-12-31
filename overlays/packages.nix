@@ -9,8 +9,7 @@ final: prev: {
   discord_wayland = pkgs.symlinkJoin {
     name = "discord-wrapped";
     paths = [
-      discord.override
-      { withOpenASAR = true; }
+      (discord.override { withOpenASAR = true; })
     ];
     buildInputs = [ makeWrapper ];
     postBuild = ''
