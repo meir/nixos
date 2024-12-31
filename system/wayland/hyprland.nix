@@ -38,13 +38,15 @@ let
     ${readFile binds}
     ${rules}
     ${startup}
+    exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    exec-once = swww init
   '');
 in
 {
   config = mkIf config.protocol.wayland.enable {
     environment.systemPackages = with pkgs; [
       socat
-      hyprpaper
+      swww
       waypaper
     ];
 
