@@ -48,6 +48,7 @@ in
       socat
       swww
       waypaper
+      kdePackages.xwaylandvideobridge
     ];
 
     programs.hyprland = {
