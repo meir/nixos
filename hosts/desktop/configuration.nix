@@ -13,7 +13,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    (discord.override { withOpenASAR = true; })
+    discord_wayland
     gimp
     libsForQt5.kdenlive
     lmms
