@@ -27,6 +27,7 @@
     unstable.manga-tui
     unityhub
     unigine-superposition
+    cliphist
   ];
 
   protocol = {
@@ -53,6 +54,13 @@
           hyprland | exec, ${lib.getExe pkgs.flameshot} gui
           ${lib.getExe pkgs.flameshot} gui
       ''
+
+      # paste
+      ''
+        super + v
+          hyprland | exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
+      ''
+
       # close app
       ''
         super + q
@@ -112,8 +120,8 @@
 
     autostart = [
       "discord &"
-      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-      "swww init"
+      "wl-paste --type text --watch cliphist store"
+      "wl-paste --type image --watch cliphist store"
     ];
 
     # rules = [
