@@ -20,6 +20,7 @@ with lib;
       fzf
       rustup
       ripgrep
+      xclip
       nixfmt-rfc-style
       luajitPackages.luarocks
       lua

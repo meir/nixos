@@ -27,6 +27,7 @@
     unstable.manga-tui
     unityhub
     unigine-superposition
+    wl-clipboard
     cliphist
   ];
 
