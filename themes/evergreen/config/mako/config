@@ -2,8 +2,8 @@
 sort=-time
 layer=overlay
 background-color=#101A0B
-width=300
-height=110
+width=220
+height=150
 border-size=2
 border-color=#D1496B
 border-radius=10
