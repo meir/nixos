@@ -20,7 +20,6 @@ in
   config = mkIf config.modules."${name}".enable {
     environment.systemPackages = with pkgs; [
       rofi
-      clipcat
     ];
 
     protocol.hotkeys = [
@@ -29,22 +28,6 @@ in
           hyprland | exec, rofi -show {drun,run} &
           rofi -show {drun,run} &
       ''
-      ''
-        shift + super + v
-          hyprland | exec, echo "not implemented yet"
-          clipcat-menu && xdotool key --clearmodifiers "ctrl+v"
-      ''
     ];
-
-    services.clipcat.enable = true;
-
-    hm.home.file = mkIf (config.modules."${name}".source != null) {
-      ".config/rofi" = {
-        source = config.modules."${name}".source;
-      };
-      ".config/clipcat" = {
-        source = ../../config/clipcat;
-      };
-    };
   };
 }

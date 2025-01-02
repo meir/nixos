@@ -29,11 +29,6 @@ with lib;
       }
     ];
 
-    hm.home.file = {
-      ".config/wlxoverlay/keyboard.yaml".source = ../../config/wlxoverlay/keyboard.yaml;
-      ".config/wlxoverlay/watch.yaml".source = ../../config/wlxoverlay/watch.yaml;
-    };
-
     desktop.entry = {
       wlx-overlay-s = {
         name = "WLX Overlay S";

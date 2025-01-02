@@ -53,9 +53,7 @@ with lib;
         '';
     };
 
-    hm.home.file = {
-      ".config/starship.toml".source = ../../../config/zsh/starship.toml;
-      ".cache/oh-my-zsh/completions/_cdl".source = "${pkgs.cdl}/shared/.oh-my-zsh/completions/_cdl";
-    };
+    hm.home.file.".cache/oh-my-zsh/completions/_cdl".source =
+      "${pkgs.cdl}/shared/.oh-my-zsh/completions/_cdl";
   };
 }

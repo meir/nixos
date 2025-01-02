@@ -10,9 +10,10 @@
     ./fonts.nix
     ./protocol.nix
     ./applications.nix
+    ./terminal.nix
 
     # themes
-    ../themes/evergreen/linux.nix
+    ../themes/evergreen
 
     ../modules
   ];

@@ -1,23 +1,16 @@
 { ... }:
 {
   imports = [
-    ./docker
-    ./droidcam
-    ./dunst
+    ./containerization
+    ./discord
     ./eww
-    ./feh
+    ./mpv
+    ./nvim
     ./obs
     ./onepassword
     ./qmk
     ./qutebrowser
     ./rofi
     ./steam
-    ./terminal
-    ./walld
-    ./mpv
-    ./zsh
-    ./nas
-    ./nvim
-    ./lact
   ];
 }

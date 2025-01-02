@@ -54,24 +54,5 @@ in
       "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
       "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
     };
-
-    hm.home.file = {
-      ".config/qutebrowser/config.py" = {
-        source = pkgs.substituteAll {
-          src = configFile;
-          homepage = config.modules."${name}".homepage or "";
-        };
-      };
-
-      ".config/qutebrowser/greasemonkey" = {
-        # source = config.modules."${name}".greaseMonkey;
-        source = ../../config/qutebrowser/greasemonkey;
-      };
-
-      ".config/qutebrowser/userscripts" = {
-        # source = config.modules."${name}".userScripts;
-        source = ../../config/qutebrowser/userscripts;
-      };
-    };
   };
 }

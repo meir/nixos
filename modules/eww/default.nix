@@ -6,19 +6,17 @@
 }:
 with lib;
 let
-  name = "eww";
-
   widgetScripts = pkgs.writeScript "eww-start" (
     concatStringsSep "\n" (
       map (widget: ''
         ${pkgs.eww}/bin/eww open ${widget}
-      '') config.modules."${name}".widgets
+      '') config.modules.eww.widgets
     )
   );
 in
 {
-  options.modules."${name}" = {
-    enable = mkEnableOption "${name}";
+  options.modules.eww = {
+    enable = mkEnableOption eww;
 
     source = mkOption {
       type = types.nullOr types.path;
@@ -31,7 +29,7 @@ in
     };
   };
 
-  config = mkIf config.modules."${name}".enable {
+  config = mkIf config.modules.eww.enable {
     environment.systemPackages = with pkgs; [
       eww
       zscroll
@@ -41,9 +39,5 @@ in
       "${pkgs.eww}/bin/eww daemon &"
       "${widgetScripts}"
     ];
-
-    hm.home.file.".config/eww" = mkIf (config.modules."${name}".source != null) {
-      source = config.modules."${name}".source;
-    };
   };
 }

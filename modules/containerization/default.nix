@@ -6,9 +6,9 @@
 }:
 with lib;
 {
-  options.modules.docker.enable = mkEnableOption "docker";
+  options.modules.containerization.enable = mkEnableOption "containerization";
 
-  config = mkIf config.modules.docker.enable {
+  config = mkIf config.modules.containerization.enable {
     virtualisation.docker.enable = true;
 
     virtualisation.libvirtd.enable = true;

@@ -7,13 +7,9 @@
 {
   user = "human";
 
-  theme.evergreen = {
-    enable = true;
-    font_size = 12;
-  };
+  theme.evergreen.enable = true;
 
   environment.systemPackages = with pkgs; [
-    discord_wayland
     gimp
     libsForQt5.kdenlive
     lmms
@@ -49,90 +45,11 @@
       "workspace = 10, monitor:DP-1"
     ];
 
-    hotkeys = [
-      ''
-        Print
-          hyprland | exec, ${lib.getExe pkgs.flameshot} gui
-          ${lib.getExe pkgs.flameshot} gui
-      ''
-
-      # paste
-      ''
-        super + v
-          hyprland | exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
-      ''
-
-      # close app
-      ''
-        super + q
-          sxhkd | bspc node -c
-          hyprland | killactive
-      ''
-      # kill app
-      ''
-        super + shift + q
-          sxhkd | bspc node -k
-          hyprland | exec, hyprctl activewindow -j | jq -r '.pid' | xargs kill
-      ''
-
-      # change mode
-      ''
-        super + {t,shift + t,s,f}
-          sxhkd | bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-          hyprland | {settiled,pseudo,setfloating,fullscreen}
-      ''
-
-      # resize window
-      ''
-        super + mouse_lmb | hyprland[m]
-          hyprland | movewindow
-
-        super + mouse_rmb | hyprland[m]
-          hyprland | resizewindow
-      ''
-
-      # set flag
-      ''
-        super + shift + {m,x,y,z}
-          sxhkd | bspc node -g {marked,locked,sticky,private}
-      ''
-
-      # focus/move the node in given direction
-      ''
-        super + {_,shift + }{h,j,k,l}
-          sxhkd | bspc node -{f,s} {west,south,north,east}
-          hyprland | movefocus, {l,d,u,r}
-      ''
-
-      # move (node) to desktop
-      ''
-        super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
-          sxhkd | bspc {desktop -f,node -d} {1,2,3,4,5,6,7,8,9,10}
-          hyprland | {workspace,movetoworkspace}, {1,2,3,4,5,6,7,8,9,10}
-      ''
-
-      # reload sxhkd config
-      ''
-        shift + super + r
-          sxhkd | pkill -x sxhkd && sxhkd &
-          hyprland | exec, hyprctl reload
-      ''
-    ];
-
     autostart = [
       "discord &"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
     ];
-
-    # rules = [
-    #   "bspc wm -O DisplayPort-0 HDMI-A-1"
-    #   "bspc monitor HDMI-A-1 -d 1 2 3 4 5"
-    #   "bspc monitor DisplayPort-0 -d 6 7 8 9 10"
-    #
-    #   "bspc rule -a retroarch state=floating"
-    #   "bspc rule -a 'discord' desktop='^6'"
-    # ];
   };
 
   services.xserver = {
@@ -145,19 +62,15 @@
     ];
   };
 
-  programs = {
-    noisetorch.enable = true;
-  };
-
   modules = {
-    docker.enable = true;
-    droidcam.enable = true;
-    dunst.enable = true;
+    containerization.enable = true;
+    discord.enable = true;
     eww.enable = true;
     eww.widgets = [
       "mon1"
       "mon2"
     ];
+    mpv.enable = true;
     nvim.enable = true;
     obs.enable = true;
     onepassword.enable = true;
@@ -166,10 +79,6 @@
     rofi.enable = true;
     steam.enable = true;
     steamvr.enable = true;
-    kitty.enable = true;
-    zsh.enable = true;
-    walld.enable = true;
-    lact.enable = true;
   };
 
   # additional hardware configuration

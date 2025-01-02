@@ -7,7 +7,7 @@
     ./fonts.nix
 
     # themes
-    ../../themes/evergreen/darwin.nix
+    ../../themes/evergreen
 
     ../modules
   ];
