@@ -12,6 +12,6 @@ with lib;
       enable = true;
       wayland = true;
     };
-    services.xserver.displayManager.defaultSession = "hyprland-uwsm";
+    services.displayManager.defaultSession = "hyprland-uwsm";
   };
 }

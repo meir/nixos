@@ -2,6 +2,7 @@
   symlinkJoin,
   discord,
   makeWrapper,
+  ...
 }:
 symlinkJoin {
   name = "discord-wrapped";

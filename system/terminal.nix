@@ -68,12 +68,18 @@ with lib;
       c = "clear";
     };
 
-    shellInit =
-      builtins.readFile ../../config/zsh/shellinit.sh
-      + ''
-        eval "$(starship init zsh)"
-        source "${pkgs.cdl}/bin/cdl-alias"
-      '';
+    shellInit = ''
+      # init all completions
+      autoload -U compinit && compinit
+      compinit
+
+      HIST_STAMPS="yyyy/mm/dd"
+
+      [ -d ".git" ] && onefetch || fastfetch
+              
+      eval "$(starship init zsh)"
+      source "${pkgs.cdl}/bin/cdl-alias"
+    '';
   };
 
   hm.home.file.".cache/oh-my-zsh/completions/_cdl".source =
