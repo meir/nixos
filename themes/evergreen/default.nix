@@ -5,7 +5,8 @@
   pkgs,
   ...
 }:
-with lib builtins;
+with lib;
+with builtins;
 let
   rules = {
     wayland = readFile ./config/hypr/hyprland.conf;
@@ -19,7 +20,7 @@ in
   };
 
   config = mkIf config.theme.evergreen.enable {
-    protocol.rules = rules."${config.protocol.type}";
+    protocol.rules = [ rules."${config.protocol.type}" ];
 
     hm.home.file = {
       ".config/starship.toml".source = ./config/zsh/starship.toml;
@@ -35,7 +36,7 @@ in
 
       ".config/mpv/mpv.conf".source = ./config/mpv/mpv.conf;
 
-      ".config/rofi".source = .config/rofi;
+      ".config/rofi".source = ./config/rofi;
     };
   };
 }

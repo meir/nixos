@@ -53,8 +53,4 @@ with lib;
       default = [ ];
     };
   };
-
-  config = {
-    # environment.systemPackages = with pkgs; [ izu ];
-  };
 }
