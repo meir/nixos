@@ -11,20 +11,14 @@
 
   environment.systemPackages = with pkgs; [
     gimp
-    libsForQt5.kdenlive
-    lmms
     prismlauncher
-    unstable.r2modman
     spotify
     stremio
-    olive-editor
     thunderbird
     retroarch
     unstable.manga-tui
     unityhub
     unigine-superposition
-    wl-clipboard
-    cliphist
   ];
 
   protocol = {
@@ -47,8 +41,6 @@
 
     autostart = [
       "discord &"
-      "wl-paste --type text --watch cliphist store"
-      "wl-paste --type image --watch cliphist store"
     ];
   };
 

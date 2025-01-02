@@ -56,6 +56,7 @@ in
       swww
       waypaper
       kdePackages.xwaylandvideobridge
+      wl-clipboard
     ];
 
     programs.hyprland = {

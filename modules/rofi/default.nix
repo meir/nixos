@@ -20,6 +20,7 @@ in
   config = mkIf config.modules."${name}".enable {
     environment.systemPackages = with pkgs; [
       rofi
+      cliphist
     ];
 
     protocol.hotkeys = [
@@ -27,7 +28,16 @@ in
         super + {_,shift +} Space
           hyprland | exec, rofi -show {drun,run} &
           rofi -show {drun,run} &
+
+        # paste
+        super + v
+          hyprland | exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
       ''
+    ];
+
+    protocol.autostart = [
+      "wl-paste --type text --watch cliphist store"
+      "wl-paste --type image --watch cliphist store"
     ];
   };
 }

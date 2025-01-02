@@ -36,10 +36,6 @@
 
   protocol.hotkeys = [
     ''
-      # paste
-      super + v
-        hyprland | exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
-
       # close app
       super + q
         sxhkd | bspc node -c
