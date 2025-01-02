@@ -37,6 +37,7 @@ in
       ".config/mpv/mpv.conf".source = ./config/mpv/mpv.conf;
 
       ".config/rofi".source = ./config/rofi;
+      ".config/mako/config".source = ./config/mako/config;
     };
   };
 }

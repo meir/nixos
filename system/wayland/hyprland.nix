@@ -40,6 +40,7 @@ let
     ${startup}
     exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once = swww init
+    exec-once = mako reload
 
     windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
     windowrulev2 = noanim, class:^(xwaylandvideobridge)$
@@ -57,6 +58,7 @@ in
       waypaper
       kdePackages.xwaylandvideobridge
       wl-clipboard
+      mako
     ];
 
     programs.hyprland = {

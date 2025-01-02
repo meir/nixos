@@ -36,7 +36,7 @@ accent = "#10A070"
 c.tabs.min_width = 200
 c.tabs.padding = {"top": 5, "bottom": 5, "left": 5, "right": 5}
 c.fonts.default_family = "DinaRemasterII Nerd Font"
-c.fonts.default_size = "@font_size@pt"
+c.fonts.default_size = "12pt"
 
 # colors
 c.colors.tabs.bar.bg = bg
