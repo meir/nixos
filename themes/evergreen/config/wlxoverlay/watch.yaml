@@ -1,9 +1,7 @@
-# looking to make changes? 
-# drop me in ~/.config/wlxoverlay/watch.yaml
-#
+
+primary_font: "DinaRemasterII Nerd Font"
 
 width: 0.115
-
 size: [400, 200]
 
 elements:
