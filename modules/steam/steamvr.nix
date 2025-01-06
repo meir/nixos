@@ -27,7 +27,7 @@ with lib;
       }
     ];
 
-    hm.home.file.".config/openxr/1/active_runtime.json".source = ''
+    hm.home.file.".config/openxr/1/active_runtime.json".text = ''
       {
         "file_format_version": "1.0.0",
         "runtime": {
