@@ -1,5 +1,5 @@
 {
-  unstable,
+  nixpkgs-unstable,
   config,
   pkgs,
   lib,
@@ -28,14 +28,6 @@ let
   '');
 in
 {
-  disabledModules = [
-    "programs/wayland/hyprland.nix"
-  ];
-
-  imports = [
-    <nixos-unstable/nixos/modules/programs/wayland/hyprland.nix>
-  ];
-
   config = mkIf config.protocol.wayland.enable {
     environment.systemPackages = with pkgs; [
       socat
@@ -49,7 +41,7 @@ in
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
-      # withUWSM = true;
+      withUWSM = true;
     };
 
     hm.home.file.".config/hypr/hyprland.conf" = {

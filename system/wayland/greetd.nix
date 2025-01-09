@@ -12,6 +12,6 @@ with lib;
       enable = true;
       wayland = true;
     };
-    services.displayManager.defaultSession = "hyprland";
+    services.displayManager.defaultSession = "hyprland-uwsm";
   };
 }
