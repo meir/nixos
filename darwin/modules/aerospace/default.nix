@@ -15,9 +15,7 @@ with lib;
     ];
 
     home-manager.users."${config.user}".home.file = {
-      ".config/aerospace/aerospace.toml" = {
-        source = ../../../config/aerospace/aerospace.toml;
-      };
+      ".config/aerospace/aerospace.toml".source = ./aerospace.toml;
     };
 
     services = {

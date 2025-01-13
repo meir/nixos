@@ -6,9 +6,6 @@
     ./settings.nix
     ./fonts.nix
 
-    # themes
-    ../../themes/evergreen
-
     ../modules
   ];
 
