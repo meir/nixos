@@ -44,16 +44,20 @@ with lib;
         c = "clear";
       };
 
-      initExtra =
-        builtins.readFile ../../../config/zsh/shellinit.sh
-        + ''
-          eval "$(${lib.getExe pkgs.direnv} hook zsh)"
-          eval "$(${lib.getExe pkgs.starship} init zsh)"
-          source "${pkgs.cdl}/bin/cdl-alias"
-        '';
+      initExtra = ''
+        # init all completions
+        autoload -U compinit && compinit
+        compinit
+
+        HIST_STAMPS="yyyy/mm/dd"
+
+        [ -d ".git" ] && onefetch || fastfetch
+        eval "$(${lib.getExe pkgs.direnv} hook zsh)"
+        eval "$(${lib.getExe pkgs.starship} init zsh)"
+        source "${pkgs.cdl}/bin/cdl-alias"
+      '';
     };
 
-    hm.home.file.".cache/oh-my-zsh/completions/_cdl".source =
-      "${pkgs.cdl}/shared/.oh-my-zsh/completions/_cdl";
+    hm.home.file.".cache/oh-my-zsh/completions/_cdl".source = "${pkgs.cdl}/shared/.oh-my-zsh/completions/_cdl";
   };
 }
