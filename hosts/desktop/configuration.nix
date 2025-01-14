@@ -19,6 +19,7 @@
     unstable.manga-tui
     unityhub
     unigine-superposition
+    aseprite
   ];
 
   protocol = {

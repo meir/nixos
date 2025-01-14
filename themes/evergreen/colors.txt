@@ -1,6 +1,6 @@
-$bg: #101A0B;
+$bg: #181818;
 $fg: #f7f4f3;
 
-$contrast-low: #131711;
+$contrast-low: #101A0B;
 $contrast-high: #D1496B;
 $accent: #10A070;
