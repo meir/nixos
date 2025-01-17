@@ -11,6 +11,7 @@ with lib;
   config = mkIf config.modules.nvim.enable {
     environment.systemPackages = with pkgs; [
       neovim
+      gcc
       git
       curl
       cmake
