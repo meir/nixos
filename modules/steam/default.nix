@@ -16,6 +16,7 @@ with lib;
       protonup-qt
       protontricks
       appimage-run
+      usbutils
       steamtinkerlaunch
       r2modman
       ffmpeg # add ffmpeg for ingame video players
