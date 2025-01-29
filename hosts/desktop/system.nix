@@ -1,6 +1,6 @@
-{ nixpkgs, home-manager, ... }:
+{ nixpkgs-unstable, home-manager, ... }:
 specialArgs:
-nixpkgs.lib.nixosSystem {
+nixpkgs-unstable.lib.nixosSystem {
   system = "x86_64-linux";
   inherit specialArgs;
 
