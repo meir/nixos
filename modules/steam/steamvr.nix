@@ -27,16 +27,18 @@ with lib;
       }
     ];
 
-    hm.home.file.".config/openxr/1/active_runtime.json".text = ''
-      {
-        "file_format_version": "1.0.0",
-        "runtime": {
-          "VALVE_runtime_is_steamvr": true,
-          "library_path": "/home/${config.user}/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrclient.so",
-          "name": "SteamVR"
+    hm.home.file = {
+      ".config/openxr/1/active_runtime.json".text = ''
+        {
+          "file_format_version": "1.0.0",
+          "runtime": {
+            "VALVE_runtime_is_steamvr": true,
+            "library_path": "/home/${config.user}/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrclient.so",
+            "name": "SteamVR"
+          }
         }
-      }
-    '';
+      '';
+    };
 
     desktop.entry = {
       wlx-overlay-s = {

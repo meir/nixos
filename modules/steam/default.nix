@@ -12,7 +12,6 @@ with lib;
 
   config = mkIf config.modules.steam.enable {
     environment.systemPackages = with pkgs; [
-      steam
       protonup-qt
       protontricks
       appimage-run
@@ -35,6 +34,7 @@ with lib;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       extraCompatPackages = with pkgs; [ proton-ge-bin ];
+      package = with pkgs; steam.override { extraPkgs = pkgs: [ attr ]; };
     };
 
     desktop.entry.vortex = {
