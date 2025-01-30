@@ -12,6 +12,7 @@ with lib;
     environment.systemPackages = with pkgs; [
       neovim
       gcc
+      iconv
       git
       curl
       cmake
