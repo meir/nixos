@@ -84,7 +84,7 @@
 
       # screenshot region
       super + shift + p
-        hyprland | ${lib.getExe pkgs.hyprshot} -m region
+        hyprland | exec, ${lib.getExe pkgs.hyprshot} -m region
     ''
   ];
 
