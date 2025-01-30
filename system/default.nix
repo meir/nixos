@@ -1,4 +1,9 @@
-{ pkgs, izu, ... }@inputs:
+{
+  lib,
+  pkgs,
+  izu,
+  ...
+}@inputs:
 {
   imports = [
     ./audio.nix
@@ -76,6 +81,10 @@
       shift + super + r
         sxhkd | pkill -x sxhkd && sxhkd &
         hyprland | exec, hyprctl reload
+
+      # screenshot region
+      super + shift + p
+        hyprland | ${lib.getExe pkgs.hyprshot} -m region
     ''
   ];
 
