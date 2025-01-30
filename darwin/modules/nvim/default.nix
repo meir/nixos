@@ -13,6 +13,7 @@ with lib;
       neovim
       gcc
       iconv
+      xcode-install
       git
       curl
       cmake
