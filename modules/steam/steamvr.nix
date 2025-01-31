@@ -11,10 +11,11 @@ with lib;
   config = mkIf config.modules.steamvr.enable {
     environment.systemPackages = with pkgs; [ wlx-overlay-s ];
 
-    # protocol.rules = [
-    #   "bspc rule -a 'SteamVR' state=floating"
-    #   "bspc rule -a 'SteamVR Monitor' state=floating"
-    # ];
+    protocol.rules = [
+      "windowrulev2 = workspace 5, initialTitle:(.*[vV][rR].*)" # match with any title that has "VR"
+    ];
+
+    programs.steam.extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
 
     boot.kernelPatches = [
       {

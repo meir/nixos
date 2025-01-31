@@ -38,9 +38,15 @@
       "workspace = 8, monitor:DP-1"
       "workspace = 9, monitor:DP-1"
       "workspace = 10, monitor:DP-1"
+
+      "windowrulev2 = workspace 10, class:^(thunderbird)$"
+      "windowrulev2 = workspace 6, class:^(discord)$"
     ];
 
-    autostart = [ "discord &" ];
+    autostart = [
+      "thunderbird"
+      "discord"
+    ];
   };
 
   services.xserver = {
