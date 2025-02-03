@@ -49,7 +49,7 @@
       # kill app
       super + shift + q
         sxhkd | bspc node -k
-        hyprland | exec, hyprctl activewindow -j | jq -r '.pid' | xargs kill
+        hyprland | forcekillactive
 
       # change mode
       super + {t,shift + t,s,f}

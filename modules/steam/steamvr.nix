@@ -39,6 +39,64 @@ with lib;
           }
         }
       '';
+      ".config/wlxoverlay/openxr_actions.json5".text = ''
+        [
+          {
+            profile: "/interaction_profiles/valve/index_controller",
+            pose: {
+              left: "/user/hand/left/input/aim/pose",
+              right: "/user/hand/right/input/aim/pose"
+            },
+            haptic: {
+              left: "/user/hand/left/output/haptic",
+              right: "/user/hand/right/output/haptic"
+            },
+            click: {
+              left: "/user/hand/left/input/trigger/value",
+              right: "/user/hand/right/input/trigger/value"
+            },
+            // alt_click: {
+            //  right: "/user/hand/right/input/trackpad/force",
+            // },
+            grab: {
+              left: "/user/hand/left/input/squeeze/force",
+              right: "/user/hand/right/input/squeeze/force"
+            },
+            scroll: {
+              left: "/user/hand/left/input/thumbstick/y",
+              right: "/user/hand/right/input/thumbstick/y"
+            },
+            toggle_dashboard: {
+              double_click: false,
+              right: "/user/hand/right/input/system/click",
+            },
+            show_hide: {
+              double_click: true,
+              left: "/user/hand/left/input/b/click",
+            },
+            space_drag: {
+              left: "/user/hand/left/input/trackpad/force",
+              right: "/user/hand/right/input/trackpad/force",
+            },
+            space_reset: {
+              left: "/user/hand/left/input/thumbstick/click",
+            },
+            click_modifier_right: {
+              left: "/user/hand/left/input/b/touch",
+              right: "/user/hand/right/input/b/touch"
+            },
+            click_modifier_middle: {
+              left: "/user/hand/left/input/a/touch",
+              right: "/user/hand/right/input/a/touch"
+            },
+            move_mouse: {
+              // used with focus_follows_mouse_mode
+              left: "/user/hand/left/input/trigger/touch",
+              right: "/user/hand/right/input/trigger/touch"
+            }
+          }
+        ]
+      '';
     };
 
     desktop.entry = {
