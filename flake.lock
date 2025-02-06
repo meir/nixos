@@ -173,7 +173,6 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-<<<<<<< Updated upstream
         "lastModified": 1738579718,
         "narHash": "sha256-HcNEFumdZ4Y59CBB1h1IzOyPxwn0u/Wson6hhzItXCA=",
         "owner": "viperML",
@@ -192,12 +191,8 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1736631212,
-        "narHash": "sha256-mG9lRZBcPiAGiVJ9B97BJoIGQcSBWIVlBiN30QYCtG0=",
-=======
         "lastModified": 1738277753,
         "narHash": "sha256-iyFcCOk0mmDiv4ut9mBEuMxMZIym3++0qN1rQBg8FW0=",
->>>>>>> Stashed changes
         "owner": "LnL7",
         "repo": "nix-darwin",
         "rev": "49b807fa7c37568d7fbe2aeaafb9255c185412f9",
