@@ -31,6 +31,7 @@ in
 
       ".config/wlxoverlay/keyboard.yaml".source = ./config/wlxoverlay/keyboard.yaml;
       ".config/wlxoverlay/watch.yaml".source = ./config/wlxoverlay/watch.yaml;
+      ".config/wlxoverlay/openxr_actions.json5".source = ./config/wlxoverlay/openxr_actions.json5;
 
       ".config/eww".source = ./config/eww;
 

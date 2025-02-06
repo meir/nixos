@@ -17,6 +17,7 @@
   environment.systemPackages = with pkgs; [
     git
     curl
+    nyxt
   ];
 
   services.nix-daemon.enable = true;
