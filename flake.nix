@@ -12,13 +12,19 @@
     # Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nh.url = "github:viperML/nh";
   };
 
   outputs =
     inputs:
     let
       specialArgs = {
-        inherit (inputs) nixpkgs-unstable nixpkgs-xr izu;
+        inherit (inputs)
+          nixpkgs-unstable
+          nixpkgs-xr
+          izu
+          nh
+          ;
       };
     in
     {
