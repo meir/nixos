@@ -329,7 +329,6 @@
     },
     "nixpkgs_3": {
       "locked": {
-<<<<<<< Updated upstream
         "lastModified": 1735563628,
         "narHash": "sha256-OnSAY7XDSx7CtDoqNh8jwVwh4xNL/2HaJxGjryLWzX8=",
         "owner": "NixOS",
@@ -346,12 +345,8 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1718149104,
-        "narHash": "sha256-Ds1QpobBX2yoUDx9ZruqVGJ/uQPgcXoYuobBguyKEh8=",
-=======
         "lastModified": 1736241350,
         "narHash": "sha256-CHd7yhaDigUuJyDeX0SADbTM9FXfiWaeNyY34FL1wQU=",
->>>>>>> Stashed changes
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "8c9fd3e564728e90829ee7dbac6edc972971cd0f",
