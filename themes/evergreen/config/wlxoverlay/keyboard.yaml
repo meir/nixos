@@ -23,11 +23,11 @@ key_sizes:
   - [0.5, 1, 1, 1,  2.25, 2, 1, 1, 1,1,0.5]
 
 main_layout:
-  - ["Til", "N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "N0","Minus"]
-  - ["Esc", "Q",  "W",  "E",  "R",  "T",  "Y",  "U",  "I",  "O",  "P", "Plus" ]
-  - ["Tab",  "A",  "S",  "D",  "F",  "G",  "H",  "J",  "K",  "L", "QT", "CLN" ]
-  - ["Shft",   "Z",  "X",  "C",  "V",  "B",  "N",  "M", "Com", "Dot",   "Ent" ]
-  - [ ~, "Ctl", "Alt", "Sup",  "Space",   "BSpace", "LT", "DN", "UP", "RT", ~ ]
+  - ["Oem3", "N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "N0","Minus"]
+  - ["Escape", "Q",  "W",  "E",  "R",  "T",  "Y",  "U",  "I",  "O",  "P", "Plus" ]
+  - ["Tab",  "A",  "S",  "D",  "F",  "G",  "H",  "J",  "K",  "L", "Oem7", "Oem1" ]
+  - ["LShift",   "Z",  "X",  "C",  "V",  "B",  "N",  "M", "Comma", "Period",   "KP_Enter" ]
+  - [ ~, "LCtrl", "LAlt", "LSuper",  "Space",   "BackSpace", "Left", "Down", "Up", "Rright", ~ ]
 
 alt_modifier: None
 alt_layout_mode: None
@@ -35,22 +35,6 @@ alt_layout_mode: None
 exec_commands:
 
 macros:
-  Esc: ["Escape"]
-  Shft: ["LShift"]
-  Ent: ["KP_Enter"]
-  Ctl: ["LCtrl"]
-  Sup: ["LSuper"]
-  Alt: ["LAlt"]
-  BSpace: ["BackSpace"]
-  Til: ["Oem3"]
-  QT: ["Oem7"]
-  CLN: ["Oem1"]
-  LF: ["Left"]
-  RT: ["Right"]
-  DN: ["Down"]
-  UP: ["Up"]
-  Dot: ["Period"]
-  Com: ["Comma"]
 
 labels:
   "N1": ["1", "!"]

@@ -8,13 +8,13 @@ elements:
   # background panel
   - type: Panel
     rect: [0, 0, 400, 200]
-    bg_color: "#353535"
+    bg_color: "#181818"
 
   - type: Button
     rect: [2, 162, 26, 36]
     font_size: 14
-    bg_color: "#808040"
-    fg_color: "#ffffff"
+    bg_color: "#D1496B"
+    fg_color: "#f7f4f3"
     text: "C"
     click_up: # destroy if exists, otherwise create
       - type: Window
