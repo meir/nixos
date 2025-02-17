@@ -13,6 +13,7 @@ with lib;
       neovim
       git
       curl
+      gcc
       cmake
       go
       gnumake
