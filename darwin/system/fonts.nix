@@ -12,12 +12,8 @@ with lib;
     fonts.packages = with pkgs; [
       cozette-nerdfont
       dina-remastered
-      (nerdfonts.override {
-        fonts = [
-          "Mononoki"
-          "RobotoMono"
-        ];
-      })
+      nerd-fonts.mononoki
+      nerd-fonts.roboto-mono
     ];
   };
 }
