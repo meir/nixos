@@ -4,7 +4,6 @@
   user_home = "/Users/meir";
 
   environment.systemPackages = with pkgs; [
-    discord
     spotify
     comma
     gnused
