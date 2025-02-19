@@ -26,7 +26,21 @@ with lib;
       xclip
       nixfmt-rfc-style
       luajitPackages.luarocks
-      lua
+      lua51Packages.lua
+      tree-sitter
+      fd
+
+      # conform
+      black
+      clang-tools
+      gotools
+      google-java-format
+      ktlint
+      php84Packages.php-cs-fixer
+      nodePackages.prettier
+      rufo
+      shfmt
+      stylua
     ];
   };
 }
