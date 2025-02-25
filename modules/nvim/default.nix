@@ -28,6 +28,7 @@ with lib;
       lua51Packages.lua
       tree-sitter
       fd
+      coreutils
 
       # conform
       black

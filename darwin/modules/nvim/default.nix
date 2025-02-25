@@ -30,6 +30,7 @@ with lib;
       tree-sitter
       fd
       pokemon-colorscripts-mac
+      coreutils
 
       # conform
       black
