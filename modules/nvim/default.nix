@@ -40,7 +40,7 @@ with lib;
       rufo
       shfmt
       stylua
-      pokemon-colorscripts
+      pokemon-colorscripts-mac
     ];
   };
 }

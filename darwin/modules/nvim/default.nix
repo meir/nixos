@@ -29,7 +29,7 @@ with lib;
       lua51Packages.lua
       tree-sitter
       fd
-      pokemon-colorscripts
+      pokemon-colorscripts-mac
 
       # conform
       black
