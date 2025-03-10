@@ -92,7 +92,7 @@
     initrd.enable = true;
     opencl.enable = true;
     amdvlk.enable = true;
-    support32Bit.enable = true;
+    amdvlk.support32Bit.enable = true;
   };
 
   boot.loader = {
@@ -111,6 +111,6 @@
 
   fileSystems."/windows" = {
     device = "/dev/disk/by-partuuid/2d5a610a-d995-4cf3-8153-34e0a9d66cf5";
-    fsType = "ntfs";
-  }
+    fsType = "fuseblk";
+  };
 }

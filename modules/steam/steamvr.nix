@@ -60,10 +60,9 @@ with lib;
         }
       '';
       ".local/share/monado/hand-tracking-models".source = pkgs.fetchgit {
-        url = "https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models";
-        rev = "main";
+        url = "https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models.git";
         fetchLFS = true;
-        sha256 = "";
+        sha256 = "sha256-x/X4HyyHdQUxn3CdMbWj5cfLvV7UyQe1D01H93UCk+M=";
       };
     };
 
