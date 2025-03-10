@@ -10,6 +10,10 @@
   theme.evergreen.enable = true;
 
   environment.systemPackages = with pkgs; [
+    vulkan-tools
+    vulkan-loader
+    mesa.drivers
+
     gimp
     prismlauncher
     spotify
@@ -91,8 +95,7 @@
   hardware.amdgpu = {
     initrd.enable = true;
     opencl.enable = true;
-    amdvlk.enable = true;
-    amdvlk.support32Bit.enable = true;
+    amdvlk.enable = false;
   };
 
   boot.loader = {
@@ -111,6 +114,6 @@
 
   fileSystems."/windows" = {
     device = "/dev/disk/by-partuuid/2d5a610a-d995-4cf3-8153-34e0a9d66cf5";
-    fsType = "fuseblk";
+    fsType = "ntfs";
   };
 }

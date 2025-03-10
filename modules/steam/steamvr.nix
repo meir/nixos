@@ -31,6 +31,7 @@ with lib;
     services.monado = {
       enable = true;
       defaultRuntime = true;
+      package = pkgs.monado;
     };
 
     systemd.user.services.monado.environment = {
