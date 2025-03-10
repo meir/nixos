@@ -16,10 +16,9 @@
     stremio
     thunderbird
     retroarch
-    unstable.manga-tui
     unityhub
-    unigine-superposition
     aseprite
+    zathura
   ];
 
   protocol = {

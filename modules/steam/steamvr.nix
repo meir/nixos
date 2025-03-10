@@ -28,24 +28,50 @@ with lib;
       }
     ];
 
+    services.monado = {
+      enable = true;
+      defaultRuntime = true;
+    };
+
+    systemd.user.services.monado.environment = {
+      STEAMVR_LH_ENABLE = "1";
+      XRT_COMPOSITOR_COMPUTE = "1";
+    };
+
     hm.home.file = {
-      ".config/openxr/1/active_runtime.json".text = ''
+      ".config/openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+      ".config/openvr/openvrpaths.vrpath".text = ''
         {
-          "file_format_version": "1.0.0",
-          "runtime": {
-            "VALVE_runtime_is_steamvr": true,
-            "library_path": "/home/${config.user}/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrclient.so",
-            "name": "SteamVR"
-          }
+          "config" :
+          [
+            "${config.user_home}/.local/share/Steam/config"
+          ],
+          "external_drivers" : null,
+          "jsonid" : "vrpathreg",
+          "log" :
+          [
+            "${config.user_home}/.local/share//Steam/logs"
+          ],
+          "runtime" :
+          [
+            "${pkgs.opencomposite}/lib/opencomposite"
+          ],
+          "version" : 1
         }
       '';
+      ".local/share/monado/hand-tracking-models".source = pkgs.fetchgit {
+        url = "https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models";
+        rev = "main";
+        fetchLFS = true;
+        sha256 = "";
+      };
     };
 
     desktop.entry = {
       wlx-overlay-s = {
         name = "WLX Overlay S";
         comment = "WLX Overlay for SteamVR";
-        exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace";
+        exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace --openxr";
       };
     };
   };
