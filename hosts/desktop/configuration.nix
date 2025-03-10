@@ -103,4 +103,14 @@
     };
     efi.canTouchEfiVariables = true;
   };
+
+  fileSystems."/games" = {
+    device = "/dev/disk/by-partuuid/be90f083-8588-4832-befa-72e81ce0a948";
+    fsType = "ext4";
+  };
+
+  fileSystems."/windows" = {
+    device = "/dev/disk/by-partuuid/2d5a610a-d995-4cf3-8153-34e0a9d66cf5";
+    fsType = "ntfs";
+  }
 }
