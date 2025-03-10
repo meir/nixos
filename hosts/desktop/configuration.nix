@@ -87,9 +87,12 @@
   powerManagement.enable = false;
   hardware.bluetooth.enable = true;
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  hardware.graphics.enable32Bit = true;
+  hardware.amdgpu = {
+    initrd.enable = true;
+    opencl.enable = true;
+    amdvlk.enable = true;
+    support32Bit.enable = true;
   };
 
   boot.loader = {

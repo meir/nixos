@@ -1,0 +1,34 @@
+##[pylyzer] failed /users/meir/documents/personal/nixos/darwin/modules/qutebrowser/config.py 1741599096 1206
+.c: Never
+.config: Never
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bg: {"@bg@"}
+.fg: {"@fg@"}
+.contrast_low: {"#131711"}
+.contrast_high: {"#D1496B"}
+.accent: {"#10A070"}
+
+
+
+
+
+
+
+
+
+
+
+
+
