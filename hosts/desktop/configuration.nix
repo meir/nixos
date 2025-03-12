@@ -78,7 +78,10 @@
     qutebrowser.enable = true;
     rofi.enable = true;
     steam.enable = true;
-    steamvr.enable = true;
+    steamvr = {
+      enable = true;
+      runtime = "steamvr";
+    };
   };
 
   # additional hardware configuration

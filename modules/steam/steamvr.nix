@@ -5,29 +5,8 @@
   ...
 }:
 with lib;
-{
-  options.modules.steamvr.enable = mkEnableOption "SteamVR support";
-
-  config = mkIf config.modules.steamvr.enable {
-    environment.systemPackages = with pkgs; [ wlx-overlay-s ];
-
-    protocol.rules = [
-      "windowrulev2 = workspace 5, initialTitle:(.*[vV][rR].*)" # match with any title that has "VR"
-    ];
-
-    programs.steam.extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
-
-    boot.kernelPatches = [
-      {
-        name = "amdgpu-ignore-ctx-privileges";
-        patch = pkgs.fetchpatch {
-          name = "cap_sys_nice_begone.patch";
-          url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
-          hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
-        };
-      }
-    ];
-
+let
+  monado-config = {
     services.monado = {
       enable = true;
       defaultRuntime = true;
@@ -81,4 +60,80 @@ with lib;
       };
     };
   };
+
+  steam-config = {
+    hm.home.file = {
+      ".config/openxr/1/active_runtime.json".text = ''
+        {
+          "file_format_version": "1.0.0",
+          "runtime": {
+            "VALVE_runtime_is_steamvr": true,
+            "library_path": "/home/${config.user}/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrclient.so",
+            "name": "SteamVR"
+          }
+        }
+      '';
+      ".config/openvr/openvrpaths.vrpath".text = ''
+        {
+          "config" :
+          [
+            "${config.user_home}/.local/share/Steam/config"
+          ],
+          "external_drivers" : null,
+          "jsonid" : "vrpathreg",
+          "log" :
+          [
+            "${config.user_home}/.local/share//Steam/logs"
+          ],
+          "runtime" :
+          [
+            "${config.user_home}/.steam/steam/steamapps/common/SteamVR""
+          ],
+          "version" : 1
+        }
+      '';
+    };
+    desktop.entry = {
+      wlx-overlay-s = {
+        name = "WLX Overlay S";
+        comment = "WLX Overlay for SteamVR";
+        exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace";
+      };
+    };
+  };
+in
+{
+  options.modules.steamvr = {
+    enable = mkEnableOption "SteamVR support";
+    runtime = mkOption {
+      type = types.enum [
+        "steamvr"
+        "monado"
+      ];
+      default = "steamvr";
+    };
+  };
+
+  config =
+    mkIf config.modules.steamvr.enable {
+      environment.systemPackages = with pkgs; [ wlx-overlay-s ];
+
+      protocol.rules = [
+        "windowrulev2 = workspace 5, initialTitle:(.*[vV][rR].*)" # match with any title that has "VR"
+      ];
+
+      programs.steam.extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
+
+      boot.kernelPatches = [
+        {
+          name = "amdgpu-ignore-ctx-privileges";
+          patch = pkgs.fetchpatch {
+            name = "cap_sys_nice_begone.patch";
+            url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
+            hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
+          };
+        }
+      ];
+    }
+    // (if config.modules.steamvr.runtime == "monado" then monado-config else steam-config);
 }
