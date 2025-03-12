@@ -22,6 +22,9 @@ let
     systemd.user.services.monado.environment = {
       STEAMVR_LH_ENABLE = "1";
       XRT_COMPOSITOR_COMPUTE = "1";
+      U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "10";
+      U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
+      XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
     };
 
     hm.home.file = {
