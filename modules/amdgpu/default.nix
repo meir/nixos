@@ -35,12 +35,12 @@ with lib;
 
     hardware.opengl.extraPackages = with pkgs; [
       rocmPackages.clr.icd
-      amdvlk
+      # amdvlk
     ];
 
-    hardware.opengl.extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
-    ];
+    # hardware.opengl.extraPackages32 = with pkgs; [
+    #   driversi686Linux.amdvlk
+    # ];
 
     hardware.graphics.enable32Bit = true;
     hardware.amdgpu = {
