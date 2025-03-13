@@ -82,7 +82,8 @@ with lib;
     '';
   };
 
-  hm.home.file.".cache/oh-my-zsh/completions/_cdl".source = "${pkgs.cdl}/shared/.oh-my-zsh/completions/_cdl";
+  hm.home.file.".cache/oh-my-zsh/completions/_cdl".source =
+    "${pkgs.cdl}/shared/.oh-my-zsh/completions/_cdl";
 
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [

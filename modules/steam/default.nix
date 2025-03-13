@@ -7,8 +7,21 @@
 with lib;
 {
   options.modules.steam.enable = mkEnableOption "steam";
+  options.modules.steamvr = {
+    enable = mkEnableOption "SteamVR support";
+    runtime = mkOption {
+      type = types.enum [
+        "steamvr"
+        "monado"
+      ];
+      default = "steamvr";
+    };
+  };
 
-  imports = [ ./steamvr.nix ];
+  imports = [
+    ./steamvr.nix
+    ./monado.nix
+  ];
 
   config = mkIf config.modules.steam.enable {
     environment.systemPackages = with pkgs; [

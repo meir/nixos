@@ -10,10 +10,6 @@
   theme.evergreen.enable = true;
 
   environment.systemPackages = with pkgs; [
-    vulkan-tools
-    vulkan-loader
-    mesa.drivers
-
     gimp
     prismlauncher
     spotify
@@ -63,6 +59,7 @@
   };
 
   modules = {
+    amdgpu.enable = true;
     containerization.enable = true;
     discord.enable = true;
     eww.enable = true;
@@ -84,31 +81,8 @@
     };
   };
 
-  # additional hardware configuration
-  boot.initrd.availableKernelModules = [
-    "usb_storage"
-    "sd_mod"
-  ];
-  boot.supportedFilesystems = [ "ntfs" ];
-
   powerManagement.enable = false;
   hardware.bluetooth.enable = true;
-
-  hardware.graphics.enable32Bit = true;
-  hardware.amdgpu = {
-    initrd.enable = true;
-    opencl.enable = true;
-    amdvlk.enable = false;
-  };
-
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      consoleMode = "max";
-      configurationLimit = 50;
-    };
-    efi.canTouchEfiVariables = true;
-  };
 
   fileSystems."/games" = {
     device = "/dev/disk/by-partuuid/be90f083-8588-4832-befa-72e81ce0a948";

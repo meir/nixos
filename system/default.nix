@@ -16,6 +16,7 @@
     ./protocol.nix
     ./applications.nix
     ./terminal.nix
+    ./storage.nix
 
     # themes
     ../themes/evergreen

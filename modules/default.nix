@@ -12,5 +12,6 @@
     ./qutebrowser
     ./rofi
     ./steam
+    ./amdgpu
   ];
 }

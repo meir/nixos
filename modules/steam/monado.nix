@@ -1,12 +1,12 @@
 {
   config,
-  lib,
   pkgs,
+  lib,
   ...
 }:
 with lib;
 {
-  config = mkIf (config.modules.steamvr.enable && config.modules.steamvr.runtime == "steamvr") {
+  config = mkIf (config.modules.steamvr.enable && config.modules.steamvr.runtime == "monado") {
     environment.systemPackages = with pkgs; [ wlx-overlay-s ];
 
     protocol.rules = [
@@ -26,17 +26,28 @@ with lib;
       }
     ];
 
+    services.monado = {
+      enable = true;
+      defaultRuntime = true;
+      package = pkgs.monado;
+    };
+
+    programs.envision = {
+      enable = true;
+      package = pkgs.envision;
+      openFirewall = true;
+    };
+
+    systemd.user.services.monado.environment = {
+      STEAMVR_LH_ENABLE = "1";
+      XRT_COMPOSITOR_COMPUTE = "1";
+      U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "10";
+      U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
+      XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
+    };
+
     hm.home.file = {
-      ".config/openxr/1/active_runtime.json".text = ''
-        {
-          "file_format_version": "1.0.0",
-          "runtime": {
-            "VALVE_runtime_is_steamvr": true,
-            "library_path": "/home/${config.user}/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrclient.so",
-            "name": "SteamVR"
-          }
-        }
-      '';
+      ".config/openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
       ".config/openvr/openvrpaths.vrpath".text = ''
         {
           "config" :
@@ -51,17 +62,23 @@ with lib;
           ],
           "runtime" :
           [
-            "${config.user_home}/.steam/steam/steamapps/common/SteamVR""
+            "${pkgs.opencomposite}/lib/opencomposite"
           ],
           "version" : 1
         }
       '';
+      ".local/share/monado/hand-tracking-models".source = pkgs.fetchgit {
+        url = "https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models.git";
+        fetchLFS = true;
+        sha256 = "sha256-x/X4HyyHdQUxn3CdMbWj5cfLvV7UyQe1D01H93UCk+M=";
+      };
     };
+
     desktop.entry = {
       wlx-overlay-s = {
         name = "WLX Overlay S";
         comment = "WLX Overlay for SteamVR";
-        exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace";
+        exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace --openxr";
       };
     };
   };
