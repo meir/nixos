@@ -51,7 +51,7 @@ with lib;
           ],
           "runtime" :
           [
-            "${config.user_home}/.steam/steam/steamapps/common/SteamVR""
+            "${config.user_home}/.local/share/Steam/steamapps/common/SteamVR"
           ],
           "version" : 1
         }
