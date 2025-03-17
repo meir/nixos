@@ -8,11 +8,11 @@
     # Overlays
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     izu.url = "github:meir/izu";
+    nh.url = "github:viperML/nh";
 
     # Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    nh.url = "github:viperML/nh";
   };
 
   outputs =
@@ -30,7 +30,6 @@
     {
       nixosConfigurations = {
         desktop = import ./hosts/desktop/system.nix inputs specialArgs;
-        server = import ./hosts/hp-server/system.nix inputs specialArgs;
       };
       darwinConfigurations = {
         work-laptop = import ./hosts/work-macos/system.nix inputs specialArgs;
