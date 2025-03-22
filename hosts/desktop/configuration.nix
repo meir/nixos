@@ -18,7 +18,7 @@
     retroarch
     unityhub
     aseprite
-    zathura
+    foliate
   ];
 
   protocol = {
