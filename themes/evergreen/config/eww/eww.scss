@@ -1,7 +1,6 @@
-
 * {
   all: unset;
-  font-family: 'DinaRemasterII Nerd Font';
+  font-family: "DinaRemasterII Nerd Font";
   font-size: 15px;
 }
 
@@ -17,7 +16,9 @@ $h-padding: 12.5px;
   padding-right: $padding;
 }
 
-.ws-idle, .ws-focused, .ws-occupied {
+.ws-idle,
+.ws-focused,
+.ws-occupied {
   padding-right: $h-padding;
   padding-left: $h-padding;
   margin: 0;
@@ -44,6 +45,11 @@ $h-padding: 12.5px;
 }
 
 .charge {
+  padding-right: $h-padding;
+  padding-left: $h-padding;
+}
+
+.tray {
   padding-right: $h-padding;
   padding-left: $h-padding;
 }
