@@ -30,6 +30,7 @@
     :space-evenly false
     :halign "end"
 
+    (tray)
     (music)
     (time)
   ) 

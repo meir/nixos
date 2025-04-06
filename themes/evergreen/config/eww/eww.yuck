@@ -6,6 +6,7 @@
 (include "modules/audio/module.yuck")
 (include "modules/time/module.yuck")
 (include "modules/charge/module.yuck")
+(include "modules/tray/module.yuck")
 
 ; windows
 (include "widgets/bar_desktop1.yuck")
