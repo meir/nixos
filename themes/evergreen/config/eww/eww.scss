@@ -1,12 +1,23 @@
+@import "colors.scss";
+
 * {
   all: unset;
   font-family: "DinaRemasterII Nerd Font";
   font-size: 15px;
 }
 
-@import "colors.scss";
-
 $h-padding: 12.5px;
+
+menu {
+  padding: $h-padding;
+  background-color: $bg;
+  border: 3px solid $contrast-high;
+  border-radius: 10px;
+
+  menuitem {
+    padding: 5px;
+  }
+}
 
 .bar {
   background-color: $bg;
