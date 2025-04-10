@@ -40,11 +40,13 @@
 
       "windowrulev2 = workspace 10, class:^(thunderbird)$"
       "windowrulev2 = workspace 6, class:^(discord)$"
+      "windowrulev2 = workspace 7, class:^(spotify)$"
     ];
 
     autostart = [
       "thunderbird"
       "discord"
+      "spotify"
     ];
   };
 
