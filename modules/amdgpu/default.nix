@@ -20,7 +20,20 @@ with lib;
     boot.initrd.kernelModules = [ "amdgpu" ];
     boot.kernelParams = [
       "amdgpu.ppfeaturemask=0xffffffff"
+      "amdgpu.dc=0"
+      "amdgpu.noretry=0"
+      "radeon.si_support=0"
+      "amdgpu.si_support=1"
     ];
+
+    environment.variables = {
+      MESA_NO_ERROR = "1";
+      MESA_GL_VERSION_OVERRIDE = "4.5";
+      MESA_GLSL_VERSION_OVERRIDE = "450";
+      __GL_THREADED_OPTIMIZATIONS = "1";
+      mesa_glthread = "true";
+      R600_DEBUG = "nohyperz,nosb";
+    };
 
     systemd.tmpfiles.rules =
       let
@@ -48,6 +61,7 @@ with lib;
 
     hardware.graphics.extraPackages = with pkgs; [
       rocmPackages.clr.icd
+      rocmPackages.rocm-runtime
       # amdvlk
     ];
 
