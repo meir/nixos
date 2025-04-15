@@ -33,6 +33,19 @@ with lib;
         "L+    /opt/rocm/hip   -    -    -     -    ${rocmEnv}"
       ];
 
+    hardware.opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+
+    boot.kernel.sysctl = {
+      "vm.swappiness" = 10;
+      "vm.vfs_cache_pressure" = 50;
+    };
+
+    powerManagement.cpuFreqGovernor = "performance";
+
     hardware.opengl.extraPackages = with pkgs; [
       rocmPackages.clr.icd
       # amdvlk
