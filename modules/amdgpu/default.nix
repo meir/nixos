@@ -33,7 +33,7 @@ with lib;
         "L+    /opt/rocm/hip   -    -    -     -    ${rocmEnv}"
       ];
 
-    hardware.grahpics.enable = true;
+    hardware.graphics.enable = true;
 
     boot.kernel.sysctl = {
       "vm.swappiness" = 10;
