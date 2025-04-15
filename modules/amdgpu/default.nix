@@ -20,10 +20,6 @@ with lib;
     boot.initrd.kernelModules = [ "amdgpu" ];
     boot.kernelParams = [
       "amdgpu.ppfeaturemask=0xffffffff"
-      "amdgpu.dc=0"
-      "amdgpu.noretry=0"
-      "radeon.si_support=0"
-      "amdgpu.si_support=1"
     ];
 
     environment.variables = {
