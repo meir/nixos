@@ -14,9 +14,13 @@ with lib;
       vulkan-tools
       vulkan-loader
       mesa.drivers
+      gamemode
     ];
 
     boot.initrd.kernelModules = [ "amdgpu" ];
+    boot.kernelParams = [
+      "amdgpu.ppfeaturemask=0xffffffff"
+    ];
 
     systemd.tmpfiles.rules =
       let
