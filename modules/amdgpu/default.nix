@@ -13,7 +13,7 @@ with lib;
       clinfo
       vulkan-tools
       vulkan-loader
-      mesa.drivers
+      mesa
       gamemode
     ];
 
