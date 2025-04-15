@@ -33,7 +33,7 @@ with lib;
         "L+    /opt/rocm/hip   -    -    -     -    ${rocmEnv}"
       ];
 
-    hardware.opengl.enable = true;
+    hardware.grahpics.enable = true;
 
     boot.kernel.sysctl = {
       "vm.swappiness" = 10;
@@ -42,7 +42,7 @@ with lib;
 
     powerManagement.cpuFreqGovernor = "performance";
 
-    hardware.opengl.extraPackages = with pkgs; [
+    hardware.graphics.extraPackages = with pkgs; [
       rocmPackages.clr.icd
       # amdvlk
     ];
