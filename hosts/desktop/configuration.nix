@@ -1,16 +1,13 @@
 {
   pkgs,
-  config,
-  lib,
   ...
 }:
 {
   user = "human";
 
-  theme.evergreen.enable = true;
-
   environment.systemPackages = with pkgs; [
     gimp
+    (wrapOBS { plugins = with obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
     prismlauncher
     spotify
     stremio
@@ -40,7 +37,7 @@
 
       "windowrulev2 = workspace 10, class:^(thunderbird)$"
       "windowrulev2 = workspace 6, class:^(discord)$"
-      "windowrulev2 = workspace 7, class:^(spotify)$"
+      "windowrulev2 = workspace 7, class:^(Spotify)$"
     ];
 
     autostart = [
@@ -50,40 +47,31 @@
     ];
   };
 
-  services.xserver = {
-    xrandrHeads = [
-      "DP-1"
-      {
-        output = "HDMI-A-2";
-        primary = true;
-      }
-    ];
-  };
-
   modules = {
     amdgpu.enable = true;
     containerization.enable = true;
-    discord.enable = true;
-    eww.enable = true;
-    eww.widgets = [
-      "mon1"
-      "mon2"
-    ];
-    mpv.enable = true;
-    nvim.enable = true;
-    obs.enable = true;
-    onepassword.enable = true;
-    qmk.enable = true;
-    qutebrowser.enable = true;
+    eww = {
+      enable = true;
+      widgets = [
+        "mon1"
+        "mon2"
+      ];
+    };
     rofi.enable = true;
+    mako.enable = true;
+    swww.enable = true;
     steam.enable = true;
     steamvr = {
       enable = true;
       runtime = "steamvr";
     };
+    discord.enable = true;
+    qutebrowser.enable = true;
+    nvim.enable = true;
+    onepassword.enable = true;
+    qmk.enable = true;
   };
 
-  powerManagement.enable = false;
   hardware.bluetooth.enable = true;
 
   fileSystems."/games" = {

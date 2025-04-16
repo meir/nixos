@@ -82,8 +82,26 @@ with lib;
     '';
   };
 
-  hm.home.file.".cache/oh-my-zsh/completions/_cdl".source =
-    "${pkgs.cdl}/shared/.oh-my-zsh/completions/_cdl";
+  hm.home.file = {
+    ".cache/oh-my-zsh/completions/_cdl".source = "${pkgs.cdl}/shared/.oh-my-zsh/completions/_cdl";
+    ".config/starship.toml".text = ''
+      format = ' (blue)$directory(green)‣ '
+      add_newline = false
+    '';
+    ".config/kitty/kitty.conf".text = ''
+      map ctrl+c copy_and_clear_or_interrupt
+      map ctrl+v paste_from_clipboard
+
+      enable_audio_bell no
+
+      background_opacity 0.5
+
+      font_family DinaRemasterII Nerd Font
+      font_size 12
+
+      enable_audio_bell no
+    '';
+  };
 
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [

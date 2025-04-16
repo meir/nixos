@@ -1,7 +1,4 @@
 # ignore errors on the rest of the file
-c = c
-config = config
-
 config.load_autoconfig()
 
 c.auto_save.session = True
@@ -21,8 +18,7 @@ c.hints.selectors["all"] += [
 
 # keybindings
 
-config.bind('pi', 'spawn xdotool key space ;; spawn --userscript pinp {url}')
-config.bind('tt', 'config-cycle tabs.show always switching')
+config.bind("tt", "config-cycle tabs.show always switching")
 
 bg = "#101A0B"
 fg = "#F7F4F3"
@@ -45,4 +41,3 @@ c.colors.tabs.selected.even.bg = contrast_high
 c.colors.tabs.selected.even.fg = fg
 c.colors.tabs.selected.odd.bg = contrast_high
 c.colors.tabs.selected.odd.fg = fg
-

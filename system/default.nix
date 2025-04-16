@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  izu,
   ...
 }@inputs:
 {
@@ -17,9 +16,7 @@
     ./applications.nix
     ./terminal.nix
     ./storage.nix
-
-    # themes
-    ../themes/evergreen
+    ./style.nix
 
     ../modules
   ];
