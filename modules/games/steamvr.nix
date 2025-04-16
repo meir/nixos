@@ -56,7 +56,8 @@ with lib;
           "version" : 1
         }
       '';
-      ".config/wlxoverlay".source = ../config/wlxoverlay;
+      ".config/wlxoverlay/watch.yaml".source = ../config/wlxoverlay/watch.yaml;
+      ".config/wlxoverlay/keyboard.yaml".source = ../config/wlxoverlay/keyboard.yaml;
     };
     desktop.entry = {
       wlx-overlay-s = {

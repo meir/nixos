@@ -30,9 +30,7 @@ in
 
   config = (
     mkMerge [
-      mkIf
-      config.modules.eww.enable
-      {
+      (mkIf config.modules.eww.enable {
         environment.systemPackages = with pkgs; [
           eww
           zscroll
@@ -44,18 +42,17 @@ in
         ];
 
         hm.home.file.".config/eww".source = ../config/eww;
-      }
+      })
 
-      mkIf
-      config.modules.rofi.enable
-      {
+      (mkIf config.modules.rofi.enable {
         environment.systemPackages = with pkgs; [
           rofi
+          cliphist
         ];
 
-        protocol.autostart = with pkgs; [
-          "${getExe wl-paste} --type text --watch cliphist store"
-          "${getExe wl-paste} --type image --watch cliphist store"
+        protocol.autostart = [
+          "wl-paste --type text --watch cliphist store"
+          "wl-paste --type image --watch cliphist store"
         ];
 
         hm.home.file.".config/rofi".source = ../config/rofi;
@@ -67,17 +64,15 @@ in
           [
             ''
               super + {_, shift +} Space
-                ${rofi} -show {drun,run} &
+                hyprland | exec, ${rofi} -show {drun,run} &
 
               super + v
                 hyprland | exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy | wl-paste
             ''
           ];
-      }
+      })
 
-      mkIf
-      config.modules.mako.enable
-      {
+      (mkIf config.modules.mako.enable {
         environment.systemPackages = with pkgs; [
           mako
         ];
@@ -87,11 +82,9 @@ in
         ];
 
         hm.home.file.".config/mako/config".source = ../config/mako;
-      }
+      })
 
-      mkIf
-      config.modules.swww.enable
-      {
+      (mkIf config.modules.swww.enable {
         environment.systemPackages = with pkgs; [
           swww
           waypaper
@@ -100,7 +93,7 @@ in
         protocol.autostart = [
           "${getExe pkgs.swww} init"
         ];
-      }
+      })
     ]
   );
 }

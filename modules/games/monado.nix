@@ -72,7 +72,8 @@ with lib;
         fetchLFS = true;
         sha256 = "sha256-x/X4HyyHdQUxn3CdMbWj5cfLvV7UyQe1D01H93UCk+M=";
       };
-      ".config/wlxoverlay".source = ../config/wlxoverlay;
+      ".config/wlxoverlay/watch.yaml".source = ../config/wlxoverlay/watch.yaml;
+      ".config/wlxoverlay/keyboard.yaml".source = ../config/wlxoverlay/keyboard.yaml;
     };
 
     desktop.entry = {

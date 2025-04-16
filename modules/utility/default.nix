@@ -13,9 +13,7 @@ with lib;
 
   config = (
     mkMerge [
-      mkIf
-      config.modules.onepassword.enable
-      {
+      (mkIf config.modules.onepassword.enable {
 
         environment.systemPackages = with pkgs; [
           _1password-gui
@@ -30,11 +28,9 @@ with lib;
           ];
 
         programs._1password-gui.enable = true;
-      }
+      })
 
-      mkIf
-      config.modules.qmk.enable
-      {
+      (mkIf config.modules.qmk.enable {
         environment.systemPackages = with pkgs; [
           udev
           vial
@@ -42,7 +38,7 @@ with lib;
         ];
 
         services.udev.packages = with pkgs; [ vial ];
-      }
+      })
     ]
   );
 }

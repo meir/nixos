@@ -5,7 +5,7 @@
 {
   config = {
     stylix = {
-      enable = true;
+      enable = false;
 
       fonts = with pkgs; {
         serif = dina-remastered;

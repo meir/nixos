@@ -13,9 +13,7 @@ with lib;
 
   config = (
     mkMerge [
-      mkIf
-      config.modules.discord.enable
-      {
+      (mkIf config.modules.discord.enable {
         environment.systemPackages = with pkgs; [
           discord_wayland
         ];
@@ -24,17 +22,15 @@ with lib;
         boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
         programs.droidcam.enable = true;
-      }
+      })
 
-      mkIf
-      config.moduels.qutebrowser.enable
-      {
+      (mkIf config.modules.qutebrowser.enable {
         environment.systemPackages = with pkgs; [
           qutebrowser
           jq
         ];
 
-        hm.home.file.".config/qutebrowser".source = ../config/qutebrowser;
+        hm.home.file.".config/qutebrowser/config.py".source = ../config/qutebrowser/config.py;
 
         xdg.mime.defaultApplications = {
           "text/html" = "org.qutebrowser.qutebrowser.desktop";
@@ -43,7 +39,7 @@ with lib;
           "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
           "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
         };
-      }
+      })
     ]
   );
 }
