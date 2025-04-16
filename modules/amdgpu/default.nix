@@ -22,15 +22,6 @@ with lib;
       "amdgpu.ppfeaturemask=0xffffffff"
     ];
 
-    environment.variables = {
-      MESA_NO_ERROR = "1";
-      MESA_GL_VERSION_OVERRIDE = "4.5";
-      MESA_GLSL_VERSION_OVERRIDE = "450";
-      __GL_THREADED_OPTIMIZATIONS = "1";
-      mesa_glthread = "true";
-      R600_DEBUG = "nohyperz,nosb";
-    };
-
     systemd.tmpfiles.rules =
       let
         rocmEnv = pkgs.symlinkJoin {
@@ -47,11 +38,6 @@ with lib;
       ];
 
     hardware.graphics.enable = true;
-
-    boot.kernel.sysctl = {
-      "vm.swappiness" = 10;
-      "vm.vfs_cache_pressure" = 50;
-    };
 
     powerManagement.cpuFreqGovernor = "performance";
 
