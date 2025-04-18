@@ -81,7 +81,7 @@ in
           "${getExe pkgs.mako}"
         ];
 
-        hm.home.file.".config/mako/config".source = ../config/mako;
+        hm.home.file.".config/mako/config".source = ../config/mako/config;
       })
 
       (mkIf config.modules.swww.enable {
