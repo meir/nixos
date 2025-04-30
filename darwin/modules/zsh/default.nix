@@ -17,6 +17,8 @@ with lib;
       starship
       onefetch
       fastfetch
+
+      iconv
     ];
 
     programs.zsh.enable = true;
