@@ -11,6 +11,10 @@ with lib;
     qmk.enable = mkEnableOption "qmk";
   };
 
+  imports = [
+    ./bluetooth.nix
+  ];
+
   config = (
     mkMerge [
       (mkIf config.modules.onepassword.enable {

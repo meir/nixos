@@ -16,7 +16,6 @@
     unityhub
     aseprite
     foliate
-    blueberry
   ];
 
   protocol = {
@@ -50,6 +49,7 @@
 
   modules = {
     amdgpu.enable = true;
+    bluetooth.enable = true;
     containerization.enable = true;
     eww = {
       enable = true;
@@ -72,9 +72,6 @@
     onepassword.enable = true;
     qmk.enable = true;
   };
-
-  hardware.bluetooth.enable = true;
-  hardware.enableAllFirmware = true;
 
   fileSystems."/games" = {
     device = "/dev/disk/by-partuuid/be90f083-8588-4832-befa-72e81ce0a948";
