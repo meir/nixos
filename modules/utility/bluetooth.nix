@@ -15,6 +15,7 @@
       bluez
       bluez-alsa
       bluez-tools
+      evtest-qt
     ];
 
     systemd.services.bluetooth = {
