@@ -15,7 +15,7 @@ with lib;
     mkMerge [
       (mkIf config.modules.discord.enable {
         environment.systemPackages = with pkgs; [
-          discord_wayland
+          (discord.override { withOpenASAR = true; })
         ];
 
         security.polkit.enable = true;
