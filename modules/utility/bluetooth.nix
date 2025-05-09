@@ -11,11 +11,9 @@
 
   config = lib.mkIf config.modules.bluetooth.enable {
     services.blueman.enable = true;
-    hardware.enableAllFirmware = true;
-
     hardware.bluetooth = {
       enable = true;
-      input.General.ClassicBondedOnly = false;
+      package = pkgs.bluezFull;
       settings = {
         General = {
           Enable = "Source,Sink,Media,Socket";
