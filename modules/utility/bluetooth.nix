@@ -13,7 +13,7 @@
     services.blueman.enable = true;
     hardware.bluetooth = {
       enable = true;
-      package = pkgs.bluezFull;
+      powerOnBoot = true;
       settings = {
         General = {
           Enable = "Source,Sink,Media,Socket";
@@ -23,7 +23,6 @@
           FastConnectable = true;
         };
       };
-      powerOnBoot = true;
     };
   };
 }
