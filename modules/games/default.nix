@@ -27,6 +27,7 @@ with lib;
     environment.systemPackages = with pkgs; [
       protonup-qt
       protontricks
+      gamescope
       appimage-run
       usbutils
       steamtinkerlaunch

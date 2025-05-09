@@ -10,38 +10,22 @@
   };
 
   config = lib.mkIf config.modules.bluetooth.enable {
-    environment.systemPackages = with pkgs; [
-      blueberry
-      bluez
-      bluez-alsa
-      bluez-tools
-      evtest-qt
-    ];
-
-    systemd.services.bluetooth = {
-      enable = true;
-      wantedBy = [ "multi-user.target" ];
-    };
+    services.blueman.enable = true;
+    hardware.enableAllFirmware = true;
 
     hardware.bluetooth = {
       enable = true;
+      input.General.ClassicBondedOnly = false;
       settings = {
         General = {
           Enable = "Source,Sink,Media,Socket";
-          AutoEnable = true;
-          ControllerMode = "bredr";
-          Experimental = true;
+          Privacy = "device";
+          JustWorksRepairing = "always";
+          Class = "0x000100";
+          FastConnectable = true;
         };
       };
       powerOnBoot = true;
     };
-    services.blueman.enable = true;
-    hardware.enableAllFirmware = true;
-
-    boot.kernelModules = [
-      "hid_playstation"
-      "hid_generic"
-      "hid"
-    ];
   };
 }
