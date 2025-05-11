@@ -33,6 +33,19 @@ with lib;
       steamtinkerlaunch
       r2modman
       ffmpeg # add ffmpeg for ingame video players
+
+      # needed for steamtinkerlaunch
+      gawk
+      git
+      ripgrep
+      unzip
+      wget
+      xdotool
+      xorg.xprop
+      xorg.xrandr
+      unixtools.xxd
+      xorg.xwininfo
+      yad
     ];
 
     nixpkgs.config.allowUnfreePredicate =

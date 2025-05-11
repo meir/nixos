@@ -16,6 +16,7 @@ with lib;
     xdotool
     cargo
     rustc
+    python314
 
     # zsh
     zsh

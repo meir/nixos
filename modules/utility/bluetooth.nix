@@ -10,6 +10,20 @@
   };
 
   config = lib.mkIf config.modules.bluetooth.enable {
+    environment.systemPackages = with pkgs; [
+      python313Packages.ds4drv
+    ];
+
+    services.udev.packages = with pkgs; [
+      python313Packages.ds4drv
+    ];
+
+    services.udev.extraRules = ''
+      KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput", GROUP="input", MODE="0660"
+    '';
+
+    boot.kernelModules = [ "uinput" ];
+
     services.blueman.enable = true;
     hardware.bluetooth = {
       enable = true;
