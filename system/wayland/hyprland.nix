@@ -31,7 +31,6 @@ let
     } 
 
     cursor {
-      no_warps = true
       enable_hyprcursor = false
     }
 
@@ -68,23 +67,14 @@ let
 
     input {
       follow_mouse = 0
-      mouse_refocus = false
       float_switch_override_focus = 0
     } 
-
-    windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
-    windowrulev2 = noanim, class:^(xwaylandvideobridge)$
-    windowrulev2 = noinitialfocus, class:^(xwaylandvideobridge)$
-    windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
-    windowrulev2 = noblur, class:^(xwaylandvideobridge)$
-    windowrulev2 = nofocus, class:^(xwaylandvideobridge)$
   '';
 in
 {
   config = mkIf config.protocol.wayland.enable {
     environment.systemPackages = with pkgs; [
       socat
-      kdePackages.xwaylandvideobridge
       wl-clipboard
     ];
 
