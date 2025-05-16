@@ -12,6 +12,7 @@
   config = lib.mkIf config.modules.bluetooth.enable {
     environment.systemPackages = with pkgs; [
       python313Packages.ds4drv
+      overskride
     ];
 
     services.udev.packages = with pkgs; [
@@ -24,7 +25,6 @@
 
     boot.kernelModules = [ "uinput" ];
 
-    services.blueman.enable = true;
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;
