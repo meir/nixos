@@ -1,8 +1,8 @@
-{ pkgs, lib }:
-
-let
-  makeDesktopItem = pkgs.makeDesktopItem;
-in
+{
+  pkgs,
+  lib,
+  makeDesktopItem,
+}:
 pkgs.stdenv.mkDerivation rec {
   pname = "seanime";
   version = "2.8.4";
@@ -12,47 +12,31 @@ pkgs.stdenv.mkDerivation rec {
     hash = "sha256-H8yqsgWEj+e0VvTDpvavsC0AVf9voI2nVDwsCzq8X8U=";
   };
 
-  nativeBuildInputs = [
-    pkgs.makeWrapper
-    pkgs.squashfsTools
-  ];
+  nativeBuildInputs = [ pkgs.makeWrapper ];
 
-  phases = [
-    "unpackPhase"
-    "installPhase"
-  ];
-
-  unpackPhase = ''
-    mkdir -p squashfs-root
-    ${pkgs.squashfsTools}/bin/unsquashfs -f -d squashfs-root "$src"
-
-    if [ -f squashfs-root/seanime.png ]; then
-      cp squashfs-root/seanime.png .
-    elif [ -f squashfs-root/usr/share/icons/hicolor/256x256/apps/seanime.png ]; then
-      cp squashfs-root/usr/share/icons/hicolor/256x256/apps/seanime.png .
-    fi
-  '';
+  dontUnpack = true;
+  dontBuild = true;
 
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/bin $out/share/applications $out/share/icons/hicolor/256x256/apps
+    mkdir -p $out/bin $out/share/applications $out/opt/${pname}
 
-    cp -r squashfs-root/* $out/
+    # Copy the AppImage
+    cp $src $out/opt/${pname}/${pname}.AppImage
+    chmod +x $out/opt/${pname}/${pname}.AppImage
 
-    makeWrapper $out/AppRun $out/bin/${pname} \
-      --set PATH ${lib.makeBinPath [ pkgs.xdg-utils ]}
+    # Create wrapper script
+    makeWrapper ${pkgs.appimage-run}/bin/appimage-run $out/bin/${pname} \
+      --add-flags "$out/opt/${pname}/${pname}.AppImage"
 
-    if [ -f seanime.png ]; then
-      cp seanime.png $out/share/icons/hicolor/256x256/apps/
-    fi
-
+    # Create desktop file
     ${
       makeDesktopItem {
         name = "seanime";
         desktopName = "SeAnime";
         exec = pname;
-        icon = "seanime";
+        icon = "application-x-executable"; # Using a generic icon
         comment = "Open-source media server with a web interface and desktop app for anime and manga";
         categories = [
           "AudioVideo"
