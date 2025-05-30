@@ -38,7 +38,6 @@ with lib;
       gotools
       google-java-format
       ktlint
-      php84Packages.php-cs-fixer
       nodePackages.prettier
       rufo
       shfmt
