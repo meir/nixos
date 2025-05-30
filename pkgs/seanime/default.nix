@@ -12,6 +12,18 @@ pkgs.stdenv.mkDerivation rec {
     hash = "sha256-H8yqsgWEj+e0VvTDpvavsC0AVf9voI2nVDwsCzq8X8U=";
   };
 
+  desktopItem = makeDesktopItem {
+    name = "seanime";
+    desktopName = "SeAnime";
+    exec = pname;
+    icon = "application-x-executable"; # Using a generic icon
+    comment = "Open-source media server with a web interface and desktop app for anime and manga";
+    categories = [
+      "AudioVideo"
+      "Network"
+    ];
+  };
+
   nativeBuildInputs = [ pkgs.makeWrapper ];
 
   dontUnpack = true;
@@ -30,20 +42,7 @@ pkgs.stdenv.mkDerivation rec {
     makeWrapper ${pkgs.appimage-run}/bin/appimage-run $out/bin/${pname} \
       --add-flags "$out/opt/${pname}/${pname}.AppImage"
 
-    # Create desktop file
-    ${
-      makeDesktopItem {
-        name = "seanime";
-        desktopName = "SeAnime";
-        exec = pname;
-        icon = "application-x-executable"; # Using a generic icon
-        comment = "Open-source media server with a web interface and desktop app for anime and manga";
-        categories = [
-          "AudioVideo"
-          "Network"
-        ];
-      }
-    }/share/applications/seanime.desktop > $out/share/applications/seanime.desktop
+    cat ${desktopItem} > $out/share/applications/${pname}.desktop
 
     runHook postInstall
   '';
