@@ -16,7 +16,7 @@
     unityhub
     aseprite
     foliate
-    seanime
+    miru
   ];
 
   protocol = {

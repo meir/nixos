@@ -5,5 +5,4 @@ final: prev: {
   dina-remastered = callPackage ../pkgs/dina-remastered { };
   cdl = callPackage ../pkgs/cdl { };
   discord_wayland = import ../pkgs/discord_wayland final;
-  seanime = callPackage ../pkgs/seanime { };
 }
