@@ -1,5 +1,8 @@
-{ pkgs, makeDesktopItem }:
+{ pkgs, lib }:
 
+let
+  makeDesktopItem = pkgs.makeDesktopItem;
+in
 pkgs.stdenv.mkDerivation rec {
   pname = "seanime";
   version = "2.8.4";
@@ -9,31 +12,62 @@ pkgs.stdenv.mkDerivation rec {
     hash = "sha256-H8yqsgWEj+e0VvTDpvavsC0AVf9voI2nVDwsCzq8X8U=";
   };
 
-  phases = [ "installPhase" ];
-
-  installPhase = ''
-    mkdir -p $out/bin
-    cp $src $out/bin/${pname}.AppImage
-    chmod +x $out/bin/${pname}.AppImage
-  '';
-
-  desktopItems = [
-    (makeDesktopItem {
-      name = "SeAnime";
-      desktopName = "SeAnime";
-      exec = "${pname}";
-      icon = "seanime";
-      type = "Application";
-      categories = [
-        "AudioVideo"
-        "Network"
-      ];
-    })
+  nativeBuildInputs = [
+    pkgs.makeWrapper
+    pkgs.squashfsTools
   ];
 
-  meta = {
+  phases = [
+    "unpackPhase"
+    "installPhase"
+  ];
+
+  unpackPhase = ''
+    mkdir -p squashfs-root
+    ${pkgs.squashfsTools}/bin/unsquashfs -f -d squashfs-root "$src"
+
+    if [ -f squashfs-root/seanime.png ]; then
+      cp squashfs-root/seanime.png .
+    elif [ -f squashfs-root/usr/share/icons/hicolor/256x256/apps/seanime.png ]; then
+      cp squashfs-root/usr/share/icons/hicolor/256x256/apps/seanime.png .
+    fi
+  '';
+
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/bin $out/share/applications $out/share/icons/hicolor/256x256/apps
+
+    cp -r squashfs-root/* $out/
+
+    makeWrapper $out/AppRun $out/bin/${pname} \
+      --set PATH ${lib.makeBinPath [ pkgs.xdg-utils ]}
+
+    if [ -f seanime.png ]; then
+      cp seanime.png $out/share/icons/hicolor/256x256/apps/
+    fi
+
+    ${
+      makeDesktopItem {
+        name = "seanime";
+        desktopName = "SeAnime";
+        exec = pname;
+        icon = "seanime";
+        comment = "Open-source media server with a web interface and desktop app for anime and manga";
+        categories = [
+          "AudioVideo"
+          "Network"
+        ];
+      }
+    }/share/applications/seanime.desktop > $out/share/applications/seanime.desktop
+
+    runHook postInstall
+  '';
+
+  meta = with lib; {
     description = "Open-source media server with a web interface and desktop app for anime and manga";
     homepage = "https://github.com/5rahim/seanime";
-    license = pkgs.lib.licenses.gpl3Only;
+    license = licenses.gpl3Only;
+    platforms = platforms.linux;
   };
 }
