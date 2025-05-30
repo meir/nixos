@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, makeDesktopItem }:
 
 pkgs.stdenv.mkDerivation rec {
   pname = "seanime";
@@ -17,7 +17,7 @@ pkgs.stdenv.mkDerivation rec {
   '';
 
   desktopItems = [
-    {
+    (makeDesktopItem {
       name = "SeAnime";
       exec = "${pname}";
       icon = "seanime";
@@ -26,7 +26,7 @@ pkgs.stdenv.mkDerivation rec {
         "AudioVideo"
         "Network"
       ];
-    }
+    })
   ];
 
   meta = {
