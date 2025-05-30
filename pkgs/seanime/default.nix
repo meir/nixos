@@ -6,14 +6,14 @@ pkgs.stdenv.mkDerivation rec {
 
   src = pkgs.fetchurl {
     url = "https://github.com/5rahim/seanime/releases/download/v${version}/seanime-desktop-${version}_Linux_x86_64.AppImage";
-    hash = "sha256-Yjt+Oq42QMd4H6MtzZlSaDYav5EEOakYkWTCxzyc8M4=";
+    hash = "sha256-H8yqsgWEj+e0VvTDpvavsC0AVf9voI2nVDwsCzq8X8U=";
   };
 
   phases = [ "installPhase" ];
 
   installPhase = ''
     mkdir -p $out/bin
-    mv $src $out/bin
+    cp $src $out/bin
   '';
 
   desktopItems = [
