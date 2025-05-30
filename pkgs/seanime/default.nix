@@ -13,8 +13,8 @@ pkgs.stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/bin
-    cp $src $out/${pname}.AppImage
-    chmod +x $out/${pname}.AppImage
+    cp $src $out/bin/${pname}.AppImage
+    chmod +x $out/bin/${pname}.AppImage
   '';
 
   desktopItems = [
