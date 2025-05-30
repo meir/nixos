@@ -42,7 +42,7 @@ pkgs.stdenv.mkDerivation rec {
     makeWrapper ${pkgs.appimage-run}/bin/appimage-run $out/bin/${pname} \
       --add-flags "$out/opt/${pname}/${pname}.AppImage"
 
-    cat ${desktopItem} > $out/share/applications/${pname}.desktop
+    cp ${desktopItem}/share/applications/seanime.desktop $out/share/applications/${pname}.desktop
 
     runHook postInstall
   '';
