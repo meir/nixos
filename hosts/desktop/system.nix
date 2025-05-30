@@ -2,7 +2,6 @@
   nixpkgs-unstable,
   home-manager,
   stylix,
-  seanime,
   ...
 }:
 specialArgs:
@@ -14,7 +13,6 @@ nixpkgs-unstable.lib.nixosSystem {
     ./hardware-configuration.nix
     ../../system
     ./configuration.nix
-    seanime.nixosModules.seanime
     home-manager.nixosModules.home-manager
     stylix.nixosModules.stylix
   ];
