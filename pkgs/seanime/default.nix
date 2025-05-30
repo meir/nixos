@@ -19,6 +19,7 @@ pkgs.stdenv.mkDerivation rec {
   desktopItems = [
     (makeDesktopItem {
       name = "SeAnime";
+      desktopName = "SeAnime";
       exec = "${pname}";
       icon = "seanime";
       type = "Application";
