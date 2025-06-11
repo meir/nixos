@@ -33,6 +33,8 @@ with lib;
       steamtinkerlaunch
       r2modman
       ffmpeg # add ffmpeg for ingame video players
+      lutris
+      wine
 
       # needed for steamtinkerlaunch
       gawk

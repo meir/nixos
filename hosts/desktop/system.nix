@@ -14,6 +14,6 @@ nixpkgs-unstable.lib.nixosSystem {
     ../../system
     ./configuration.nix
     home-manager.nixosModules.home-manager
-    stylix.nixosModules.stylix
+    # stylix.nixosModules.stylix
   ];
 }

@@ -22,11 +22,14 @@ with lib;
   };
 
   imports = [
-    (mkAliasOptionModule [ "hm" ] [
-      "home-manager"
-      "users"
-      config.user
-    ])
+    (mkAliasOptionModule
+      [ "hm" ]
+      [
+        "home-manager"
+        "users"
+        config.user
+      ]
+    )
   ];
 
   config = {
@@ -39,7 +42,7 @@ with lib;
       users."${config.user}".home = {
         username = config.user;
         homeDirectory = config.user_home;
-        stateVersion = "24.05";
+        stateVersion = "25.05";
       };
 
       useUserPackages = true;
