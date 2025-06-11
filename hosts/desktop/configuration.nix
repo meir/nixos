@@ -12,11 +12,11 @@
     spotify
     stremio
     thunderbird
-    (retroarch.override {
-      cores = with libretro; [
+    (retroarch.withCores (
+      cores: with cores; [
         beetle-gba
-      ];
-    })
+      ]
+    ))
     unityhub
     aseprite
     foliate
