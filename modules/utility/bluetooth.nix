@@ -28,6 +28,7 @@
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;
+      input.General.ClassicBondedOnly = false;
       settings = {
         General = {
           Enable = "Source,Sink,Media,Socket";

@@ -87,7 +87,7 @@ in
       (mkIf config.modules.swww.enable {
         environment.systemPackages = with pkgs; [
           swww
-          waytrogen
+          waypaper
         ];
 
         protocol.autostart = [

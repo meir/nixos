@@ -69,6 +69,10 @@ let
       follow_mouse = 0
       float_switch_override_focus = 0
     } 
+
+    debug {
+      full_cm_proto = true
+    }
   '';
 in
 {

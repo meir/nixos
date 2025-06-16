@@ -41,21 +41,10 @@ with lib;
 
     powerManagement.cpuFreqGovernor = "performance";
 
-    hardware.graphics.extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-      rocmPackages.rocm-runtime
-      # amdvlk
-    ];
-
-    # hardware.opengl.extraPackages32 = with pkgs; [
-    #   driversi686Linux.amdvlk
-    # ];
-
     hardware.graphics.enable32Bit = true;
     hardware.amdgpu = {
       initrd.enable = true;
       opencl.enable = true;
-      amdvlk.enable = false;
     };
   };
 }
