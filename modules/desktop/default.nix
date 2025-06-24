@@ -91,7 +91,8 @@ in
         ];
 
         protocol.autostart = [
-          "${getExe pkgs.swww} init"
+          "${pkgs.swww}/bin/swww-daemon"
+          "${getExe pkgs.swww} restore"
         ];
       })
     ]

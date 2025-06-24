@@ -43,6 +43,12 @@
       "windowrulev2 = workspace 10, class:^(thunderbird)$"
       "windowrulev2 = workspace 6, class:^(discord)$"
       "windowrulev2 = workspace 7, class:^(Spotify)$"
+      ''
+        device {
+          name=wacom-intuos-bt-s-pen
+          output=HDMI-A-2
+        }
+      ''
     ];
 
     autostart = [

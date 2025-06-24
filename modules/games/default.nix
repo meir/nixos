@@ -51,7 +51,7 @@ with lib;
 
     programs.gamescope = {
       enable = true;
-      capSysNice = true;
+      capSysNice = false;
     };
 
     nixpkgs.config.allowUnfreePredicate =
@@ -64,10 +64,25 @@ with lib;
 
     programs.steam = {
       enable = true;
+      package = pkgs.steam.override {
+        extraPkgs =
+          pkgs: with pkgs; [
+            xorg.libXcursor
+            xorg.libXi
+            xorg.libXinerama
+            xorg.libXScrnSaver
+            libpng
+            libpulseaudio
+            libvorbis
+            stdenv.cc.cc.lib
+            libkrb5
+            keyutils
+            attr
+          ];
+      };
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       extraCompatPackages = with pkgs; [ proton-ge-bin ];
-      package = with pkgs; steam.override { extraPkgs = pkgs: [ attr ]; };
     };
 
     desktop.entry.vortex = {
