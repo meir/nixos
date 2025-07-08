@@ -21,6 +21,7 @@
     aseprite
     foliate
     miru
+    sm64coopdx-local
   ];
 
   protocol = {
