@@ -22,11 +22,14 @@ with lib;
   };
 
   imports = [
-    (mkAliasOptionModule [ "hm" ] [
-      "home-manager"
-      "users"
-      config.user
-    ])
+    (mkAliasOptionModule
+      [ "hm" ]
+      [
+        "home-manager"
+        "users"
+        config.user
+      ]
+    )
   ];
 
   config = {
@@ -45,6 +48,8 @@ with lib;
       useUserPackages = true;
       useGlobalPkgs = true;
     };
+
+    system.primaryUser = config.user;
 
     users.users."${config.user}" = {
       name = config.user;
