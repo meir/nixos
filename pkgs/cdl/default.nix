@@ -51,11 +51,6 @@ stdenv.mkDerivation rec {
     description = "Change Directory List (cdl) is a small directory waypoint tool for zsh";
     platforms = lib.platforms.all;
     maintainers = [ ];
-    mainProgram = [
-      "cdls"
-      "cdp"
-      "cdr"
-      "cds"
-    ];
+    mainProgram = "cdl";
   };
 }
