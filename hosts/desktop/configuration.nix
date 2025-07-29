@@ -22,6 +22,7 @@
     foliate
     miru
     sm64coopdx-local
+    kicad
   ];
 
   protocol = {
