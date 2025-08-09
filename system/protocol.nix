@@ -8,23 +8,10 @@
 with lib;
 {
   imports = [
-    ./xorg/default.nix
     ./wayland/default.nix
   ];
 
   options.protocol = {
-    xorg.enable = mkOption {
-      type = types.bool;
-      default = config.protocol.type == "xorg";
-    };
-    xorg.wm = mkOption {
-      type = types.enum [
-        "bspwm"
-        "gnome"
-      ];
-      default = "bspwm";
-    };
-
     wayland.enable = mkOption {
       type = types.bool;
       default = config.protocol.type == "wayland";
@@ -32,10 +19,9 @@ with lib;
 
     type = mkOption {
       type = types.enum [
-        "xorg"
         "wayland"
       ];
-      default = "xorg";
+      default = "wayland";
     };
 
     hotkeys = mkOption {

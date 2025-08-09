@@ -5,6 +5,11 @@
 {
   user = "human";
 
+  # allow temporarily until fixed
+  nixpkgs.config.permittedInsecurePackages = [
+    "libxml2-2.13.8"
+  ];
+
   environment.systemPackages = with pkgs; [
     gimp
     (wrapOBS { plugins = with obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
@@ -26,8 +31,6 @@
   ];
 
   protocol = {
-    type = "wayland";
-
     rules = [
       "monitor = HDMI-A-2, 2560x1080, 1920x0, 1"
       "monitor = DP-1, 1920x1080, 0x0, 1"

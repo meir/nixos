@@ -82,7 +82,7 @@
 
       # screenshot region
       super + shift + p
-        hyprland | exec, ${lib.getExe pkgs.hyprshot} -m region
+        hyprland | exec, ${lib.getExe pkgs.hyprshot} -m region --clipboard-only
     ''
   ];
 

@@ -6,7 +6,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix/release-25.05";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
-    stylix.inputs.home-manager.follows = "home-manager";
+    base16.url = "github:SenchoPens/base16.nix";
 
     # Overlays
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";

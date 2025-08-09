@@ -1,6 +1,7 @@
 {
   nixpkgs-unstable,
   home-manager,
+  base16,
   stylix,
   ...
 }:
@@ -14,6 +15,7 @@ nixpkgs-unstable.lib.nixosSystem {
     ../../system
     ./configuration.nix
     home-manager.nixosModules.home-manager
-    # stylix.nixosModules.stylix
+    base16.nixosModule
+    stylix.nixosModules.stylix
   ];
 }
