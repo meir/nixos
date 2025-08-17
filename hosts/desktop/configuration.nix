@@ -13,7 +13,10 @@
   environment.systemPackages = with pkgs; [
     gimp
     (wrapOBS { plugins = with obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
-    prismlauncher
+    (prismlauncher.override {
+      additionalPrograms = [ vlc ];
+      additionalLibs = [ vlc ];
+    })
     spotify
     stremio
     thunderbird
