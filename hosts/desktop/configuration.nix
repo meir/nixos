@@ -28,6 +28,7 @@
     miru
     sm64coopdx-local
     kicad
+    vlc
   ];
 
   protocol = {
