@@ -30,6 +30,11 @@
     '';
   };
 
+  zramSwap = {
+    enable = true;
+    algorithm = "lz4";
+  };
+
   boot.loader = {
     systemd-boot = {
       enable = true;
