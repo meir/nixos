@@ -32,7 +32,6 @@
     sm64coopdx-local
     kicad
     vlc
-    godot
   ];
 
   protocol = {
