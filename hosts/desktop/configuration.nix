@@ -32,6 +32,9 @@
     sm64coopdx-local
     kicad
     vlc
+
+    # for godot
+    rnnoise
   ];
 
   protocol = {
