@@ -32,7 +32,10 @@
 
   environment.systemPackages = with pkgs; [
     curl
+    gcc
     libgcc
+    opencl-headers
+    ocl-icd
   ];
 
   programs.git = {
