@@ -30,7 +30,10 @@
     (import ../overlays/packages.nix inputs)
   ];
 
-  environment.systemPackages = with pkgs; [ curl ];
+  environment.systemPackages = with pkgs; [
+    curl
+    libgcc
+  ];
 
   programs.git = {
     enable = true;
