@@ -8,7 +8,17 @@ with lib;
 {
   options.modules = {
     discord.enable = mkEnableOption "discord";
-    qutebrowser.enable = mkEnableOption "qutebrowser";
+    browser = mkOption {
+      type = types.enum [
+        "zenbrowser"
+        "qutebrowser"
+      ];
+      default = "zenbrowser";
+      description = ''
+        Choose a web browser to install and configure.
+        Options are "zenbrowser" (default) or "qutebrowser".
+      '';
+    };
   };
 
   config = (
@@ -24,7 +34,19 @@ with lib;
         programs.droidcam.enable = true;
       })
 
-      (mkIf config.modules.qutebrowser.enable {
+      (mkIf (config.modules.browser == "zenbrowser") {
+        environment.systemPackages = with pkgs; [
+          zen-browser
+        ];
+
+        xdg.mime.defaultApplications = {
+          "text/html" = "zenbrowser.desktop";
+          "x-scheme-handler/http" = "zenbrowser.desktop";
+          "x-scheme-handler/https" = "zenbrowser.desktop";
+        };
+      })
+
+      (mkIf (config.modules.browser == "qutebrowser") {
         environment.systemPackages = with pkgs; [
           qutebrowser
           jq

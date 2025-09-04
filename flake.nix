@@ -12,6 +12,7 @@
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     izu.url = "github:meir/izu";
     nh.url = "github:viperML/nh";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     # Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
@@ -27,6 +28,7 @@
           nixpkgs-xr
           izu
           nh
+          zen-browser
           ;
       };
     in
