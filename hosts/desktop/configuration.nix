@@ -90,7 +90,7 @@
       runtime = "steamvr";
     };
     discord.enable = true;
-    qutebrowser.enable = true;
+    browser = "zenbrowser";
     nvim.enable = true;
     onepassword.enable = true;
     qmk.enable = true;

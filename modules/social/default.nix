@@ -36,7 +36,7 @@ with lib;
 
       (mkIf (config.modules.browser == "zenbrowser") {
         environment.systemPackages = with pkgs; [
-          zen-browser
+          zen-browser.default
         ];
 
         xdg.mime.defaultApplications = {
