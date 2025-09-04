@@ -32,6 +32,7 @@ in
     mkMerge [
       (mkIf config.modules.eww.enable {
         environment.systemPackages = with pkgs; [
+          jq
           eww
           zscroll
         ];

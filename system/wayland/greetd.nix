@@ -8,7 +8,7 @@
 with lib;
 {
   config = mkIf config.protocol.wayland.enable {
-    services.displayManager.gdm = {
+    services.xserver.displayManager.gdm = {
       enable = true;
       wayland = true;
     };
