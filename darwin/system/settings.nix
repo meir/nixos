@@ -28,13 +28,6 @@
       ServerDescription = "${config.user}";
       NetBIOSName = "${config.user}";
     };
-    alf = {
-      loggingenabled = 1;
-      stealthenabled = 1;
-      allowsignedenabled = 1;
-      allowdownloadsignedenabled = 1;
-      globalstate = 1;
-    };
     loginwindow = {
       LoginwindowText = "";
       SHOWFULLNAME = true;
