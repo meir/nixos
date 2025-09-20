@@ -35,6 +35,7 @@
 
     # for godot
     rnnoise
+    runelite
   ];
 
   protocol = {
