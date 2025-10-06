@@ -19,7 +19,7 @@ with lib;
       cmake
       go
       gnumake
-      nodejs_20
+      nodejs_22
       fzf
       rustup
       ripgrep

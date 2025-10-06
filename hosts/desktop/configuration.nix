@@ -4,6 +4,7 @@
 }:
 {
   user = "human";
+  hostname = "desktop";
 
   # allow temporarily until fixed
   nixpkgs.config.permittedInsecurePackages = [

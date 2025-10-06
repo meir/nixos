@@ -35,6 +35,7 @@
     {
       nixosConfigurations = {
         desktop = import ./hosts/desktop/system.nix inputs specialArgs;
+        glorpnet = import ./hosts/glorpnet/system.nix inputs specialArgs;
       };
       darwinConfigurations = {
         work-laptop = import ./hosts/work-macos/system.nix inputs specialArgs;

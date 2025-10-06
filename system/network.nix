@@ -4,16 +4,27 @@
   lib,
   ...
 }:
+with lib;
 {
-  networking = {
-    networkmanager.enable = true;
-    hostName = "nixos";
-    useDHCP = lib.mkDefault true;
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [ ];
-      allowedUDPPorts = [ ];
-      allowPing = false;
+  options = {
+    hostname = mkOption {
+      type = types.str;
+      default = "nixos";
+      description = "Hostname of the machine";
+    };
+  };
+
+  config = {
+    networking = {
+      networkmanager.enable = true;
+      hostName = config.hostname;
+      useDHCP = lib.mkDefault true;
+      firewall = {
+        enable = true;
+        allowedTCPPorts = [ ];
+        allowedUDPPorts = [ ];
+        allowPing = false;
+      };
     };
   };
 }
