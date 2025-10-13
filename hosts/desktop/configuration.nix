@@ -6,11 +6,6 @@
   user = "human";
   hostname = "desktop";
 
-  # allow temporarily until fixed
-  nixpkgs.config.permittedInsecurePackages = [
-    "libxml2-2.13.8"
-  ];
-
   environment.systemPackages = with pkgs; [
     gimp
     (wrapOBS { plugins = with obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
@@ -21,22 +16,9 @@
     spotify
     stremio
     thunderbird
-    (retroarch.withCores (
-      cores: with cores; [
-        beetle-gba
-      ]
-    ))
-    unityhub
     aseprite
-    foliate
+    # foliate
     miru
-    sm64coopdx-local
-    kicad
-    vlc
-
-    # for godot
-    rnnoise
-    runelite
   ];
 
   protocol = {

@@ -25,7 +25,7 @@ with lib;
     mkMerge [
       (mkIf config.modules.discord.enable {
         environment.systemPackages = with pkgs; [
-          (discord.override { withOpenASAR = true; })
+          legcord
         ];
 
         security.polkit.enable = true;
