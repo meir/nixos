@@ -18,6 +18,7 @@ in
       
       eepyxr
       wlx-overlay-s
+      wayvr-dashboard
       lovr-playspace
     ];
 
