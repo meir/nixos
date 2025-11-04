@@ -16,11 +16,9 @@ in
       lighthouse-steamvr
       monado_start
       
-      bs-manager
       eepyxr
       wlx-overlay-s
       lovr-playspace
-      resolute
     ];
 
     protocol.rules = [
@@ -37,18 +35,16 @@ in
     };
 
     systemd.user.services.monado = {
-    serviceConfig.LimitNOFILE = 8192;
-    environment = {
-      STEAMVR_LH_ENABLE = "true";
-      XRT_COMPOSITOR_COMPUTE = "1";
-      U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "10";
-      U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
-      XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
-      XRT_COMPOSITOR_DESIRED_MODE = "1";
-      # XRT_COMPOSITOR_DESIRED_MODE=0 is the 75hz mode
-      # XRT_COMPOSITOR_DESIRED_MODE=1 is the 90hz mode
+      serviceConfig.LimitNOFILE = 8192;
+      environment = {
+        STEAMVR_LH_ENABLE = "true";
+        XRT_COMPOSITOR_COMPUTE = "1";
+        XRT_COMPOSITOR_SCALE_PERCENTAGE = "200";
+        XRT_COMPOSITOR_DESIRED_MODE = "1";
+        U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "10";
+        U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
+      };
     };
-  };
 
     hm.home.file = {
       ".config/openxr/1/active_runtime.json".source = "${monado}/share/openxr/1/openxr_monado.json";
