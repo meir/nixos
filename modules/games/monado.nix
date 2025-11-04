@@ -32,7 +32,7 @@ in
     services.monado = {
       enable = true;
       defaultRuntime = true;
-      highPerformance = true;
+      highPriority = true;
       package = monado;
     };
 
