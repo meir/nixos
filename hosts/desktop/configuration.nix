@@ -89,7 +89,7 @@
     steam.enable = true;
     steamvr = {
       enable = true;
-      runtime = "steamvr";
+      runtime = "monado";
     };
     discord.enable = true;
     browser = "zenbrowser";

@@ -5,9 +5,24 @@
   ...
 }:
 with lib;
+let
+  monado = (pkgs.writeScriptBin "monado" ''
+    #! ${pkgs.bash}/bin/bash
+    export STEAMVR_LH_ENABLE=1
+    export XRT_COMPOSITOR_COMPUTE=1
+    export WMR_HANDTRACKING=0
+    export U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET_MS=10
+
+    exec ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace --openxr &
+    exec ${pkgs.monado}/bin/monado-service "$@"
+  '');
+in
 {
   config = mkIf (config.modules.steamvr.enable && config.modules.steamvr.runtime == "monado") {
-    environment.systemPackages = with pkgs; [ wlx-overlay-s ];
+    environment.systemPackages = with pkgs; [
+      wlx-overlay-s
+      monado
+    ];
 
     protocol.rules = [
       "windowrulev2 = workspace 5, initialTitle:(.*[vV][rR].*)" # match with any title that has "VR"
@@ -81,6 +96,12 @@ with lib;
         name = "WLX Overlay S";
         comment = "WLX Overlay for SteamVR";
         exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace --openxr";
+      };
+      monado = {
+        name = "Monado VR Service";
+        comment = "Monado Runtime";
+        terminal = true;
+        exec = "${monado}/bin/monado";
       };
     };
   };

@@ -1,0 +1,97 @@
+Info: Loaded drivers: GlobalSceneSolver, HTCVive
+Info: Adding tracked object [0;33mT20[0m from [0;34mHTC[0m
+Info: Adding tracked object [0;36mKN0[0m from [0;34mHTC[0m
+Info: Adding tracked object [0;37mKN1[0m from [0;34mHTC[0m
+Info: Adding tracked object [0;30mKN2[0m from [0;34mHTC[0m
+Info: Adding tracked object [0;31mKN3[0m from [0;34mHTC[0m
+Info: Adding tracked object [0;32mKN4[0m from [0;34mHTC[0m
+Info: Device [0;36mKN0[0m has watchman FW version 1693638519 and FPGA version 538/10/2; named '                   WMBUILD-W64$'. Hardware id 0x110e0009 Board rev: 3 (len 56)
+[0;31mWarning: The detected version for device KN0 is 1693638519; the latest that is verified to work is 1632556731. You may have to upgrade libsurvive to support this device.
+[0mInfo: Device [0;37mKN1[0m has watchman FW version 1693638519 and FPGA version 538/10/2; named '                   WMBUILD-W64$'. Hardware id 0x110e0109 Board rev: 3 (len 56)
+[0;31mWarning: The detected version for device KN1 is 1693638519; the latest that is verified to work is 1632556731. You may have to upgrade libsurvive to support this device.
+[0mInfo: Device [0;30mKN2[0m has watchman FW version 1641455124 and FPGA version 538/7/2; named '                   WMBUILD-W64$'. Hardware id 0xf1040009 Board rev: 3 (len 56)
+[0;31mWarning: The detected version for device KN2 is 1641455124; the latest that is verified to work is 1632556731. You may have to upgrade libsurvive to support this device.
+[0mInfo: Device [0;31mKN3[0m has watchman FW version 1641455124 and FPGA version 538/7/2; named '                   WMBUILD-W64$'. Hardware id 0xf1040009 Board rev: 3 (len 56)
+[0;31mWarning: The detected version for device KN3 is 1641455124; the latest that is verified to work is 1632556731. You may have to upgrade libsurvive to support this device.
+[0m[0;31mWarning: Config request failed; trying again 0.921003 [0;32mKN4[0m (1227 > 1167)
+[0mInfo: Detected LH gen 2 system.
+Info: LightcapMode (KN1) 1 -> 2 (ff)
+Info: LightcapMode (KN0) 1 -> 2 (ff)
+Info: LightcapMode (KN2) 1 -> 2 (ff)
+Info: LightcapMode (KN3) 1 -> 2 (ff)
+Info: Device [0;33mT20[0m has watchman FW version 1623823641 and FPGA version 538/9/2; named '                   WMBUILD-W64$'. Hardware id 0x22154109 Board rev: 3 (len 56)
+Info: T20 is treated as HMD device
+Info: LightcapMode (T20) 1 -> 2 (4)
+Info: OOTX not set for LH in channel 0; attaching ootx decoder using device KN0
+Info: OOTX not set for LH in channel 1; attaching ootx decoder using device KN0
+Info: Device [0;32mKN4[0m has watchman FW version 1641455124 and FPGA version 538/7/2; named '                   WMBUILD-W64$'. Hardware id 0xf1040009 Board rev: 3 (len 56)
+[0;31mWarning: The detected version for device KN4 is 1641455124; the latest that is verified to work is 1632556731. You may have to upgrade libsurvive to support this device.
+[0mInfo: LightcapMode (KN4) 1 -> 2 (ff)
+Info: MPFIT success 938097.516378/257.9555214910/0.0001517 (83 measurements, 2, MP_OK_PAR, 127 iters, up err 0.0009272, trace 0.0000254)
+Info: Global solve with 3 scenes for 0 with error of 938097.516378/257.9555214910 (acc err 0.0011)
+Info: Global solve with 3 scenes for 1 with error of 938097.516378/257.9555214910 (acc err 0.0017)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 4068847.366007/1184.0018259683/0.0002395 (196 measurements, 1, MP_OK_CHI, 67 iters, up err 0.0005209, trace 0.0000487)
+Info: Global solve with 7 scenes for 0 with error of 4068847.366007/1184.0018259683 (acc err 0.0010)
+Info: Global solve with 7 scenes for 1 with error of 4068847.366007/1184.0018259683 (acc err 0.0018)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 10218345.231597/1246.8572359517/0.0002289 (226 measurements, 1, MP_OK_CHI, 51 iters, up err 0.0004376, trace 0.0000456)
+Info: Global solve with 8 scenes for 0 with error of 10218345.231597/1246.8572359517 (acc err 0.0010)
+Info: Global solve with 8 scenes for 1 with error of 10218345.231597/1246.8572359517 (acc err 0.0017)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 12371602.415193/1354.5221084983/0.0002227 (256 measurements, 1, MP_OK_CHI, 39 iters, up err 0.0004066, trace 0.0000490)
+Info: Global solve with 9 scenes for 0 with error of 12371602.415193/1354.5221084983 (acc err 0.0009)
+Info: Global solve with 9 scenes for 1 with error of 12371602.415193/1354.5221084983 (acc err 0.0018)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 17521647.418323/1470.1904188719/0.0002179 (287 measurements, 1, MP_OK_CHI, 30 iters, up err 0.0003799, trace 0.0000523)
+Info: Global solve with 10 scenes for 0 with error of 17521647.418323/1470.1904188719 (acc err 0.0009)
+Info: Global solve with 10 scenes for 1 with error of 17521647.418323/1470.1904188719 (acc err 0.0018)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 19128875.546229/1586.5498435986/0.0002097 (336 measurements, 3, MP_OK_BOTH, 6 iters, up err 0.0003252, trace 0.0000755)
+Info: Global solve with 12 scenes for 0 with error of 19128875.546229/1586.5498435986 (acc err 0.0009)
+Info: Global solve with 12 scenes for 1 with error of 19128875.546229/1586.5498435986 (acc err 0.0018)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 19808558.045295/1685.7562850459/0.0002100 (359 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0003047, trace 0.0000791)
+Info: Global solve with 13 scenes for 0 with error of 19808558.045295/1685.7562850459 (acc err 0.0009)
+Info: Global solve with 13 scenes for 1 with error of 19808558.045295/1685.7562850459 (acc err 0.0018)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 21050718.958954/2039.4449438989/0.0002190 (393 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0002986, trace 0.0000813)
+Info: Global solve with 14 scenes for 0 with error of 21050718.958954/2039.4449438989 (acc err 0.0008)
+Info: Global solve with 14 scenes for 1 with error of 21050718.958954/2039.4449438989 (acc err 0.0020)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 21393439.472440/2561.5569126020/0.0002234 (454 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0002504, trace 0.0000862)
+Info: Global solve with 16 scenes for 0 with error of 21393439.472440/2561.5569126020 (acc err 0.0007)
+Info: Global solve with 16 scenes for 1 with error of 21393439.472440/2561.5569126020 (acc err 0.0020)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 21178382.515301/2804.5783455768/0.0002213 (506 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0002248, trace 0.0000902)
+Info: Global solve with 17 scenes for 0 with error of 21178382.515301/2804.5783455768 (acc err 0.0006)
+Info: Global solve with 17 scenes for 1 with error of 21178382.515301/2804.5783455768 (acc err 0.0021)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 19924209.493216/4450.3905034407/0.0002570 (617 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0001876, trace 0.0001098)
+Info: Global solve with 20 scenes for 0 with error of 19924209.493216/4450.3905034407 (acc err 0.0006)
+Info: Global solve with 20 scenes for 1 with error of 19924209.493216/4450.3905034407 (acc err 0.0020)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 26385984.431349/4514.8886164505/0.0002536 (643 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0001811, trace 0.0001085)
+Info: Global solve with 21 scenes for 0 with error of 26385984.431349/4514.8886164505 (acc err 0.0006)
+Info: Global solve with 21 scenes for 1 with error of 26385984.431349/4514.8886164505 (acc err 0.0020)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 29093731.842533/4648.4766395105/0.0002487 (685 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0001773, trace 0.0000904)
+Info: Global solve with 22 scenes for 0 with error of 29093731.842533/4648.4766395105 (acc err 0.0006)
+Info: Global solve with 22 scenes for 1 with error of 29093731.842533/4648.4766395105 (acc err 0.0020)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 29379255.368200/4810.6989793196/0.0002452 (728 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0001722, trace 0.0000858)
+Info: Global solve with 23 scenes for 0 with error of 29379255.368200/4810.6989793196 (acc err 0.0006)
+Info: Global solve with 23 scenes for 1 with error of 29379255.368200/4810.6989793196 (acc err 0.0021)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 28487331.602638/4926.6057066729/0.0002433 (759 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0001669, trace 0.0000857)
+Info: Global solve with 24 scenes for 0 with error of 28487331.602638/4926.6057066729 (acc err 0.0006)
+Info: Global solve with 24 scenes for 1 with error of 28487331.602638/4926.6057066729 (acc err 0.0021)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 30966955.449426/5023.7648757195/0.0002394 (801 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0001582, trace 0.0000821)
+Info: Global solve with 25 scenes for 0 with error of 30966955.449426/5023.7648757195 (acc err 0.0006)
+Info: Global solve with 25 scenes for 1 with error of 30966955.449426/5023.7648757195 (acc err 0.0021)
+Info: Using LH 0 (207230ca) as reference lighthouse
+Info: MPFIT success 35991394.824003/5175.9433213257/0.0002365 (845 measurements, 1, MP_OK_CHI, 5 iters, up err 0.0001509, trace 0.0000808)
+Info: Global solve with 26 scenes for 0 with error of 35991394.824003/5175.9433213257 (acc err 0.0005)
+Info: Global solve with 26 scenes for 1 with error of 35991394.824003/5175.9433213257 (acc err 0.0021)
+Info: Using LH 0 (207230ca) as reference lighthouse
