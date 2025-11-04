@@ -26,7 +26,6 @@
   nixpkgs.overlays = [
     (import ../overlays/izu.nix inputs)
     (import ../overlays/nixpkgs-unstable.nix inputs)
-    (import ../overlays/nixpkgs-xr.nix inputs)
     (import ../overlays/packages.nix inputs)
   ];
 

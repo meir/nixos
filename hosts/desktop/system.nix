@@ -3,6 +3,7 @@
   home-manager,
   base16,
   stylix,
+  nixpkgs-xr,
   ...
 }:
 specialArgs:
@@ -17,5 +18,6 @@ nixpkgs.lib.nixosSystem {
     home-manager.nixosModules.home-manager
     base16.nixosModule
     stylix.nixosModules.stylix
+    nixpkgs-xr.nixosModules.nixpkgs-xr
   ];
 }
