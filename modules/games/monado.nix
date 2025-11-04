@@ -6,22 +6,21 @@
 }:
 with lib;
 let
-  monado = (pkgs.writeScriptBin "monado" ''
-    #! ${pkgs.bash}/bin/bash
-    export STEAMVR_LH_ENABLE=1
-    export XRT_COMPOSITOR_COMPUTE=1
-    export WMR_HANDTRACKING=0
-    export U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET_MS=10
-
-    exec ${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace --openxr &
-    exec ${pkgs.monado}/bin/monado-service "$@"
-  '');
+  monado = pkgs.monado_custom;
+  xrizer = pkgs.xrizer_custom;
 in
 {
   config = mkIf (config.modules.steamvr.enable && config.modules.steamvr.runtime == "monado") {
     environment.systemPackages = with pkgs; [
       wlx-overlay-s
-      monado
+      lighthouse-steamvr
+      monado_start
+      
+      bs-manager
+      eepyxr
+      wlx-overlay-s
+      lovr-playspace
+      resolute
     ];
 
     protocol.rules = [
@@ -30,39 +29,29 @@ in
 
     programs.steam.extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
 
-    boot.kernelPatches = [
-      {
-        name = "amdgpu-ignore-ctx-privileges";
-        patch = pkgs.fetchpatch {
-          name = "cap_sys_nice_begone.patch";
-          url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
-          hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
-        };
-      }
-    ];
-
     services.monado = {
       enable = true;
       defaultRuntime = true;
-      package = pkgs.monado;
+      highPerformance = true;
+      package = monado;
     };
 
-    programs.envision = {
-      enable = true;
-      package = pkgs.envision;
-      openFirewall = true;
-    };
-
-    systemd.user.services.monado.environment = {
-      STEAMVR_LH_ENABLE = "1";
+    systemd.user.services.monado = {
+    serviceConfig.LimitNOFILE = 8192;
+    environment = {
+      STEAMVR_LH_ENABLE = "true";
       XRT_COMPOSITOR_COMPUTE = "1";
       U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "10";
       U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
       XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
+      XRT_COMPOSITOR_DESIRED_MODE = "1";
+      # XRT_COMPOSITOR_DESIRED_MODE=0 is the 75hz mode
+      # XRT_COMPOSITOR_DESIRED_MODE=1 is the 90hz mode
     };
+  };
 
     hm.home.file = {
-      ".config/openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+      ".config/openxr/1/active_runtime.json".source = "${monado}/share/openxr/1/openxr_monado.json";
       ".config/openvr/openvrpaths.vrpath".text = ''
         {
           "config" :
@@ -73,20 +62,16 @@ in
           "jsonid" : "vrpathreg",
           "log" :
           [
-            "${config.user_home}/.local/share//Steam/logs"
+            "${config.user_home}/.local/share/Steam/logs"
           ],
           "runtime" :
           [
+            "${xrizer}/lib/xrizer",
             "${pkgs.opencomposite}/lib/opencomposite"
           ],
           "version" : 1
         }
       '';
-      ".local/share/monado/hand-tracking-models".source = pkgs.fetchgit {
-        url = "https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models.git";
-        fetchLFS = true;
-        sha256 = "sha256-x/X4HyyHdQUxn3CdMbWj5cfLvV7UyQe1D01H93UCk+M=";
-      };
       ".config/wlxoverlay/watch.yaml".source = ../config/wlxoverlay/watch.yaml;
       ".config/wlxoverlay/keyboard.yaml".source = ../config/wlxoverlay/keyboard.yaml;
     };
@@ -96,12 +81,6 @@ in
         name = "WLX Overlay S";
         comment = "WLX Overlay for SteamVR";
         exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace --openxr";
-      };
-      monado = {
-        name = "Monado VR Service";
-        comment = "Monado Runtime";
-        terminal = true;
-        exec = "${monado}/bin/monado";
       };
     };
   };
