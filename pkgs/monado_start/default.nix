@@ -58,7 +58,6 @@ pkgs.stdenv.mkDerivation {
           lovr-playspace &
           wlx-overlay-s --replace &
           # index_camera_passthrough &
-          kde-inhibit --power --screenSaver sleep infinity &
           wait
         ' &
         PGID=$!
