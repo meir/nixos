@@ -25,7 +25,6 @@
       specialArgs = {
         inherit (inputs)
           nixpkgs-unstable
-          nixpkgs-xr
           izu
           nh
           zen-browser

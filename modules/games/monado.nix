@@ -5,9 +5,22 @@
   ...
 }:
 with lib;
+let
+  monado = pkgs.monado_custom;
+  xrizer = pkgs.xrizer_custom;
+in
 {
   config = mkIf (config.modules.steamvr.enable && config.modules.steamvr.runtime == "monado") {
-    environment.systemPackages = with pkgs; [ wlx-overlay-s ];
+    environment.systemPackages = with pkgs; [
+      wlx-overlay-s
+      lighthouse-steamvr
+      monado_start
+      
+      eepyxr
+      wlx-overlay-s
+      wayvr-dashboard
+      lovr-playspace
+    ];
 
     protocol.rules = [
       "windowrulev2 = workspace 5, initialTitle:(.*[vV][rR].*)" # match with any title that has "VR"
@@ -15,39 +28,27 @@ with lib;
 
     programs.steam.extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
 
-    boot.kernelPatches = [
-      {
-        name = "amdgpu-ignore-ctx-privileges";
-        patch = pkgs.fetchpatch {
-          name = "cap_sys_nice_begone.patch";
-          url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
-          hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
-        };
-      }
-    ];
-
     services.monado = {
       enable = true;
       defaultRuntime = true;
-      package = pkgs.monado;
+      highPriority = true;
+      package = monado;
     };
 
-    programs.envision = {
-      enable = true;
-      package = pkgs.envision;
-      openFirewall = true;
-    };
-
-    systemd.user.services.monado.environment = {
-      STEAMVR_LH_ENABLE = "1";
-      XRT_COMPOSITOR_COMPUTE = "1";
-      U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "10";
-      U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
-      XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
+    systemd.user.services.monado = {
+      serviceConfig.LimitNOFILE = 8192;
+      environment = {
+        STEAMVR_LH_ENABLE = "true";
+        XRT_COMPOSITOR_COMPUTE = "1";
+        XRT_COMPOSITOR_SCALE_PERCENTAGE = "200";
+        XRT_COMPOSITOR_DESIRED_MODE = "1";
+        U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "10";
+        U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
+      };
     };
 
     hm.home.file = {
-      ".config/openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+      ".config/openxr/1/active_runtime.json".source = "${monado}/share/openxr/1/openxr_monado.json";
       ".config/openvr/openvrpaths.vrpath".text = ''
         {
           "config" :
@@ -58,20 +59,16 @@ with lib;
           "jsonid" : "vrpathreg",
           "log" :
           [
-            "${config.user_home}/.local/share//Steam/logs"
+            "${config.user_home}/.local/share/Steam/logs"
           ],
           "runtime" :
           [
+            "${xrizer}/lib/xrizer",
             "${pkgs.opencomposite}/lib/opencomposite"
           ],
           "version" : 1
         }
       '';
-      ".local/share/monado/hand-tracking-models".source = pkgs.fetchgit {
-        url = "https://gitlab.freedesktop.org/monado/utilities/hand-tracking-models.git";
-        fetchLFS = true;
-        sha256 = "sha256-x/X4HyyHdQUxn3CdMbWj5cfLvV7UyQe1D01H93UCk+M=";
-      };
       ".config/wlxoverlay/watch.yaml".source = ../config/wlxoverlay/watch.yaml;
       ".config/wlxoverlay/keyboard.yaml".source = ../config/wlxoverlay/keyboard.yaml;
     };
