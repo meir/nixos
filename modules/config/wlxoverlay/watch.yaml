@@ -58,9 +58,26 @@ elements:
         action:
           Opacity: { delta: -0.025 }
 
+  - type: Button
+    rect: [80, 210, 35, 35]
+    font_size: 15
+    corner_radius: 35
+    fg_color: "#f7f4f3"
+    bg_color: "#D1496B"
+    text: "⬢"
+    click_down:
+      - type: Exec
+        command: [
+          "if", "pgrep", "lovr", ">", "/dev/null;", "then",
+            "pkill", "lovr;",
+          "else",
+            "lovr-playspace;",
+          "fi"
+        ]
+
   # bottom row, of keyboard + overlays
   - type: OverlayList
-    rect: [80, 207, 320, 40]
+    rect: [120, 207, 320, 40]
     font_size: 14
     corner_radius: 10
     fg_color: "#f7f4f3"

@@ -47,6 +47,31 @@ in
       };
     };
 
+    # Bigscreen beyond patches
+    boot.kernelPatches = [
+      {
+        name = "0001-drm-edid-parse-DRM-VESA-dsc-bpp-target";
+        patch = ./patches/0001-drm-edid-parse-DRM-VESA-dsc-bpp-target.patch;
+      }
+      {
+        name = "0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid";
+        patch = ./patches/0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid.patch;
+      }
+    ];
+
+    # Udev rules for Bigscreen devices
+    services.udev.extraRules = ''
+      # Bigscreen Beyond
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0101", MODE="0660", TAG+="uaccess"
+      # Bigscreen Bigeye
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0202", MODE="0660", TAG+="uaccess", GROUP="users"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0202", MODE="0660", TAG+="uaccess", GROUP="users"
+      # Bigscreen Beyond Audio Strap
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="0105", MODE="0660", TAG+="uaccess"
+      # Bigscreen Beyond Firmware Mode?
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="4004", MODE="0660", TAG+="uaccess"
+    '';
+
     hm.home.file = {
       ".config/openxr/1/active_runtime.json".source = "${monado}/share/openxr/1/openxr_monado.json";
       ".config/openvr/openvrpaths.vrpath".text = ''
