@@ -68,16 +68,14 @@ elements:
     click_down:
       - type: Exec
         command: [
-          "if", "pgrep", "lovr", ">", "/dev/null;", "then",
-            "pkill", "lovr;",
-          "else",
-            "lovr-playspace;",
-          "fi"
+          "bash",
+          "-c",
+          "if pgrep lovr > /dev/null; then pkill lovr; else lovr-playspace; fi"
         ]
 
   # bottom row, of keyboard + overlays
   - type: OverlayList
-    rect: [120, 207, 320, 40]
+    rect: [120, 207, 280, 40]
     font_size: 14
     corner_radius: 10
     fg_color: "#f7f4f3"
@@ -171,7 +169,7 @@ elements:
     text: "⏭"
     click_down:
       - type: Exec
-        command: ["playerctl", "next"]
+        command: ["bash", "-c", "playerctl", "next"]
   - type: Button
     rect: [180, 140, 45, 45]
     font_size: 20
@@ -181,7 +179,7 @@ elements:
     text: "⏯"
     click_down:
       - type: Exec
-        command: ["playerctl", "play-pause"]
+        command: ["bash", "-c", "playerctl", "play-pause"]
   - type: Button
     rect: [120, 140, 45, 45]
     font_size: 20
@@ -191,4 +189,4 @@ elements:
     text: "⏮"
     click_down:
       - type: Exec
-        command: ["playerctl", "previous"]
+        command: ["bash", "-c", "playerctl", "previous"]
