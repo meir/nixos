@@ -15,6 +15,7 @@ with lib;
     alsa-oss
     helvum
     playerctl
+    pactl
   ];
 
   services.pipewire = {

@@ -7,6 +7,31 @@ let
     desktopName = "Start Monado";
     terminal = true;
   };
+  audio-connector = pkgs.writeScript "connect-index-audio" ''
+    #!/usr/bin/env bash
+      set -euo pipefail
+      sleep 1
+      DEFAULT_SINK=$(pactl info | awk -F': ' '/Default Sink/ {print $2}' | tr -d '\r\n')
+      if [ -z "$${DEFAULT_SINK}" ]; then
+        echo "pipewire-copy-to-index: no default sink found, exiting" >&2
+        exit 0
+      fi
+      INDEX_SINK=$(pactl list short sinks \
+        | awk '{print $2 " " $0}' \
+        | grep -Ei 'valve|index|hdmi' \
+        | awk '{print $1}' \
+        | head -n1 || true)
+      if [ -z "$${INDEX_SINK}" ]; then
+        echo "pipewire-copy-to-index: no Index sink found (tried Valve/Index/HDMI), exiting" >&2
+        exit 0
+      fi
+      if [ "$DEFAULT_SINK" = "$INDEX_SINK" ]; then
+        echo "pipewire-copy-to-index: default sink is already Index, nothing to do" >&2
+        exit 0
+      fi
+      echo "pipewire-copy-to-index: connecting $${DEFAULT_SINK}.monitor -> $${INDEX_SINK}" >&2
+      exec pw-loopback "$${DEFAULT_SINK}.monitor" "$${INDEX_SINK}"
+  '';
 in
 pkgs.stdenv.mkDerivation {
   pname = "monado-start";
@@ -57,7 +82,7 @@ pkgs.stdenv.mkDerivation {
         setsid sh -c '
           lovr-playspace &
           wlx-overlay-s --replace &
-          # index_camera_passthrough &
+          ${audio-connector} &
           wait
         ' &
         PGID=$!
