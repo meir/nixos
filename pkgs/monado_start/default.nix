@@ -31,7 +31,7 @@ pkgs.stdenv.mkDerivation {
     text = ''
       GROUP_PID_FILE="/tmp/monado-group-pid-$$"
       DEFAULT_SINK=$(pactl --format=json info | jq -r '.default_sink_name')
-      INDEX_SINK=$(pactl --format=json list sinks | jq -r '.[] | select(.properties["media.class"] == "Audio/Sink") | select(.description | test("Navi")) | .name')
+      INDEX_SINK=$(pactl --format=json list sinks | jq -r '.[] |  select(.description | test("Navi")) | .name')
 
       function off() {
         echo "Stopping Monado and other stuff..."
@@ -60,7 +60,7 @@ pkgs.stdenv.mkDerivation {
         setsid sh -c '
           lovr-playspace &
           wlx-overlay-s --replace &
-          pactl set-default-sink "$INDEX_SINK" &
+          pactl set-default-sink '"$INDEX_SINK"' &
           wait
         ' &
         PGID=$!
