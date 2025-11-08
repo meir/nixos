@@ -60,7 +60,7 @@ pkgs.stdenv.mkDerivation {
         setsid sh -c '
           lovr-playspace &
           wlx-overlay-s --replace &
-          pactl set-default-sink '"$INDEX_SINK"' &
+          sleep 5 && pactl set-default-sink '"$INDEX_SINK"' &
           wait
         ' &
         PGID=$!
