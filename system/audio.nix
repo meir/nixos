@@ -15,7 +15,7 @@ with lib;
     alsa-oss
     helvum
     playerctl
-    pactl
+    pulseaudio
   ];
 
   services.pipewire = {
