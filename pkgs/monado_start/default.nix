@@ -41,7 +41,7 @@ pkgs.stdenv.mkDerivation {
           rm -f "$GROUP_PID_FILE"
         fi
 
-        systemctl --user --no-block stop monado.service
+        systemctl --user stop monado.service &
         lighthouse -vv --state off &
         wait
 

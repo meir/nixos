@@ -16,9 +16,9 @@ in
       lighthouse-steamvr
       monado_start
       
-      eepyxr
       wlx-overlay-s
       wayvr-dashboard
+      lovr
       lovr-playspace
     ];
 

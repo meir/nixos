@@ -24,17 +24,17 @@
   protocol = {
     rules = [
       "monitor = HDMI-A-2, 2560x1080, 1920x0, 1"
-      "monitor = DP-1, 1920x1080, 0x0, 1"
+      "monitor = DP-2, 1920x1080, 0x0, 1"
       "workspace = 1, monitor:HDMI-A-2, default:true"
       "workspace = 2, monitor:HDMI-A-2"
       "workspace = 3, monitor:HDMI-A-2"
       "workspace = 4, monitor:HDMI-A-2"
       "workspace = 5, monitor:HDMI-A-2"
-      "workspace = 6, monitor:DP-1, default:true"
-      "workspace = 7, monitor:DP-1"
-      "workspace = 8, monitor:DP-1"
-      "workspace = 9, monitor:DP-1"
-      "workspace = 10, monitor:DP-1"
+      "workspace = 6, monitor:DP-2, default:true"
+      "workspace = 7, monitor:DP-2"
+      "workspace = 8, monitor:DP-2"
+      "workspace = 9, monitor:DP-2"
+      "workspace = 10, monitor:DP-2"
 
       "windowrulev2 = workspace 10, class:^(thunderbird)$"
       "windowrulev2 = workspace 6, class:^(discord)$"

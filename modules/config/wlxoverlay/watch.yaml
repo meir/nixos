@@ -169,7 +169,7 @@ elements:
     text: "⏭"
     click_down:
       - type: Exec
-        command: ["bash", "-c", "playerctl", "next"]
+        command: ["bash", "-c", "playerctl next"]
   - type: Button
     rect: [180, 140, 45, 45]
     font_size: 20
@@ -179,7 +179,7 @@ elements:
     text: "⏯"
     click_down:
       - type: Exec
-        command: ["bash", "-c", "playerctl", "play-pause"]
+        command: ["bash", "-c", "playerctl play-pause"]
   - type: Button
     rect: [120, 140, 45, 45]
     font_size: 20
@@ -189,4 +189,4 @@ elements:
     text: "⏮"
     click_down:
       - type: Exec
-        command: ["bash", "-c", "playerctl", "previous"]
+        command: ["bash", "-c", "playerctl previous"]
