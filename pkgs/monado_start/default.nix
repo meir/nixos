@@ -7,6 +7,7 @@ let
     desktopName = "Start Monado";
     terminal = true;
   };
+  audio_output = "Navi 31";
 in
 pkgs.stdenv.mkDerivation {
   pname = "monado-start";
@@ -31,7 +32,6 @@ pkgs.stdenv.mkDerivation {
     text = ''
       GROUP_PID_FILE="/tmp/monado-group-pid-$$"
       DEFAULT_SINK=$(pactl --format=json info | jq -r '.default_sink_name')
-      INDEX_SINK=$(pactl --format=json list sinks | jq -r '.[] |  select(.description | test("Navi")) | .name')
 
       function off() {
         echo "Stopping Monado and other stuff..."
@@ -60,11 +60,15 @@ pkgs.stdenv.mkDerivation {
         setsid sh -c '
           lovr-playspace &
           wlx-overlay-s --replace &
-          sleep 5 && pactl set-default-sink '"$INDEX_SINK"' &
           wait
         ' &
         PGID=$!
         echo "$PGID" > "$GROUP_PID_FILE"
+
+        sleep 10
+        INDEX_SINK=$(pactl --format=json list sinks | jq -r '.[] |  select(.description | test("${audio_output}")) | .name')
+        echo "Setting audio to $INDEX_SINK"
+        pactl set-default-sink "$INDEX_SINK"
       }
 
       trap off EXIT INT TERM
