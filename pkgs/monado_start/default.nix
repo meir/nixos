@@ -7,7 +7,7 @@ let
     desktopName = "Start Monado";
     terminal = true;
   };
-  audio_output = "Navi 31";
+  audio_output = "Navi 31 HDMI/DP Audio Pro 7";
 in
 pkgs.stdenv.mkDerivation {
   pname = "monado-start";
@@ -21,7 +21,6 @@ pkgs.stdenv.mkDerivation {
       [
         wlx-overlay-s
         wayvr-dashboard
-        # index_camera_passthrough
         lighthouse-steamvr
         kdePackages.kde-cli-tools
       ]
