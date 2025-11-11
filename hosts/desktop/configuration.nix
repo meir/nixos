@@ -19,6 +19,7 @@
     aseprite
     # foliate
     miru
+    amberol
   ];
 
   protocol = {
