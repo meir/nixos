@@ -26,14 +26,44 @@ with lib;
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-    wireplumber.enable = true;
+    wireplumber = {
+      enable = true;
+      extraConfig = {
+        "fixAudioStreamsCutting" = {
+          "alsa-config.conf" = ''
+            monitor.alsa.rules = [
+              {
+                matches = [
+                  {
+                    node.name = "~alsa_output.*"
+                  }
+                ]
+                actions = {
+                  update-props = {
+                    api.alsa.period-size = 1024
+                    api.alsa.headroom = 8192
+                  }
+                }
+              }
+            ]
+          '';
+        };
+      };
+    };
     extraConfig.pipewire = {
       context.properties = {
-        default.clock.rate = 48000;
-        defautlt.allowed-rates = [ 48000 ];
-        default.clock.quantum = 32;
+        default.clock.rate = 384000;
+        defautlt.allowed-rates = [
+          44100
+          48000
+          88200
+          96000
+          192000
+          384000
+        ];
+        default.clock.quantum = 256;
         default.clock.min-quantum = 32;
-        default.clock.max-quantum = 32;
+        default.clock.max-quantum = 1024;
       };
     };
   };
