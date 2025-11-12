@@ -100,13 +100,13 @@ in
 
       (mkIf config.modules.dolphin.enable {
         environment.systemPackages = with pkgs; [
-          dolphin
+          kdePackages.dolphin
         ];
 
         protocol.hotkeys = [
           ''
             super + e
-              hyprland | exec, ${getExe pkgs.dolphin}
+              hyprland | exec, ${getExe pkgs.kdePackages.dolphin}
           ''
         ];
       })
