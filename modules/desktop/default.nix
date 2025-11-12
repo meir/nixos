@@ -26,7 +26,7 @@ in
     rofi.enable = mkEnableOption "rofi";
     mako.enable = mkEnableOption "mako";
     swww.enable = mkEnableOption "swww";
-    dolphin.enable = mkEnableOption "dolphin";
+    nautilus.enable = mkEnableOption "nautilus";
   };
 
   config = (
@@ -100,13 +100,13 @@ in
 
       (mkIf config.modules.dolphin.enable {
         environment.systemPackages = with pkgs; [
-          kdePackages.dolphin
+          nautilus
         ];
 
         protocol.hotkeys = [
           ''
             super + e
-              hyprland | exec, ${getExe pkgs.kdePackages.dolphin}
+              hyprland | exec, ${getExe pkgs.nautilus}
           ''
         ];
       })
