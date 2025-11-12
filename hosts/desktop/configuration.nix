@@ -69,6 +69,7 @@
     rofi.enable = true;
     mako.enable = true;
     swww.enable = true;
+    dolphin.enable = true;
     steam.enable = true;
     steamvr = {
       enable = true;

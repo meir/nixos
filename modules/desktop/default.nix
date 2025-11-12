@@ -26,6 +26,7 @@ in
     rofi.enable = mkEnableOption "rofi";
     mako.enable = mkEnableOption "mako";
     swww.enable = mkEnableOption "swww";
+    dolphin.enable = mkEnableOption "dolphin";
   };
 
   config = (
@@ -94,6 +95,19 @@ in
         protocol.autostart = [
           "${pkgs.swww}/bin/swww-daemon"
           "${getExe pkgs.swww} restore"
+        ];
+      })
+
+      (mkIf config.modules.dolphin.enable {
+        environment.systemPackages = with pkgs; [
+          dolphin
+        ];
+
+        protocol.hotkeys = [
+          ''
+            super + e
+              hyprland | exec, ${getExe pkgs.dolphin}
+          ''
         ];
       })
     ]
