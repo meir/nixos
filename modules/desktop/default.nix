@@ -98,7 +98,7 @@ in
         ];
       })
 
-      (mkIf config.modules.dolphin.enable {
+      (mkIf config.modules.nautilus.enable {
         environment.systemPackages = with pkgs; [
           nautilus
         ];
