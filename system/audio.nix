@@ -29,24 +29,11 @@ with lib;
     wireplumber = {
       enable = true;
       extraConfig = {
-        "fixAudioStreamsCutting" = {
-          "alsa-config.conf" = ''
-            monitor.alsa.rules = [
-              {
-                matches = [
-                  {
-                    node.name = "~alsa_output.*"
-                  }
-                ]
-                actions = {
-                  update-props = {
-                    api.alsa.period-size = 1024
-                    api.alsa.headroom = 8192
-                  }
-                }
-              }
-            ]
-          '';
+        "99-alsa-config" = {
+          "context.properties" = {
+            "api.alsa.headroom" = 512;
+            "api.alsa.period-size" = 64;
+          };
         };
       };
     };
