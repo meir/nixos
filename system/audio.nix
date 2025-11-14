@@ -26,17 +26,7 @@ with lib;
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-    wireplumber = {
-      enable = true;
-      extraConfig = {
-        "99-alsa-config" = {
-          "context.properties" = {
-            "api.alsa.headroom" = 8192;
-            "api.alsa.period-size" = 128;
-          };
-        };
-      };
-    };
+    wireplumber.enable = true;
     extraConfig.pipewire = {
       context.properties = {
         default.clock.rate = 384000;
@@ -48,9 +38,9 @@ with lib;
           192000
           384000
         ];
-        default.clock.quantum = 256;
-        default.clock.min-quantum = 32;
-        default.clock.max-quantum = 1024;
+        default.clock.quantum = 4096;
+        default.clock.min-quantum = 1024;
+        default.clock.max-quantum = 8192;
       };
     };
   };
