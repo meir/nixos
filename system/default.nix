@@ -5,6 +5,7 @@
 }@inputs:
 {
   imports = [
+    ./files.nix
     ./audio.nix
     ./locale.nix
     ./network.nix
@@ -17,6 +18,7 @@
     ./terminal.nix
     ./storage.nix
     ./style.nix
+    ./modules.nix
 
     ../modules
   ];
@@ -24,8 +26,6 @@
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
-    (import ../overlays/izu.nix inputs)
-    (import ../overlays/nixpkgs-unstable.nix inputs)
     (import ../overlays/packages.nix inputs)
   ];
 

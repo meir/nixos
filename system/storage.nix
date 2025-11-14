@@ -5,5 +5,4 @@
     "sd_mod"
   ];
   boot.supportedFilesystems = [ "ntfs" ];
-
 }

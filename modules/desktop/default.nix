@@ -43,7 +43,7 @@ in
           "${widgetScripts}"
         ];
 
-        hm.home.file.".config/eww".source = ../config/eww;
+        files.".config/eww".source = ../config/eww;
       })
 
       (mkIf config.modules.rofi.enable {
@@ -57,7 +57,7 @@ in
           "wl-paste --type image --watch cliphist store"
         ];
 
-        hm.home.file.".config/rofi".source = ../config/rofi;
+        files.".config/rofi".source = ../config/rofi;
 
         protocol.hotkeys =
           let
@@ -83,7 +83,7 @@ in
           "${getExe pkgs.mako}"
         ];
 
-        hm.home.file.".config/mako/config".source = ../config/mako/config;
+        files.".config/mako/config".source = ../config/mako/config;
       })
 
       (mkIf config.modules.swww.enable {

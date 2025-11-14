@@ -3,8 +3,11 @@
   ...
 }:
 {
+  # info
   user = "human";
   hostname = "desktop";
+
+  # apps
 
   environment.systemPackages = with pkgs; [
     gimp
@@ -17,10 +20,39 @@
     stremio
     thunderbird
     aseprite
-    # foliate
+    foliate
     miru
     amberol
   ];
+
+  modules = {
+    amdgpu.enable = true;
+    bluetooth.enable = true;
+    containerization.enable = true;
+    eww = {
+      enable = true;
+      widgets = [
+        "mon1"
+        "mon2"
+      ];
+    };
+    rofi.enable = true;
+    mako.enable = true;
+    swww.enable = true;
+    nautilus.enable = true;
+    steam.enable = true;
+    steamvr = {
+      enable = true;
+      runtime = "monado";
+    };
+    discord.enable = true;
+    browser = "zenbrowser";
+    nvim.enable = true;
+    onepassword.enable = true;
+    qmk.enable = true;
+  };
+
+  # config
 
   protocol = {
     rules = [
@@ -53,33 +85,6 @@
       "discord"
       "spotify"
     ];
-  };
-
-  modules = {
-    amdgpu.enable = true;
-    bluetooth.enable = true;
-    containerization.enable = true;
-    eww = {
-      enable = true;
-      widgets = [
-        "mon1"
-        "mon2"
-      ];
-    };
-    rofi.enable = true;
-    mako.enable = true;
-    swww.enable = true;
-    nautilus.enable = true;
-    steam.enable = true;
-    steamvr = {
-      enable = true;
-      runtime = "monado";
-    };
-    discord.enable = true;
-    browser = "zenbrowser";
-    nvim.enable = true;
-    onepassword.enable = true;
-    qmk.enable = true;
   };
 
   fileSystems."/games" = {

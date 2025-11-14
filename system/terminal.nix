@@ -83,7 +83,7 @@ with lib;
     '';
   };
 
-  hm.home.file = {
+  files = {
     ".cache/oh-my-zsh/completions/_cdl".source = "${pkgs.cdl}/shared/.oh-my-zsh/completions/_cdl";
     ".config/starship.toml".text = ''
       format = ' (blue)$directory(green)‣ '

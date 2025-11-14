@@ -1,1 +1,0 @@
-{ izu, ... }: izu.overlays.default

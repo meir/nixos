@@ -26,7 +26,7 @@ with lib;
       }
     ];
 
-    hm.home.file = {
+    files = {
       ".config/openxr/1/active_runtime.json".text = ''
         {
           "file_format_version": "1.0.0",
@@ -41,17 +41,17 @@ with lib;
         {
           "config" :
           [
-            "${config.user_home}/.local/share/Steam/config"
+            "${config.home}/.local/share/Steam/config"
           ],
           "external_drivers" : null,
           "jsonid" : "vrpathreg",
           "log" :
           [
-            "${config.user_home}/.local/share//Steam/logs"
+            "${config.home}/.local/share//Steam/logs"
           ],
           "runtime" :
           [
-            "${config.user_home}/.local/share/Steam/steamapps/common/SteamVR"
+            "${config.home}/.local/share/Steam/steamapps/common/SteamVR"
           ],
           "version" : 1
         }

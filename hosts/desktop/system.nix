@@ -15,9 +15,11 @@ nixpkgs.lib.nixosSystem {
     ./hardware-configuration.nix
     ../../system
     ./configuration.nix
-    home-manager.nixosModules.home-manager
     base16.nixosModule
     stylix.nixosModules.stylix
     nixpkgs-xr.nixosModules.nixpkgs-xr
+
+    # remove once theres an alternative for nix managed dotfiles
+    home-manager.nixosModules.home-manager
   ];
 }

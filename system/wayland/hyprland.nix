@@ -8,7 +8,10 @@ with lib;
 let
   startup = concatStringsSep "\n" (map (value: "exec-once = ${value}") config.protocol.autostart);
   rules = concatStringsSep "\n\n" config.protocol.rules;
-  binds = pkgs.izuGenerate "hyprland" config.protocol.hotkeys;
+  binds = pkgs.izu.izuGenerate.override {
+    formatter = "hyprland";
+    hotkeys = config.protocol.hotkeys;
+  };
 
   hyprconfig = pkgs.writeScript "hyprland" ''
     ${readFile binds}
@@ -88,7 +91,7 @@ in
       withUWSM = true;
     };
 
-    hm.home.file.".config/hypr/hyprland.conf" = {
+    files.".config/hypr/hyprland.conf" = {
       source = hyprconfig;
     };
   };

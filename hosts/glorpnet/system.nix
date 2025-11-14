@@ -1,6 +1,5 @@
 {
   nixpkgs,
-  home-manager,
   ...
 }:
 specialArgs:
@@ -12,7 +11,6 @@ nixpkgs.lib.nixosSystem {
     ./hardware-configuration.nix
     ../../system
     ./configuration.nix
-    home-manager.nixosModules.home-manager
   ];
 }
 

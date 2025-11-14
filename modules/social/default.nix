@@ -52,7 +52,7 @@ with lib;
           jq
         ];
 
-        hm.home.file.".config/qutebrowser/config.py".source = ../config/qutebrowser/config.py;
+        files.".config/qutebrowser/config.py".source = ../config/qutebrowser/config.py;
 
         xdg.mime.defaultApplications = {
           "text/html" = "org.qutebrowser.qutebrowser.desktop";

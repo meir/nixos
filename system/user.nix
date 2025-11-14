@@ -13,7 +13,7 @@ with lib;
       default = "human";
       description = "Name of the default user";
     };
-    user_home = mkOption {
+    home = mkOption {
       type = types.path;
       default = "/home/${config.user}";
       internal = true;
@@ -21,38 +21,16 @@ with lib;
     };
   };
 
-  imports = [
-    (mkAliasOptionModule
-      [ "hm" ]
-      [
-        "home-manager"
-        "users"
-        config.user
-      ]
-    )
-  ];
-
   config = {
     environment.variables = {
-      "XDG_CONFIG_HOME" = "${config.user_home}/.config";
-      "XDG_DATA_HOME" = "${config.user_home}/.local/share";
-    };
-
-    home-manager = {
-      users."${config.user}".home = {
-        username = config.user;
-        homeDirectory = config.user_home;
-        stateVersion = "25.05";
-      };
-
-      useUserPackages = true;
-      useGlobalPkgs = true;
+      "XDG_CONFIG_HOME" = "${config.home}/.config";
+      "XDG_DATA_HOME" = "${config.home}/.local/share";
     };
 
     users.users."${config.user}" = {
       isNormalUser = true;
       name = config.user;
-      home = config.user_home;
+      home = config.home;
       initialPassword = "nixos";
       extraGroups = [
         "networkmanager"
