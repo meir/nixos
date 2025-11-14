@@ -29,6 +29,7 @@ let
 in
 {
   options.desktop.entry = mkOption {
+    default = {};
     type = types.attrsOf (
       types.submodule {
         options = {

@@ -18,9 +18,6 @@
     ./terminal.nix
     ./storage.nix
     ./style.nix
-    ./modules.nix
-
-    ../modules
   ];
 
   nixpkgs.config.allowUnfree = true;
