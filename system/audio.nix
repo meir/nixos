@@ -40,7 +40,7 @@ with lib;
     extraConfig.pipewire = {
       context.properties = {
         default.clock.rate = 384000;
-        defautlt.allowed-rates = [
+        default.allowed-rates = [
           44100
           48000
           88200
