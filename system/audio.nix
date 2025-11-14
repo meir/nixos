@@ -31,8 +31,8 @@ with lib;
       extraConfig = {
         "99-alsa-config" = {
           "context.properties" = {
-            "api.alsa.headroom" = 512;
-            "api.alsa.period-size" = 64;
+            "api.alsa.headroom" = 1024;
+            "api.alsa.period-size" = 128;
           };
         };
       };
