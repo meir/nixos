@@ -1,10 +1,8 @@
 {
   pkgs,
+  modules,
   ...
 }@inputs:
-let
-  modules = import ../../modules inputs;
-in
 {
   # info
   user = "human";
@@ -27,22 +25,22 @@ in
     amberol
   ];
 
-  imports = with modules; [
-    (amdgpu {})
-    (bluetooth {})
-    (docker {})
-    (eww { widgets = [ "mon1" "mon2" ]; })
-    (rofi {})
-    (mako {})
-    (swww {})
-    (nautilus {})
-    (steam {})
-    (monado {})
-    (discord {})
-    (zenbrowser {})
-    (neovim {})
-    (onepassword {})
-    (qmk {})
+  imports = with modules; useMods inputs [
+    amdgpu
+    bluetooth
+    docker
+    (eww.override { widgets = [ "mon1" "mon2" ]; })
+    rofi
+    mako
+    swww
+    nautilus
+    steam
+    monado
+    discord
+    zenbrowser
+    neovim
+    onepassword
+    qmk
   ];
 
   # config

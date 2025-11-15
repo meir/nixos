@@ -20,6 +20,7 @@
     inputs:
     let
       specialArgs = {
+        modules = import ./lib/modules.nix;
         inherit (inputs)
           nixpkgs-unstable
           izu
