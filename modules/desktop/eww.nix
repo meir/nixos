@@ -6,25 +6,16 @@
 }:
 with lib;
 let
-  widgetScripts = pkgs.writeScript "eww-start" (
-    concatStringsSep "\n" (
-      map (widget: ''
-        ${pkgs.eww}/bin/eww open ${widget}
-      '') widgets
-    )
-  );
+  eww_bin = lib.getExe pkgs.eww;
+  eww_widgets = map (widget: "${eww_bin} open ${widget}") widgets;
 in
 {
   environment.systemPackages = with pkgs; [
-    jq
     eww
+    jq
     zscroll
   ];
 
-  protocol.autostart = [
-    "${pkgs.eww}/bin/eww daemon &"
-    "${widgetScripts}"
-  ];
-
+  protocol.autostart = [ "${eww_bin} daemon &" ] ++ eww_widgets;
   files.".config/eww".source = ../config/eww;
 }

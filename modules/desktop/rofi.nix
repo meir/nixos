@@ -1,4 +1,8 @@
 { pkgs, lib, ... }:
+let
+  rofi_bin = lib.getExe pkgs.rofi;
+  cliphist_bin = lib.getExe pkgs.cliphist;
+in
 {
   environment.systemPackages = with pkgs; [
     rofi
@@ -12,17 +16,13 @@
 
   files.".config/rofi".source = ../config/rofi;
 
-  protocol.hotkeys =
-    let
-      rofi = "${lib.getExe pkgs.rofi}";
-    in
-    [
+  protocol.hotkeys = [
       ''
         super + {_, shift +} Space
-          hyprland | exec, ${rofi} -show {drun,run} &
+          hyprland | exec, ${rofi_bin} -show {drun,run} &
 
         super + v
-          hyprland | exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy | wl-paste
+          hyprland | exec, ${cliphist_bin} list | rofi -dmenu | ${cliphist_bin} decode | wl-copy | wl-paste
       ''
     ];
 }
