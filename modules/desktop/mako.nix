@@ -1,6 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config_files ? null, ... }:
+with lib;
 let
-  mako_bin = lib.getExe pkgs.mako;
+  mako_bin = getExe pkgs.mako;
 in
 {
   environment.systemPackages = with pkgs; [
@@ -8,5 +9,5 @@ in
   ];
 
   protocol.autostart = [ mako_bin ];
-  files.".config/mako/config".source = ../config/mako/config;
+  files.".config/mako/config".source = mkIf (config_files != null) config_files;
 }

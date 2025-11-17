@@ -1,7 +1,8 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config_files ? null, ... }:
+with lib;
 let
-  rofi_bin = lib.getExe pkgs.rofi;
-  cliphist_bin = lib.getExe pkgs.cliphist;
+  rofi_bin = getExe pkgs.rofi;
+  cliphist_bin = getExe pkgs.cliphist;
 in
 {
   environment.systemPackages = with pkgs; [
@@ -14,7 +15,7 @@ in
     "wl-paste --type image --watch cliphist store"
   ];
 
-  files.".config/rofi".source = ../config/rofi;
+  files.".config/rofi".source = mkIf (config_files != null) config_files;
 
   protocol.hotkeys = [
       ''

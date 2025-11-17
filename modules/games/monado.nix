@@ -2,6 +2,8 @@
   config,
   pkgs,
   lib,
+  watch ? null,
+  keyboard ? null,
   ...
 }:
 with lib;
@@ -106,8 +108,8 @@ in
         "version" : 1
       }
     '';
-    ".config/wlxoverlay/watch.yaml".source = ../config/wlxoverlay/watch.yaml;
-    ".config/wlxoverlay/keyboard.yaml".source = ../config/wlxoverlay/keyboard.yaml;
+    ".config/wlxoverlay/watch.yaml".source = mkIf (watch != null) watch;
+    ".config/wlxoverlay/keyboard.yaml".source = mkIf (keyboard != null) keyboard;
   };
 
   desktop.entry = {

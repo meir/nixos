@@ -30,13 +30,23 @@
     amdgpu
     bluetooth
     docker
-    (eww.override { widgets = [ "mon1" "mon2" ]; })
-    rofi
-    mako
+    (eww.override {
+      config_files = ./config/eww;
+      widgets = [ "mon1" "mon2" ];
+    })
+    (rofi.override {
+      config_files = ./config/rofi;
+    })
+    (mako.override {
+      config_files = ./config/mako;
+    })
     swww
     nautilus
     steam
-    monado
+    (monado.override {
+      watch = ./config/wlxoverlay/watch.yaml;
+      keyboard = ./config/wlxoverlay/keyboard.yaml;
+    })
     discord
     zenbrowser
     neovim

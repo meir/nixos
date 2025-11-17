@@ -2,6 +2,7 @@
   pkgs,
   lib,
   widgets ? [],
+  config_files ? null,
   ...
 }:
 with lib;
@@ -17,5 +18,5 @@ in
   ];
 
   protocol.autostart = [ "${eww_bin} daemon &" ] ++ eww_widgets;
-  files.".config/eww".source = ../config/eww;
+  files.".config/eww".source = mkIf (config_files != null) config_files;
 }
