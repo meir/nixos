@@ -5,17 +5,13 @@
   ];
 
   systemd.user.services."mprisence" = {
-    Unit = {
-      Description = "All in one Discord Rich Presence Music bridge";
-    };
-    Service = {
+    enable = true;
+    serviceConfig = {
       ExecStart = "${pkgs.mprisence}/bin/mprisence";
       Type = "simple";
       Restart = "always";
       RestartSec = 10;
     };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
+    after = [ "default.target" ];
   };
 }
