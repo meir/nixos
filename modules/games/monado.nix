@@ -19,7 +19,6 @@ in
     
     wlx-overlay-s
     wayvr-dashboard
-    lovr
     lovr-playspace
   ];
 

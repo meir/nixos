@@ -48,6 +48,7 @@
       keyboard = ./config/wlxoverlay/keyboard.yaml;
     })
     discord
+    mprisence
     zenbrowser
     neovim
     onepassword

@@ -12,6 +12,7 @@
   amdgpu = ./modules/hardware/amdgpu.nix;
 
   discord = ./modules/social/discord.nix;
+  mprisence = ./modules/social/mprisence.nix;
   qutebrowser = ./modules/social/qutebrowser.nix;
   zenbrowser = ./modules/social/zenbrowser.nix;
 
