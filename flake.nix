@@ -5,6 +5,7 @@
     stylix.url = "github:danth/stylix/release-25.05";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     base16.url = "github:SenchoPens/base16.nix";
+    base16.inputs.nixpkgs.follows = "nixpkgs";
 
     # only use for dotfiles; remove as soon as theres an alternative
     home-manager.url = "github:nix-community/home-manager/release-25.05";
@@ -26,6 +27,8 @@
           izu
           nh
           zen-browser
+          steam-config-nix
+
           home-manager
           ;
       };

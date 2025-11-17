@@ -29,7 +29,8 @@ with lib;
     wireplumber.enable = true;
     extraConfig.pipewire = {
       context.properties = {
-        default.clock.rate = 384000;
+        default.clock.rate = 48000;
+        default.clock.force-rate = 48000;
         default.allowed-rates = [
           44100
           48000
