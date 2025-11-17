@@ -23,6 +23,7 @@
     foliate
     miru
     amberol
+    orca-slicer
   ];
 
   imports = with modules; useMods inputs [
