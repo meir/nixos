@@ -22,10 +22,6 @@ pkgs.stdenv.mkDerivation {
         wlx-overlay-s
         wayvr-dashboard
         lighthouse-steamvr
-        kdePackages.kde-cli-tools
-      ]
-      ++ [
-        lovr-playspace
       ];
 
     text = ''
@@ -57,7 +53,7 @@ pkgs.stdenv.mkDerivation {
         systemctl --user restart monado.service
 
         setsid sh -c '
-          lovr-playspace &
+          # lovr-playspace &
           wlx-overlay-s --replace &
           wait
         ' &

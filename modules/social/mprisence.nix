@@ -13,5 +13,6 @@
       RestartSec = 10;
     };
     after = [ "default.target" ];
+    wantedBy = [ "default.target" ];
   };
 }
