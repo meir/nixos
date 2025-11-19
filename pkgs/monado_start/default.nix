@@ -64,6 +64,11 @@ pkgs.stdenv.mkDerivation {
         INDEX_SINK=$(pactl --format=json list sinks | jq -r '.[] |  select(.description | test("${audio_output}")) | .name')
         echo "Setting audio to $INDEX_SINK"
         pactl set-default-sink "$INDEX_SINK"
+
+        # weird issue i just cant solve in my nix/pw config, so this is the hack to fix it lol
+        pw-metadata -n settings 0 clock.force-rate 48000
+        pw-metadata -n settings 0 clock.max-quantum 8192
+        pw-metadata -n settings 0 clock.min-quantum 512
       }
 
       trap off EXIT INT TERM
