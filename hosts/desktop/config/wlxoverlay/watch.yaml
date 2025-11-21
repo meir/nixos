@@ -147,13 +147,12 @@ elements:
     source: Exec
     command:
       [
-        "playerctl",
-        "metadata",
-        "--format",
-        "[{{ title }} - {{ artist }}]",
+        "bash",
+        "-c",
+        "playerctl metadata --format '[{{ title }} - {{ artist }}]'",
         "||",
         "echo",
-        "None",
+        "'None'",
       ]
     interval: 0.5
     rect: [25, 120, 350, 20]

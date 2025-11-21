@@ -65,10 +65,11 @@ pkgs.stdenv.mkDerivation {
         echo "Setting audio to $INDEX_SINK"
         pactl set-default-sink "$INDEX_SINK"
 
+        sleep 5
         # weird issue i just cant solve in my nix/pw config, so this is the hack to fix it lol
-        pw-metadata -n settings 0 clock.force-rate 48000
         pw-metadata -n settings 0 clock.max-quantum 8192
         pw-metadata -n settings 0 clock.min-quantum 512
+        pw-metadata -n settings 0 clock.force-rate 48000
       }
 
       trap off EXIT INT TERM
