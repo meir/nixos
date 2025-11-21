@@ -13,7 +13,7 @@ with lib;
     libdrm
     pavucontrol
     alsa-oss
-    helvum
+    easyeffects
     playerctl
     pulseaudio
   ];
