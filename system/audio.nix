@@ -28,14 +28,15 @@ with lib;
     jack.enable = true;
     wireplumber.enable = true;
     extraConfig.pipewire = {
-      "99-audio-settings" = {
-        "context.properties" = {
-          "default.clock.rate" = 48000;
-          "default.clock.force-rate" = 48000;
-          "default.clock.min-quantum" = 512;
-          "default.clock.max-quantum" = 8192;
+      "default" = ''
+        context.properties = {
+          default.clock.rate" = 48000
+          default.clock.force-rate = 48000
+          default.clock.min-quantum = 512
+          default.clock.quantum = 1024
+          default.clock.max-quantum = 8192
         };
-      };
+      '';
     };
   };
 

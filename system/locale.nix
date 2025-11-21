@@ -11,7 +11,7 @@ in
 {
   time.timeZone = timezone;
 
-  environment.systemPackages = with pkgs; [ anthy ];
+  # environment.systemPackages = with pkgs; [ anthy ];
 
   i18n = {
     defaultLocale = locale;
@@ -20,13 +20,13 @@ in
       LC_ALL = locale;
     };
 
-    inputMethod = {
-      type = "ibus";
-      enable = true;
-      ibus = {
-        engines = with pkgs.ibus-engines; [ anthy ];
-      };
-    };
+    # inputMethod = {
+    #   type = "ibus";
+    #   enable = true;
+    #   ibus = {
+    #     engines = with pkgs.ibus-engines; [ anthy ];
+    #   };
+    # };
   };
 
   environment.variables = {

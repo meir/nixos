@@ -8,17 +8,6 @@ with lib;
 {
   environment.systemPackages = with pkgs; [
     kitty
-    lact
-
-    # terminal tools
-    btop-rocm
-    fastfetch
-    xdotool
-    cargo
-    rustc
-    python314
-
-    # zsh
     zsh
     oh-my-zsh
     bash
@@ -28,9 +17,6 @@ with lib;
     onefetch
     fastfetch
   ];
-
-  systemd.packages = with pkgs; [ lact ];
-  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
   programs = {
     gnupg.agent.enable = true;

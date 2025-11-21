@@ -38,7 +38,7 @@
       config_files = ./config/rofi;
     })
     (mako.override {
-      config_files = ./config/mako;
+      config_files = ./config/mako/config;
     })
     swww
     nautilus
