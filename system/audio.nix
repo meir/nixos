@@ -27,17 +27,7 @@ with lib;
     pulse.enable = true;
     jack.enable = true;
     wireplumber.enable = true;
-    extraConfig.pipewire = {
-      "default" = ''
-        context.properties = {
-          default.clock.rate" = 48000
-          default.clock.force-rate = 48000
-          default.clock.min-quantum = 512
-          default.clock.quantum = 1024
-          default.clock.max-quantum = 8192
-        };
-      '';
-    };
+    extraConfig.pipewire = { };
   };
 
   protocol.hotkeys = [
