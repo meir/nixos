@@ -24,6 +24,7 @@
     miru
     amberol
     orca-slicer
+    votv
   ];
 
   imports = with modules; useMods inputs [

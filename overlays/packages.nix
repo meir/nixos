@@ -6,6 +6,7 @@ final: prev: {
   cdl = callPackage ../pkgs/cdl { };
   sm64coopdx-local = callPackage ../pkgs/sm64coopdx { };
   monado_start = callPackage ../pkgs/monado_start { };
+  votv = callPackage ../pkgs/votv { };
 
   izu = izu.packages."${final.system}";
   zen-browser = zen-browser.packages."${final.system}";
