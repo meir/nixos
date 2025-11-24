@@ -25,6 +25,7 @@
     amberol
     orca-slicer
     votv
+    steam-vdf
   ];
 
   imports = with modules; useMods inputs [

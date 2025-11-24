@@ -7,6 +7,7 @@ final: prev: {
   sm64coopdx-local = callPackage ../pkgs/sm64coopdx { };
   monado_start = callPackage ../pkgs/monado_start { };
   votv = callPackage ../pkgs/votv { };
+  steam-vdf = pkgs.python3Packages.callPackage ../pkgs/steam-vdf { };
 
   izu = izu.packages."${final.system}";
   zen-browser = zen-browser.packages."${final.system}";
