@@ -76,7 +76,6 @@
 
       "windowrulev2 = workspace 10, class:^(thunderbird)$"
       "windowrulev2 = workspace 6, class:^(discord)$"
-      "windowrulev2 = workspace 7, class:^(Amberol)$"
       ''
         device {
           name=wacom-intuos-bt-s-pen
@@ -88,7 +87,7 @@
     autostart = [
       "thunderbird"
       "discord"
-      "amberol"
+      "sleep 5 && amberol"
     ];
   };
 
