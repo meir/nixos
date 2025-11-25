@@ -84,7 +84,7 @@ in
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="35bd", ATTRS{idProduct}=="4004", MODE="0660", TAG+="uaccess"
   '';
 
-  files = {
+  nix-fs.files = {
     ".config/openxr/1/active_runtime.json".source = "${monado}/share/openxr/1/openxr_monado.json";
     ".config/openvr/openvrpaths.vrpath".text = ''
       {

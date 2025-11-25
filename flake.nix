@@ -6,9 +6,7 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     base16.url = "github:SenchoPens/base16.nix";
     base16.inputs.nixpkgs.follows = "nixpkgs";
-
-    # only use for dotfiles; remove as soon as theres an alternative
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    nix-fs.url = "github:meir/nix-fs";
 
     # Overlays
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
@@ -28,8 +26,7 @@
           nh
           zen-browser
           steam-config-nix
-
-          home-manager
+          nix-fs
           ;
       };
     in

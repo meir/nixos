@@ -1,9 +1,9 @@
 {
   nixpkgs,
-  home-manager,
   base16,
   stylix,
   nixpkgs-xr,
+  nix-fs,
   ...
 }:
 specialArgs:
@@ -18,8 +18,6 @@ nixpkgs.lib.nixosSystem {
     base16.nixosModule
     stylix.nixosModules.stylix
     nixpkgs-xr.nixosModules.nixpkgs-xr
-
-    # remove once theres an alternative for nix managed dotfiles
-    home-manager.nixosModules.home-manager
+    nix-fs.nixosModules.nix-fs
   ];
 }

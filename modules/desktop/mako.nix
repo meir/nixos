@@ -9,5 +9,5 @@ in
   ];
 
   protocol.autostart = [ mako_bin ];
-  files.".config/mako/config".source = mkIf (config_files != null) config_files;
+  nix-fs.files.".config/mako/config".source = mkIf (config_files != null) config_files;
 }

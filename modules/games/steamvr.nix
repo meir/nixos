@@ -25,7 +25,7 @@ with lib;
     }
   ];
 
-  files = {
+  nix-fs.files = {
     ".config/openxr/1/active_runtime.json".text = ''
       {
         "file_format_version": "1.0.0",

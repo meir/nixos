@@ -15,7 +15,7 @@ in
     "wl-paste --type image --watch cliphist store"
   ];
 
-  files.".config/rofi".source = mkIf (config_files != null) config_files;
+  nix-fs.files.".config/rofi".source = mkIf (config_files != null) config_files;
 
   protocol.hotkeys = [
       ''

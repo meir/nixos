@@ -91,7 +91,7 @@ in
       withUWSM = true;
     };
 
-    files.".config/hypr/hyprland.conf" = {
+    nix-fs.files.".config/hypr/hyprland.conf" = {
       source = hyprconfig;
     };
   };

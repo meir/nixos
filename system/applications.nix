@@ -74,6 +74,6 @@ in
   };
 
   config = {
-    files = files;
+    nix-fs.files = files;
   };
 }

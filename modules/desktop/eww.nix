@@ -18,5 +18,5 @@ in
   ];
 
   protocol.autostart = [ "${eww_bin} daemon &" ] ++ eww_widgets;
-  files.".config/eww".source = mkIf (config_files != null) config_files;
+  nix-fs.files.".config/eww".source = mkIf (config_files != null) config_files;
 }
