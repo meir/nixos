@@ -23,6 +23,9 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
     "amdgpu.ppfeaturemask=0xffffffff"
+    "usbcore.autosuspend=-1"
+    "usbcore.reset_resume=1"
+    "usbcore.old_scheme_first=1"
   ];
 
   systemd.tmpfiles.rules =
