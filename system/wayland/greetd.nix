@@ -8,10 +8,14 @@
 with lib;
 {
   config = mkIf config.protocol.wayland.enable {
-    services.xserver.displayManager.gdm = {
-      enable = true;
-      wayland = true;
+    services.greetd = {
+      enabled = true;
+      package = pkgs.unstable.greetd;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd 'dbus-run-sesion Hyprland'";
+        };
+      };
     };
-    services.displayManager.defaultSession = "hyprland-uwsm";
   };
 }
