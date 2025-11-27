@@ -29,6 +29,9 @@
   ];
 
   imports = with modules; useMods inputs [
+    (hyprland.override {
+      config_file = ./config/hyprland/hyprland.conf;
+    })
     amdgpu
     bluetooth
     docker
@@ -58,7 +61,6 @@
   ];
 
   # config
-
   protocol = {
     rules = [
       "monitor = HDMI-A-2, 2560x1080, 1920x0, 1"

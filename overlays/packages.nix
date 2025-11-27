@@ -1,4 +1,4 @@
-{ pkgs, zen-browser, izu, nixpkgs-unstable, ... }:
+{ pkgs, zen-browser, izu, quickshell, nixpkgs-unstable, ... }:
 with pkgs;
 final: prev: {
   cozette-nerdfont = callPackage ../pkgs/cozette-nerdfont { };
@@ -10,7 +10,8 @@ final: prev: {
   steam-vdf = pkgs.python3Packages.callPackage ../pkgs/steam-vdf { };
 
   izu = izu.packages."${final.system}";
-  zen-browser = zen-browser.packages."${final.system}";
+  zen-browser = zen-browser.packages."${final.system}".default;
+  quickshell = quickshell.packages."${final.system}".default;
 
   discord_wayland = import ../pkgs/discord_wayland final;
   monado_custom = import ../pkgs/monado_custom final;

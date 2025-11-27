@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    zen-browser.default
+    zen-browser
   ];
 
   xdg.mime.defaultApplications = {

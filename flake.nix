@@ -7,6 +7,7 @@
     base16.url = "github:SenchoPens/base16.nix";
     base16.inputs.nixpkgs.follows = "nixpkgs";
     nix-fs.url = "github:meir/nix-fs";
+    quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
 
     # Overlays
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
@@ -27,6 +28,7 @@
           zen-browser
           steam-config-nix
           nix-fs
+          quickshell
           ;
       };
     in
