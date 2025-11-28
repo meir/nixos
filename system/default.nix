@@ -45,13 +45,13 @@
       super + q
         sxhkd | bspc node -c
         hyprland | killactive
-        niri | closewindow
+        niri | closewindow;
 
       # kill app
       super + shift + q
         sxhkd | bspc node -k
         hyprland | forcekillactive
-        niri | forceclosewindow
+        niri | forceclosewindow;
 
       # change mode
       super + {t,shift + t,s,f}
@@ -62,9 +62,11 @@
       # resize window
       super + mouse_lmb | hyprland[m]
         hyprland | movewindow
+        niri | spawn "echo not supported";
 
       super + mouse_rmb | hyprland[m]
         hyprland | resizewindow
+        niri | spawn "echo not supported";
 
       # focus/move the node in given direction
       super + {_,shift + }{h,j,k,l}
@@ -82,6 +84,7 @@
       shift + super + r
         sxhkd | pkill -x sxhkd && sxhkd &
         hyprland | exec, hyprctl reload
+        niri | spawn "niri validate";
 
       # screenshot region
       super + shift + p
