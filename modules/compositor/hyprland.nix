@@ -44,7 +44,7 @@ in
       package = pkgs.unstable.greetd;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd 'dbus-run-sesion Hyprland'";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd 'hyprland'";
         };
       };
     };

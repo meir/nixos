@@ -33,6 +33,7 @@ in
     };
 
     environment.systemPackages = with pkgs; [ 
+      alacritty
       xwayland-satellite # xwayland support
     ];
 
