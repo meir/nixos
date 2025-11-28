@@ -29,8 +29,8 @@
   ];
 
   imports = with modules; useMods inputs [
-    (hyprland.override {
-      config_file = ./config/hyprland/hyprland.conf;
+    (niri.override {
+      config_file = ./config/niri/niri.kdl;
     })
     amdgpu
     bluetooth
