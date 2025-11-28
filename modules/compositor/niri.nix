@@ -39,7 +39,7 @@ in
     security.polkit.enable = true;
 
     services.greetd = {
-      enabled = true;
+      enable = true;
       package = pkgs.unstable.greetd;
       settings = {
         default_session = {
