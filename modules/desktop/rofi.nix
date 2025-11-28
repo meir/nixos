@@ -21,9 +21,11 @@ in
       ''
         super + {_, shift +} Space
           hyprland | exec, ${rofi_bin} -show {drun,run} &
+          niri | spawn "${rofi_bin} -show {drun,run} &";
 
         super + v
           hyprland | exec, ${cliphist_bin} list | rofi -dmenu | ${cliphist_bin} decode | wl-copy | wl-paste
+          niri | spawn "${cliphist_bin} list | rofi -dmenu | ${cliphist_bin} decode | wl-copy | wl-paste";
       ''
     ];
 }

@@ -8,10 +8,6 @@ with lib;
 {
   environment.systemPackages = with pkgs; [ wlx-overlay-s ];
 
-  protocol.rules = [
-    "windowrulev2 = workspace 5, initialTitle:(.*[vV][rR].*)" # match with any title that has "VR"
-  ];
-
   programs.steam.extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
 
   boot.kernelPatches = [

@@ -21,10 +21,6 @@ in
     wayvr-dashboard
   ];
 
-  protocol.rules = [
-    "windowrulev2 = workspace 5, initialTitle:(.*[vV][rR].*)" # match with any title that has "VR"
-  ];
-
   programs.steam.extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
 
   services.monado = {

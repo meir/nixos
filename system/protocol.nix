@@ -10,11 +10,6 @@ with lib;
       default = [ ];
     };
 
-    rules = mkOption {
-      type = types.listOf types.str;
-      default = [ ];
-    };
-
     autostart = mkOption {
       type = types.listOf types.str;
       default = [ ];

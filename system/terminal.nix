@@ -27,6 +27,7 @@ with lib;
     ''
       super + return
         hyprland | exec, kitty
+        niri | spawn "kitty";
         kitty
     ''
   ];
