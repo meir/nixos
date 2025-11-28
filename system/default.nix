@@ -45,19 +45,19 @@
       super + q
         sxhkd | bspc node -c
         hyprland | killactive
-        niri | closewindow;
+        niri | close-window;
 
       # kill app
       super + shift + q
         sxhkd | bspc node -k
         hyprland | forcekillactive
-        niri | forceclosewindow;
+        niri | spawn "xkill";
 
       # change mode
-      super + {t,shift + t,s,f}
-        sxhkd | bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-        hyprland | {settiled,pseudo,setfloating,fullscreen}
-        niri | {reset-window-height,center-column,toggle-window-floating,fullscreen-window};
+      super + {t,s,f}
+        sxhkd | bspc node -t {tiled,floating,fullscreen}
+        hyprland | {settiled,setfloating,fullscreen}
+        niri | {reset-window-height,toggle-window-floating,fullscreen-window};
 
       # resize window
       super + mouse_lmb | hyprland[m]

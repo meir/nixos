@@ -391,11 +391,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1764319399,
-        "narHash": "sha256-cXMnlrPRNjAB3nZsJB60Lx//go+sTY5DszoA/mlxmhM=",
+        "lastModified": 1764325909,
+        "narHash": "sha256-9ITtekj5Wcu0bi4yig5r29Y4Ox1piv/sIF+kLgLeMbs=",
         "owner": "meir",
         "repo": "izu",
-        "rev": "fa34f005588316ea84a04a043625abf52078bfc7",
+        "rev": "2f530993983dc181337d92fa250a59ae765c0e6c",
         "type": "github"
       },
       "original": {

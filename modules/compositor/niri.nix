@@ -8,16 +8,9 @@
 with lib;
 let
   startup = concatStringsSep "\n" (map (value: "spawn-at-startup \"${value}\"") config.protocol.autostart);
-  binds = pkgs.izu.izuGenerate.override {
-    formatter = "niri";
-    hotkeys = config.protocol.hotkeys;
-  };
   config_file_content = if config_file != null then builtins.readFile config_file else "";
 
   niriconfig = pkgs.writeScript "niri" ''
-    binds {
-    ${readFile binds}
-    }
     ${startup}
     ${config_file_content}
   '';
