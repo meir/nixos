@@ -43,66 +43,59 @@ binds {
 }
 
 input {
-    keyboard {
-        xkb {}
-        numlock
+  keyboard {
+    xkb {
+      layout = "us"
     }
-
-    mouse {}
-    trackpoint {}
+  }
 }
 
 output "HDMI-A-2" {
-    mode "2560x1080@120"
-    scale 1
-    transform "normal"
-    position x=1920 y=0
+  mode "2560x1080@120"
+  scale 1
+  transform "normal"
+  position x=0 y=0
 }
 
 output "DP-1" {
-    mode "1920x1080@120"
-    scale 1
-    transform "normal"
-    position x=0 y=0
+  mode "1920x1080@120"
+  scale 1
+  transform "normal"
+  position x=-1920 y=0
 }
 
 layout {
-    gaps 16
-    center-focused-column "never"
+  gaps 16
+  center-focused-column "never"
 
-    preset-column-widths {
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-    }
+  preset-column-widths {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+  }
 
-    default-column-width { proportion 0.5; }
+  default-column-width { proportion 1; }
 
-    focus-ring {
-        width 4
-        active-color "#7fc8ff"
-        inactive-color "#505050"
-    }
+  focus-ring {
+    off
+  }
 
-    border {
-        off
-        width 4
-        active-color "#ffc87f"
-        inactive-color "#505050"
-        urgent-color "#9b0000"
-    }
+  border {
+    on
+    width 4
+    active-color "#d1496b"
+    inactive-color "#131711"
+  }
 
-    shadow {
-        softness 30
-        spread 5
-        offset x=0 y=5
-        color "#0007"
-    }
-
-    struts {}
+  shadow {
+    off
+  }
 }
 
 hotkey-overlay {}
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {}
+
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+prefer-no-csd
 
