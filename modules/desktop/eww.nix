@@ -17,6 +17,6 @@ in
     zscroll
   ];
 
-  protocol.autostart = [ "${eww_bin} daemon &" ] ++ eww_widgets;
+  protocol.autostart = [ "${eww_bin} daemon" ] ++ eww_widgets;
   nix-fs.files.".config/eww".source = mkIf (config_files != null) config_files;
 }

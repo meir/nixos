@@ -26,6 +26,8 @@ in
     };
 
     environment.systemPackages = with pkgs; [ 
+      socat
+      wl-clipboard
       alacritty
       xwayland-satellite # xwayland support
     ];
