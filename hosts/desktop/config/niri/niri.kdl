@@ -110,8 +110,12 @@ cursor {
   xcursor-size 12
 }
 
-hotkey-overlay {}
 animations {}
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 prefer-no-csd
