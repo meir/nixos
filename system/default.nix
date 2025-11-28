@@ -26,6 +26,8 @@
     (import ../overlays/packages.nix inputs)
   ];
 
+  nix-fs.files.".icons/default".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
+
   environment.systemPackages = with pkgs; [
     curl
     gcc
