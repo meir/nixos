@@ -1,3 +1,29 @@
+output "HDMI-A-2" {
+  mode "2560x1080@120"
+  scale 1
+  transform "normal"
+  position x=0 y=0
+}
+
+output "DP-1" {
+  mode "1920x1080@120"
+  scale 1
+  transform "normal"
+  position x=-1920 y=0
+}
+
+workspace "ws_1" { open-on-output "HDMI-A-2"; }
+workspace "ws_2" { open-on-output "HDMI-A-2"; }
+workspace "ws_3" { open-on-output "HDMI-A-2"; }
+workspace "ws_4" { open-on-output "HDMI-A-2"; }
+workspace "ws_5" { open-on-output "HDMI-A-2"; }
+
+workspace "ws_6" { open-on-output "DP-1"; }
+workspace "ws_7" { open-on-output "DP-1"; }
+workspace "ws_8" { open-on-output "DP-1"; }
+workspace "ws_9" { open-on-output "DP-1"; }
+workspace "ws_10" { open-on-output "DP-1"; }
+
 binds {
   Super+E { spawn "nautilus"; }
   Super+Space { spawn "rofi" "-show" "drun"; }
@@ -21,40 +47,28 @@ binds {
   Super+Shift+J { move-window-up; }
   Super+Shift+K { move-window-down; }
   Super+Shift+L { move-column-right; }
-  Super+1 { focus-workspace "1"; }
-  Super+2 { focus-workspace "2"; }
-  Super+3 { focus-workspace "3"; }
-  Super+4 { focus-workspace "4"; }
-  Super+5 { focus-workspace "5"; }
-  Super+6 { focus-workspace "6"; }
-  Super+7 { focus-workspace "7"; }
-  Super+8 { focus-workspace "8"; }
-  Super+9 { focus-workspace "9"; }
-  Super+0 { focus-workspace "10"; }
-  Super+Shift+1 { move-column-to-workspace "1"; }
-  Super+Shift+2 { move-column-to-workspace "2"; }
-  Super+Shift+3 { move-column-to-workspace "3"; }
-  Super+Shift+4 { move-column-to-workspace "4"; }
-  Super+Shift+5 { move-column-to-workspace "5"; }
-  Super+Shift+6 { move-column-to-workspace "6"; }
-  Super+Shift+7 { move-column-to-workspace "7"; }
-  Super+Shift+8 { move-column-to-workspace "8"; }
-  Super+Shift+9 { move-column-to-workspace "9"; }
-  Super+Shift+0 { move-column-to-workspace "10"; }
+  Super+1 { focus-workspace "ws_1"; }
+  Super+2 { focus-workspace "ws_2"; }
+  Super+3 { focus-workspace "ws_3"; }
+  Super+4 { focus-workspace "ws_4"; }
+  Super+5 { focus-workspace "ws_5"; }
+  Super+6 { focus-workspace "ws_6"; }
+  Super+7 { focus-workspace "ws_7"; }
+  Super+8 { focus-workspace "ws_8"; }
+  Super+9 { focus-workspace "ws_9"; }
+  Super+0 { focus-workspace "ws_10"; }
+  Super+Shift+1 { move-column-to-workspace "ws_1"; }
+  Super+Shift+2 { move-column-to-workspace "ws_2"; }
+  Super+Shift+3 { move-column-to-workspace "ws_3"; }
+  Super+Shift+4 { move-column-to-workspace "ws_4"; }
+  Super+Shift+5 { move-column-to-workspace "ws_5"; }
+  Super+Shift+6 { move-column-to-workspace "ws_6"; }
+  Super+Shift+7 { move-column-to-workspace "ws_7"; }
+  Super+Shift+8 { move-column-to-workspace "ws_8"; }
+  Super+Shift+9 { move-column-to-workspace "ws_9"; }
+  Super+Shift+0 { move-column-to-workspace "ws_10"; }
   Super+Shift+P { screenshot; }
 }
-
-workspace "1" { open-on-output "HDMI-A-2"; }
-workspace "2" { open-on-output "HDMI-A-2"; }
-workspace "3" { open-on-output "HDMI-A-2"; }
-workspace "4" { open-on-output "HDMI-A-2"; }
-workspace "5" { open-on-output "HDMI-A-2"; }
-
-workspace "6" { open-on-output "DP-1"; }
-workspace "7" { open-on-output "DP-1"; }
-workspace "8" { open-on-output "DP-1"; }
-workspace "9" { open-on-output "DP-1"; }
-workspace "10" { open-on-output "DP-1"; }
 
 input {
   keyboard {
@@ -62,20 +76,6 @@ input {
       layout "us"
     }
   }
-}
-
-output "HDMI-A-2" {
-  mode "2560x1080@120"
-  scale 1
-  transform "normal"
-  position x=0 y=0
-}
-
-output "DP-1" {
-  mode "1920x1080@120"
-  scale 1
-  transform "normal"
-  position x=-1920 y=0
 }
 
 layout {
