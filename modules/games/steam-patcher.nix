@@ -318,7 +318,7 @@ in
           value = {
             UserLocalConfigStore.Software.Valve.Steam.Apps = lib.mapAttrs' (_: app: {
               name = toString app.id;
-              value.LaunchOptions = "${makeWrapperPath user.id app.id} %command%";
+              value.LaunchOptions = "${config.home}/${makeWrapperPath user.id app.id} %command%";
             }) user.apps;
           };
         }) usersAppsConfig)
