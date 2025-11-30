@@ -1,4 +1,4 @@
-{ pkgs, zen-browser, izu, quickshell, nixpkgs-unstable, ... }:
+{ pkgs, zen-browser, izu, steam-config-nix, quickshell, nixpkgs-unstable, ... }:
 with pkgs;
 final: prev: {
   cozette-nerdfont = callPackage ../pkgs/cozette-nerdfont { };
@@ -12,6 +12,7 @@ final: prev: {
   izu = izu.packages."${final.system}";
   zen-browser = zen-browser.packages."${final.system}".default;
   quickshell = quickshell.packages."${final.system}".default;
+  steam-config-patcher = steam-config-nix.packages."${final.system}".steam-config-patcher;
 
   discord_wayland = import ../pkgs/discord_wayland final;
   monado_custom = import ../pkgs/monado_custom final;

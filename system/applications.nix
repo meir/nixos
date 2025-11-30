@@ -12,7 +12,7 @@ let
     Categories=${concatStringsSep ";" (toList entry.categories)}
   '';
 
-  desktopEntryPath = key: "${config.home}/.local/share/applications/${key}.desktop";
+  desktopEntryPath = key: ".local/share/applications/${key}.desktop";
 
   files = builtins.foldl' (
     acc: entryKey:

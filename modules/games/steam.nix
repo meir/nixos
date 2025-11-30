@@ -5,6 +5,10 @@
 }:
 with lib;
 {
+  imports = [
+    ./steam-patcher.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     protonup-qt
     protontricks

@@ -106,6 +106,12 @@ window-rule {
   clip-to-geometry true
 }
 
+window-rule {
+  match app-id="VRChat"
+  open-on-workspace "ws_5"
+  open-floating true
+}
+
 cursor {
   xcursor-size 12
 }
