@@ -26,6 +26,7 @@
     orca-slicer
     votv
     steam-vdf
+    vintagestory
   ];
 
   imports = with modules; useMods inputs [

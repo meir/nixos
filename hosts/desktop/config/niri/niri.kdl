@@ -29,9 +29,9 @@ binds {
   Super+Space { spawn "rofi" "-show" "drun"; }
   Super+Shift+Space { spawn "rofi" "-show" "run"; }
   Super+Return { spawn "kitty"; }
-  XF86AudioPrev { spawn "playerctl previous"; }
-  XF86AudioPlay { spawn "playerctl play-pause"; }
-  XF86AudioNext { spawn "playerctl next"; }
+  XF86AudioPrev { spawn "playerctl" "previous"; }
+  XF86AudioPlay { spawn "playerctl" "play-pause"; }
+  XF86AudioNext { spawn "playerctl" "next"; }
   Super+Q { close-window; }
   Super+O { open-overview; }
   Super+Shift+Q { spawn "xkill"; }
