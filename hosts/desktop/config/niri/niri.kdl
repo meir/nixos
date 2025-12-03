@@ -40,12 +40,12 @@ binds {
   Super+F { fullscreen-window; }
 
   Super+H { focus-column-left; }
-  Super+J { focus-window-down; }
-  Super+K { focus-window-up; }
+  Super+J { focus-workspace-down; }
+  Super+K { focus-workspace-up; }
   Super+L { focus-column-right; }
   Super+Shift+H { move-column-left; }
-  Super+Shift+J { move-window-up; }
-  Super+Shift+K { move-window-down; }
+  Super+Shift+J { move-column-to-workspace-down; }
+  Super+Shift+K { move-column-to-workspace-up; }
   Super+Shift+L { move-column-right; }
   Super+1 { focus-workspace "ws_1"; }
   Super+2 { focus-workspace "ws_2"; }
@@ -75,6 +75,10 @@ input {
     xkb {
       layout "us"
     }
+  }
+
+  tablet {
+    map-to-output "HDMI-A-2"
   }
 }
 
