@@ -9,6 +9,7 @@
     steam-config-nix.url = "github:different-name/steam-config-nix";
     nix-fs.url = "github:meir/nix-fs";
     quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    niri.url = "github:YaLTeR/niri/v25.11";
 
     # Overlays
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
@@ -30,6 +31,7 @@
           steam-config-nix
           nix-fs
           quickshell
+          niri
           ;
       };
     in

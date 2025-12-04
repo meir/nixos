@@ -19,6 +19,7 @@ in
   config = {
     programs.niri = {
       enable = true;
+      package = pkgs.niri;
     };
 
     nix-fs.files.".config/niri/config.kdl" = {
