@@ -111,9 +111,14 @@ window-rule {
 }
 
 window-rule {
-  match app-id="VRChat"
+  match app-id="vrchat"
   open-on-workspace "ws_5"
   open-floating true
+}
+
+window-rule {
+  match app-id="kitty"
+  opacity 0.8
 }
 
 cursor {

@@ -1,6 +1,8 @@
 {
   pkgs,
   lib,
+  config,
+  apps ? [],
   ...
 }:
 with lib;
@@ -8,6 +10,13 @@ with lib;
   imports = [
     ./steam-patcher.nix
   ];
+
+  steam-patcher.config = {
+    enable = true;
+    steamDir = "${config.home}/.local/share/Steam";
+    closeSteam = true;
+    inherit apps;
+  };
 
   environment.systemPackages = with pkgs; [
     protonup-qt
