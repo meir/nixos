@@ -28,6 +28,7 @@
     votv
     steam-vdf
     unstable.vintagestory
+    heroic
   ];
 
   imports = with modules; useMods inputs [
