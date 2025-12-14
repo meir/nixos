@@ -18,11 +18,10 @@
       additionalLibs = [ vlc ];
     })
     spotify
-    stremio
+    # stremio
     thunderbird
     aseprite
     foliate
-    miru
     amberol
     orca-slicer
     votv

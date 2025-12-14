@@ -19,6 +19,7 @@ in
     
     wlx-overlay-s
     wayvr-dashboard
+    lovr-playspace
   ];
 
   programs.steam.extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];

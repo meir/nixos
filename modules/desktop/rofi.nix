@@ -6,7 +6,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    rofi-wayland
+    rofi
     cliphist
   ];
 

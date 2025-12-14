@@ -1,8 +1,8 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    stylix.url = "github:danth/stylix/release-25.05";
+    stylix.url = "github:danth/stylix/release-25.11";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     base16.url = "github:SenchoPens/base16.nix";
     base16.inputs.nixpkgs.follows = "nixpkgs";

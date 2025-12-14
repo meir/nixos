@@ -40,7 +40,7 @@ in
       package = pkgs.unstable.greetd;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd 'niri-session'";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd 'niri-session'";
         };
       };
     };
