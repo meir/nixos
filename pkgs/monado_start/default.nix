@@ -22,6 +22,7 @@ pkgs.stdenv.mkDerivation {
         wlx-overlay-s
         wayvr-dashboard
         lighthouse-steamvr
+        lovr-playspace
       ];
 
     text = ''
