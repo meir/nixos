@@ -40,7 +40,6 @@
     {
       nixosConfigurations = {
         desktop = import ./hosts/desktop/system.nix inputs specialArgs;
-        glorpnet = import ./hosts/glorpnet/system.nix inputs specialArgs;
       };
     };
 }
