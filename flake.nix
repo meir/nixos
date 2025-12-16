@@ -10,6 +10,7 @@
     nix-fs.url = "github:meir/nix-fs";
     quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     niri.url = "github:YaLTeR/niri/v25.11";
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
     # Overlays
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
@@ -32,6 +33,7 @@
           nix-fs
           quickshell
           niri
+          nix-gaming
           ;
       };
     in

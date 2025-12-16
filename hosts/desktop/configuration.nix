@@ -27,7 +27,7 @@
     votv
     steam-vdf
     unstable.vintagestory
-    heroic
+    rocket-league
   ];
 
   imports = with modules; useMods inputs [

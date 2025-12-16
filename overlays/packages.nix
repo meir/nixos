@@ -1,5 +1,8 @@
-{ pkgs, zen-browser, izu, steam-config-nix, quickshell, niri, nixpkgs-unstable, ... }:
+{ pkgs, zen-browser, izu, steam-config-nix, quickshell, niri, nix-gaming, nixpkgs-unstable, ... }:
 with pkgs;
+let
+  system = pkgs.stdenv.hostPlatform.system;
+in
 final: prev: {
   cozette-nerdfont = callPackage ../pkgs/cozette-nerdfont { };
   dina-remastered = callPackage ../pkgs/dina-remastered { };
@@ -9,11 +12,12 @@ final: prev: {
   votv = callPackage ../pkgs/votv { };
   steam-vdf = pkgs.python3Packages.callPackage ../pkgs/steam-vdf { };
 
-  izu = izu.packages."${final.system}";
-  zen-browser = zen-browser.packages."${final.system}".default;
-  quickshell = quickshell.packages."${final.system}".default;
-  steam-config-patcher = steam-config-nix.packages."${final.system}".steam-config-patcher;
-  niri = niri.packages."${final.system}".niri;
+  izu = izu.packages."${system}";
+  zen-browser = zen-browser.packages."${system}".default;
+  quickshell = quickshell.packages."${system}".default;
+  steam-config-patcher = steam-config-nix.packages."${system}".steam-config-patcher;
+  niri = niri.packages."${system}".niri;
+  rocket-league = nix-gaming.packages."${system}".rocket-league;
 
   discord_wayland = import ../pkgs/discord_wayland final;
   monado_custom = import ../pkgs/monado_custom final;
