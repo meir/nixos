@@ -75,12 +75,7 @@
     autostart = [
       "thunderbird"
       "discord"
-      "sleep 5 && amberol"
+      "spotify"
     ];
-  };
-
-  fileSystems."/games" = {
-    device = "/dev/disk/by-partuuid/be90f083-8588-4832-befa-72e81ce0a948";
-    fsType = "ext4";
   };
 }

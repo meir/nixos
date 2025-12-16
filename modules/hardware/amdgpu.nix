@@ -11,14 +11,7 @@
     gamemode
   ];
 
-  systemd.services.lactd = {
-    enable = true;
-    serviceConfig = {
-      ExecStart = "${pkgs.lact}/bin/lactd daemon";
-    };
-    after = [ "multi-user.target" ];
-    wantedBy = [ "multi-user.target" ];
-  };
+  services.lact.enable = true;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
