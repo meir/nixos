@@ -9,6 +9,10 @@
   user = "human";
   hostname = "desktop";
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-5.15.19" # required for stremio
+  ];
+
   # apps
   environment.systemPackages = with pkgs; [
     gimp
@@ -18,7 +22,7 @@
       additionalLibs = [ vlc ];
     })
     spotify
-    # stremio
+    stremio
     thunderbird
     aseprite
     foliate

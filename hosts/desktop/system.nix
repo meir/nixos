@@ -1,7 +1,5 @@
 {
   nixpkgs,
-  base16,
-  stylix,
   nixpkgs-xr,
   nix-fs,
   ...
@@ -15,8 +13,6 @@ nixpkgs.lib.nixosSystem {
     ./hardware-configuration.nix
     ../../system
     ./configuration.nix
-    base16.nixosModule
-    stylix.nixosModules.stylix
     nixpkgs-xr.nixosModules.nixpkgs-xr
     nix-fs.nixosModules.nix-fs
   ];

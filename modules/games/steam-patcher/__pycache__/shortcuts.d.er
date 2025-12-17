@@ -1,0 +1,17 @@
+##[pylyzer] failed /home/human/Documents/flamingo/nixos/modules/games/steam-patcher/shortcuts.py 1765908212 0
+.main: () -> NoneType
+
+
+
+
+s = pyimport "os"
+.sys = pyimport "sys"
+.vdf: Never
+.pathlib = pyimport "pathlib"
+.zlib = pyimport "zlib"
+
+.main: () -> NoneType
+
+
+
+
