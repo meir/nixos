@@ -54,15 +54,7 @@
     })
     swww
     nautilus
-    (steam.override {
-      apps = {
-        VRChat = {
-          id = 438100;
-          compatTool = "GE-Proton10-24";
-          launchOptions = "env PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command% -screen-width 100 -screen-height 60";
-        };
-      };
-    })
+    steam
     (monado.override {
       watch = ./config/wlxoverlay/watch.yaml;
       keyboard = ./config/wlxoverlay/keyboard.yaml;

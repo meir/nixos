@@ -8,14 +8,16 @@ let
   inherit (lib) types;
   nestedAttrsOfStrings = types.lazyAttrsOf (types.either types.str nestedAttrsOfStrings);
 
-  cfg = config.steam-patcher.config;
+  # modified from home-manager lib.shell.exportAll
+  # https://github.com/nix-community/home-manager/blob/89c9508bbe9b40d36b3dc206c2483ef176f15173/modules/lib/shell.nix#L36-L42
+  exportUnset = n: v: if v == null then "unset ${n}" else ''export ${n}="${toString v}"'';
+  exportAll = lib.concatMapAttrsStringSep "\n" exportUnset;
 
-  dataDir = ".config/steam-config-nix";
+  cfg = config.steam-patcher;
 
-  makeWrapperPath =
-    userId: appId: "${dataDir}/users/${toString userId}/app-wrappers/${toString appId}";
+  dataDir = "~/steam-config-nix";
 
-  # Get a SteamID3 from a SteamID64
+  # get a SteamID3 from a SteamID64
   # https://gist.github.com/bcahue/4eae86ae1d10364bb66d
   toSteamId3 =
     userId:
@@ -45,9 +47,7 @@ let
       suffix = lib.escapeShellArgs launchOptionsSet.args;
     in
     writeWrapperBin appId ''
-      ${lib.concatStringsSep "\n" (
-        builtins.mapAttrs (key: value: "export ${key}='${value}'") launchOptionsSet.env
-      )}
+      ${exportAll launchOptionsSet.env}
       ${launchOptionsSet.extraConfig}
       exec env ${prefix} "$@" ${suffix}
     '';
@@ -115,67 +115,147 @@ let
   };
 
   mkSteamAppsOption =
+    userId:
     {
-      launchOptions ? false,
-      compatTool ? false,
+      supportCompatTool ? false,
     }:
     lib.mkOption {
       type = types.attrsOf (
         types.submodule (
           { config, name, ... }:
           {
-            options = lib.mergeAttrsList [
-              {
-                id = lib.mkOption {
-                  type = types.int;
-                  default = lib.strings.toIntBase10 name;
-                  example = 438100;
-                  description = ''
-                    The ID for this app.
-                    App IDs can be found through https://steamdb.info/ or through the game's store page URL.
-                  '';
-                };
-              }
+            options = {
+              id = lib.mkOption {
+                type = types.int;
+                default = lib.strings.toIntBase10 name;
+                defaultText = lib.literalExpression "lib.strings.toIntBase10 <name>";
+                example = 438100;
+                description = ''
+                  The Steam App ID.
 
-              (lib.optionalAttrs launchOptions {
-                launchOptions = lib.mkOption {
-                  type =
-                    with types;
-                    nullOr (oneOf [
-                      package
-                      launchOptionsSubmodule
-                      (coercedTo singleLineStr (writeLaunchOptionsStrBin config.id) package)
-                    ]);
-                  default = null;
-                  example = "-vulkan";
-                  description = "Game launch options";
-                  apply =
-                    value:
-                    if (lib.isDerivation value) || value == null then
-                      value
-                    else
-                      writeLaunchOptionsSetBin config.id value;
-                };
-              })
+                  App IDs can be found through the game's store page URL.
 
-              (lib.optionalAttrs compatTool {
-                compatTool = lib.mkOption {
-                  type = types.nullOr types.str;
-                  default = null;
-                  example = "proton_experimental";
-                  description = "Compatibility tool to use, referenced by display name";
-                };
-              })
-            ];
+                  If an ID is not provided, the app's `<name>` will be used.
+                '';
+              };
+
+              launchOptions = lib.mkOption {
+                type =
+                  with types;
+                  nullOr (oneOf [
+                    package
+                    launchOptionsSubmodule
+                    (coercedTo singleLineStr (writeLaunchOptionsStrBin config.id) package)
+                  ]);
+                default = null;
+                description = ''
+                  The Launch options to use.
+
+                  Launch options can be provided as:
+
+                  **`singleLineStr`**
+
+                  ```nix
+                  '''env -u TZ PRESSURE_VESSEL_FILESYSTEMS_RW="$XDG_RUNTIME_DIR/wivrn/comp_ipc" %command% --use-d3d11'''
+                  ```
+
+                  **`package`**
+
+                  ```nix
+                  pkgs.writeShellScriptBin "vrchat-wrapper" '''
+                    export PRESSURE_VESSEL_FILESYSTEMS_RW="$XDG_RUNTIME_DIR/wivrn/comp_ipc"
+                    unset TZ
+
+                    if [[ "$*" == *"-force-vulkan"* ]]; then
+                      export PROTON_ENABLE_WAYLAND=1
+                    fi
+
+                    exec ''${lib.getExe pkgs.gamemode} "${"''\${args[@]}"}" --use-d3d11
+                  ''';
+                  ```
+
+                  **`launchOptionsSubmodule`**
+
+                  ```nix
+                  {
+                    # Environment variables
+                    env = {
+                      PROTON_USE_NTSYNC = true;
+                      TZ = null; # This unsets the variable
+                    };
+
+                    # Arguments for the game's executable (%command% <...>)
+                    args = [
+                      "-force-vulkan"
+                    ];
+
+                    # Programs to wrap the game with (<...> %command%)
+                    wrappers = [
+                      (lib.getExe pkgs.gamemode)
+                      "mangohud"
+                    ];
+
+                    # Extra bash code to run before executing the game
+                    extraConfig = '''
+                      if [[ "$*" == *"-force-vulkan"* ]]; then
+                        export PROTON_ENABLE_WAYLAND=1
+                      fi
+                    ''';
+                  };
+                  ```'';
+                example = lib.literalExpression ''
+                  {
+                    env.WINEDLLOVERRIDES = "winmm,version=n,b";
+                    args = [
+                      "--launcher-skip"
+                      "-skipStartScreen"
+                    ];
+                  };'';
+                apply =
+                  value:
+                  if (lib.isDerivation value) || value == null then
+                    value
+                  else
+                    writeLaunchOptionsSetBin config.id value;
+              };
+
+              wrapperPath = lib.mkOption {
+                type = types.nullOr types.path;
+                default =
+                  if config.launchOptions != null then
+                    "${dataDir}/users/${toString userId}/app-wrappers/${toString config.id}"
+                  else
+                    null;
+                defaultText = lib.literalExpression "\${config.xdg.dataHome}/steam-config-nix/users/<user-id>/app-wrappers/<app-id>";
+                example = "/home/diffy/1361210-wrapper";
+                description = "A stable path outside of the nix store to link the app wrapper script.";
+              };
+            }
+            // (lib.optionalAttrs supportCompatTool {
+              compatTool = lib.mkOption {
+                type = types.nullOr types.str;
+                default = null;
+                example = "proton_experimental";
+                description = "Compatibility tool to use.";
+              };
+            });
           }
         )
       );
 
       default = { };
-      description = ''
-        Configuration for a Steam app.
-        App IDs can be found through https://steamdb.info/ or through the game's store page URL.
-      '';
+      example = lib.literalExpression ''
+        {
+          # App IDs can be provided through the `id` property
+          spin-rhythm = {
+            id = 1058830;
+            launchOptions = "DVXK_ASYNC=1 gamemoderun %command%";
+          };
+
+          # Or be provided through the `<name>`
+          "620".launchOptions = "-vulkan";
+        };'';
+      description = "Configuration per Steam app.";
     };
 
   # from home-manager's firefox module
@@ -202,15 +282,6 @@ let
         + lib.concatMapAttrsStringSep "\n" mkMsg duplicates;
       }
     );
-
-  usersAppsConfig = cfg.users // {
-    shared = {
-      id = "shared";
-      apps = lib.mapAttrs (_: app: {
-        inherit (app) id launchOptions;
-      }) cfg.apps;
-    };
-  };
 in
 {
   imports = [
@@ -222,8 +293,8 @@ in
     }
   ];
 
-  options.steam-patcher.config = {
-    enable = lib.mkEnableOption "Steam user config store management";
+  options.steam-patcher = {
+    enable = lib.mkEnableOption "declarative Steam configuration";
 
     package = lib.mkOption {
       default = pkgs.steam-config-patcher;
@@ -234,15 +305,25 @@ in
     steamDir = lib.mkOption {
       type = types.path;
       default = "${config.home.homeDirectory}/.steam/steam";
+      defaultText = lib.literalExpression "\${config.home.homeDirectory}/.steam/steam";
       description = "Path to the Steam directory.";
+      example = "/home/diffy/.local/share/Steam";
     };
 
-    closeSteam = lib.mkEnableOption "automatic closing of Steam when writing configuration changes";
+    closeSteam = lib.mkEnableOption "automatic Steam shutdown before writing configuration changes";
 
-    apps = mkSteamAppsOption {
-      launchOptions = true;
-      compatTool = true;
+    defaultCompatTool = lib.mkOption {
+      type = types.nullOr types.str;
+      default = null;
+      example = "proton_experimental";
+      description = ''
+        Default compatibility tool to use for Steam Play.
+
+        This option sets the default compatibility tool in Steam, but does not set the nix module defaults.
+      '';
     };
+
+    apps = mkSteamAppsOption "shared" { supportCompatTool = true; };
 
     users = lib.mkOption {
       type = types.attrsOf (
@@ -257,15 +338,17 @@ in
               id = lib.mkOption {
                 type = types.int;
                 default = lib.strings.toIntBase10 name;
+                defaultText = lib.literalExpression "lib.strings.toIntBase10 <name>";
                 apply = toSteamId3;
                 example = 98765432123456789;
                 description = ''
-                  The ID for this user in SteamID64 or SteamID3 format.
-                  You can find your SteamID64 through https://steamid.io/lookup
+                  The Steam User ID in SteamID64 or SteamID3 format.
+
+                  User IDs can be found through through [https://steamid.io/lookup](https://steamid.io/lookup).
                 '';
               };
 
-              apps = mkSteamAppsOption { launchOptions = true; };
+              apps = mkSteamAppsOption config.id { };
             };
 
             config.assertions = [
@@ -275,77 +358,49 @@ in
         )
       );
       default = { };
-      description = ''
-        Per user configuration for a Steam app.
-        User IDs are in SteamID64 or SteamID3 format, for example 98765432123456789
-        You can find your SteamID64 through https://steamid.io/lookup
-      '';
-    };
+      description = "Configuration per Steam User.";
+      example = {
+        # User IDs can be provided through the `id` property
+        diffy = {
+          id = 98765432123456789;
+          apps."620".launchOptions = "-vulkan";
+        };
 
-    finalConfig = lib.mkOption {
-      type = nestedAttrsOfStrings;
-      visible = false;
-      default = { };
+        # Or be provided through the `<name>`
+        "12345678987654321" = {
+          apps."620".launchOptions = "--launcher-skip";
+        };
+      };
     };
   };
 
   config = lib.mkIf cfg.enable {
-    steam-patcher.config.finalConfig = {
-      "KeyValues" = lib.mkMerge [
-        (
-          let
-            compatToolConfigs = lib.filterAttrs (_: app: app.compatTool != null) cfg.apps;
-          in
-          lib.mkIf (compatToolConfigs != { }) {
-            "${cfg.steamDir}/config/config.vdf" = {
-              InstallConfigStore.Software.Valve.Steam = {
-                CompatToolMapping = lib.mapAttrs (_: app: {
-                  name = app.compatTool;
-                  config = "";
-                  priority = "250";
-                }) compatToolConfigs;
-              };
-            };
-          }
-        )
-
-        (lib.mapAttrs' (_: user: {
-          name =
-            let
-              userDir = lib.replaceString "shared" "*" (toString user.id);
-            in
-            "${cfg.steamDir}/userdata/${userDir}/config/localconfig.vdf";
-          value = {
-            UserLocalConfigStore.Software.Valve.Steam.Apps = lib.mapAttrs' (_: app: {
-              name = toString app.id;
-              value.LaunchOptions = "${config.home}/${makeWrapperPath user.id app.id} %command%";
-            }) user.apps;
+    nix-fs.files = let
+        userAppConfigs = cfg.users // {
+          shared = {
+            id = "shared";
+            apps = lib.mapAttrs (_: app: {
+              inherit (app) id launchOptions wrapperPath;
+            }) cfg.apps;
           };
-        }) usersAppsConfig)
-      ];
-
-      # "Binary KeyValues" = { };
-    };
-
-    nix-fs.files = lib.listToAttrs (
-      lib.flatten (
-        lib.mapAttrsToList (
-          _: user:
-          lib.mapAttrsToList (_: app: {
-            name = makeWrapperPath user.id app.id;
-            value.source = lib.getExe app.launchOptions;
-          }) (lib.filterAttrs (_: app: app.launchOptions != null) user.apps)
-        ) usersAppsConfig
-      )
-    );
+        };
+      in
+      lib.listToAttrs (
+        lib.flatten (
+          lib.mapAttrsToList (
+            _: user:
+            lib.mapAttrsToList (_: app: {
+              name = app.wrapperPath;
+              value.source = lib.getExe app.launchOptions;
+            }) (lib.filterAttrs (_: app: app.launchOptions != null) user.apps)
+          ) userAppConfigs
+        )
+      );
 
     system.activationScripts = {
       steam-patcher =
       let
-        arguments = lib.cli.toGNUCommandLineShell { } {
-          json = builtins.toJSON cfg.finalConfig;
-          close-steam = cfg.closeSteam;
-        };
+        arguments = lib.escapeShellArg (builtins.toJSON cfg.finalConfig);
       in
       {
         deps = [
