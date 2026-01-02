@@ -33,7 +33,7 @@
     lutris
     kicad
     stremio
-    sunshine
+    blockbench
   ];
 
   imports = with modules; useMods inputs [
