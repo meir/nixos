@@ -4,6 +4,7 @@
   lib,
   watch ? null,
   keyboard ? null,
+  config_file ? null,
   ...
 }:
 with lib;
@@ -98,6 +99,7 @@ in
     '';
     ".config/wlxoverlay/watch.yaml".source = mkIf (watch != null) watch;
     ".config/wlxoverlay/keyboard.yaml".source = mkIf (keyboard != null) keyboard;
+    ".config/wlxoverlay/config.yaml".source = mkIf (config_file != null) config_file;
   };
 
   desktop.entry = {
