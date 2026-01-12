@@ -42,7 +42,6 @@ with lib;
     enable = true;
     defaultRuntime = true;
     highPriority = true;
-    package = monado;
   };
 
   systemd.user.services.monado = {
@@ -104,7 +103,7 @@ with lib;
         ],
         "runtime" :
         [
-          "${xrizer}/lib/xrizer",
+          "${pkgs.xrizer}/lib/xrizer",
           "${pkgs.opencomposite}/lib/opencomposite"
         ],
         "version" : 1
