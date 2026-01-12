@@ -21,6 +21,7 @@ in
     wlx-overlay-s
     wayvr-dashboard
     lovr-playspace
+    baballonia-git
   ];
 
   programs.steam.extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
@@ -37,10 +38,10 @@ in
     environment = {
       STEAMVR_LH_ENABLE = "true";
       XRT_COMPOSITOR_COMPUTE = "1";
-      XRT_COMPOSITOR_SCALE_PERCENTAGE = "200";
+      XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
       XRT_COMPOSITOR_DESIRED_MODE = "1";
-      U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "5";
-      U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
+      # U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "5";
+      # U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
     };
   };
 
