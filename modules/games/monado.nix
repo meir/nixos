@@ -88,7 +88,7 @@ with lib;
   '';
 
   nix-fs.files = {
-    ".config/openxr/1/active_runtime.json".source = "${monado}/share/openxr/1/openxr_monado.json";
+    ".config/openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
     ".config/openvr/openvrpaths.vrpath".text = ''
       {
         "config" :
