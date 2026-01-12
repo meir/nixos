@@ -25,6 +25,24 @@ in
   ];
 
   programs.steam.extraCompatPackages = with pkgs; [ proton-ge-rtsp-bin ];
+  programs.steam.config = {
+    enable = true;
+    closeSteam = true;
+    defaultCompatTool = "GE-Proton10-28";
+
+    apps = {
+      vrchat = {
+        id = 438100;
+        compatTool = "GE-Proton10-26-rtsp20";
+        launchOptions = {
+          env = {
+            PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/monado_comp_ipc";
+            OXR_PARALLEL_VIEWS = true;
+          };
+        };
+      };
+    };
+  };
 
   services.monado = {
     enable = true;
@@ -38,10 +56,10 @@ in
     environment = {
       STEAMVR_LH_ENABLE = "true";
       XRT_COMPOSITOR_COMPUTE = "1";
-      XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
+      XRT_COMPOSITOR_SCALE_PERCENTAGE = "150";
       XRT_COMPOSITOR_DESIRED_MODE = "1";
-      # U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "5";
-      # U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
+      U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "5";
+      U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
     };
   };
 

@@ -2,6 +2,7 @@
   nixpkgs,
   nixpkgs-xr,
   nix-fs,
+  steam-config-nix,
   ...
 }:
 specialArgs:
@@ -15,5 +16,6 @@ nixpkgs.lib.nixosSystem {
     ./configuration.nix
     nixpkgs-xr.nixosModules.nixpkgs-xr
     nix-fs.nixosModules.nix-fs
+    steam-config-nix.nixosModules.default
   ];
 }

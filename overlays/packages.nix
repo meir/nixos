@@ -1,4 +1,4 @@
-{ pkgs, zen-browser, izu, steam-config-nix, quickshell, niri, nix-gaming, nixpkgs-unstable, ... }:
+{ pkgs, zen-browser, izu, quickshell, niri, nix-gaming, nixpkgs-unstable, ... }:
 with pkgs;
 let
   system = pkgs.stdenv.hostPlatform.system;
@@ -15,7 +15,6 @@ final: prev: {
   izu = izu.packages."${system}";
   zen-browser = zen-browser.packages."${system}".default;
   quickshell = quickshell.packages."${system}".default;
-  steam-config-patcher = steam-config-nix.packages."${system}".steam-config-patcher;
   niri = niri.packages."${system}".niri;
   rocket-league = nix-gaming.packages."${system}".rocket-league;
 
