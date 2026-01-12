@@ -18,9 +18,6 @@ final: prev: {
   niri = niri.packages."${system}".niri;
   rocket-league = nix-gaming.packages."${system}".rocket-league;
 
-  discord_wayland = import ../pkgs/discord_wayland final;
-  monado_custom = import ../pkgs/monado_custom final;
-  xrizer_custom = import ../pkgs/xrizer_custom final;
   baballonia-git = import ../pkgs/baballonia final;
 
   unstable = import nixpkgs-unstable (final // { config.allowUnfree = true; });

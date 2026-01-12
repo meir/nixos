@@ -27,7 +27,6 @@ pkgs.stdenv.mkDerivation {
 
     text = ''
       GROUP_PID_FILE="/tmp/monado-group-pid-$$"
-      DEFAULT_SINK=$(pactl --format=json info | jq -r '.default_sink_name')
 
       function off() {
         echo "Stopping Monado and other stuff..."
@@ -41,7 +40,6 @@ pkgs.stdenv.mkDerivation {
 
         systemctl --user stop monado.service &
         lighthouse -vv --state off &
-        pactl set-default-sink "$DEFAULT_SINK" &
         wait
 
         exit 0
@@ -54,23 +52,12 @@ pkgs.stdenv.mkDerivation {
         systemctl --user restart monado.service
 
         setsid sh -c '
-          # lovr-playspace &
+          lovr-playspace &
           wlx-overlay-s --replace &
           wait
         ' &
         PGID=$!
         echo "$PGID" > "$GROUP_PID_FILE"
-
-        sleep 10
-        INDEX_SINK=$(pactl --format=json list sinks | jq -r '.[] |  select(.description | test("${audio_output}")) | .name')
-        echo "Setting audio to $INDEX_SINK"
-        pactl set-default-sink "$INDEX_SINK"
-
-        sleep 5
-        # weird issue i just cant solve in my nix/pw config, so this is the hack to fix it lol
-        pw-metadata -n settings 0 clock.max-quantum 8192
-        pw-metadata -n settings 0 clock.min-quantum 512
-        pw-metadata -n settings 0 clock.force-rate 48000
       }
 
       trap off EXIT INT TERM

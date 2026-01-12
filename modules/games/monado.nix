@@ -8,18 +8,12 @@
   ...
 }:
 with lib;
-let
-  monado = pkgs.monado_custom;
-  xrizer = pkgs.xrizer_custom;
-in
 {
   environment.systemPackages = with pkgs; [
     wlx-overlay-s
     lighthouse-steamvr
     monado_start
     
-    wlx-overlay-s
-    wayvr-dashboard
     lovr-playspace
     baballonia-git
   ];
