@@ -16,7 +16,7 @@ single_set_mode: true
 ## `pw_fallback`: Pipewire-based software capture
 ## `screencopy`: Software capture that works on some Wayland compositors
 ## Other values that were previously here are no longer supported.
-capture_method: screencopy
+#capture_method: auto
 
 ## Monado/WiVRn only. Do not send controller input to other VR apps
 ## while WlxOverlay-S is being hovered. Either hand will block both hand inputs!
