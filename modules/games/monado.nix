@@ -113,7 +113,9 @@ with lib;
     ".config/wlxoverlay/watch.yaml".source = mkIf (watch != null) watch;
     ".config/wlxoverlay/keyboard.yaml".source = mkIf (keyboard != null) keyboard;
     ".config/wlxoverlay/config.yaml".source = mkIf (config_file != null) config_file;
-    ".config/LOVR/lovr-playspace/grid_top".text = "0.0";
+    ".config/LOVR/lovr-playspace/grid_top.txt".text = ''
+      0.0
+    '';
   };
 
   desktop.entry = {
