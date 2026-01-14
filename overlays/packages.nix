@@ -12,6 +12,7 @@ final: prev: {
   votv = callPackage ../pkgs/votv { };
   steam-vdf = pkgs.python3Packages.callPackage ../pkgs/steam-vdf { };
   baballonia-git = callPackage ../pkgs/baballonia { };
+  stremio-linux-shell = callPackage ../pkgs/stremio-linux-shell { };
 
   izu = izu.packages."${system}";
   zen-browser = zen-browser.packages."${system}".default;
