@@ -8,12 +8,6 @@
   ...
 }:
 with lib;
-let
-  monado' = pkgs.monado;
-  monado = monado'.overrideAttrs {
-    cmakeFlags = monado'.cmakeFlags ++ [ "-DXRT_FEATURE_OPENXR_VISIBILITY_MASK=OFF" ];
-  };
-in
 {
   environment.systemPackages = with pkgs; [
     wlx-overlay-s
@@ -28,7 +22,7 @@ in
     enable = true;
     defaultRuntime = true;
     highPriority = true;
-    package = monado;
+    package = pkgs.monado_patched;
   };
 
   systemd.user.services.monado = {
@@ -36,7 +30,7 @@ in
     environment = {
       STEAMVR_LH_ENABLE = "true";
       XRT_COMPOSITOR_COMPUTE = "1";
-      XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
+      XRT_COMPOSITOR_SCALE_PERCENTAGE = "120";
       XRT_COMPOSITOR_DESIRED_MODE = "0";
       # U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "5";
       # U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";

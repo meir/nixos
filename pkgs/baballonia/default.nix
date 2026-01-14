@@ -1,144 +1,99 @@
 {
-  config,
-  pkgs,
+  makeDesktopItem,
+  cmake,
+  opencv,
+  udev,
+  libjpeg,
+  libGL,
+  fontconfig,
+  xorg,
   lib,
-  enableCuda ? config.cudaSupport,
-  ...
+  buildDotnetModule,
+  dotnetCorePackages,
+  fetchFromGitHub,
+  fetchurl,
+  stdenv,
 }:
 let
-  babbleTrainer = pkgs.callPackage ./babble-trainer.nix { inherit enableCuda; };
-
-  # TODO: figure out how to build & run Godot OpenXR projects.
-  calibZip = pkgs.fetchurl {
-    url = "https://github.com/Project-Babble/BabbleCalibration/releases/download/1.0.5/Linux.zip";
-    hash = "sha256-L5ssy6nLvwzpWeSMvVMZoWnmCY9uK/5LVckJmf3hGdo=";
-    executable = true;
+  internal = fetchurl {
+    # This URL is weird but this is the primary source
+    url = "http://217.154.52.44:7771/builds/trainer/1.0.0.0.zip";
+    hash = "sha256-Amlf6OIJyiU0vdMoXAzxXPnlX4TE9hQrjDMzbkMOzDE=";
   };
 
-  opencvsharp = pkgs.stdenv.mkDerivation rec {
-    # TODO: figure out how this works on ROCm...
+  dotnet = dotnetCorePackages.dotnet_8;
 
+  opencvsharp = stdenv.mkDerivation rec {
     pname = "opencvsharp";
     version = "4.11.0.20250507";
 
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "shimat";
       repo = "opencvsharp";
       tag = version;
       hash = "sha256-CkG4Kx/AkZqyhtclMfS51a9a9R+hsqBRlM4fry32YJ0=";
     };
+    nativeBuildInputs = [ cmake ];
+    buildInputs = [ opencv ];
     sourceRoot = "${src.name}/src";
 
-    buildInputs = [ pkgs.opencv ] ++ lib.optionals enableCuda [ pkgs.cudaPackages.cudatoolkit ];
-
-    nativeBuildInputs = [ pkgs.cmake ];
-
-    cmakeFlags = [
-      (lib.cmakeFeature "CMAKE_POLICY_VERSION_MINIMUM" "3.5")
-    ] ++ lib.optionals enableCuda [ "-DCUDAToolkit_ROOT=${pkgs.cudaPackages.cudatoolkit}" ];
+    cmakeFlags = [ (lib.cmakeFeature "CMAKE_POLICY_VERSION_MINIMUM" "3.5") ];
   };
 in
-pkgs.buildDotnetModule (finalAttrs: {
-  # TODO: figure out how this works on ROCm...
-  # * Probably a different onnxruntime?
-  # * Opencvsharp should just work, I think...
-  # * What about babble-trainer?
-
-  version = "0.0.0";
+buildDotnetModule (finalAttrs: {
+  version = "1.1.0.8";
   pname = "baballonia";
 
-  # https://github.com/Naraenda/Baballonia/tree/next-v3
-  # - bsb2e camera through libuvc
-  # - vft fix
-  # - packaging fix for nix
-  # - no micros*ft onnxruntime
-  src = pkgs.fetchFromGitHub {
-    owner = "naraenda";
-    repo = "Baballonia";
-    rev = "a8c813e267c26f51f1d62bf0c8ba687ef92c618b";
-    sha256 = "sha256-H5W+QsvccLOKzqqDIp7Xio5DZlUbRkT5HB4I66NBDhE=";
-    fetchSubmodules = true;
-  };
-  projectFile = "src/Baballonia.Desktop/Baballonia.Desktop.csproj";
-  nugetDeps = ./deps.json;
-  dotnetSdk = pkgs.dotnetCorePackages.dotnet_8.sdk;
-  dotnetRuntime = pkgs.dotnetCorePackages.dotnet_8.runtime;
+  patches = [ ./0001-disable-auto-updating.patch ];
 
-  buildInputs = with pkgs; [
+  buildInputs = [
     cmake
-    copyDesktopItems
-    fontconfig
-    libGL
-    libjpeg
-    libusb1
-    libuvc
     opencv
-    opencvsharp
     udev
-    unzip
-    xorg.libICE
-    xorg.libSM
+    libjpeg
+    libGL
+    fontconfig
     xorg.libX11
+    xorg.libSM
+    xorg.libICE
+    opencvsharp
   ];
 
-  runtimeDeps =
-    with pkgs;
-    [
-      libusb1
-      libuvc
-      libxcb
-      libxcursor
-      libxext
-      libxi
-      libxkbcommon
-      opencvsharp
-      udev
-      libGL
-    ]
-    ++ lib.optionals (!enableCuda) [ onnxruntime ]
-    ++ lib.optionals enableCuda [ pkgsCuda.onnxruntime ];
+  src = fetchFromGitHub {
+    owner = "Project-Babble";
+    repo = "Baballonia";
+    rev = "v${finalAttrs.version}";
+    sha256 = "sha256-OnLCK/T7b0NsExKEv95a0lM9TccJkI/uLGIe+oz3Rtw=";
+    fetchSubmodules = true;
+  };
+
+  dotnetSdk = dotnet.sdk;
+  nugetDeps = ./deps.json;
+  dotnetRuntime = dotnet.runtime;
+  projectFile = "src/Baballonia.Desktop/Baballonia.Desktop.csproj";
+
+  runtimeDeps = [ udev ];
+
+  makeWrapperArgs = [
+    "--chdir"
+    "${placeholder "out"}/lib/baballonia"
+  ];
 
   postUnpack = ''
-    unzip ${calibZip} -d $sourceRoot/src/Baballonia.Desktop/Calibration/Linux/Overlay
-    ln -s ${babbleTrainer}/bin/babble-trainer $sourceRoot/src/Baballonia.Desktop/Calibration/Linux/Trainer/BabbleTrainer
+    ln -s ${internal} $sourceRoot/src/Baballonia.Desktop/_internal.zip
   '';
 
-  postFixup =
-    let
-      # The internal calibration tool. We need to wrap this so it launches properly.
-      calibTool = "$out/lib/baballonia/Calibration/Linux/Overlay/BabbleCalibration.x86_64";
-    in
-    ''
-      # Clear out bin folder, we'll link since some of these may need
-      # to be wrapped. We'll also want to rename them for consistency's
-      # sake.
-      rm $out/bin/*
+  preFixup = ''
+    mv $out/bin/lib*.{so,so.dbg} $out/lib
+  '';
 
-      # Ensure BabbleTrainer knows where to put temporary files (NEW!!!)
-      wrapDotnetProgram $out/lib/baballonia/Baballonia.Desktop $out/bin/baballonia \
-        --set BABBLE_TRAINER_TMP_DIR /tmp
-
-      # Godot applications requires steam-run for whatever reason.
-      # I'm too lazy to figure out what part of the FSH it needs.
-      # https://nixos.wiki/wiki/Godot
-      #
-      # Create a backup of the original.
-      mv ${calibTool} ${calibTool}-original
-      # And wrap it!
-      makeWrapper ${pkgs.steam-run}/bin/steam-run \
-        ${calibTool} \
-        --add-flags ${calibTool}-original \
-        --add-flags --xr-mode \
-        --add-flags on \
-        --set XR_LOADER_DEBUG all
-
-      # Actually export our binaries.
-      ln -s ${calibTool} $out/bin/babble-calibration
-      ln -s ${babbleTrainer}/bin/babble-trainer $out/bin/babble-trainer
-    '';
+  postFixup = ''
+    mkdir -p $out/lib/baballonia/Modules
+    mv $out/bin/Baballonia.Desktop $out/bin/baballonia
+  '';
 
   desktopItems = [
-    (pkgs.makeDesktopItem {
+    (makeDesktopItem {
       name = finalAttrs.pname;
       desktopName = "Baballonia";
       comment = finalAttrs.meta.description;
@@ -155,6 +110,5 @@ pkgs.buildDotnetModule (finalAttrs: {
     platforms = lib.platforms.linux;
     homepage = "https://github.com/Project-Babble/Baballonia";
     description = "Free and open source eye and face tracking for social VR";
-    maintainers = with lib.maintainers; [ naraenda ];
   };
 })

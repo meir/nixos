@@ -11,6 +11,7 @@ final: prev: {
   monado_start = callPackage ../pkgs/monado_start { };
   votv = callPackage ../pkgs/votv { };
   steam-vdf = pkgs.python3Packages.callPackage ../pkgs/steam-vdf { };
+  baballonia-git = callPackage ../pkgs/baballonia { };
 
   izu = izu.packages."${system}";
   zen-browser = zen-browser.packages."${system}".default;
@@ -18,7 +19,11 @@ final: prev: {
   niri = niri.packages."${system}".niri;
   rocket-league = nix-gaming.packages."${system}".rocket-league;
 
-  baballonia-git = import ../pkgs/baballonia final;
+  monado_patched = prev.monado.overrideAttrs {
+    cmakeFlags = prev.monado.cmakeFlags ++ [
+      "-DXRT_FEATURE_OPENXR_VISIBILITY_MASK=OFF"
+    ];
+  };
 
   unstable = import nixpkgs-unstable (final // { config.allowUnfree = true; });
 }

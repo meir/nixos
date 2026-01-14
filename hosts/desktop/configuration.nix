@@ -9,10 +9,6 @@
   user = "human";
   hostname = "desktop";
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "qtwebengine-5.15.19"
-  ];
-
   # apps
   environment.systemPackages = with pkgs; [
     gimp
@@ -32,7 +28,6 @@
     unstable.vintagestory
     lutris
     kicad
-    stremio
     blockbench
   ];
 
