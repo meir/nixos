@@ -22,6 +22,7 @@
         modules = import ./lib/modules.nix;
         inherit (inputs)
           nixpkgs-unstable
+          nixpkgs-xr
           izu
           nh
           zen-browser
