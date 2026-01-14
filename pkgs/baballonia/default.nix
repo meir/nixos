@@ -92,19 +92,6 @@ buildDotnetModule (finalAttrs: {
     mv $out/bin/Baballonia.Desktop $out/bin/baballonia
   '';
 
-  desktopItems = [
-    (makeDesktopItem {
-      name = finalAttrs.pname;
-      desktopName = "Baballonia";
-      comment = finalAttrs.meta.description;
-      exec = "${finalAttrs.meta.mainProgram} %u";
-      terminal = false;
-      type = "Application";
-      icon = "baballonia"; # TODO: fetch icon
-      categories = [ "Game" ];
-    })
-  ];
-
   meta = {
     mainProgram = "baballonia";
     platforms = lib.platforms.linux;

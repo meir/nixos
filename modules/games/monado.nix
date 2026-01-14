@@ -104,5 +104,10 @@ with lib;
       comment = "WLX Overlay for SteamVR";
       exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace --openxr";
     };
+    baballonia = {
+      name = "Baballonia";
+      comment = "Baballonia Eye/Face tracking";
+      exec = "${pkgs.baballonia-git}/bin/baballonia";
+    };
   };
 }
