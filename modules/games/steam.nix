@@ -62,6 +62,9 @@ with lib;
           keyutils
           attr
         ];
+      extraProfile = ''
+        export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
+      '';
     };
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;

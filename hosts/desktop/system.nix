@@ -11,11 +11,12 @@ nixpkgs.lib.nixosSystem {
   inherit specialArgs;
 
   modules = [
-    ./hardware-configuration.nix
-    ../../system
-    ./configuration.nix
     nixpkgs-xr.nixosModules.nixpkgs-xr
     nix-fs.nixosModules.nix-fs
     steam-config-nix.nixosModules.default
+
+    ./hardware-configuration.nix
+    ../../system
+    ./configuration.nix
   ];
 }
