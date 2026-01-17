@@ -29,6 +29,7 @@
     lutris
     kicad
     blockbench
+    stremio-linux-shell
   ];
 
   imports = with modules; useMods inputs [

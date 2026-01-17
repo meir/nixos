@@ -1,8 +1,7 @@
-{ pkgs, zen-browser, izu, quickshell, niri, nix-gaming, nixpkgs-unstable, nixpkgs-xr, ... }:
+{ pkgs, zen-browser, izu, quickshell, niri, nix-gaming, nixpkgs-unstable, ... }@inputs:
 with pkgs;
 let
   system = pkgs.stdenv.hostPlatform.system;
-  xr-monado = nixpkgs-xr.packages."${system}".monado;
 in
 final: prev: {
   cozette-nerdfont = callPackage ../pkgs/cozette-nerdfont { };
@@ -21,11 +20,8 @@ final: prev: {
   niri = niri.packages."${system}".niri;
   rocket-league = nix-gaming.packages."${system}".rocket-league;
 
-  monado_patched = xr-monado.overrideAttrs {
-    cmakeFlags = xr-monado.cmakeFlags ++ [
-      "-DXRT_FEATURE_OPENXR_VISIBILITY_MASK=OFF"
-    ];
-  };
+  monado = import ../pkgs/monado inputs;
+  xrizer = import ../pkgs/xrizer inputs;
 
   unstable = import nixpkgs-unstable (final // { config.allowUnfree = true; });
 }

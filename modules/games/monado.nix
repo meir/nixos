@@ -22,7 +22,7 @@ with lib;
     enable = true;
     defaultRuntime = true;
     highPriority = true;
-    package = pkgs.monado_patched;
+    package = pkgs.monado;
   };
 
   systemd.user.services.monado = {
@@ -30,10 +30,10 @@ with lib;
     environment = {
       STEAMVR_LH_ENABLE = "true";
       XRT_COMPOSITOR_COMPUTE = "1";
-      XRT_COMPOSITOR_SCALE_PERCENTAGE = "100";
-      XRT_COMPOSITOR_DESIRED_MODE = "1";
-      # U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "5";
-      # U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
+      XRT_COMPOSITOR_SCALE_PERCENTAGE = "150";
+      XRT_COMPOSITOR_DESIRED_MODE = "0";
+      U_PACING_COMP_PRESENT_TO_DISPLAY_OFFSET = "5";
+      U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
     };
   };
 
