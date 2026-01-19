@@ -1,0 +1,35 @@
+#!/bin/bash
+
+class_idle="idle"
+class_focused="focused"
+class_occupied="occupied"
+
+workspaces_niri() {
+  ws=$(niri msg --json workspaces | jq -r '.[].name | select(. != null) | sub("^ws_"; "")')
+  active_ws=$(niri msg --json workspaces | jq -r '.[] | select(.is_focused) | .name | select(. != null) | sub("^ws_"; "")')
+
+	# turn list into json object
+	json="{"
+  while read -r line; do
+		class=$class_idle
+
+    if [[ $(niri msg --json windows | jq -r ".[] | select(.workspace_id == $line) | .workspace_id" | wc -l) -gt 0 ]]; then
+			class=$class_occupied
+		fi
+		if [[ "$line" -eq "$active_ws" ]]; then
+			class=$class_focused
+		fi
+
+		json="${json}\"${line}\":\"$class\","
+	done <<< "$ws"
+
+	json="${json%,}"
+	json="${json}}"
+
+	echo "$json"
+}
+
+workspaces_niri
+niri msg event-stream | while read -r _; do
+  workspaces_niri
+done

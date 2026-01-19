@@ -37,6 +37,7 @@
     {
       nixosConfigurations = {
         desktop = import ./hosts/desktop/system.nix inputs specialArgs;
+        glorpus = import ./hosts/glorpus/system.nix inputs specialArgs;
       };
     };
 }

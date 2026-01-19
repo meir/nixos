@@ -1,0 +1,26 @@
+
+(defwidget niri []
+  (box
+    :class "niri"
+    :orientation "h"
+    :halign "start"
+    :spacing 0;
+    :space-evenly true
+    (children)
+  )
+)
+
+(deflisten states_niri
+  "modules/niri/workspaces"
+)
+
+(defwidget workspace_niri [name ?label]
+  (button
+    :onclick "niri msg action focus-workspace \"ws_${name}\""
+    :class "ws-${states_niri[name] ?: "idle"}"
+    :width "40px"
+    :height "40px"
+
+    {label ?: name}
+  )
+)

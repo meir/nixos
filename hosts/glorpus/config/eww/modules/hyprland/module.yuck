@@ -1,0 +1,26 @@
+
+(defwidget hyprland []
+  (box
+    :class "hyprland"
+    :orientation "h"
+    :halign "start"
+    :spacing 0;
+    :space-evenly true
+    (children)
+  )
+)
+
+(deflisten states_hyprland
+  "modules/hyprland/workspaces"
+)
+
+(defwidget workspace_hyprland [name ?label]
+  (button
+    :onclick "hyprctl dispatch workspace \"${name}\""
+    :class "ws-${states_hyprland[name] ?: "idle"}"
+    :width "40px"
+    :height "40px"
+
+    {label ?: name}
+  )
+)

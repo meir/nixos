@@ -1,0 +1,122 @@
+output "eDP-1" {
+  mode "1920x1080@60"
+  scale 1
+  transform "normal"
+  position x=0 y=0
+}
+
+workspace "ws_1" { open-on-output "eDP-1"; }
+workspace "ws_2" { open-on-output "eDP-1"; }
+workspace "ws_3" { open-on-output "eDP-1"; }
+workspace "ws_4" { open-on-output "eDP-1"; }
+workspace "ws_5" { open-on-output "eDP-1"; }
+workspace "ws_6" { open-on-output "eDP-1"; }
+workspace "ws_7" { open-on-output "eDP-1"; }
+workspace "ws_8" { open-on-output "eDP-1"; }
+workspace "ws_9" { open-on-output "eDP-1"; }
+workspace "ws_10" { open-on-output "eDP-1"; }
+
+binds {
+  Super+E { spawn "nautilus"; }
+  Super+Space { spawn "rofi" "-show" "drun"; }
+  Super+Shift+Space { spawn "rofi" "-show" "run"; }
+  Super+Return { spawn "kitty"; }
+  XF86AudioPrev { spawn "playerctl" "previous"; }
+  XF86AudioPlay { spawn "playerctl" "play-pause"; }
+  XF86AudioNext { spawn "playerctl" "next"; }
+  Super+Q { close-window; }
+  Super+O { open-overview; }
+  Super+Shift+Q { spawn "xkill"; }
+  Super+T { reset-window-height; }
+  Super+S { toggle-window-floating; }
+  Super+F { fullscreen-window; }
+
+  Super+H { focus-column-left; }
+  Super+J { focus-workspace-down; }
+  Super+K { focus-workspace-up; }
+  Super+L { focus-column-right; }
+  Super+Shift+H { move-column-left; }
+  Super+Shift+J { move-column-to-workspace-down; }
+  Super+Shift+K { move-column-to-workspace-up; }
+  Super+Shift+L { move-column-right; }
+  Super+1 { focus-workspace "ws_1"; }
+  Super+2 { focus-workspace "ws_2"; }
+  Super+3 { focus-workspace "ws_3"; }
+  Super+4 { focus-workspace "ws_4"; }
+  Super+5 { focus-workspace "ws_5"; }
+  Super+6 { focus-workspace "ws_6"; }
+  Super+7 { focus-workspace "ws_7"; }
+  Super+8 { focus-workspace "ws_8"; }
+  Super+9 { focus-workspace "ws_9"; }
+  Super+0 { focus-workspace "ws_10"; }
+  Super+Shift+1 { move-column-to-workspace "ws_1"; }
+  Super+Shift+2 { move-column-to-workspace "ws_2"; }
+  Super+Shift+3 { move-column-to-workspace "ws_3"; }
+  Super+Shift+4 { move-column-to-workspace "ws_4"; }
+  Super+Shift+5 { move-column-to-workspace "ws_5"; }
+  Super+Shift+6 { move-column-to-workspace "ws_6"; }
+  Super+Shift+7 { move-column-to-workspace "ws_7"; }
+  Super+Shift+8 { move-column-to-workspace "ws_8"; }
+  Super+Shift+9 { move-column-to-workspace "ws_9"; }
+  Super+Shift+0 { move-column-to-workspace "ws_10"; }
+  Super+Shift+P { screenshot; }
+}
+
+input {
+  keyboard {
+    xkb {
+      layout "us"
+    }
+  }
+  touchpad {
+    natural-scroll
+  }
+}
+
+layout {
+  gaps 16
+  center-focused-column "never"
+
+  preset-column-widths {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+  }
+
+  default-column-width { proportion 1.0; }
+
+  focus-ring {
+    off
+  }
+
+  border {
+    width 4
+    active-color "#d1496b"
+    inactive-color "#131711"
+  }
+}
+
+window-rule {
+  geometry-corner-radius 10
+  clip-to-geometry true
+}
+
+window-rule {
+  match app-id="kitty"
+  opacity 0.8
+}
+
+cursor {
+  xcursor-size 12
+}
+
+animations {}
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+prefer-no-csd
+

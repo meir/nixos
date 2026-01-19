@@ -1,0 +1,191 @@
+width: 0.115
+size: [400, 250]
+
+elements:
+  # background panel
+  - type: Panel
+    rect: [0, 25, 400, 175]
+    bg_color: "#181818"
+    corner_radius: 15
+
+  - type: Button
+    rect: [0, 210, 35, 35]
+    font_size: 15
+    corner_radius: 35
+    bg_color: "#D1496B"
+    fg_color: "#f7f4f3"
+    text: "⚙"
+    click_up: # destroy if exists, otherwise create
+      - type: Window
+        target: settings
+        action: ShowUi # only triggers if not exists
+      - type: Window
+        target: settings
+        action: Destroy # only triggers if exists since before current frame
+
+  # Keyboard button
+  - type: Button
+    rect: [40, 210, 35, 35]
+    font_size: 15
+    corner_radius: 35
+    fg_color: "#f7f4f3"
+    bg_color: "#D1496B"
+    text: "⌨"
+    click_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleVisible
+    long_click_up:
+      - type: Overlay
+        target: "kbd"
+        action: Reset
+    right_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleImmovable
+    middle_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleInteraction
+    scroll_up:
+      - type: Overlay
+        target: "kbd"
+        action:
+          Opacity: { delta: 0.025 }
+    scroll_down:
+      - type: Overlay
+        target: "kbd"
+        action:
+          Opacity: { delta: -0.025 }
+
+  - type: Button
+    rect: [80, 210, 35, 35]
+    font_size: 15
+    corner_radius: 35
+    fg_color: "#f7f4f3"
+    bg_color: "#D1496B"
+    text: "⬢"
+    click_down:
+      - type: Exec
+        command: [
+          "bash",
+          "-c",
+          "if pgrep lovr > /dev/null; then pkill lovr; else lovr-playspace; fi"
+        ]
+
+  # bottom row, of keyboard + overlays
+  - type: OverlayList
+    rect: [120, 207, 280, 40]
+    font_size: 14
+    corner_radius: 10
+    fg_color: "#f7f4f3"
+    bg_color: "#101A0B"
+    layout: Horizontal
+    click_up: ToggleVisible
+    long_click_up: Reset
+    right_up: ToggleImmovable
+    middle_up: ToggleInteraction
+    scroll_up:
+      Opacity: { delta: 0.025 }
+    scroll_down:
+      Opacity: { delta: -0.025 }
+
+  - type: Panel
+    rect: [80, 33, 240, 60]
+    bg_color: "#D1496B"
+    corner_radius: 10
+
+  - type: Panel
+    rect: [83, 36, 234, 54]
+    bg_color: "#181818"
+    corner_radius: 10
+
+  # local clock
+  - type: Label
+    rect: [175, 80, 100, 50]
+    font_size: 40 # Use 32 for 12-hour time
+    fg_color: "#f7f4f3"
+    source: Clock
+    format: "%H:%M" # 23:59
+
+  # local date
+  - type: Label
+    rect: [90, 80, 200, 20]
+    font_size: 12
+    fg_color: "#f7f4f3"
+    source: Clock
+    format: "%Y-%m-%d" # local date representation
+
+  # local day-of-week
+  - type: Label
+    rect: [90, 60, 200, 50]
+    font_size: 14
+    fg_color: "#f7f4f3"
+    source: Clock
+    format: "%A" # Tuesday
+    #format: "%a" # Tue
+
+  # batteries
+  - type: BatteryList
+    rect: [0, 0, 400, 30]
+    font_size: 14
+    fg_color: "#10A070"
+    fg_color_low: "#D01040"
+    fg_color_charging: "#D1496B"
+    num_devices: 9
+    layout: Horizontal
+    low_threshold: 20
+
+  # playerctl
+
+  - type: Panel
+    rect: [20, 130, 360, 1]
+    bg_color: "#10A070"
+    corner_radius: 15
+
+  - type: Label
+    source: Exec
+    command:
+      [
+        "bash",
+        "-c",
+        "playerctl metadata --format '[{{ title }} - {{ artist }}]'",
+        "||",
+        "echo",
+        "'None'",
+      ]
+    interval: 0.5
+    rect: [25, 120, 350, 20]
+    font_size: 14
+    fg_color: "#f7f4f3"
+
+  - type: Button
+    rect: [240, 140, 45, 45]
+    font_size: 20
+    corner_radius: 35
+    fg_color: "#f7f4f3"
+    bg_color: "#D1496B"
+    text: "⏭"
+    click_down:
+      - type: Exec
+        command: ["bash", "-c", "playerctl next"]
+  - type: Button
+    rect: [180, 140, 45, 45]
+    font_size: 20
+    corner_radius: 35
+    fg_color: "#f7f4f3"
+    bg_color: "#D1496B"
+    text: "⏯"
+    click_down:
+      - type: Exec
+        command: ["bash", "-c", "playerctl play-pause"]
+  - type: Button
+    rect: [120, 140, 45, 45]
+    font_size: 20
+    corner_radius: 35
+    fg_color: "#f7f4f3"
+    bg_color: "#D1496B"
+    text: "⏮"
+    click_down:
+      - type: Exec
+        command: ["bash", "-c", "playerctl previous"]
