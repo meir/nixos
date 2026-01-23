@@ -30,6 +30,7 @@
 
   environment.systemPackages = with pkgs; [
     curl
+    git-credential-manager
     gcc
     libgcc
     opencl-headers
