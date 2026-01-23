@@ -7,7 +7,7 @@
 {
   # info
   user = "human";
-  hostname = "glorpus";
+  hostname = "glorp";
 
   # apps
   environment.systemPackages = with pkgs; [
