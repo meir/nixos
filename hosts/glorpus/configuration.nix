@@ -18,6 +18,7 @@
     spotify
     thunderbird
     stremio-linux-shell
+    btop
   ];
 
   imports = with modules; useMods inputs [
@@ -26,6 +27,10 @@
     })
     bluetooth
     docker
+    (eww.override {
+      config_files = ./config/eww;
+      widgets = [ "laptop" ];
+    })
     (rofi.override {
       config_files = ./config/rofi;
     })
@@ -41,6 +46,16 @@
     neovim
     onepassword
   ];
+
+  hardware.sensor.iio.enable = true;
+  services.iio-niri = {
+    enable = true;
+
+    extraArgs = [
+      "--monitor"
+      "eDP-1"
+    ];
+  };
 
   # config
   protocol = {

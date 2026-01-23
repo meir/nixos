@@ -4,18 +4,18 @@
     :class "left"
     :halign "start"
 
-    (bspwm
+    (niri
 		  ; 一 二 三 四 五 六 七 八 九 十
-		  (workspace :name "1" :label "一")
-	    (workspace :name "2" :label "二")
-	    (workspace :name "3" :label "三")
-		  (workspace :name "4" :label "四")
-	    (workspace :name "5" :label "五")
-      (workspace :name "6" :label "六")
-	    (workspace :name "7" :label "七")
-	    (workspace :name "8" :label "八")
-		  (workspace :name "9" :label "九")
-	    (workspace :name "10" :label "十")
+		  (workspace_niri :name "1" :label "一")
+	    (workspace_niri :name "2" :label "二")
+	    (workspace_niri :name "3" :label "三")
+		  (workspace_niri :name "4" :label "四")
+	    (workspace_niri :name "5" :label "五")
+      (workspace_niri :name "6" :label "六")
+	    (workspace_niri :name "7" :label "七")
+	    (workspace_niri :name "8" :label "八")
+		  (workspace_niri :name "9" :label "九")
+	    (workspace_niri :name "10" :label "十")
     )
   )
 )
@@ -35,6 +35,7 @@
     :space-evenly false
     :halign "end"
 
+    (tray)
     (music)
     (charge)
     (time)
@@ -53,7 +54,7 @@
 )
 
 (defwindow laptop
-  :monitor 0
+  :monitor "eDP-1"
   :geometry (geometry
     :x "0%"
     :y "5px"
@@ -61,14 +62,13 @@
     :height "40px"
     :anchor "top center"
   )
-  :stacking "bg"
+  :stacking "fg"
   :reserve (struts
-    :distance "95px"
+    :distance "45px"
     :side "top"
   )
   :exclusive true
-  :focusable false
-  :windowtype "dock"
+  :windowtype "desktop"
   :wm-ignore false
 
   (laptop_bar)

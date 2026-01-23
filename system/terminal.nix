@@ -43,7 +43,6 @@ with lib;
       enable = true;
       plugins = [
         "git"
-        "docker"
         "golang"
         "kubectl"
       ];
