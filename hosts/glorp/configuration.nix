@@ -28,14 +28,14 @@
     bluetooth
     docker
     (eww.override {
-      config_files = ./config/eww;
+      config_files = ../../config/eww;
       widgets = [ "laptop" ];
     })
     (rofi.override {
-      config_files = ./config/rofi;
+      config_files = ../../config/rofi;
     })
     (mako.override {
-      config_files = ./config/mako/config;
+      config_files = ../../config/mako/config;
     })
     swww
     nautilus

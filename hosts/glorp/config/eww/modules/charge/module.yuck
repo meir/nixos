@@ -1,8 +1,0 @@
-
-(defwidget charge []
-  (label
-    :text "${ EWW_BATTERY.BAT0.capacity }%"
-    :halign "end"
-    :class "charge"
-  )
-)

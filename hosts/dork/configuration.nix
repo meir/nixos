@@ -40,22 +40,22 @@
     bluetooth
     docker
     (eww.override {
-      config_files = ./config/eww;
+      config_files = ../../config/eww;
       widgets = [ "mon1" "mon2" ];
     })
     (rofi.override {
-      config_files = ./config/rofi;
+      config_files = ../../config/rofi;
     })
     (mako.override {
-      config_files = ./config/mako/config;
+      config_files = ../../config/mako/config;
     })
     swww
     nautilus
     steam
     (monado.override {
-      watch = ./config/wlxoverlay/watch.yaml;
-      keyboard = ./config/wlxoverlay/keyboard.yaml;
-      config_file = ./config/wlxoverlay/config.yaml;
+      watch = ../../config/wlxoverlay/watch.yaml;
+      keyboard = ../../config/wlxoverlay/keyboard.yaml;
+      config_file = ../../config/wlxoverlay/config.yaml;
     })
     discord
     mprisence
