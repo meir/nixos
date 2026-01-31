@@ -35,7 +35,7 @@ binds {
   Super+Q { close-window; }
   Super+O { open-overview; }
   Super+Shift+Q { spawn "xkill"; }
-  Super+T { reset-window-height; }
+  Super+T { maximize-column; }
   Super+S { toggle-window-floating; }
   Super+F { fullscreen-window; }
 

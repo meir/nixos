@@ -2,17 +2,19 @@
 let
   xrizer = nixpkgs-xr.packages."${pkgs.stdenv.hostPlatform.system}".xrizer;
 in
-xrizer.overrideAttrs {
+xrizer.overrideAttrs rec {
   src = pkgs.fetchFromGitHub {
     owner = "ImSapphire";
     repo = "xrizer";
-    rev = "10c19ca7af26a0fb205e86a83988fbd0861c7b53";
-    hash = "sha256-NnNYzoekeZeNQVoy8phcnWkyORFvxizDVkWGArg316g=";
+    rev = "c87d7c38fbc372980ca226802a524c1d6d85403e";
+    hash = "sha256-PEypy9lOcL8Nbc11YYgXNhkoBEyJVStVGs+tozcumeY=";
   };
 
-  cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
-    inherit (pkgs) src;
-    hash = "sha256-orfK5pwWv91hA7Ra3Kk+isFTR+qMHSZ0EYZTVbf0fO0=";
+  cargoDeps = pkgs.rustPlatform.importCargoLock {
+    lockFile = src + "/Cargo.lock";
+    outputHashes = {
+      "openxr-0.19.0" = "sha256-mljVBbQTq/k7zd/WcE1Sd3gibaJiZ+t7td964clWHd8=";
+    };
   };
 }
 

@@ -36,7 +36,7 @@
     in
     {
       nixosConfigurations = {
-        dork = import ./hosts/dorp/system.nix inputs specialArgs;
+        dork = import ./hosts/dork/system.nix inputs specialArgs;
         glorp = import ./hosts/glorp/system.nix inputs specialArgs;
       };
     };

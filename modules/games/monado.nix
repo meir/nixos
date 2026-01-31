@@ -22,7 +22,7 @@ with lib;
     enable = true;
     defaultRuntime = true;
     highPriority = true;
-    package = pkgs.monado;
+    package = pkgs.monado_custom;
   };
 
   systemd.user.services.monado = {
@@ -69,7 +69,7 @@ with lib;
   '';
 
   nix-fs.files = {
-    ".config/openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+    ".config/openxr/1/active_runtime.json".source = "${pkgs.monado_custom}/share/openxr/1/openxr_monado.json";
     ".config/openvr/openvrpaths.vrpath".text = ''
       {
         "config" :
@@ -84,7 +84,7 @@ with lib;
         ],
         "runtime" :
         [
-          "${pkgs.xrizer}/lib/xrizer",
+          "${pkgs.xrizer_custom}/lib/xrizer",
           "${pkgs.opencomposite}/lib/opencomposite"
         ],
         "version" : 1

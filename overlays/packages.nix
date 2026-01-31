@@ -20,8 +20,8 @@ final: prev: {
   niri = niri.packages."${system}".niri;
   rocket-league = nix-gaming.packages."${system}".rocket-league;
 
-  monado = import ../pkgs/monado inputs;
-  xrizer = import ../pkgs/xrizer inputs;
+  monado_custom = import ../pkgs/monado inputs;
+  xrizer_custom = import ../pkgs/xrizer inputs;
 
   unstable = import nixpkgs-unstable (final // { config.allowUnfree = true; });
 }
