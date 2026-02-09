@@ -1,8 +1,7 @@
 {
   pkgs,
   lib,
-  config,
-  apps ? [],
+  pkg ? pkgs.steam,
   ...
 }:
 with lib;
@@ -47,7 +46,7 @@ with lib;
 
   programs.steam = {
     enable = true;
-    package = pkgs.steam.override {
+    package = pkg.override {
       extraPkgs =
         pkgs: with pkgs; [
           xorg.libXcursor

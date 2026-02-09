@@ -51,7 +51,9 @@
     })
     swww
     nautilus
-    steam
+    (steam.override {
+      pkg = pkgs.millennium-steam;
+    })
     (monado.override {
       watch = ../../config/wlxoverlay/watch.yaml;
       keyboard = ../../config/wlxoverlay/keyboard.yaml;

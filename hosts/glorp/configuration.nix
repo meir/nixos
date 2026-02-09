@@ -39,7 +39,9 @@
     })
     swww
     nautilus
-    steam
+    (steam.override {
+      pkg = pkgs.millennium-steam;
+    })
     discord
     mprisence
     zenbrowser
