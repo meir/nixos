@@ -32,7 +32,7 @@
           quickshell
           niri
           nix-gaming
-          millenium
+          millennium
           ;
       };
     in

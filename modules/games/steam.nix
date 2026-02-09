@@ -1,7 +1,7 @@
 {
   pkgs,
   lib,
-  pkg ? pkgs.steam,
+  millennium,
   ...
 }:
 with lib;
@@ -44,9 +44,13 @@ with lib;
       "steam-run"
     ];
 
+  nixpkgs.overlays = [
+    millennium.overlays.default
+  ];
+
   programs.steam = {
     enable = true;
-    package = pkg.override {
+    package = pkgs.millennium-steam.override {
       extraPkgs =
         pkgs: with pkgs; [
           xorg.libXcursor

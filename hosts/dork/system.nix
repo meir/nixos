@@ -3,7 +3,6 @@
   nixpkgs-xr,
   nix-fs,
   steam-config-nix,
-  millennium,
   ...
 }:
 specialArgs:
@@ -15,7 +14,6 @@ nixpkgs.lib.nixosSystem {
     nixpkgs-xr.nixosModules.nixpkgs-xr
     nix-fs.nixosModules.nix-fs
     steam-config-nix.nixosModules.default
-    millennium.overlays.default
 
     ./hardware-configuration.nix
     ../../system
