@@ -31,6 +31,7 @@
   bluetooth = ./modules/utility/bluetooth.nix;
   onepassword = ./modules/utility/onepassword.nix;
   qmk = ./modules/utility/qmk.nix;
+  obs = ./modules/utility/obs.nix;
 
   # virtualization
   docker = ./modules/virtualization/docker.nix;

@@ -12,7 +12,6 @@
   # apps
   environment.systemPackages = with pkgs; [
     gimp
-    (wrapOBS { plugins = with obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
     (prismlauncher.override {
       additionalPrograms = [ vlc ];
       additionalLibs = [ vlc ];
@@ -30,6 +29,7 @@
     kicad
     blockbench
     stremio-linux-shell
+    quickshell
   ];
 
   imports = with modules; useMods inputs [
@@ -37,6 +37,7 @@
       config_file = ./config/niri/niri.kdl;
     })
     amdgpu
+    obs
     bluetooth
     docker
     (eww.override {
