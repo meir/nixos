@@ -19,8 +19,7 @@ pkgs.stdenv.mkDerivation {
     runtimeInputs =
       with pkgs;
       [
-        wlx-overlay-s
-        wayvr-dashboard
+        wayvr
         lighthouse-steamvr
         lovr-playspace
       ];
@@ -53,7 +52,7 @@ pkgs.stdenv.mkDerivation {
 
         setsid sh -c '
           lovr-playspace &
-          wlx-overlay-s --replace &
+          wayvr --replace &
           wait
         ' &
         PGID=$!

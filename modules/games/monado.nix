@@ -10,7 +10,7 @@
 with lib;
 {
   environment.systemPackages = with pkgs; [
-    wlx-overlay-s
+    wayvr
     lighthouse-steamvr
     monado_start
     
@@ -99,10 +99,10 @@ with lib;
   };
 
   desktop.entry = {
-    wlx-overlay-s = {
-      name = "WLX Overlay S";
-      comment = "WLX Overlay for SteamVR";
-      exec = "${pkgs.wlx-overlay-s}/bin/wlx-overlay-s --replace --openxr";
+    wayvr = {
+      name = "WayVR";
+      comment = "WayVR";
+      exec = "${pkgs.wayvr}/bin/wayvr --replace --openxr";
     };
     baballonia = {
       name = "Baballonia";
