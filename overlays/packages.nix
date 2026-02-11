@@ -1,4 +1,4 @@
-{ pkgs, zen-browser, izu, quickshell, niri, nix-gaming, nixpkgs-unstable, ... }@inputs:
+{ pkgs, zen-browser, izu, quickshell, niri, nix-gaming, nixpkgs-unstable, nixpkgs-xr, ... }@inputs:
 with pkgs;
 let
   system = pkgs.stdenv.hostPlatform.system;
@@ -23,5 +23,7 @@ final: prev: {
   monado_custom = import ../pkgs/monado inputs;
   xrizer_custom = import ../pkgs/xrizer inputs;
 
-  unstable = import nixpkgs-unstable (final // { config.allowUnfree = true; });
+  unstable = import nixpkgs-unstable (final // { 
+    config.allowUnfree = true;
+  });
 }

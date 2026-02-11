@@ -10,7 +10,7 @@
 with lib;
 {
   environment.systemPackages = with pkgs; [
-    wayvr
+    unstable.wayvr
     lighthouse-steamvr
     monado_start
     
@@ -102,7 +102,7 @@ with lib;
     wayvr = {
       name = "WayVR";
       comment = "WayVR";
-      exec = "${pkgs.wayvr}/bin/wayvr --replace --openxr";
+      exec = "${pkgs.unstable.wayvr}/bin/wayvr --replace --openxr";
     };
     baballonia = {
       name = "Baballonia";

@@ -19,7 +19,7 @@ pkgs.stdenv.mkDerivation {
     runtimeInputs =
       with pkgs;
       [
-        wayvr
+        unstable.wayvr
         lighthouse-steamvr
         lovr-playspace
       ];
