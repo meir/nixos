@@ -69,6 +69,6 @@
     ];
   };
 
-  hardware.stl-sdr.enable = true;
+  hardware.rtl-sdr.enable = true;
   users.users.human.extraGroups = [ "plugdev" ];
 }
