@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  millennium,
   ...
 }:
 with lib;
@@ -10,25 +9,10 @@ with lib;
     protonup-qt
     protontricks
     appimage-run
-    usbutils
-    steamtinkerlaunch
-    r2modman
     ffmpeg # add ffmpeg for ingame video players
+
     lutris
     wine
-
-    # needed for steamtinkerlaunch
-    gawk
-    git
-    ripgrep
-    unzip
-    wget
-    xdotool
-    xorg.xprop
-    xorg.xrandr
-    unixtools.xxd
-    xorg.xwininfo
-    yad
   ];
 
   programs.gamescope = {
@@ -44,13 +28,9 @@ with lib;
       "steam-run"
     ];
 
-  nixpkgs.overlays = [
-    millennium.overlays.default
-  ];
-
   programs.steam = {
     enable = true;
-    package = pkgs.millennium-steam.override {
+    package = pkgs.steam.override {
       extraPkgs =
         pkgs: with pkgs; [
           xorg.libXcursor
@@ -69,12 +49,6 @@ with lib;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
-  };
-
-  desktop.entry.vortex = {
-    name = "Vortex Mod Manager";
-    comment = "Vortex Mod Manager for Nexus Mods";
-    exec = "${lib.getExe pkgs.steam-run} ${lib.getExe pkgs.steamtinkerlaunch} vortex start";
   };
 
   hardware.steam-hardware.enable = true;

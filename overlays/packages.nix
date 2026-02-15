@@ -1,4 +1,4 @@
-{ pkgs, zen-browser, izu, quickshell, niri, nix-gaming, nixpkgs-unstable, nixpkgs-xr, ... }@inputs:
+{ pkgs, zen-browser, izu, quickshell, niri, nixpkgs-unstable, ... }@inputs:
 with pkgs;
 let
   system = pkgs.stdenv.hostPlatform.system;
@@ -18,7 +18,6 @@ final: prev: {
   zen-browser = zen-browser.packages."${system}".default;
   quickshell = quickshell.packages."${system}".default;
   niri = niri.packages."${system}".niri;
-  rocket-league = nix-gaming.packages."${system}".rocket-league;
 
   monado_custom = import ../pkgs/monado inputs;
   xrizer_custom = import ../pkgs/xrizer inputs;

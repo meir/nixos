@@ -40,14 +40,13 @@
     })
     swww
     nautilus
-    (steam.override {
-      pkg = pkgs.millennium-steam;
-    })
+    steam
     discord
     mprisence
     zenbrowser
     neovim
     onepassword
+    rtl-sdr
   ];
 
   hardware.sensor.iio.enable = true;
@@ -68,7 +67,4 @@
       "spotify"
     ];
   };
-
-  hardware.rtl-sdr.enable = true;
-  users.users.human.extraGroups = [ "plugdev" ];
 }

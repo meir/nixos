@@ -14,6 +14,7 @@
   steam = ./modules/games/steam.nix;
   steamvr = ./modules/games/steamvr.nix;
   monado = ./modules/games/monado.nix;
+  modding = ./modules/games/modding.nix;
 
   # hardware
   amdgpu = ./modules/hardware/amdgpu.nix;
@@ -32,6 +33,7 @@
   onepassword = ./modules/utility/onepassword.nix;
   qmk = ./modules/utility/qmk.nix;
   obs = ./modules/utility/obs.nix;
+  rtl-sdr = ./modules/utility/rtl-sdr.nix;
 
   # virtualization
   docker = ./modules/virtualization/docker.nix;

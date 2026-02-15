@@ -21,7 +21,7 @@ Variants {
       implicitHeight: 30
 
       Text {
-        text: Time.fmt("yyyy-MM-dd HH:MM:ss")
+        text: Music.title + " - " + Music.artist
       }
     }
   }

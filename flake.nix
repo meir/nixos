@@ -6,8 +6,6 @@
     nix-fs.url = "github:meir/nix-fs";
     quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     niri.url = "github:YaLTeR/niri/v25.11";
-    nix-gaming.url = "github:fufexan/nix-gaming";
-    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix"; # custom steam client
 
     # Overlays
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
@@ -31,8 +29,6 @@
           nix-fs
           quickshell
           niri
-          nix-gaming
-          millennium
           ;
       };
     in

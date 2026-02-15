@@ -52,7 +52,8 @@
     })
     swww
     nautilus
-    (steam.override { })
+    steam
+    modding
     (monado.override {
       watch = ../../config/wlxoverlay/watch.yaml;
       keyboard = ../../config/wlxoverlay/keyboard.yaml;
@@ -64,6 +65,7 @@
     neovim
     onepassword
     qmk
+    rtl-sdr
   ];
 
   # config
