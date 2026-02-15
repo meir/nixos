@@ -19,6 +19,7 @@
     thunderbird
     stremio-linux-shell
     btop
+    teams-for-linux
   ];
 
   imports = with modules; useMods inputs [
@@ -67,4 +68,7 @@
       "spotify"
     ];
   };
+
+  hardware.stl-sdr.enable = true;
+  users.users.human.extraGroups = [ "plugdev" ];
 }
