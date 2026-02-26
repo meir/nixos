@@ -18,6 +18,7 @@
 
   # hardware
   amdgpu = ./modules/hardware/amdgpu.nix;
+  intel = ./modules/hardware/intel.nix;
 
   # social
   discord = ./modules/social/discord.nix;
