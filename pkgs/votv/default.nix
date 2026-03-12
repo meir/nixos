@@ -3,8 +3,8 @@
   lib,
   p7zip,
   fetchurl,
-  version ? "a09b_0004",
-  versionHash ? "sha256-hkdCssr4GgNxfzyT0bWjx8ys0p2WgNQsQJR9s3insoM=",
+  version ? "a09e_0008",
+  versionHash ? "sha256-2T00hIv2g7IiGUAudj0zvRyXG7bfkf0zEn9BtqtIEDg=",
   ...
 }:
 let
