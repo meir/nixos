@@ -8,7 +8,7 @@
   ...
 }:
 let
-  name = "votv";
+  name = "votv-${version}";
 in
 stdenv.mkDerivation rec {
   inherit name version;
