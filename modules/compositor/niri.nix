@@ -31,6 +31,7 @@ in
       wl-clipboard
       alacritty
       xwayland-satellite # xwayland support
+      xwayland-run
     ];
 
     security.polkit.enable = true;

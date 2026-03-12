@@ -23,13 +23,13 @@
     amberol
     orca-slicer
     votv
-    steam-vdf
     unstable.vintagestory
     lutris
     kicad
-    blockbench
     stremio-linux-shell
     quickshell
+    teamspeak6-client
+    glfw
   ];
 
   imports = with modules; useMods inputs [
