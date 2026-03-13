@@ -672,15 +672,15 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1772956097,
-        "narHash": "sha256-+h3Uyr8J7mLSQFECkhv9j4iimlhC+yQbrIQov77IV8M=",
-        "owner": "different-name",
+        "lastModified": 1773401410,
+        "narHash": "sha256-bkZGvIWV8JavLMQ2KzddrMCf9YBeiIM4OgdiwKcFx8M=",
+        "owner": "meir",
         "repo": "steam-config-nix",
-        "rev": "c3348e86325b1288655b6fb3decbced95e337424",
+        "rev": "0ec0b772f46849eff381727932e1a460cc38594c",
         "type": "github"
       },
       "original": {
-        "owner": "different-name",
+        "owner": "meir",
         "repo": "steam-config-nix",
         "type": "github"
       }

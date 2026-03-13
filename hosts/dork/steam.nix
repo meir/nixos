@@ -6,6 +6,7 @@ let
     XRIZER_NO_PARALLEL_VIEWS = 1;
     OXR_PARALLEL_VIEWS = 1;
   };
+  minimum_custom_id = 2147483648;
 in
 {
   programs.steam.config = {
@@ -29,15 +30,18 @@ in
 
     nonSteamApps = {
       vintage-story = {
-        id = 8008135; # hehehe
         name = "Vintage Story";
         target = pkgs.unstable.vintagestory;
         inherit compatTool;
       };
       voices-of-the-void = {
-        id = 2462834497;
         name = "Voices of the Void";
         target = "${pkgs.votv}/bin/VotV.exe";
+        launchOptions = {
+          env = {
+            WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER = 1;
+          };
+        };
         inherit compatTool;
       };
     };
