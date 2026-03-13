@@ -18,5 +18,6 @@ nixpkgs.lib.nixosSystem {
     ./hardware-configuration.nix
     ../../system
     ./configuration.nix
+    ./steam.nix
   ];
 }
