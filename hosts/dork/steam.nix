@@ -16,13 +16,14 @@ in
     apps = {
       VRChat = {
         id = 438100;
+        launchOptions = {
+          env = vr_env;
 
-        env = vr_env;
-
-        args = [
-          "-screen-width 640"
-          "-screen-height 480"
-        ];
+          args = [
+            "-screen-width 640"
+            "-screen-height 480"
+          ];
+        };
       };
     };
 
