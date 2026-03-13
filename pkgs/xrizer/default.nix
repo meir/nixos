@@ -10,11 +10,9 @@ xrizer.overrideAttrs rec {
     hash = "sha256-CjSJjKt2GD4us5CIcJpqfI/2cxVPQ26T1yzQwC2xwGk=";
   };
 
-  cargoDeps = pkgs.rustPlatform.importCargoLock {
-    lockFile = src + "/Cargo.lock";
-    outputHashes = {
-      "openxr-0.19.0" = "sha256-mljVBbQTq/k7zd/WcE1Sd3gibaJiZ+t7td964clWHd8=";
-    };
+  cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+    inherit src;
+    hash = "";
   };
 }
 
