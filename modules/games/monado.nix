@@ -84,7 +84,7 @@ with lib;
         ],
         "runtime" :
         [
-          "${pkgs.xrizer_custom}/lib/xrizer",
+          "${pkgs.xrizer}/lib/xrizer",
           "${pkgs.opencomposite}/lib/opencomposite"
         ],
         "version" : 1
