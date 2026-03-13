@@ -22,14 +22,11 @@
     foliate
     amberol
     orca-slicer
-    votv
-    unstable.vintagestory
     lutris
     kicad
     stremio-linux-shell
     quickshell
     teamspeak6-client
-    glfw
   ];
 
   imports = with modules; useMods inputs [
