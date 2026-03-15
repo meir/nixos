@@ -20,7 +20,6 @@
     thunderbird
     aseprite
     foliate
-    amberol
     orca-slicer
     lutris
     kicad
