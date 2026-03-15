@@ -38,6 +38,20 @@ in
         };
         inherit compatTool;
       };
+      EldenRing = {
+        id = 1245620;
+        launchOptions = {
+          env = {
+            VKD3D_CONFIG = "no_upload_hvv";
+            PROTON_ENABLE_WAYLAND = 1;
+          };
+
+          wrappers = [
+            "gamescope -h 1080 -H 1080 -w 1920 -W 2560 -b -f --"
+          ];
+        };
+        inherit compatTool;
+      };
     };
 
     nonSteamApps = {
