@@ -58,6 +58,7 @@ in
       vintage-story = {
         name = "Vintage Story";
         target = pkgs.unstable.vintagestory;
+        compatTool = null;
       };
       voices-of-the-void = {
         name = "Voices of the Void";
