@@ -44,6 +44,7 @@ in
           env = {
             VKD3D_CONFIG = "no_upload_hvv";
             PROTON_ENABLE_WAYLAND = 1;
+            LD_PRELOAD = "";
           };
 
           wrappers = [
@@ -58,6 +59,11 @@ in
       vintage-story = {
         name = "Vintage Story";
         target = pkgs.unstable.vintagestory;
+        launchOptions = {
+          env = {
+            LD_PRELOAD = "";
+          };
+        };
         compatTool = null;
       };
       voices-of-the-void = {
