@@ -26,6 +26,7 @@
     stremio-linux-shell
     quickshell
     teamspeak6-client
+    unityhub
   ];
 
   imports = with modules; useMods inputs [
