@@ -76,6 +76,8 @@ with lib;
       add_newline = false
     '';
     ".config/kitty/kitty.conf".text = ''
+      include theme.conf
+
       map ctrl+c copy_and_clear_or_interrupt
       map ctrl+v paste_from_clipboard
 
