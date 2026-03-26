@@ -1,4 +1,4 @@
-{ pkgs, zen-browser, izu, quickshell, niri, nixpkgs-unstable, ... }@inputs:
+{ pkgs, zen-browser, izu, quickshell, niri, nixpkgs-unstable, cwal, ... }@inputs:
 with pkgs;
 let
   system = pkgs.stdenv.hostPlatform.system;
@@ -18,6 +18,7 @@ final: prev: {
   zen-browser = zen-browser.packages."${system}".default;
   quickshell = quickshell.packages."${system}".default;
   niri = niri.packages."${system}".niri;
+  cwal = cwal.packages."${system}".default;
 
   monado_custom = import ../pkgs/monado inputs;
   xrizer_custom = import ../pkgs/xrizer inputs;

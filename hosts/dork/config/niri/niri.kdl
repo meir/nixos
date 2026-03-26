@@ -111,8 +111,8 @@ window-rule {
 }
 
 window-rule {
-  match app-id="vrchat"
-  open-on-workspace "ws_5"
+  match app-id="VRChat"
+  open-on-workspace "ws_2"
   open-floating true
 }
 

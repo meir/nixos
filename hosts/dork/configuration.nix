@@ -24,7 +24,6 @@
     lutris
     kicad
     stremio-linux-shell
-    quickshell
     teamspeak6-client
     unityhub
   ];
@@ -63,6 +62,10 @@
     onepassword
     qmk
     rtl-sdr
+    (quickshell.override {
+      cwal_config = ../../config/cwal/cwal.ini;
+      cwal_templates = ../../config/cwal/templates;
+    })
   ];
 
   # config

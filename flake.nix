@@ -12,6 +12,7 @@
     izu.url = "github:meir/izu";
     nh.url = "github:viperML/nh";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    cwal.url = "github:nitinbhat972/cwal";
   };
 
   outputs =
@@ -29,6 +30,7 @@
           nix-fs
           quickshell
           niri
+          cwal
           ;
       };
     in

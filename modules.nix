@@ -9,6 +9,7 @@
   nautilus = ./modules/desktop/nautilus.nix;
   rofi = ./modules/desktop/rofi.nix;
   swww = ./modules/desktop/swww.nix;
+  quickshell = ./modules/desktop/quickshell.nix;
   
   # games
   steam = ./modules/games/steam.nix;
