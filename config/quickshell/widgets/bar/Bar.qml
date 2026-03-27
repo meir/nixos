@@ -24,7 +24,7 @@ Item {
       top: 10
     }
 
-    implicitHeight: 50
+    implicitHeight: 40
     color: "transparent"
 
     Bar {

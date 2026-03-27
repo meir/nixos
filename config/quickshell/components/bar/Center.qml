@@ -8,7 +8,8 @@ Item {
   default property alias data: content.data
 
   RowLayout {
-    spacing: 10
     id: content
+    anchors.fill: parent
+    spacing: 10
   }  
 }

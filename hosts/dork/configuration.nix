@@ -65,6 +65,7 @@
     (quickshell.override {
       cwal_config = ../../config/cwal/cwal.ini;
       cwal_templates = ../../config/cwal/templates;
+      quickshell_config = ../../config/quickshell;
     })
   ];
 

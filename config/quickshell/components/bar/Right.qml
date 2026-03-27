@@ -6,13 +6,16 @@ import QtQuick.Layouts
 Item {
   Layout.fillHeight: true
   Layout.fillWidth: true
+  default property alias data: content.data
 
   RowLayout {
-    Layout.alignment: Qt.AlignRight
+    anchors.fill: parent
     spacing: 0
+
     RowLayout {
-      spacing: 10
       id: content
+      spacing: 10
+      Layout.alignment: Qt.AlignRight
     }
     
     Item { width: 20 }

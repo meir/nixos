@@ -5,8 +5,15 @@ import qs.data
 import qs
 
 Rectangle {
+  Layout.fillHeight: true 
+  Layout.fillWidth: true
+  color: "transparent"
+
   Text {
-    text: "hi"
+    anchors.centerIn: parent
+    text: niri.focusedWindow?.title ?? "-"
     color: "white"
+    font.family: Config.font
+    font.underline: true
   }
 }

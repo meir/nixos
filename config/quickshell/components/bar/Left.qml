@@ -8,12 +8,15 @@ Item {
   default property alias data: content.data
 
   RowLayout {
+    anchors.fill: parent
     spacing: 0
-    Item { width: 20 }
+
+    Item { width: 10 }
 
     RowLayout {
-      spacing: 10
       id: content
+      spacing: 10
+      Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
     }  
   }
 }
