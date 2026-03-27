@@ -36,10 +36,10 @@
     obs
     bluetooth
     docker
-    (eww.override {
-      config_files = ../../config/eww;
-      widgets = [ "mon1" "mon2" ];
-    })
+    # (eww.override {
+    #   config_files = ../../config/eww;
+    #   widgets = [ "mon1" "mon2" ];
+    # })
     (rofi.override {
       config_files = ../../config/rofi;
     })
