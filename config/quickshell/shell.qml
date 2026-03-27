@@ -6,7 +6,7 @@ import qs.src.widgets.bar
 import Niri
 
 ShellRoot {
-  readonly property string font: "DinaRemasterII Nerd Font"
+  readonly property string font_family: "DinaRemasterII Nerd Font"
 
   Niri {
     id: niri

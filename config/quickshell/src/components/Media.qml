@@ -22,6 +22,6 @@ Rectangle {
 
     text: Music.title + " - " + Music.artist
     color: Colors.foreground
-    font.family: font
+    font.family: font_family
   }
 }

@@ -12,6 +12,6 @@ Rectangle {
     id: clock
     text: Time.fmt("yyyy-MM-dd HH:mm:ss")
     color: Colors.foreground
-    font.family: font
+    font.family: font_family
   }
 }

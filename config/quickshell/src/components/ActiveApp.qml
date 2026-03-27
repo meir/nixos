@@ -13,7 +13,7 @@ Rectangle {
     anchors.centerIn: parent
     text: niri.focusedWindow?.title ?? "-"
     color: "white"
-    font.family: font
+    font.family: font_family
     font.underline: true
   }
 }

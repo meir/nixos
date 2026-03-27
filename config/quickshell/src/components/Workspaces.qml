@@ -27,7 +27,7 @@ RowLayout {
         anchors.horizontalCenter: parent.horizontalCenter
 
         text: model.id
-        font.family: font
+        font.family: font_family
         color: Colors.foreground 
       }
       
