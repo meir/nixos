@@ -9,8 +9,8 @@ RowLayout {
   property var screen
 
   readonly property var idle_color: Colors.background
-  readonly property var active_color: Colors.color5
-  readonly property var focused_color: Colors.color13
+  readonly property var active_color: Colors.color3
+  readonly property var focused_color: Colors.color4
 
   Repeater {
     model: niri.workspaces
