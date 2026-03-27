@@ -15,6 +15,7 @@ Scope {
     target: "WallpaperPicker"
 
     function open() {
+      get_wallpaper_paths()
       wallpaperPicker.active = true
     }
   }
