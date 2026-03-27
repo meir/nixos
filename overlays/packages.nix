@@ -1,4 +1,4 @@
-{ pkgs, zen-browser, izu, quickshell, niri, nixpkgs-unstable, cwal, ... }@inputs:
+{ pkgs, zen-browser, izu, qml-niri, niri, nixpkgs-unstable, cwal, ... }@inputs:
 with pkgs;
 let
   system = pkgs.stdenv.hostPlatform.system;
@@ -16,7 +16,7 @@ final: prev: {
 
   izu = izu.packages."${system}";
   zen-browser = zen-browser.packages."${system}".default;
-  quickshell = quickshell.packages."${system}".default;
+  quickshell = qml-niri.packages."${system}".quickshell;
   niri = niri.packages."${system}".niri;
   cwal = cwal.packages."${system}".default;
 

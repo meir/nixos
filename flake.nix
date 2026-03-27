@@ -5,6 +5,7 @@
     steam-config-nix.url = "github:meir/steam-config-nix";
     nix-fs.url = "github:meir/nix-fs";
     quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    qml-niri.url = "github:imiric/qml-niri/main";
     niri.url = "github:YaLTeR/niri/v25.11";
 
     # Overlays
@@ -29,6 +30,7 @@
           steam-config-nix
           nix-fs
           quickshell
+          qml-niri
           niri
           cwal
           ;

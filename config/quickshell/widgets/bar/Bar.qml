@@ -1,13 +1,16 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
+import QtQuick.Layouts
+import qs
 import qs.data
+import qs.components
+import qs.components.bar
 
 Item {
   PanelWindow {
+    id: bar
     screen: modelData
-
-    color: Colors.background
 
     anchors {
       top: true
@@ -16,21 +19,32 @@ Item {
     }
 
     margins {
-      left: 10
-      right: 10
+      left: 200
+      right: 200
       top: 10
     }
 
-    implicitHeight: 30
+    implicitHeight: 50
+    color: "transparent"
 
-    Text {
-      text: Music.title + " - " + Music.artist
-      color: Colors.foreground
-    }
+    Bar {
+      color: Colors.background 
+      radius: 5
 
-    Text {
-      text: Time.fmt("yyyy-MM-dd HH:mm:ss")
-      color: Colors.foreground
+      Left {
+        Workspaces {
+          screen: bar.screen
+        }
+      }
+
+      Center {
+        ActiveApp{}
+      }
+
+      Right {
+        Media{}
+        Clock{}
+      }
     }
   }
 }
