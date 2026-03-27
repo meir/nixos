@@ -3,9 +3,9 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import qs
-import qs.data
-import qs.components
-import qs.components.bar
+import qs.src.data
+import qs.src.components
+import qs.src.components.bar
 
 Item {
   PanelWindow {

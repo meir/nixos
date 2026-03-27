@@ -1,7 +1,7 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import qs.data
+import qs.src.data
 import qs
 
 RowLayout {
@@ -27,9 +27,7 @@ RowLayout {
         anchors.horizontalCenter: parent.horizontalCenter
 
         text: model.id
-        font {
-          family: Config.font
-        }
+        font.family: font
         color: Colors.foreground 
       }
       

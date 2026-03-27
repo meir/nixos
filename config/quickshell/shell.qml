@@ -1,11 +1,13 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
-import qs.data
-import qs.widgets.bar
+import qs.src.data
+import qs.src.widgets.bar
 import Niri
 
 ShellRoot {
+  readonly property string font: "DinaRemasterII Nerd Font"
+
   Niri {
     id: niri
     Component.onCompleted: connect()

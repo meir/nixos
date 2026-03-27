@@ -1,7 +1,7 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import qs.data
+import qs.src.data
 import qs
 
 Rectangle {
@@ -13,7 +13,7 @@ Rectangle {
     anchors.centerIn: parent
     text: niri.focusedWindow?.title ?? "-"
     color: "white"
-    font.family: Config.font
+    font.family: font
     font.underline: true
   }
 }

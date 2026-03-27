@@ -1,7 +1,7 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import qs.data
+import qs.src.data
 import qs
 
 Rectangle {
@@ -22,8 +22,6 @@ Rectangle {
 
     text: Music.title + " - " + Music.artist
     color: Colors.foreground
-    font {
-      family: Config.font
-    }
+    font.family: font
   }
 }
