@@ -1,12 +1,14 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
-import qs.src.data
-import qs.src.widgets.bar
+import qs.src.widgets
 import Niri
 
-ShellRoot {
+ShellRoot { 
+  id: root
   readonly property string font_family: "DinaRemasterII Nerd Font"
+  readonly property int mainMonitor: 1
+  readonly property string background_folder: "/home/human/Pictures/backgrounds/"
 
   Niri {
     id: niri
@@ -24,4 +26,6 @@ ShellRoot {
       property var modelData;
     }
   }
+
+  WallpaperPicker {}
 }

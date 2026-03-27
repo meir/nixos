@@ -1,7 +1,9 @@
 { pkgs, config, ... }:
 {
   environment.systemPackages = with pkgs; [
-    discord
+    (discord.override {
+      withOpenASAR = true;
+    })
   ];
 
   security.polkit.enable = true;
