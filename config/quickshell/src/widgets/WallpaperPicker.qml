@@ -11,8 +11,12 @@ Scope {
 
   property bool active: false
 
-  function open_wallpaper_picker() {
-    active = true
+  IpcHandler {
+    target: "WallpaperPicker"
+
+    function open() {
+      wallpaperPicker.active = true
+    }
   }
 
   // ----- Load wallpapers -----
