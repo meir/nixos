@@ -24,7 +24,7 @@ Rectangle {
 
   function zscroll() {
     var text = `${Music.title} - ${Music.artist}`
-    zindex = (zindex + 1) % max_length
+    zindex = (zindex + 1) % text.length
     zscrollText = text.length > max_length ? text.substring(zindex) + " | " + text.substring(0, zindex) : text
   }
 
