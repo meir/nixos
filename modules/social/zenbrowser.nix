@@ -30,7 +30,7 @@ in
   systemd.user.paths.pywalfox-update = {
     wantedBy = [ "graphical-session.target" ];
     pathConfig = {
-      PathChanged = "%h/.cache/cwal/colors.json";
+      PathChanged = "%h/.cache/wal/colors.json";
       Unit = "pywalfox-update.service";
     };
   };
