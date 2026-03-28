@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
   environment.systemPackages = with pkgs; [
-    (discord.override {
+    (unstable.discord.override {
       withOpenASAR = false;
     })
   ];

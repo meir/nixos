@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    steam-config-nix.url = "github:meir/steam-config-nix";
+    steam-config-nix.url = "github:different-name/steam-config-nix";
     nix-fs.url = "github:meir/nix-fs";
     quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     qml-niri.url = "github:imiric/qml-niri/main";
