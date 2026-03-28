@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   pywalfoxUpdateHandleSocket = pkgs.writeShellScript "pywalfox-update-handle-socket" ''
     set -euo pipefail
@@ -8,7 +8,7 @@ let
       rm -f $sock 2>/dev/null
     fi
 
-    exec ${pkgs.pywalfox-native} update
+    exec ${lib.getExe pkgs.pywalfox-native} update
   '';
 in
 {
@@ -18,12 +18,9 @@ in
   ];
 
   systemd.user.services.pywalfox-update = {
-    Unit = {
-      Description = "Update Pywalfox theme";
-      PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
-    };
-    Service = {
+    partOf = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
       Type = "oneshot";
       ExecStart = pywalfoxUpdateHandleSocket;
       PrivateTmp = false;
@@ -31,16 +28,10 @@ in
   };
 
   systemd.user.paths.pywalfox-update = {
-    Unit = {
-      Description = "Run pywalfox update when wal colors.json changes";
-      PartOf = [ "graphical-session.target" ];
-    };
-    Path = {
+    wantedBy = [ "graphical-session.target" ];
+    pathConfig = {
       PathChanged = "%h/.cache/cwal/colors.json";
       Unit = "pywalfox-update.service";
-    };
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
     };
   };
 
