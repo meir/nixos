@@ -38,6 +38,13 @@ in
         };
         inherit compatTool;
       };
+      Phasmophobia = {
+        id = 739630;
+        launchOptions = {
+          env = vr_env;
+        };
+        inherit compatTool;
+      };
       EldenRing = {
         id = 1245620;
         launchOptions = {
