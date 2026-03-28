@@ -42,6 +42,7 @@ Item {
       }
 
       Right {
+        Tray{}
         Media{}
         Clock{}
       }
