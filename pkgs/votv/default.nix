@@ -3,8 +3,8 @@
   lib,
   p7zip,
   fetchurl,
-  version ? "a09e_0008",
-  versionHash ? "sha256-2T00hIv2g7IiGUAudj0zvRyXG7bfkf0zEn9BtqtIEDg=",
+  version ? "a09i_0001",
+  versionHash ? "sha256-ZPetxvyZFO9xIbeQsnf7mRlesHckJADhaadu4PjGHvo=",
   ...
 }:
 let
@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
   inherit name version;
 
   src = fetchurl {
-    url = "https://archive.votv.zip/VDMR/${version}.7z";
+    url = "https://archive.votv.zip/VDMR/archive-mrdrnose-votv/${version}.7z";
     sha256 = versionHash;
   };
 

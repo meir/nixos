@@ -83,7 +83,7 @@ with lib;
 
       enable_audio_bell no
 
-      background_opacity 0.5
+      background_opacity 0.8
 
       font_family DinaRemasterII Nerd Font
       font_size 12
