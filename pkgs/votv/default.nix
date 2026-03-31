@@ -4,7 +4,7 @@
   p7zip,
   fetchurl,
   version ? "a09j_0001",
-  versionHash ? "sha256-ZPetxvyZFO9xIbeQsnf7mRlesHckJADhaadu4PjGHvo=",
+  versionHash ? "sha256-3qpCNHhx1PDU5zts1mW3UVfCtjty/7kJawCSx+EV6X8=",
   ...
 }:
 let
