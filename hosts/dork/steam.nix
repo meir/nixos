@@ -60,6 +60,10 @@ in
         };
         inherit compatTool;
       };
+      BindingOfIsaac_Rebirth = {
+        id = 250900;
+        inherit compatTool;
+      };
     };
 
     nonSteamApps = {
@@ -79,6 +83,19 @@ in
         launchOptions = {
           env = {
             WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER = 1;
+          };
+        };
+        inherit compatTool;
+      };
+      pngtuber-plus = {
+        name = "PNGTuber-Plus";
+        target = pkgs.fetchurl {
+          url = "https://github.com/litruv/PNGTuber-Plus/releases/download/v2025.07.22-build62/PNGTuber-Plus.exe";
+          sha256 = "sha256-Xxh5UE6MfD3fWOoOs2RA9daMkd3r+Lcdn0tHcDsw8zg=";
+        };
+        launchOptions = {
+          env = {
+            LD_PRELOAD = "";
           };
         };
         inherit compatTool;

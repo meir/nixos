@@ -37,6 +37,6 @@ stdenv.mkDerivation rec {
     description = "Voices of the Void";
     platforms = lib.platforms.all;
     maintainers = [ ];
-    mainProgram = "votv";
+    mainProgram = "VotV.exe";
   };
 }
