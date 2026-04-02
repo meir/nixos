@@ -75,6 +75,7 @@
       "thunderbird"
       "discord"
       "spotify"
+      "easyeffects --hide-window"
     ];
   };
 }
