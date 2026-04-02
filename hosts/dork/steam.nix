@@ -89,10 +89,7 @@ in
       };
       pngtuber-plus = {
         name = "PNGTuber-Plus";
-        target = pkgs.fetchurl {
-          url = "https://github.com/litruv/PNGTuber-Plus/releases/download/v2025.07.22-build62/PNGTuber-Plus.exe";
-          sha256 = "sha256-Xxh5UE6MfD3fWOoOs2RA9daMkd3r+Lcdn0tHcDsw8zg=";
-        };
+        target = "${pkgs.pngtuber-plus}/bin/PNGTuber-Plus.exe";
         launchOptions = {
           env = {
             LD_PRELOAD = "";

@@ -10,6 +10,7 @@ final: prev: {
   sm64coopdx-local = callPackage ../pkgs/sm64coopdx { };
   monado_start = callPackage ../pkgs/monado_start { };
   votv = callPackage ../pkgs/votv { };
+  pngtuber-plus = callPackage ../pkgs/pngtuber-plus { };
   steam-vdf = pkgs.python3Packages.callPackage ../pkgs/steam-vdf { };
   baballonia-git = callPackage ../pkgs/baballonia { };
   stremio-linux-shell = callPackage ../pkgs/stremio-linux-shell { };
