@@ -44,6 +44,7 @@ with lib;
           libkrb5
           keyutils
           attr
+          ndi-6
         ];
     };
     remotePlay.openFirewall = true;
