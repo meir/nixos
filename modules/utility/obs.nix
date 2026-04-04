@@ -1,5 +1,20 @@
 { config, pkgs, lib, ... }:
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      ndi-6 = prev.ndi-6.overrideAttrs (oldAttrs: {
+        src = prev.fetchurl {
+          url = "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/${oldAttrs.installerName}.tar.gz";
+          hash = "sha256-wLXfFzJIiGJ7ZSF8e4UNdQKHxS4z6WSF4qprESKeYD4=";
+        };
+      });
+    })
+  ];
+
+  environment.systemPackages = with pkgs; [
+    ndi-6
+  ];
+
   programs.obs-studio = {
     enable = true;
 
@@ -10,6 +25,7 @@
       obs-vaapi #optional AMD hardware acceleration
       obs-gstreamer
       obs-vkcapture
+      distroav
     ];
   };
 
