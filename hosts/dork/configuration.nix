@@ -26,6 +26,7 @@
     stremio-linux-shell
     teamspeak6-client
     unityhub
+    pngtuber-plus
   ];
 
   imports = with modules; useMods inputs [

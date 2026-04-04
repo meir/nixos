@@ -89,7 +89,7 @@ in
       };
       pngtuber-plus = {
         name = "PNGTuber-Plus";
-        target = "${pkgs.pngtuber-plus}/bin/PNGTuber-Plus.exe";
+        target = "${pkgs.pngtuber-plus}/bin/PNGTuber-Plus";
         launchOptions = {
           env = {
             LD_PRELOAD = "";
