@@ -18,6 +18,7 @@ workspace "ws_10" { open-on-output "eDP-1"; }
 
 binds {
   Super+E { spawn "nautilus"; }
+  Super+W { spawn "quickshell" "ipc" "call" "WallpaperPicker" "open"; }
   Super+Space { spawn "rofi" "-show" "drun"; }
   Super+Shift+Space { spawn "rofi" "-show" "run"; }
   Super+Return { spawn "kitty"; }
