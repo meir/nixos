@@ -24,6 +24,13 @@ final: prev: {
   monado_custom = import ../pkgs/monado inputs;
   xrizer_custom = import ../pkgs/xrizer inputs;
 
+  ndi-6 = prev.ndi-6.overrideAttrs (oldAttrs: {
+    src = prev.fetchurl {
+      url = "https://downloads.ndi.tv/SDK/NDI_SDK_Linux/${oldAttrs.installerName}.tar.gz";
+      hash = "sha256-wLXfFzJIiGJ7ZSF8e4UNdQKHxS4z6WSF4qprESKeYD4=";
+    };
+  });
+
   unstable = import nixpkgs-unstable (final // { 
     config.allowUnfree = true;
   });
