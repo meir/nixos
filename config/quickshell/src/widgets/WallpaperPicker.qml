@@ -149,8 +149,8 @@ Scope {
             smooth: true
             cache: true
             asynchronous: true
-            sourceSize.width: gridview.cellWidth
-            sourceSize.height: gridview.cellHeight
+            sourceSize.width: gridView.cellWidth
+            sourceSize.height: gridView.cellHeight
 
             onStatusChanged: {
               if (status === Image.Error) {
