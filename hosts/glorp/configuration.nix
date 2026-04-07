@@ -29,9 +29,10 @@
     })
     bluetooth
     docker
-    (eww.override {
-      config_files = ../../config/eww;
-      widgets = [ "laptop" ];
+    (quickshell.override {
+      cwal_config = ../../config/cwal/cwal.ini;
+      cwal_templates = ../../config/cwal/templates;
+      quickshell_config = ../../config/quickshell;
     })
     (rofi.override {
       config_files = ../../config/rofi;
