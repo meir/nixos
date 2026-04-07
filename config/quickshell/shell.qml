@@ -7,7 +7,7 @@ import Niri
 ShellRoot { 
   id: root
   readonly property string font_family: "DinaRemasterII Nerd Font"
-  readonly property int mainMonitor: 1
+  readonly property int mainMonitor: 0
   readonly property string background_folder: "/home/human/Pictures/backgrounds/"
 
   Niri {
