@@ -27,6 +27,7 @@
     teamspeak6-client
     unityhub
     pngtuber-plus
+    amberol
   ];
 
   imports = with modules; useMods inputs [
