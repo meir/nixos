@@ -28,7 +28,7 @@
     unityhub
     pngtuber-plus
     amberol
-    fancontrol-gui
+    vlc
   ];
 
   imports = with modules; useMods inputs [
