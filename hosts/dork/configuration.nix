@@ -29,7 +29,7 @@
     pngtuber-plus
     amberol
     vlc
-    bs-manager
+    unstable.bs-manager
   ];
 
   imports = with modules; useMods inputs [
