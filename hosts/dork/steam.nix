@@ -77,16 +77,6 @@ in
         };
         compatTool = null;
       };
-      voices-of-the-void = {
-        name = "Voices of the Void";
-        target = "${pkgs.votv}/bin/VotV.exe";
-        launchOptions = {
-          env = {
-            WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER = 1;
-          };
-        };
-        inherit compatTool;
-      };
       pngtuber-plus = {
         name = "PNGTuber-Plus";
         target = "${pkgs.pngtuber-plus}/bin/PNGTuber-Plus";

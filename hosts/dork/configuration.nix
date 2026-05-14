@@ -30,6 +30,7 @@
     amberol
     vlc
     unstable.bs-manager
+    votv
   ];
 
   imports = with modules; useMods inputs [
