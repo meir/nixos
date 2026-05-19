@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  compatTool = "GE-Proton10-32";
+  compatTool = "GE-Proton10-33-rtsp24-1";
   vr_env = {
     PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES = 1;
     XRIZER_NO_PARALLEL_VIEWS = 1;
@@ -28,22 +28,16 @@ in
       RDR2 = {
         id = 1174180;
         launchOptions = {
-          env = {
-            MANGOHUD = 1;
-          };
-          
           wrappers = [
             (lib.getExe pkgs.gamemode)
           ];
         };
-        inherit compatTool;
       };
       Phasmophobia = {
         id = 739630;
         launchOptions = {
           env = vr_env;
         };
-        inherit compatTool;
       };
       EldenRing = {
         id = 1245620;
@@ -55,37 +49,9 @@ in
           };
 
           wrappers = [
-            "gamescope -h 1080 -H 1080 -w 1920 -W 2560 -b -f --"
+            "gamescope -h 1080 -H 1080 -w 1920 -W 2560 -b -f -- "
           ];
         };
-        inherit compatTool;
-      };
-      BindingOfIsaac_Rebirth = {
-        id = 250900;
-        inherit compatTool;
-      };
-    };
-
-    nonSteamApps = {
-      vintage-story = {
-        name = "Vintage Story";
-        target = pkgs.unstable.vintagestory;
-        launchOptions = {
-          env = {
-            LD_PRELOAD = "";
-          };
-        };
-        compatTool = null;
-      };
-      pngtuber-plus = {
-        name = "PNGTuber-Plus";
-        target = "${pkgs.pngtuber-plus}/bin/PNGTuber-Plus";
-        launchOptions = {
-          env = {
-            LD_PRELOAD = "";
-          };
-        };
-        inherit compatTool;
       };
     };
   };

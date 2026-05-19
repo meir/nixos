@@ -9,16 +9,12 @@
   umu-launcher,
   proton-ge-bin,
   steam-run,
-  version ? "a09j_0001",
-  versionHash ? "sha256-3qpCNHhx1PDU5zts1mW3UVfCtjty/7kJawCSx+EV6X8=",
   ...
 }:
 let
-  name = "votv-${version}";
   desktopItem = makeDesktopItem {
-    name = name;
+    name = "votv";
     desktopName = "Voices of the Void";
-    comment = "Voices of the Void";
     exec = "votv";
     terminal = false;
     type = "Application";
@@ -26,12 +22,13 @@ let
   };
 in
 stdenv.mkDerivation (finalAttrs: {
-  pname = "votv";
-  inherit name version desktopItem;
+  name = "votv";
+  version = "0.9.0m";
+  inherit desktopItem;
 
   src = fetchurl {
-    url = "https://archive.votv.zip/VDMR/archive-mrdrnose-votv/${version}.7z";
-    sha256 = versionHash;
+    url = "https://satellite9.com/VDMR/archive-mrdrnose-votv/a09m.7z";
+    sha256 = "sha256-tEYNAiPp8pwkhIpQm46EjcN/rrcnOzEoafQQ0shGOR0=";
   };
 
   buildInputs = [ p7zip ];
