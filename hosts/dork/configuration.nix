@@ -29,7 +29,7 @@
     pngtuber-plus
     amberol
     vlc
-    unstable.bs-manager
+    # unstable.bs-manager
     votv
   ];
 

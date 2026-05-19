@@ -15,7 +15,7 @@ with lib;
     monado_start
     
     lovr-playspace
-    baballonia-git
+    # baballonia-git
   ];
 
   services.monado = {
@@ -104,10 +104,10 @@ with lib;
       comment = "WayVR";
       exec = "${pkgs.unstable.wayvr}/bin/wayvr --replace --openxr";
     };
-    baballonia = {
-      name = "Baballonia";
-      comment = "Baballonia Eye/Face tracking";
-      exec = "${pkgs.baballonia-git}/bin/baballonia";
-    };
+    # baballonia = {
+    #   name = "Baballonia";
+    #   comment = "Baballonia Eye/Face tracking";
+    #   exec = "${pkgs.baballonia-git}/bin/baballonia";
+    # };
   };
 }
