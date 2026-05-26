@@ -4,7 +4,6 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     steam-config-nix.url = "github:different-name/steam-config-nix";
     nix-fs.url = "github:meir/nix-fs";
-    quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     qml-niri.url = "github:imiric/qml-niri/main";
 
     # Overlays

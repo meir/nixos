@@ -9,7 +9,9 @@
 with lib;
 {
   environment.systemPackages = with pkgs; [
-    quickshell
+    (quickshell.overrideAttrs (prevAttrs: {
+      buildInputs = [ qml-niri ] ++ prevAttrs.buildInputs;
+    }))
     jq
     zscroll
     cwal

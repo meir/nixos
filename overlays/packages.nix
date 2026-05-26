@@ -17,7 +17,7 @@ final: prev: {
 
   izu = izu.packages."${system}";
   zen-browser = zen-browser.packages."${system}".default;
-  quickshell = qml-niri.packages."${system}".quickshell;
+  qml-niri = qml-niri.packages."${system}".default;
   cwal = cwal.packages."${system}".default;
 
   monado_custom = import ../pkgs/monado inputs;
