@@ -60,7 +60,7 @@ Scope {
   function set_wallpaper(path) {
     Qt.callLater(() => {
       Quickshell.execDetached([
-        "swww", "img", path,
+        "awww", "img", path,
         "--transition-type", "grow",
       ])
 

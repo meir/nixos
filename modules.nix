@@ -7,7 +7,7 @@
   mako = ./modules/desktop/programs/mako.nix;
   nautilus = ./modules/desktop/programs/nautilus.nix;
   rofi = ./modules/desktop/programs/rofi.nix;
-  swww = ./modules/desktop/programs/swww.nix;
+  awww = ./modules/desktop/programs/awww.nix;
   quickshell = ./modules/desktop/programs/quickshell.nix;
   
   # games

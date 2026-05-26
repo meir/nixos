@@ -1,11 +1,11 @@
 { pkgs, lib, ... }:
 {
   environment.systemPackages = with pkgs; [
-    swww
+    awww
   ];
 
   niri.autostart = [
-    "${pkgs.swww}/bin/swww-daemon"
-    "${lib.getExe pkgs.swww} restore"
+    "${pkgs.awww}/bin/awww-daemon"
+    "${lib.getExe pkgs.awww} restore"
   ];
 }

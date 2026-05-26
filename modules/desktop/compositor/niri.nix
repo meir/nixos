@@ -44,10 +44,7 @@ in
   };
 
   config = {
-    programs.niri = {
-      enable = true;
-      package = pkgs.niri;
-    };
+    programs.niri.enable = true;
 
     nix-fs.files.".config/niri/config.kdl" = {
       source = niriconfig;

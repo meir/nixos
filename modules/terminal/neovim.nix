@@ -27,7 +27,7 @@
     gotools
     google-java-format
     ktlint
-    nodePackages.prettier
+    prettier
     rufo
     shfmt
     stylua

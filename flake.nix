@@ -6,7 +6,6 @@
     nix-fs.url = "github:meir/nix-fs";
     quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     qml-niri.url = "github:imiric/qml-niri/main";
-    niri.url = "github:YaLTeR/niri/v26.04";
 
     # Overlays
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
@@ -31,7 +30,6 @@
           nix-fs
           quickshell
           qml-niri
-          niri
           cwal
           ;
       };

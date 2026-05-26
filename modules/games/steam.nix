@@ -11,7 +11,6 @@ with lib;
     appimage-run
     ffmpeg # add ffmpeg for ingame video players
 
-    lutris
     wine
   ];
 

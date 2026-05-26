@@ -40,7 +40,7 @@
     (mako.override {
       config_files = ../../config/mako/config;
     })
-    swww
+    awww
     nautilus
     steam
     discord

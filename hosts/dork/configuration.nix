@@ -21,7 +21,7 @@
     aseprite
     foliate
     orca-slicer
-    lutris
+    # lutris
     kicad
     stremio-linux-shell
     teamspeak6-client
@@ -51,7 +51,7 @@
     (mako.override {
       config_files = ../../config/mako/config;
     })
-    swww
+    awww
     nautilus
     steam
     modding
