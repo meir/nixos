@@ -27,6 +27,8 @@ with lib;
       "XDG_DATA_HOME" = "${config.home}/.local/share";
     };
 
+    nix-fs.home = config.home;
+
     users.users."${config.user}" = {
       isNormalUser = true;
       name = config.user;

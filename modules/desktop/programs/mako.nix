@@ -8,6 +8,6 @@ in
     mako
   ];
 
-  protocol.autostart = [ mako_bin ];
+  niri.autostart = [ mako_bin ];
   nix-fs.files.".config/mako/config".source = mkIf (config_files != null) config_files;
 }

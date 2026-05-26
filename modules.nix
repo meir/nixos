@@ -1,15 +1,14 @@
 {
   # compositor
-  hyprland = ./modules/compositor/hyprland.nix;
-  niri = ./modules/compositor/niri.nix;
+  niri = ./modules/desktop/compositor/niri.nix;
 
   # desktop
-  eww = ./modules/desktop/eww.nix;
-  mako = ./modules/desktop/mako.nix;
-  nautilus = ./modules/desktop/nautilus.nix;
-  rofi = ./modules/desktop/rofi.nix;
-  swww = ./modules/desktop/swww.nix;
-  quickshell = ./modules/desktop/quickshell.nix;
+  eww = ./modules/desktop/programs/eww.nix;
+  mako = ./modules/desktop/programs/mako.nix;
+  nautilus = ./modules/desktop/programs/nautilus.nix;
+  rofi = ./modules/desktop/programs/rofi.nix;
+  swww = ./modules/desktop/programs/swww.nix;
+  quickshell = ./modules/desktop/programs/quickshell.nix;
   
   # games
   steam = ./modules/games/steam.nix;

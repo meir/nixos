@@ -15,11 +15,15 @@ with lib;
     cwal
   ];
 
-  protocol.autostart = [
+  niri.autostart = [
     "${(pkgs.writeScript "qs-autostart" ''
       ${lib.getExe pkgs.quickshell} -p ~/.config/quickshell -d
     '')}"
   ];
+
+  niri.hotkeys = {
+    "Super+W".spawn = "quickshell ipc call WallpaperPicker open";
+  };
 
   nix-fs.files.".config/cwal/templates".source = mkIf (cwal_templates != null) cwal_templates;
   nix-fs.files.".config/cwal/cwal.ini".source = mkIf (cwal_config != null) cwal_config;

@@ -75,7 +75,7 @@
   ];
 
   # config
-  protocol = {
+  niri = {
     autostart = [
       "thunderbird"
       "discord"

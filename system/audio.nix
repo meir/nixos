@@ -29,13 +29,4 @@ with lib;
     wireplumber.enable = true;
     extraConfig.pipewire = { };
   };
-
-  protocol.hotkeys = [
-    ''
-      XF86Audio{Prev,Play,Next}
-        hyprland | exec, ${lib.getExe pkgs.playerctl} {previous,play-pause,next}
-        niri | spawn "${lib.getExe pkgs.playerctl} {previous,play-pause,next}";
-        ${lib.getExe pkgs.playerctl} {previous,play-pause,next}
-    ''
-  ];
 }

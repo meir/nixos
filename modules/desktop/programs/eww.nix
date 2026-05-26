@@ -17,7 +17,7 @@ in
     zscroll
   ];
 
-  protocol.autostart = [
+  niri.autostart = [
     "${(pkgs.writeScript "eww-autostart" ''
       sleep 1
       ${eww_bin} daemon

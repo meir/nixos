@@ -23,15 +23,6 @@ with lib;
     direnv.enable = true;
   };
 
-  protocol.hotkeys = [
-    ''
-      super + return
-        hyprland | exec, kitty
-        niri | spawn "kitty";
-        kitty
-    ''
-  ];
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -43,8 +34,6 @@ with lib;
       enable = true;
       plugins = [
         "git"
-        "golang"
-        "kubectl"
       ];
     };
 
