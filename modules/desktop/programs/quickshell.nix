@@ -18,7 +18,10 @@ with lib;
   ];
 
   niri.autostart = [
-    "qs"
+    "${(pkgs.writeScript "qs-autostart" ''
+      sleep 1 # fails to run sometimes so sleep until ready
+      ${lib.getExe pkgs.quickshell} -d
+    '')}"
   ];
 
   niri.hotkeys = {
