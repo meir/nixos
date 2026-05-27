@@ -19,7 +19,7 @@ with lib;
 
   niri.autostart = [
     "${(pkgs.writeScript "qs-autostart" ''
-      ${lib.getExe pkgs.quickshell} -p ~/.config/quickshell -d
+      ${lib.getExe pkgs.quickshell} -d
     '')}"
   ];
 
