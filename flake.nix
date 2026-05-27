@@ -8,7 +8,6 @@
 
     # Overlays
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
-    izu.url = "github:meir/izu";
     nh.url = "github:viperML/nh";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     cwal.url = "github:nitinbhat972/cwal";
@@ -22,7 +21,6 @@
         inherit (inputs)
           nixpkgs-unstable
           nixpkgs-xr
-          izu
           nh
           zen-browser
           steam-config-nix

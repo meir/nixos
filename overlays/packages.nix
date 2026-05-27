@@ -1,4 +1,4 @@
-{ pkgs, zen-browser, izu, qml-niri, nixpkgs-unstable, cwal, ... }@inputs:
+{ pkgs, zen-browser, qml-niri, nixpkgs-unstable, cwal, ... }@inputs:
 with pkgs;
 let
   sys = pkgs.stdenv.hostPlatform.system;
@@ -15,7 +15,6 @@ final: prev: {
   baballonia-git = callPackage ../pkgs/baballonia { };
   stremio-linux-shell = callPackage ../pkgs/stremio-linux-shell { };
 
-  izu = izu.packages."${sys}";
   zen-browser = zen-browser.packages."${sys}".default;
   qml-niri = qml-niri.packages."${sys}".default;
   cwal = cwal.packages."${sys}".default;
