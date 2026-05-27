@@ -14,7 +14,7 @@
     rustup
     ripgrep
     xclip
-    nixfmt-rfc-style
+    nixfmt
     luajitPackages.luarocks
     lua51Packages.lua
     tree-sitter

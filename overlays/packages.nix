@@ -1,7 +1,7 @@
 { pkgs, zen-browser, izu, qml-niri, nixpkgs-unstable, cwal, ... }@inputs:
 with pkgs;
 let
-  system = pkgs.stdenv.hostPlatform.system;
+  sys = pkgs.stdenv.hostPlatform.system;
 in
 final: prev: {
   cozette-nerdfont = callPackage ../pkgs/cozette-nerdfont { };
@@ -15,10 +15,10 @@ final: prev: {
   baballonia-git = callPackage ../pkgs/baballonia { };
   stremio-linux-shell = callPackage ../pkgs/stremio-linux-shell { };
 
-  izu = izu.packages."${system}";
-  zen-browser = zen-browser.packages."${system}".default;
-  qml-niri = qml-niri.packages."${system}".default;
-  cwal = cwal.packages."${system}".default;
+  izu = izu.packages."${sys}";
+  zen-browser = zen-browser.packages."${sys}".default;
+  qml-niri = qml-niri.packages."${sys}".default;
+  cwal = cwal.packages."${sys}".default;
 
   monado_custom = import ../pkgs/monado inputs;
   xrizer_custom = import ../pkgs/xrizer inputs;
