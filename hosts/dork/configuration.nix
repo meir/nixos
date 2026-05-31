@@ -19,18 +19,12 @@
     spotify
     thunderbird
     aseprite
-    foliate
     orca-slicer
-    # lutris
-    kicad
     stremio-linux-shell
-    teamspeak6-client
-    unityhub
-    pngtuber-plus
     amberol
-    vlc
-    # unstable.bs-manager
+    bs-manager
     votv
+    davinci-resolve
   ];
 
   imports = with modules; useMods inputs [
