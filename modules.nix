@@ -22,6 +22,7 @@
 
   # social
   discord = ./modules/social/discord.nix;
+  spotify = ./modules/social/spotify.nix;
   mprisence = ./modules/social/mprisence.nix;
   qutebrowser = ./modules/social/qutebrowser.nix;
   zenbrowser = ./modules/social/zenbrowser.nix;

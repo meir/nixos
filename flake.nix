@@ -11,6 +11,8 @@
     nh.url = "github:viperML/nh";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     cwal.url = "github:nitinbhat972/cwal";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    milk-grub.url = "github:gemakfy/MilkGrub";
   };
 
   outputs =
@@ -28,6 +30,7 @@
           quickshell
           qml-niri
           cwal
+          spicetify-nix
           ;
       };
     in

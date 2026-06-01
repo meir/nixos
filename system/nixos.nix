@@ -1,9 +1,11 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }:
+let
+  grub = true;
+in
 {
   environment.systemPackages = with pkgs; [ comma ];
 
@@ -36,8 +38,19 @@
   };
 
   boot.loader = {
+    grub = {
+      enable = grub;
+      efiSupport = true;
+      device = "nodev";
+      useOSProber = true;
+
+      gfxmodeEfi = "1920x1080";
+      gfxpayloadEfi = "keep";
+      milk-theme.enable = true;
+    };
+
     systemd-boot = {
-      enable = true;
+      enable = !grub;
       consoleMode = "max";
       configurationLimit = 50;
     };

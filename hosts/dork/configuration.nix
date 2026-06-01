@@ -16,7 +16,6 @@
       additionalPrograms = [ vlc ];
       additionalLibs = [ vlc ];
     })
-    spotify
     thunderbird
     aseprite
     orca-slicer
@@ -55,6 +54,7 @@
       config_file = ../../config/wlxoverlay/config.yaml;
     })
     discord
+    spotify
     mprisence
     zenbrowser
     neovim

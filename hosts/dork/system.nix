@@ -3,6 +3,8 @@
   nixpkgs-xr,
   nix-fs,
   steam-config-nix,
+  spicetify-nix,
+  milk-grub,
   ...
 }:
 specialArgs:
@@ -14,6 +16,8 @@ nixpkgs.lib.nixosSystem {
     nixpkgs-xr.nixosModules.nixpkgs-xr
     nix-fs.nixosModules.nix-fs
     steam-config-nix.nixosModules.default
+    spicetify-nix.nixosModules.default
+    milk-grub.nixosModule
 
     ./hardware-configuration.nix
     ../../system
