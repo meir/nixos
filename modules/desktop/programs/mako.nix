@@ -1,4 +1,4 @@
-{ pkgs, lib, config_files ? null, ... }:
+{ pkgs, lib, ... }:
 with lib;
 let
   mako_bin = getExe pkgs.mako;
@@ -9,5 +9,6 @@ in
   ];
 
   niri.autostart = [ mako_bin ];
-  nix-fs.files.".config/mako/config".source = mkIf (config_files != null) config_files;
+  # use cwal to place config instead
+  # nix-fs.files.".config/mako/config".source = mkIf (config_files != null) config_files;
 }

@@ -41,9 +41,7 @@
     (rofi.override {
       config_files = ../../config/rofi;
     })
-    (mako.override {
-      config_files = ../../config/mako/config;
-    })
+    mako
     awww
     nautilus
     steam
