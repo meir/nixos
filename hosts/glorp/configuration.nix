@@ -61,6 +61,12 @@
 
   # config
   niri = {
+    displays = {
+      "eDP-1" = {
+        mode = "1920x1080";
+        position = "x=0 y=0";
+      };
+    };
     autostart = [
       "thunderbird"
       "discord"

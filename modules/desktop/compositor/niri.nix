@@ -7,6 +7,17 @@
 }:
 with lib;
 let
+  displayList = attrsToList config.niri.displays;
+  display_item = item: "  mode \"${item.mode}\"\n"+
+    "  scale ${item.scale}\n" + 
+    (if item.transform != null then "  transform \"${item.transform}\"\n" else "") +
+    (if item.position != null then "  position ${item.position}\n" else "");
+  displays = concatStringsSep "\n\n" (map (item: "output \"${item.name}\" {\n${display_item item.value}\n}") displayList) + "\n";
+
+  display_division = 10 / (length displayList);
+  get_workspace_display = i: (elemAt displayList ((i - 1) / display_division)).name;
+  workspaces = concatStringsSep "\n" (map (i: "workspace \"ws_${toString i}\" { open-on-output \"${get_workspace_display i}\"; }") (range 1 10));
+
   command_item = value: (concatStringsSep " " (map (value: "\"" + value + "\"") (splitString " " value)));
   startup = concatStringsSep "\n" (map (value: "spawn-at-startup ${command_item value}") config.niri.autostart);
   hotkey_item = value: if value.spawn != null then "spawn " + (command_item value.spawn) else value.op;
@@ -14,6 +25,8 @@ let
   config_file_content = if config_file != null then builtins.readFile config_file else "";
 
   niriconfig = pkgs.writeScript "niri" ''
+    ${displays}
+    ${workspaces}
     ${startup}
     ${hotkeys}
     ${config_file_content}
@@ -21,6 +34,33 @@ let
 in
 {
   options.niri = {
+    displays = mkOption {
+      type = types.attrsOf (
+        types.submodule {
+          options = {
+            mode = mkOption {
+              type = types.str;
+            };
+            scale = mkOption {
+              type = types.str;
+              default = "1";
+            };
+            transform = mkOption {
+              type = types.nullOr types.str;
+              default = null;
+            };
+            position = mkOption {
+              type = types.nullOr types.str;
+              default = null;
+            };
+          };
+        }
+      );
+    };
+    tabletInput = mkOption {
+      type = types.nullOr types.str;
+      default = null;
+    };
     hotkeys = mkOption {
       type = types.attrsOf (
         types.submodule {

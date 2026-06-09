@@ -1,0 +1,7 @@
+
+layout {
+  border {
+    active-color "{color1}"
+    inactive-color "{color2}"
+  }
+}

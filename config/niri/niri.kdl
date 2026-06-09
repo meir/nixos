@@ -1,0 +1,54 @@
+include "colors.kdl"
+
+input {
+  keyboard {
+    xkb {
+      layout "us"
+    }
+  }
+
+  tablet {
+    map-to-output "HDMI-A-2"
+  }
+}
+
+layout {
+  gaps 16
+  center-focused-column "never"
+
+  preset-column-widths {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+  }
+
+  default-column-width { proportion 1.0; }
+
+  focus-ring {
+    off
+  }
+
+  border {
+    width 4
+  }
+}
+
+window-rule {
+  geometry-corner-radius 10
+  clip-to-geometry true
+}
+
+cursor {
+  xcursor-size 12
+}
+
+animations {}
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+prefer-no-csd
+
