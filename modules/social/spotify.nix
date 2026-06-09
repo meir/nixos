@@ -14,6 +14,7 @@ in
       betterGenres
       adblock
       aiBandBlocker
+      beautifulLyrics
     ];
 
     theme = spicetify.themes.text;
