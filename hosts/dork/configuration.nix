@@ -28,7 +28,7 @@
 
   imports = with modules; useMods inputs [
     (niri.override {
-      config_file = ./config/niri/niri.kdl;
+      config_file = ../../config/niri/niri.kdl;
     })
     amdgpu
     obs

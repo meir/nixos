@@ -25,7 +25,7 @@
   imports = with modules; useMods inputs [
     intel
     (niri.override {
-      config_file = ./config/niri/niri.kdl;
+      config_file = ../../config/niri/niri.kdl;
     })
     bluetooth
     docker
