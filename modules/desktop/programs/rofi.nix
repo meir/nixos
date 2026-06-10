@@ -20,5 +20,5 @@ in
     "Super+Shift+Space".spawn = "rofi -show run";
   };
 
-  nix-fs.files.".config/rofi".source = mkIf (config_files != null) config_files;
+  nix-fs.files.".config/rofi/config.rasi".source = mkIf (config_files != null) config_files;
 }

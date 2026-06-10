@@ -39,7 +39,7 @@
     #   widgets = [ "mon1" "mon2" ];
     # })
     (rofi.override {
-      config_files = ../../config/rofi;
+      config_files = ../../config/rofi/config.rasi;
     })
     mako
     awww

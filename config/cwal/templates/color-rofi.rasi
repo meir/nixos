@@ -1,11 +1,11 @@
 
 * {
-  bg: #101A0B;
-  fg: #f7f4f3;
+  bg: {background};
+  fg: {foreground};
 
-  contrast-low: #131711;
-  contrast-high: #D1496B;
-  accent: #10A070;
+  contrast-low: {color1};
+  contrast-high: {color2};
+  accent: {color10};
 
   padding: 10px;
   h-padding: 12.5px;
