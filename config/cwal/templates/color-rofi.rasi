@@ -1,81 +1,96 @@
+/* ROFI SQUARED THEME */
+/* Author: Newman Sanchez (https://github.com/newmanls) */
 
 * {
-  bg: {background};
-  fg: {foreground};
+    font:   "DinaRemasterII Nerd Font Regular 12";
 
-  contrast-low: {color1};
-  contrast-high: {color2};
-  accent: {color10};
+    bg0:     {background};
+    bg1:     {color10};
+    fg0:     {foreground};
 
-  padding: 10px;
-  h-padding: 12.5px;
+    accent-color:     {color3};
+    urgent-color:     {color2};
+
+    background-color:   transparent;
+    text-color:         @fg0;
+
+    margin:     0;
+    padding:    0;
+    spacing:    0;
 }
 
 window {
-  padding: var(padding);
-  color: var(fg);
-  background-color: var(bg);
-  border-radius: 10px;
-}
+    location:   center;
+    width:      480;
 
-mainbox {
-  padding: var(padding);
-  background-color: var(bg);
+    background-color:   @bg0;
 }
 
 inputbar {
-  background-color: var(bg);
-  padding: 0;
-  border-radius: 10px;
-  margin-bottom: var(h-padding);
+    spacing:    8px;
+    padding:    8px;
+
+    background-color:   @bg1;
+}
+
+prompt, entry, element-icon, element-text {
+    vertical-align: 0.5;
 }
 
 prompt {
-  background-color: var(contrast-high);
-  color: var(fg);
+    text-color: @accent-color;
 }
 
-entry {
-  background-color: var(contrast-low);
-  color: var(fg);
-  text-decoration: underline;
-}
-
-ci {
-  background-color: var(contrast-high);
-}
-
-message {
-
+textbox {
+    padding:            8px;
+    background-color:   @bg1;
 }
 
 listview {
-  padding: 10px 0px 0px 0px;
-  background-color: var(bg);
+    padding:    4px 0;
+    lines:      8;
+    columns:    1;
+
+    fixed-height:   false;
 }
 
 element {
-  padding: 1px;
-  cursor: pointer;
-  spacing: 5px;
-  border: 0;
-  background-color: var(contrast-low);
-  padding: 0;
-  border-radius: 10px;
+    padding:    8px;
+    spacing:    8px;
 }
 
-normal.normal, alternate.normal, alternate.active {
-  background-color: var(contrast-low);
-  border-radius: 0px 10px 10px 0px;
-  color: var(fg);
+element normal normal {
+    text-color: @fg0;
 }
 
-selected.normal {
-  background-color: var(contrast-high);
-  color: var(fg);
-  border-radius: 10px;
+element normal urgent {
+    text-color: @urgent-color;
 }
 
-mode-switcher {
+element normal active {
+    text-color: @accent-color;
+}
 
+element alternate active {
+    text-color: @accent-color;
+}
+
+element selected {
+    text-color: @bg0;
+}
+
+element selected normal, element selected active {
+    background-color:   @accent-color;
+}
+
+element selected urgent {
+    background-color:   @urgent-color;
+}
+
+element-icon {
+    size:   0.8em;
+}
+
+element-text {
+    text-color: inherit;
 }
