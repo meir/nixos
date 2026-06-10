@@ -7,7 +7,7 @@
 }:
 with lib;
 let
-  displayList = attrsToList config.niri.displays;
+  displayList = sort (a: b: a.value.id < b.value.id) (attrsToList config.niri.displays);
   display_item = item: "  mode \"${item.mode}\"\n"+
     "  scale ${item.scale}\n" + 
     (if item.transform != null then "  transform \"${item.transform}\"\n" else "") +
@@ -38,6 +38,10 @@ in
       type = types.attrsOf (
         types.submodule {
           options = {
+            id = mkOption {
+              type = types.int;
+              default = 0;
+            };
             mode = mkOption {
               type = types.str;
             };

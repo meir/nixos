@@ -70,10 +70,12 @@
   niri = {
     displays = {
       "HDMI-A-2" = {
+        id = 0;
         mode = "2560x1080";
         position = "x=0 y=0";
       };
       "DP-1" = {
+        id = 1;
         mode = "1920x1080";
         position = "x=-1920 y=0";
       };
