@@ -57,9 +57,9 @@ body {
     --background-image-url: url('');
 
     /* transparency/blur options */
-    --transparency-tweaks: off;
+    --transparency-tweaks: on;
     --remove-bg-layer: off;
-    --panel-blur: off;
+    --panel-blur: on;
     --blur-amount: 12px;
     --bg-floating: var(--bg-3);
 
@@ -93,10 +93,10 @@ body {
     --text-5: {color8};       /* muted text */
 
     /* background and dark colors */
-    --bg-1: {color0};         /* dark buttons when clicked */
-    --bg-2: {color8};         /* dark buttons */
-    --bg-3: {color0};         /* spacing, secondary elements */
-    --bg-4: {background};     /* main background color */
+    --bg-1: rgba({color0.red}, {color0.green}, {color0.blue}, 0.8);         /* dark buttons when clicked */
+    --bg-2: rgba({color8.red}, {color8.green}, {color8.blue}, 0.8);         /* dark buttons */
+    --bg-3: rgba({color0.red}, {color0.green}, {color0.blue}, 0.8);;         /* spacing, secondary elements */
+    --bg-4: rgba({background.red}, {background.green}, {background.blue}, 0.8);     /* main background color */
     --hover: color-mix(in srgb, {foreground} 10%, transparent);
     --active: color-mix(in srgb, {foreground} 20%, transparent);
     --active-2: color-mix(in srgb, {foreground} 30%, transparent);

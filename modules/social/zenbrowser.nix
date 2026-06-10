@@ -1,8 +1,9 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    zen-browser
-  ];
+  programs.firefox = {
+    enable = true;
+    package = with pkgs; (wrapFirefox zen-browser-unwrapped { });
+  };
 
   xdg.mime.defaultApplications = {
     "text/html" = "zenbrowser.desktop";

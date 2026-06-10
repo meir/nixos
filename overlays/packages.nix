@@ -16,6 +16,7 @@ final: prev: {
   stremio-linux-shell = callPackage ../pkgs/stremio-linux-shell { };
 
   zen-browser = zen-browser.packages."${sys}".default;
+  zen-browser-unwrapped = zen-browser.packages."${sys}".beta-unwrapped;
   qml-niri = qml-niri.packages."${sys}".default;
   cwal = cwal.packages."${sys}".default;
 
