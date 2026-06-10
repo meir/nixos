@@ -68,6 +68,7 @@ body {
 
     /* unrounding options */
     --unrounding: on;
+    --round-users-profiles: on;
 
     /* styling options */
     --custom-spotify-bar: on;
@@ -157,4 +158,28 @@ body {
     --purple-3: {color5};
     --purple-4: {color13};
     --purple-5: {color5};
+}
+
+/* temporary */
+
+@property --round-users-profiles {
+    syntax: 'off | on';
+    inherits: false;
+    initial-value: off;
+}
+
+@container body style(--round-users-profiles: on) {
+    .avatar_c19a55, .avatar__44b0c, .overlayAvatar__57752 {
+        border-radius: 100% !important;
+    }
+
+    .wrapper__44b0c {
+        /* fix something weird with a background color behind the user profile that looked ugly */
+        background-color: transparent !important;
+    }
+
+    .avatarDecorationContainer__44b0c foreignObject {
+        /* fix for a weird mask on the user profile page for user decoration */
+        mask: none;
+    }
 }
