@@ -54,7 +54,9 @@
     discord
     spotify
     mprisence
-    zenbrowser
+    (zenbrowser.override {
+      profile = "6nnl61tq";
+    })
     neovim
     onepassword
     qmk
