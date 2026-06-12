@@ -7,7 +7,6 @@ let
     desktopName = "Start Monado";
     terminal = true;
   };
-  audio_output = "Navi 31 HDMI/DP Audio Digital Stereo";
 in
 pkgs.stdenv.mkDerivation {
   pname = "monado-start";

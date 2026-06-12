@@ -2,9 +2,6 @@
   config,
   pkgs,
   lib,
-  watch ? null,
-  keyboard ? null,
-  config_file ? null,
   ...
 }:
 with lib;
@@ -86,9 +83,6 @@ with lib;
         "version" : 1
       }
     '';
-    ".config/wlxoverlay/watch.yaml".source = mkIf (watch != null) watch;
-    ".config/wlxoverlay/keyboard.yaml".source = mkIf (keyboard != null) keyboard;
-    ".config/wlxoverlay/config.yaml".source = mkIf (config_file != null) config_file;
     ".local/share/LOVR/lovr-playspace/grid_top.txt".text = ''
       0.0
     '';

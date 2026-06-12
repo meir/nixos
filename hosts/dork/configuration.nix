@@ -46,11 +46,7 @@
     nautilus
     steam
     modding
-    (monado.override {
-      watch = ../../config/wlxoverlay/watch.yaml;
-      keyboard = ../../config/wlxoverlay/keyboard.yaml;
-      config_file = ../../config/wlxoverlay/config.yaml;
-    })
+    monado
     discord
     spotify
     mprisence
