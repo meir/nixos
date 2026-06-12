@@ -42,16 +42,12 @@ with lib;
 
   boot.kernelPatches = [
     {
-      name = "0001-drm-edid-parse-DRM-VESA-dsc-bpp-target";
-      patch = ./patches/0001-drm-edid-parse-DRM-VESA-dsc-bpp-target.patch;
+      name = "0001-change-device-uvc_version-check-on-dwMaxVideoFrameSize";
+      patch = ./patches/0001-change-device-uvc_version-check-on-dwMaxVideoFrameSize.patch;
     }
     {
-      name = "0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid";
-      patch = ./patches/0002-drm-amd-use-fixed-dsc-bits-per-pixel-from-edid.patch;
-    }
-    {
-      name = "0001-Change-device-uvc_version-check-on-dwMaxVideoFrameSize";
-      patch = ./patches/0001-Change-device-uvc_version-check-on-dwMaxVideoFrameSize.patch;
+      name = "0002-bigscreen-beyond-linux-kernel";
+      patch = ./patches/0002-bigscreen-beyond-linux-kernel.patch;
     }
   ];
 
