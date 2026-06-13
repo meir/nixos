@@ -1,7 +1,6 @@
 {
   pkgs,
   modules,
-  config,
   ...
 }@inputs:
 {
@@ -46,7 +45,9 @@
     nautilus
     steam
     modding
-    monado
+    (monado.override {
+      wayvr_config = ../../config/wayvr;
+    })
     discord
     spotify
     mprisence

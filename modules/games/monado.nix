@@ -2,9 +2,19 @@
   config,
   pkgs,
   lib,
+  wayvr_config ? null,
   ...
 }:
 with lib;
+let
+  skybox = pkgs.runCommand "skybox-unzip" {
+    nativeBuildInputs = [ pkgs.unzip ];
+  }
+  ''
+    mkdir -p $out
+    unzip ${wayvr_config}/skybox.zip -d $out
+  '';
+in
 {
   environment.systemPackages = with pkgs; [
     unstable.wayvr
@@ -79,6 +89,11 @@ with lib;
         "version" : 1
       }
     '';
+
+    # WayVR config
+    ".config/wayvr/openxr_actions.json5".source = mkIf (wayvr_config != null) "${wayvr_config}/openxr_actions.json5";
+    ".config/wayvr/skybox.dds".source = mkIf (wayvr_config != null) "${skybox}/skybox.dds";
+    ".config/wayvr/conf.d/config.yaml" = mkIf (wayvr_config != null) "${wayvr_config}/config.yaml";
   };
 
   desktop.entry = {
