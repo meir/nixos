@@ -8,11 +8,11 @@
 with lib;
 let
   skybox = pkgs.runCommand "skybox-unzip" {
-    nativeBuildInputs = [ pkgs.unzip ];
+    nativeBuildInputs = [ pkgs.brotli ];
   }
   ''
     mkdir -p $out
-    unzip ${wayvr_config}/skybox.zip -d $out
+    brotli -d ${wayvr_config}/skybox.dds.br -o $out/skybox.dds
   '';
 in
 {
