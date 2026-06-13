@@ -93,7 +93,10 @@ in
     # WayVR config
     ".config/wayvr/openxr_actions.json5".source = mkIf (wayvr_config != null) "${wayvr_config}/openxr_actions.json5";
     ".config/wayvr/skybox.dds".source = mkIf (wayvr_config != null) "${skybox}/skybox.dds";
-    ".config/wayvr/conf.d/config.yaml" = mkIf (wayvr_config != null) "${wayvr_config}/config.yaml";
+    ".config/wayvr/conf.d/skybox.yaml".text = mkIf (wayvr_config != null) ''
+      skybox_texture: skybox.dds
+    '';
+    ".config/wayvr/conf.d/config.yaml".source = mkIf (wayvr_config != null) "${wayvr_config}/config.yaml";
   };
 
   desktop.entry = {
