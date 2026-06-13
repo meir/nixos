@@ -38,14 +38,6 @@ with lib;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.kernelPatches = [
-    # {
-    #   name = "0001-change-device-uvc_version-check-on-dwMaxVideoFrameSize";
-    #   patch = ./patches/0001-change-device-uvc_version-check-on-dwMaxVideoFrameSize.patch;
-    # }
-    # {
-    #   name = "0002-bigscreen-beyond-linux-kernel";
-    #   patch = ./patches/0002-bigscreen-beyond-linux-kernel.patch;
-    # }
     {
       name = "bsb-kernel-patch";
       patch = ./patches/0001-bigscreen-beyond-kernel-latest.patch;
