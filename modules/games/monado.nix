@@ -11,7 +11,7 @@ with lib;
     lighthouse-steamvr
     monado_start
     
-    lovr-playspace
+    xr-chaperone
     # baballonia-git
   ];
 
@@ -82,9 +82,6 @@ with lib;
         ],
         "version" : 1
       }
-    '';
-    ".local/share/LOVR/lovr-playspace/grid_top.txt".text = ''
-      0.0
     '';
   };
 

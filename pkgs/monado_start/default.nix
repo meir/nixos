@@ -20,7 +20,7 @@ pkgs.stdenv.mkDerivation {
       [
         unstable.wayvr
         lighthouse-steamvr
-        lovr-playspace
+        xr-chaperone
       ];
 
     text = ''
@@ -50,7 +50,7 @@ pkgs.stdenv.mkDerivation {
         systemctl --user restart monado.service
 
         setsid sh -c '
-          lovr-playspace &
+          xr-chaperone -s &
           wayvr --replace &
           wait
         ' &

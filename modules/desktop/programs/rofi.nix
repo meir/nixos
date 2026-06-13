@@ -1,9 +1,5 @@
 { pkgs, lib, config_files ? null, ... }:
 with lib;
-let
-  rofi_bin = getExe pkgs.rofi;
-  cliphist_bin = getExe pkgs.cliphist;
-in
 {
   environment.systemPackages = with pkgs; [
     rofi
