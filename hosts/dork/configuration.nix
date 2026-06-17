@@ -19,7 +19,6 @@
     aseprite
     orca-slicer
     stremio-linux-shell
-    amberol
     bs-manager
     votv
     davinci-resolve
