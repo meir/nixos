@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, VR_HEADSET_SINK ? "", ... }:
 let
   monado-start-desktop = pkgs.makeDesktopItem {
     exec = "monado-start";
@@ -25,6 +25,7 @@ pkgs.stdenv.mkDerivation {
 
     text = ''
       GROUP_PID_FILE="/tmp/monado-group-pid-$$"
+      DEFAULT_SINK=$(pactl --format=json info | jq -r '.default_sink_name')
 
       function off() {
         echo "Stopping Monado and other stuff..."
@@ -38,6 +39,7 @@ pkgs.stdenv.mkDerivation {
 
         systemctl --user stop monado.service &
         lighthouse -vv --state off &
+        pactl set-default-sink "$DEFAULT_SINK" &
         wait
 
         exit 0
@@ -48,6 +50,14 @@ pkgs.stdenv.mkDerivation {
 
         lighthouse -vv --state on &
         systemctl --user restart monado.service
+        if [ -n "${VR_HEADSET_SINK}" ]; then
+          echo "Looking for sink matching description '${VR_HEADSET_SINK}'..."
+          VR_SINK=$(pactl --format=json list sinks | jq -r '.[] | select(.description | test("${VR_HEADSET_SINK}")) | .name')
+          echo "Setting default sink to $VR_SINK..."
+          pactl set-default-sink "$VR_SINK" &
+        else
+          echo "No VR_HEADSET_SINK provided, using default sink."
+        fi
 
         setsid sh -c '
           xr-chaperone -s &

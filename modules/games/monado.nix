@@ -3,6 +3,7 @@
   pkgs,
   lib,
   wayvr_config ? null,
+  vr_headset_sink ? "",
   ...
 }:
 with lib;
@@ -19,7 +20,9 @@ in
   environment.systemPackages = with pkgs; [
     unstable.wayvr
     lighthouse-steamvr
-    monado_start
+    (monado_start.override {
+      VR_HEADSET_SINK = vr_headset_sink;
+    })
     
     xr-chaperone
     # baballonia-git

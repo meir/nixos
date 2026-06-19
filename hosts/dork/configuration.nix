@@ -46,6 +46,7 @@
     modding
     (monado.override {
       wayvr_config = ../../config/wayvr;
+      vr_headset_sink = "AB13X";
     })
     discord
     spotify
