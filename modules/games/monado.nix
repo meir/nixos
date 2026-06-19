@@ -4,6 +4,7 @@
   lib,
   wayvr_config ? null,
   vr_headset_sink ? "",
+  snout_config ? null,
   ...
 }:
 with lib;
@@ -20,12 +21,12 @@ in
   environment.systemPackages = with pkgs; [
     unstable.wayvr
     lighthouse-steamvr
+    xr-chaperone
+    libsnout
+
     (monado_start.override {
       VR_HEADSET_SINK = vr_headset_sink;
     })
-    
-    xr-chaperone
-    # baballonia-git
   ];
 
   services.monado = {
@@ -100,6 +101,8 @@ in
       skybox_texture: skybox.dds
     '';
     ".config/wayvr/conf.d/config.yaml".source = mkIf (wayvr_config != null) "${wayvr_config}/config.yaml";
+    ".config/snout/snout.toml".source = mkIf (snout_config != null) "${snout_config}/snout.toml";
+    ".config/snout/model.onnx".source = mkIf (snout_config != null) "${snout_config}/model.onnx";
   };
 
   desktop.entry = {

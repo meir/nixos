@@ -21,6 +21,7 @@ pkgs.stdenv.mkDerivation {
         unstable.wayvr
         lighthouse-steamvr
         xr-chaperone
+        libsnout
       ];
 
     text = ''
@@ -50,7 +51,8 @@ pkgs.stdenv.mkDerivation {
 
         lighthouse -vv --state on &
         systemctl --user restart monado.service
-        if [ -n "${VR_HEADSET_SINK}" ]; then
+        VR_HEADSET_SINK="${VR_HEADSET_SINK}"
+        if [ -n "$VR_HEADSET_SINK" ]; then
           echo "Looking for sink matching description '${VR_HEADSET_SINK}'..."
           VR_SINK=$(pactl --format=json list sinks | jq -r '.[] | select(.description | test("${VR_HEADSET_SINK}")) | .name')
           echo "Setting default sink to $VR_SINK..."
@@ -62,6 +64,7 @@ pkgs.stdenv.mkDerivation {
         setsid sh -c '
           xr-chaperone -s &
           wayvr --replace &
+          snout-cli --config ~/.config/snout/snout.toml &
           wait
         ' &
         PGID=$!

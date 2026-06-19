@@ -22,6 +22,7 @@
     bs-manager
     votv
     davinci-resolve
+    libsnout
   ];
 
   imports = with modules; useMods inputs [
@@ -47,6 +48,7 @@
     (monado.override {
       wayvr_config = ../../config/wayvr;
       vr_headset_sink = "AB13X";
+      snout_config = ../../config/snout;
     })
     discord
     spotify

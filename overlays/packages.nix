@@ -14,6 +14,7 @@ final: prev: {
   steam-vdf = pkgs.python3Packages.callPackage ../pkgs/steam-vdf { };
   baballonia-git = callPackage ../pkgs/baballonia { };
   stremio-linux-shell = callPackage ../pkgs/stremio-linux-shell { };
+  libsnout = callPackage ../pkgs/libsnout { };
 
   zen-browser = zen-browser.packages."${sys}".default;
   zen-browser-unwrapped = zen-browser.packages."${sys}".beta-unwrapped;
