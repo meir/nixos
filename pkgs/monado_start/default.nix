@@ -27,8 +27,14 @@ pkgs.stdenv.mkDerivation {
     text = ''
       GROUP_PID_FILE="/tmp/monado-group-pid-$$"
       DEFAULT_SINK=$(pactl --format=json info | jq -r '.default_sink_name')
+      QUITTING=0
 
       function off() {
+        if [ "$QUITTING" -eq 1 ]; then
+          return
+        fi
+        QUITTING=1
+
         echo "Stopping Monado and other stuff..."
 
         if [ -f "$GROUP_PID_FILE" ]; then
