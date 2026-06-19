@@ -12,7 +12,6 @@ final: prev: {
   votv = callPackage ../pkgs/votv { };
   pngtuber-plus = callPackage ../pkgs/pngtuber-plus { };
   steam-vdf = pkgs.python3Packages.callPackage ../pkgs/steam-vdf { };
-  baballonia-git = callPackage ../pkgs/baballonia { };
   stremio-linux-shell = callPackage ../pkgs/stremio-linux-shell { };
   libsnout = callPackage ../pkgs/libsnout { };
 

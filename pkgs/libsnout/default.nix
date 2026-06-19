@@ -4,6 +4,7 @@
   pkg-config,
   llvm,
   onnxruntime,
+  makeWrapper,
   lib,
   ...
 }:
@@ -24,12 +25,18 @@ rustPlatform.buildRustPackage (finalAttrs: {
   nativeBuildInputs = [
     pkg-config
     rustPlatform.bindgenHook
+    makeWrapper
   ];
 
   buildInputs = [
     llvm
     onnxruntime
   ];
+
+  postFixup = ''
+    wrapProgram "$out/bin/snout-cli" \
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ onnxruntime llvm ]}"
+  '';
 
   meta = {
     description = "A library for snout detection and tracking";

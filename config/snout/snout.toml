@@ -1,0 +1,280 @@
+#libonnxruntime = "/usr/lib64/libonnxruntime.so"
+
+[eye]
+#link = true
+model = "eyeModel.onnx" # If not specified, tracking will be disabled.
+
+[eye.left]
+camera = "Bigeye: Bigeye (800x400 @ 90fps)" # If not specified, tracking will be disabled.
+
+#[eye.left.crop]
+#scale = 1.0
+#major_shift = 0.0
+#minor_shift = 0.0
+
+#[eye.left.transform]
+#rotation = 0.0
+#brightness = 0.66
+#vertical_flip = false
+#horizontal_flip = false
+
+[eye.right]
+camera = "Bigeye: Bigeye (800x400 @ 90fps)" # If not specified, tracking will be disabled.
+
+#[eye.right.crop]
+#scale = 1.0
+#major_shift = 0.0
+#minor_shift = 0.0
+
+#[eye.right.transform]
+#rotation = 0.0
+#brightness = 0.66
+#vertical_flip = false
+#horizontal_flip = false
+
+[face]
+# You can use a URL like "http://127.0.0.1:8080/mjpeg/stream.jpg" here as well.
+camera = "" # "USB 2.0 Camera: USB Camera (640x480 @ 30fps)" # If not specified, tracking will be disabled.
+model = "" # "faceModel.onnx" # If not specified, tracking will be disabled.
+
+#[face.crop]
+#scale = 1.0
+#major_shift = 0.0
+#minor_shift = 0.0
+
+#[face.transform]
+#rotation = 0.0
+#brightness = 0.66
+#vertical_flip = false
+#horizontal_flip = false
+
+# [[face.calibration]]
+# shape = "CheekPuffLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "CheekPuffRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "CheekSuckLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "CheekSuckRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "JawOpen"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "JawForward"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "JawLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "JawRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "NoseSneerLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "NoseSneerRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthFunnel"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthPucker"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthRollUpper"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthRollLower"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthShrugUpper"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthShrugLower"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthClose"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthSmileLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthSmileRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthFrownLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthFrownRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthDimpleLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthDimpleRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthUpperUpLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthUpperUpRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthLowerDownLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthLowerDownRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthPressLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthPressRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthStretchLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "MouthStretchRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueOut"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueUp"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueDown"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueRight"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueRoll"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueBendDown"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueCurlUp"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueSquish"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueFlat"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueTwistLeft"
+# lower = 0.0
+# upper = 1.0
+
+# [[face.calibration]]
+# shape = "TongueTwistRight"
+# lower = 0.0
+# upper = 1.0
+
+[train]
+baseline = "eyeModel.safetensors"
+
+#[output.osc]
+#destination = "127.0.0.1:9400" # Set this to 127.0.0.1:8888 if you use VRCFT.Avalonia.

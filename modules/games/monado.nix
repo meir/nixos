@@ -24,6 +24,8 @@ in
     xr-chaperone
     libsnout
 
+    baballonia-git
+
     (monado_start.override {
       VR_HEADSET_SINK = vr_headset_sink;
     })
