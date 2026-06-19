@@ -24,8 +24,6 @@ in
     xr-chaperone
     libsnout
 
-    baballonia-git
-
     (monado_start.override {
       VR_HEADSET_SINK = vr_headset_sink;
     })
@@ -117,10 +115,5 @@ in
       comment = "WayVR";
       exec = "${pkgs.unstable.wayvr}/bin/wayvr --replace --openxr";
     };
-    # baballonia = {
-    #   name = "Baballonia";
-    #   comment = "Baballonia Eye/Face tracking";
-    #   exec = "${pkgs.baballonia-git}/bin/baballonia";
-    # };
   };
 }
