@@ -1,4 +1,11 @@
-{ pkgs, zen-browser, qml-niri, nixpkgs-unstable, cwal, ... }@inputs:
+{
+  pkgs,
+  zen-browser,
+  qml-niri,
+  nixpkgs-unstable,
+  cwal,
+  ...
+}@inputs:
 with pkgs;
 let
   sys = pkgs.stdenv.hostPlatform.system;
@@ -14,6 +21,7 @@ final: prev: {
   steam-vdf = pkgs.python3Packages.callPackage ../pkgs/steam-vdf { };
   stremio-linux-shell = callPackage ../pkgs/stremio-linux-shell { };
   libsnout = callPackage ../pkgs/libsnout { };
+  vrcft = callPackage ../pkgs/vrcft { };
 
   zen-browser = zen-browser.packages."${sys}".default;
   zen-browser-unwrapped = zen-browser.packages."${sys}".beta-unwrapped;

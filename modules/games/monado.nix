@@ -2,9 +2,8 @@
   config,
   pkgs,
   lib,
-  wayvr_config ? null,
+  assets,
   vr_headset_sink ? "",
-  snout_config ? null,
   ...
 }:
 with lib;
@@ -14,8 +13,18 @@ let
   }
   ''
     mkdir -p $out
-    brotli -d ${wayvr_config}/skybox.dds.br -o $out/skybox.dds
+    brotli -d ${assets.wayvr}/skybox.dds.br -o $out/skybox.dds
   '';
+
+  # snout_eye_model = pkgs.runCommand "snout-model" {
+  #   nativeBuildInputs = [ pkgs.libsnout ];
+  # }
+  # ''
+  #   mkdir -p $out
+  #   cp -r ${snout_config}/* ./
+  #   snout-cli --config ./snout.toml train ./user_cal.bin ./output.onnx
+  #   mv ./output.onnx $out/eyeModel.onnx
+  # '';
 in
 {
   environment.systemPackages = with pkgs; [
@@ -23,6 +32,9 @@ in
     lighthouse-steamvr
     xr-chaperone
     libsnout
+    vrcft
+    # vrcadvert
+    # oscavmgr
 
     (monado_start.override {
       VR_HEADSET_SINK = vr_headset_sink;
@@ -99,14 +111,14 @@ in
     '';
 
     # WayVR config
-    ".config/wayvr/openxr_actions.json5".source = mkIf (wayvr_config != null) "${wayvr_config}/openxr_actions.json5";
-    ".config/wayvr/skybox.dds".source = mkIf (wayvr_config != null) "${skybox}/skybox.dds";
-    ".config/wayvr/conf.d/skybox.yaml".text = mkIf (wayvr_config != null) ''
+    ".config/wayvr/openxr_actions.json5".source = "${assets.wayvr}/openxr_actions.json5";
+    ".config/wayvr/skybox.dds".source = "${skybox}/skybox.dds";
+    ".config/wayvr/conf.d/skybox.yaml".text = ''
       skybox_texture: skybox.dds
     '';
-    ".config/wayvr/conf.d/config.yaml".source = mkIf (wayvr_config != null) "${wayvr_config}/config.yaml";
-    ".config/snout/snout.toml".source = mkIf (snout_config != null) "${snout_config}/snout.toml";
-    ".config/snout/model.onnx".source = mkIf (snout_config != null) "${snout_config}/model.onnx";
+    ".config/wayvr/conf.d/config.yaml".source = assets.wayvr_config;
+    ".config/snout/snout.toml".source = assets.snout_config;
+    ".config/snout/eyeModel.onnx".source = "${assets.snout}/eyeModel.onnx";
   };
 
   desktop.entry = {

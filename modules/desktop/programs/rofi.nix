@@ -1,4 +1,4 @@
-{ pkgs, lib, config_files ? null, ... }:
+{ pkgs, lib, assets, ... }:
 with lib;
 {
   environment.systemPackages = with pkgs; [
@@ -16,5 +16,5 @@ with lib;
     "Super+Shift+Space".spawn = "rofi -show run";
   };
 
-  nix-fs.files.".config/rofi/config.rasi".source = mkIf (config_files != null) config_files;
+  nix-fs.files.".config/rofi/config.rasi".source = mkIf (assets.rofi_config != null) assets.rofi_config;
 }

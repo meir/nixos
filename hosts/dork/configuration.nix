@@ -3,6 +3,9 @@
   modules,
   ...
 }@inputs:
+let
+  assets = import ../../config;
+in
 {
   # info
   user = "human";
@@ -25,30 +28,20 @@
     libsnout
   ];
 
-  imports = with modules; useMods inputs [
-    (niri.override {
-      config_file = ../../config/niri/niri.kdl;
-    })
+  imports = with modules; useMods assets inputs [
+    niri
     amdgpu
     obs
     bluetooth
     docker
-    # (eww.override {
-    #   config_files = ../../config/eww;
-    #   widgets = [ "mon1" "mon2" ];
-    # })
-    (rofi.override {
-      config_files = ../../config/rofi/config.rasi;
-    })
+    rofi
     mako
     awww
     nautilus
     steam
     modding
     (monado.override {
-      wayvr_config = ../../config/wayvr;
       vr_headset_sink = "AB13X";
-      snout_config = ../../config/snout;
     })
     discord
     spotify

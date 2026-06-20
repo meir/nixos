@@ -35,7 +35,7 @@ camera = "Bigeye: Bigeye (800x400 @ 90fps)" # If not specified, tracking will be
 [face]
 # You can use a URL like "http://127.0.0.1:8080/mjpeg/stream.jpg" here as well.
 camera = "" # "USB 2.0 Camera: USB Camera (640x480 @ 30fps)" # If not specified, tracking will be disabled.
-model = "" # "faceModel.onnx" # If not specified, tracking will be disabled.
+# model = "faceModel.onnx" # If not specified, tracking will be disabled.
 
 #[face.crop]
 #scale = 1.0
@@ -276,5 +276,5 @@ model = "" # "faceModel.onnx" # If not specified, tracking will be disabled.
 [train]
 baseline = "eyeModel.safetensors"
 
-#[output.osc]
-#destination = "127.0.0.1:9400" # Set this to 127.0.0.1:8888 if you use VRCFT.Avalonia.
+[output.osc]
+destination = "127.0.0.1:8889" # Set this to 127.0.0.1:8888 if you use VRCFT.Avalonia.

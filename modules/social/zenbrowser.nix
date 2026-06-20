@@ -1,4 +1,4 @@
-{ pkgs, lib, profile ? null, ... }:
+{ pkgs, lib, assets, profile ? null, ... }:
 with lib;
 let
   fx-autoconfig = pkgs.fetchFromGitHub {
@@ -31,6 +31,6 @@ in
 
   nix-fs.files = mkIf (profile != null) {
     ".zen/${profile}.Default Profile/chrome/utils".source = "${fx-autoconfig}/profile/chrome/utils";
-    ".zen/${profile}.Default Profile/chrome/JS".source = ../../config/zen/JS;
+    ".zen/${profile}.Default Profile/chrome/JS".source = "${assets.zen}/JS";
   };
 }

@@ -2,7 +2,7 @@
   config,
   pkgs,
   lib,
-  config_file ? null,
+  assets,
   ...
 }:
 with lib;
@@ -22,7 +22,7 @@ let
   startup = concatStringsSep "\n" (map (value: "spawn-at-startup ${command_item value}") config.niri.autostart);
   hotkey_item = value: if value.spawn != null then "spawn " + (command_item value.spawn) else value.op;
   hotkeys = "binds {\n" + (concatStringsSep "\n" (map (item: "  ${item.name} { ${hotkey_item item.value}; }") (attrsToList config.niri.hotkeys))) + "\n}";
-  config_file_content = if config_file != null then builtins.readFile config_file else "";
+  config_file_content = if assets.niri_config != null then builtins.readFile assets.niri_config else "";
 
   niriconfig = pkgs.writeScript "niri" ''
     ${displays}
