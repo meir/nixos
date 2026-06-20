@@ -53,11 +53,7 @@ in
     onepassword
     qmk
     rtl-sdr
-    (quickshell.override {
-      cwal_config = ../../config/cwal/cwal.ini;
-      cwal_templates = ../../config/cwal/templates;
-      quickshell_config = ../../config/quickshell;
-    })
+    quickshell
   ];
 
   # config

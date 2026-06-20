@@ -2,9 +2,6 @@
   pkgs,
   lib,
   assets,
-  cwal_config ? null,
-  cwal_templates ? null,
-  quickshell_config ? null,
   ...
 }:
 with lib;
