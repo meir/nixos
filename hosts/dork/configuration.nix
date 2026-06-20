@@ -25,7 +25,6 @@ in
     bs-manager
     votv
     davinci-resolve
-    libsnout
   ];
 
   imports = with modules; useMods assets inputs [
