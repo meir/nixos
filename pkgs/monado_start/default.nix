@@ -22,7 +22,6 @@ pkgs.stdenv.mkDerivation {
         lighthouse-steamvr
         xr-chaperone
         libsnout
-        snoutlink
       ];
 
     text = ''
@@ -72,7 +71,6 @@ pkgs.stdenv.mkDerivation {
           xr-chaperone -s &
           wayvr --replace &
           (cd ~/.config/snout/; snout-cli --config snout.toml track) &
-          snoutlink &
           wait
         ' &
         PGID=$!

@@ -15,7 +15,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   src = fetchFromGitHub {
     owner = "Darksecond";
     repo = "libsnout";
-    rev = "72ecc1e93802d62c42ec5569a402081c3f72e4c3";
+    rev = "8cea03e97030d8239fe953e6e1a769cce19b2e4a";
     hash = "sha256-bsw+lOdodp2RiJ/QeS9VUhXI9vm19hhQnHZrVJjCbYw=";
   };
 
