@@ -15,11 +15,11 @@ rustPlatform.buildRustPackage (finalAttrs: {
   src = fetchFromGitHub {
     owner = "Darksecond";
     repo = "libsnout";
-    rev = "8cea03e97030d8239fe953e6e1a769cce19b2e4a";
-    hash = "sha256-bsw+lOdodp2RiJ/QeS9VUhXI9vm19hhQnHZrVJjCbYw=";
+    rev = "44a12f383690a1221b6023ed8671adc91f71f6a9";
+    hash = "sha256-r6/hiGqq2rr/IWXkPi5oIBwsuD3RTzFTeovrK5n+/pY=";
   };
 
-  cargoHash = "sha256-Q2tUb3ozmNBQbMkRQiV6n9UJbEE0QfSCi++0u0W/oEI=";
+  cargoHash = "sha256-pg0bMk+SjFCE9t4YMrLjNX3JzLEIMi2GNEQdv8lzDwk=";
   cargoBuildFlags = [ "--package" "snout-cli" ];
 
   nativeBuildInputs = [
