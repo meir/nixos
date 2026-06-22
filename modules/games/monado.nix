@@ -63,12 +63,12 @@ in
 
   boot.kernelPatches = [
     {
-      name = "0001-change-device-uvc_version-check-on-dwMaxVideoFrameSize";
-      patch = ./patches/0001-change-device-uvc_version-check-on-dwMaxVideoFrameSize.patch;
+      name = "0001-bigscreen-beyond-kernel-patch";
+      patch = ./patches/0001-bsb-kernel.patch;
     }
     {
-      name = "0002-bigscreen-beyond-linux-kernel";
-      patch = ./patches/0002-bigscreen-beyond-linux-kernel.patch;
+      name = "0002-bigscreen-beyond-dsc-patch";
+      patch = ./patches/0002-bsb-dsc.patch;
     }
   ];
 

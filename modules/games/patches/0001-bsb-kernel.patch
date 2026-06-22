@@ -1,23 +1,8 @@
-From 3c0725493c431bb255490269ec4171478b26b7d3 Mon Sep 17 00:00:00 2001
-From: Yaroslav Bolyukin <iam@lach.pw>
-Date: Tue, 2 Dec 2025 12:02:12 +0100
-Subject: [PATCH 1/7] drm/edid: rename VESA block parsing functions to more
- generic name
-
-Those functions would also parse DSC Bits Per Pixel value in the future
-commits.
-
-Signed-off-by: Yaroslav Bolyukin <iam@lach.pw>
-Reviewed-by: Jani Nikula <jani.nikula@intel.com>
----
- drivers/gpu/drm/drm_edid.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
 diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index 404208bf23a6..4267fcd5a727 100644
+index 26bb7710a462..64f7a94dd9e4 100644
 --- a/drivers/gpu/drm/drm_edid.c
 +++ b/drivers/gpu/drm/drm_edid.c
-@@ -6598,8 +6598,8 @@ static void drm_get_monitor_range(struct drm_connector *connector,
+@@ -6527,8 +6527,8 @@ static void drm_get_monitor_range(struct drm_connector *connector,
  		    info->monitor_range.min_vfreq, info->monitor_range.max_vfreq);
  }
  
@@ -28,7 +13,7 @@ index 404208bf23a6..4267fcd5a727 100644
  {
  	struct displayid_vesa_vendor_specific_block *vesa =
  		(struct displayid_vesa_vendor_specific_block *)block;
-@@ -6658,8 +6658,8 @@ static void drm_parse_vesa_mso_data(struct drm_connector *connector,
+@@ -6587,8 +6587,8 @@ static void drm_parse_vesa_mso_data(struct drm_connector *connector,
  		    info->mso_stream_count, info->mso_pixel_overlap);
  }
  
@@ -39,7 +24,7 @@ index 404208bf23a6..4267fcd5a727 100644
  {
  	const struct displayid_block *block;
  	struct displayid_iter iter;
-@@ -6667,7 +6667,7 @@ static void drm_update_mso(struct drm_connector *connector,
+@@ -6596,7 +6596,7 @@ static void drm_update_mso(struct drm_connector *connector,
  	displayid_iter_edid_begin(drm_edid, &iter);
  	displayid_iter_for_each(block, &iter) {
  		if (block->tag == DATA_BLOCK_2_VENDOR_SPECIFIC)
@@ -48,40 +33,20 @@ index 404208bf23a6..4267fcd5a727 100644
  	}
  	displayid_iter_end(&iter);
  }
-@@ -6828,7 +6828,7 @@ static void update_display_info(struct drm_connector *connector,
+@@ -6756,7 +6756,7 @@ static void update_display_info(struct drm_connector *connector,
  	if (edid->features & DRM_EDID_FEATURE_RGB_YCRCB422)
- 		info->color_formats |= BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
+ 		info->color_formats |= DRM_COLOR_FORMAT_YCBCR422;
  
 -	drm_update_mso(connector, drm_edid);
 +	drm_update_vesa_specific_block(connector, drm_edid);
  
  out:
  	if (drm_edid_has_internal_quirk(connector, EDID_QUIRK_NON_DESKTOP)) {
--- 
-2.54.0
-
-
-From f2fb7b780d967389d5349510846b43c91f37becd Mon Sep 17 00:00:00 2001
-From: Yaroslav Bolyukin <iam@lach.pw>
-Date: Tue, 2 Dec 2025 12:02:13 +0100
-Subject: [PATCH 2/7] drm/edid: prepare for VESA vendor-specific data block
- extension
-
-Current VESA vendor-specific block parsing expects real block size to be
-the same as the defined struct size, use real offsets in conditionals
-instead to add struct fields in future commits.
-
-Signed-off-by: Yaroslav Bolyukin <iam@lach.pw>
-Reviewed-by: Jani Nikula <jani.nikula@intel.com>
----
- drivers/gpu/drm/drm_edid.c | 30 ++++++++++++++----------------
- 1 file changed, 14 insertions(+), 16 deletions(-)
-
 diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index 4267fcd5a727..5502f3935455 100644
+index 64f7a94dd9e4..a0a6ccf12475 100644
 --- a/drivers/gpu/drm/drm_edid.c
 +++ b/drivers/gpu/drm/drm_edid.c
-@@ -6615,7 +6615,7 @@ static void drm_parse_vesa_specific_block(struct drm_connector *connector,
+@@ -6544,7 +6544,7 @@ static void drm_parse_vesa_specific_block(struct drm_connector *connector,
  	if (oui(vesa->oui[0], vesa->oui[1], vesa->oui[2]) != VESA_IEEE_OUI)
  		return;
  
@@ -90,7 +55,7 @@ index 4267fcd5a727..5502f3935455 100644
  		drm_dbg_kms(connector->dev,
  			    "[CONNECTOR:%d:%s] Unexpected VESA vendor block size\n",
  			    connector->base.id, connector->name);
-@@ -6638,24 +6638,22 @@ static void drm_parse_vesa_specific_block(struct drm_connector *connector,
+@@ -6567,24 +6567,22 @@ static void drm_parse_vesa_specific_block(struct drm_connector *connector,
  		break;
  	}
  
@@ -128,27 +93,6 @@ index 4267fcd5a727..5502f3935455 100644
  }
  
  static void drm_update_vesa_specific_block(struct drm_connector *connector,
--- 
-2.54.0
-
-
-From fc0a365a33d01b60e1c7d18fa4d59e9bf4f6833f Mon Sep 17 00:00:00 2001
-From: Yaroslav Bolyukin <iam@lach.pw>
-Date: Tue, 2 Dec 2025 12:02:14 +0100
-Subject: [PATCH 3/7] drm/edid: MSO should only be used for non-eDP displays
-
-As per DisplayID v2.1a spec:
-If Offset 06h[2:0] is programmed to 001b (External DisplayPort), this
-field shall be cleared to 00b (Not supported).
-
-Link: https://lore.kernel.org/lkml/3abc1087618c822e5676e67a3ec2e64e506dc5ec@intel.com/
-Signed-off-by: Yaroslav Bolyukin <iam@lach.pw>
-Reviewed-by: Jani Nikula <jani.nikula@intel.com>
----
- drivers/gpu/drm/drm_displayid_internal.h |  4 +++
- drivers/gpu/drm/drm_edid.c               | 36 +++++++++++++++---------
- 2 files changed, 27 insertions(+), 13 deletions(-)
-
 diff --git a/drivers/gpu/drm/drm_displayid_internal.h b/drivers/gpu/drm/drm_displayid_internal.h
 index 5b1b32f73516..72f107ae832f 100644
 --- a/drivers/gpu/drm/drm_displayid_internal.h
@@ -168,10 +112,10 @@ index 5b1b32f73516..72f107ae832f 100644
  	struct displayid_block base;
  	u8 oui[3];
 diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index 5502f3935455..9948c69305cf 100644
+index a0a6ccf12475..380a9dda275f 100644
 --- a/drivers/gpu/drm/drm_edid.c
 +++ b/drivers/gpu/drm/drm_edid.c
-@@ -6604,6 +6604,7 @@ static void drm_parse_vesa_specific_block(struct drm_connector *connector,
+@@ -6533,6 +6533,7 @@ static void drm_parse_vesa_specific_block(struct drm_connector *connector,
  	struct displayid_vesa_vendor_specific_block *vesa =
  		(struct displayid_vesa_vendor_specific_block *)block;
  	struct drm_display_info *info = &connector->display_info;
@@ -179,7 +123,7 @@ index 5502f3935455..9948c69305cf 100644
  
  	if (block->num_bytes < 3) {
  		drm_dbg_kms(connector->dev,
-@@ -6622,20 +6623,29 @@ static void drm_parse_vesa_specific_block(struct drm_connector *connector,
+@@ -6551,20 +6552,29 @@ static void drm_parse_vesa_specific_block(struct drm_connector *connector,
  		return;
  	}
  
@@ -222,28 +166,6 @@ index 5502f3935455..9948c69305cf 100644
  	}
  
  	if (info->mso_stream_count) {
--- 
-2.54.0
-
-
-From 5d4b59081a05d238cfc0cd1183ef7f82bb2018b2 Mon Sep 17 00:00:00 2001
-From: Yaroslav Bolyukin <iam@lach.pw>
-Date: Tue, 2 Dec 2025 12:02:15 +0100
-Subject: [PATCH 4/7] drm/edid: parse DSC DPP passthru support flag for mode
- VII timings
-
-For timings v7 block revision >=1, revision field also contains a bit
-that indicates that the mode timings should only be used with fixed bits
-per pixel value specified in vesa vendor-specific block.
-
-Signed-off-by: Yaroslav Bolyukin <iam@lach.pw>
-Reviewed-by: Jani Nikula <jani.nikula@intel.com>
----
- drivers/gpu/drm/drm_displayid_internal.h |  2 ++
- drivers/gpu/drm/drm_edid.c               | 12 ++++++++----
- include/drm/drm_modes.h                  | 10 ++++++++++
- 3 files changed, 20 insertions(+), 4 deletions(-)
-
 diff --git a/drivers/gpu/drm/drm_displayid_internal.h b/drivers/gpu/drm/drm_displayid_internal.h
 index 72f107ae832f..724174b429f2 100644
 --- a/drivers/gpu/drm/drm_displayid_internal.h
@@ -265,10 +187,10 @@ index 72f107ae832f..724174b429f2 100644
  	struct displayid_block base;
  	struct displayid_detailed_timings_1 timings[];
 diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index 9948c69305cf..81cf8afc2d2e 100644
+index 380a9dda275f..b28ff4bafb1d 100644
 --- a/drivers/gpu/drm/drm_edid.c
 +++ b/drivers/gpu/drm/drm_edid.c
-@@ -6866,8 +6866,8 @@ static void update_display_info(struct drm_connector *connector,
+@@ -6794,8 +6794,8 @@ static void update_display_info(struct drm_connector *connector,
  }
  
  static struct drm_display_mode *drm_mode_displayid_detailed(struct drm_device *dev,
@@ -279,7 +201,7 @@ index 9948c69305cf..81cf8afc2d2e 100644
  {
  	struct drm_display_mode *mode;
  	unsigned int pixel_clock = (timings->pixel_clock[0] |
-@@ -6883,11 +6883,16 @@ static struct drm_display_mode *drm_mode_displayid_detailed(struct drm_device *d
+@@ -6811,11 +6811,16 @@ static struct drm_display_mode *drm_mode_displayid_detailed(struct drm_device *d
  	unsigned int vsync_width = le16_to_cpu(timings->vsw) + 1;
  	bool hsync_positive = le16_to_cpu(timings->hsync) & (1 << 15);
  	bool vsync_positive = le16_to_cpu(timings->vsync) & (1 << 15);
@@ -296,7 +218,7 @@ index 9948c69305cf..81cf8afc2d2e 100644
  	/* resolution is kHz for type VII, and 10 kHz for type I */
  	mode->clock = type_7 ? pixel_clock : pixel_clock * 10;
  	mode->hdisplay = hactive;
-@@ -6920,7 +6925,6 @@ static int add_displayid_detailed_1_modes(struct drm_connector *connector,
+@@ -6848,7 +6853,6 @@ static int add_displayid_detailed_1_modes(struct drm_connector *connector,
  	int num_timings;
  	struct drm_display_mode *newmode;
  	int num_modes = 0;
@@ -304,7 +226,7 @@ index 9948c69305cf..81cf8afc2d2e 100644
  	/* blocks must be multiple of 20 bytes length */
  	if (block->num_bytes % 20)
  		return 0;
-@@ -6929,7 +6933,7 @@ static int add_displayid_detailed_1_modes(struct drm_connector *connector,
+@@ -6857,7 +6861,7 @@ static int add_displayid_detailed_1_modes(struct drm_connector *connector,
  	for (i = 0; i < num_timings; i++) {
  		struct displayid_detailed_timings_1 *timings = &det->timings[i];
  
@@ -334,26 +256,6 @@ index b9bb92e4b029..312e5c03af9a 100644
  };
  
  /**
--- 
-2.54.0
-
-
-From 89b3c7023273e23886848b06f6b6c94c1791626b Mon Sep 17 00:00:00 2001
-From: Yaroslav Bolyukin <iam@lach.pw>
-Date: Tue, 2 Dec 2025 12:02:16 +0100
-Subject: [PATCH 5/7] drm/edid: for consistency, use mask everywhere for block
- rev parsing
-
-Other usages of block.rev bitfields were refactored to use FIELD_GET
-instead of bitwise ops.
-
-Signed-off-by: Yaroslav Bolyukin <iam@lach.pw>
-Reviewed-by: Jani Nikula <jani.nikula@intel.com>
----
- drivers/gpu/drm/drm_displayid_internal.h | 1 +
- drivers/gpu/drm/drm_edid.c               | 3 ++-
- 2 files changed, 3 insertions(+), 1 deletion(-)
-
 diff --git a/drivers/gpu/drm/drm_displayid_internal.h b/drivers/gpu/drm/drm_displayid_internal.h
 index 724174b429f2..55f972d32847 100644
 --- a/drivers/gpu/drm/drm_displayid_internal.h
@@ -367,10 +269,10 @@ index 724174b429f2..55f972d32847 100644
  	struct displayid_block base;
  	struct displayid_formula_timings_9 timings[];
 diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index 81cf8afc2d2e..19a635c5d91e 100644
+index b28ff4bafb1d..be8715632b91 100644
 --- a/drivers/gpu/drm/drm_edid.c
 +++ b/drivers/gpu/drm/drm_edid.c
-@@ -6980,7 +6980,8 @@ static int add_displayid_formula_modes(struct drm_connector *connector,
+@@ -6908,7 +6908,8 @@ static int add_displayid_formula_modes(struct drm_connector *connector,
  	struct drm_display_mode *newmode;
  	int num_modes = 0;
  	bool type_10 = block->tag == DATA_BLOCK_2_TYPE_10_FORMULA_TIMING;
@@ -380,32 +282,6 @@ index 81cf8afc2d2e..19a635c5d91e 100644
  
  	/* extended blocks are not supported yet */
  	if (timing_size != 6)
--- 
-2.54.0
-
-
-From ad85af4597502bdbb7074e645e22181c6fcf0a7b Mon Sep 17 00:00:00 2001
-From: Yaroslav Bolyukin <iam@lach.pw>
-Date: Tue, 2 Dec 2025 12:02:17 +0100
-Subject: [PATCH 6/7] drm/edid: parse DRM VESA dsc bpp target
-
-As per DisplayID v2.1a spec "DSC pass-through timing support",
-VESA vendor-specific data block may contain target DSC bits per pixel
-fields, that should be always used for the VII modes that declare they
-only support working with this value (Pass-through Timing Support for
-Target DSC Bits per Pixel).
-
-Signed-off-by: Yaroslav Bolyukin <iam@lach.pw>
-
-fixup parse DRM vesa dsc bpp target
-
-Reviewed-by: Jani Nikula <jani.nikula@intel.com>
----
- drivers/gpu/drm/drm_displayid_internal.h |  4 ++++
- drivers/gpu/drm/drm_edid.c               | 17 +++++++++++++++++
- include/drm/drm_connector.h              |  6 ++++++
- 3 files changed, 27 insertions(+)
-
 diff --git a/drivers/gpu/drm/drm_displayid_internal.h b/drivers/gpu/drm/drm_displayid_internal.h
 index 55f972d32847..8f1a2f33ca1a 100644
 --- a/drivers/gpu/drm/drm_displayid_internal.h
@@ -429,7 +305,7 @@ index 55f972d32847..8f1a2f33ca1a 100644
  
  /*
 diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index 19a635c5d91e..18ae8b68c3d7 100644
+index be8715632b91..8273920f5ba4 100644
 --- a/drivers/gpu/drm/drm_edid.c
 +++ b/drivers/gpu/drm/drm_edid.c
 @@ -45,6 +45,7 @@
@@ -440,7 +316,7 @@ index 19a635c5d91e..18ae8b68c3d7 100644
  #include <drm/drm_print.h>
  
  #include "drm_crtc_internal.h"
-@@ -6664,6 +6665,21 @@ static void drm_parse_vesa_specific_block(struct drm_connector *connector,
+@@ -6593,6 +6594,21 @@ static void drm_parse_vesa_specific_block(struct drm_connector *connector,
  	} else {
  		info->mso_pixel_overlap = 0;
  	}
@@ -462,7 +338,7 @@ index 19a635c5d91e..18ae8b68c3d7 100644
  }
  
  static void drm_update_vesa_specific_block(struct drm_connector *connector,
-@@ -6712,6 +6728,7 @@ static void drm_reset_display_info(struct drm_connector *connector)
+@@ -6641,6 +6657,7 @@ static void drm_reset_display_info(struct drm_connector *connector)
  	info->mso_stream_count = 0;
  	info->mso_pixel_overlap = 0;
  	info->max_dsc_bpp = 0;
@@ -471,10 +347,10 @@ index 19a635c5d91e..18ae8b68c3d7 100644
  	kfree(info->vics);
  	info->vics = NULL;
 diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index f83f28cae207..95d7490d266c 100644
+index 8f34f4b8183d..7decfc288aa3 100644
 --- a/include/drm/drm_connector.h
 +++ b/include/drm/drm_connector.h
-@@ -892,6 +892,12 @@ struct drm_display_info {
+@@ -837,6 +837,12 @@ struct drm_display_info {
  	 */
  	u32 max_dsc_bpp;
  
@@ -487,30 +363,11 @@ index f83f28cae207..95d7490d266c 100644
  	/**
  	 * @vics: Array of vics_len VICs. Internal to EDID parsing.
  	 */
--- 
-2.54.0
-
-
-From 1b08f2d4948d39f34c5d6a1b1180a2614fd7ba35 Mon Sep 17 00:00:00 2001
-From: Yaroslav Bolyukin <iam@lach.pw>
-Date: Tue, 2 Dec 2025 12:02:18 +0100
-Subject: [PATCH 7/7] drm/amd: use fixed dsc bits-per-pixel from edid
-
-VESA vendor header from DisplayID spec may contain fixed bit per pixel
-rate, it should be used by drm driver for the modes that declare
-they are only supported with the declared fixed bits per pixel value.
-
-Signed-off-by: Yaroslav Bolyukin <iam@lach.pw>
-Reviewed-by: Wayne Lin <Wayne.Lin@amd.com>
----
- .../gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c    | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
 diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-index 5fc5d5608506..9e678b92bd5b 100644
+index e6728fd12eeb..32370279283f 100644
 --- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
 +++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-@@ -6880,6 +6880,11 @@ static void fill_stream_properties_from_drm_display_mode(
+@@ -6613,6 +6613,11 @@ static void fill_stream_properties_from_drm_display_mode(
  
  	stream->output_color_space = get_output_color_space(timing_out, connector_state);
  	stream->content_type = get_output_content_type(connector_state);
@@ -522,7 +379,7 @@ index 5fc5d5608506..9e678b92bd5b 100644
  }
  
  static void fill_audio_info(struct audio_info *audio_info,
-@@ -7338,6 +7343,7 @@ create_stream_for_sink(struct drm_connector *connector,
+@@ -7071,6 +7076,7 @@ create_stream_for_sink(struct drm_connector *connector,
  	struct drm_display_mode mode;
  	struct drm_display_mode saved_mode;
  	struct drm_display_mode *freesync_mode = NULL;
@@ -530,7 +387,7 @@ index 5fc5d5608506..9e678b92bd5b 100644
  	bool native_mode_found = false;
  	bool recalculate_timing = false;
  	bool scale = dm_state->scaling != RMX_OFF;
-@@ -7429,6 +7435,16 @@ create_stream_for_sink(struct drm_connector *connector,
+@@ -7162,6 +7168,16 @@ create_stream_for_sink(struct drm_connector *connector,
  		}
  	}
  
@@ -547,5 +404,3 @@ index 5fc5d5608506..9e678b92bd5b 100644
  	if (recalculate_timing)
  		drm_mode_set_crtcinfo(&saved_mode, 0);
  
--- 
-2.54.0
