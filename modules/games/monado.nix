@@ -32,9 +32,7 @@ in
     lighthouse-steamvr
     xr-chaperone
     libsnout
-    vrcft
-    # vrcadvert
-    # oscavmgr
+    snoutlink
 
     (monado_start.override {
       VR_HEADSET_SINK = vr_headset_sink;

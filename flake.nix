@@ -4,6 +4,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     steam-config-nix.url = "github:different-name/steam-config-nix";
     nix-fs.url = "github:meir/nix-fs";
+    snoutlink.url = "github:meir/snoutlink";
     qml-niri.url = "github:imiric/qml-niri/main";
 
     # Overlays
@@ -27,6 +28,7 @@
           zen-browser
           steam-config-nix
           nix-fs
+          snoutlink
           quickshell
           qml-niri
           cwal

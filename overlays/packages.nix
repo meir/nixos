@@ -4,6 +4,7 @@
   qml-niri,
   nixpkgs-unstable,
   cwal,
+  snoutlink,
   ...
 }@inputs:
 with pkgs;
@@ -27,6 +28,7 @@ final: prev: {
   zen-browser-unwrapped = zen-browser.packages."${sys}".beta-unwrapped;
   qml-niri = qml-niri.packages."${sys}".default;
   cwal = cwal.packages."${sys}".default;
+  snoutlink = snoutlink.packages."${sys}".default;
 
   monado_custom = import ../pkgs/monado inputs;
   xrizer_custom = import ../pkgs/xrizer inputs;
