@@ -69,10 +69,6 @@ in
       name = "0002-bigscreen-beyond-dsc-patch";
       patch = ./patches/0002-bsb-dsc.patch;
     }
-    {
-      name = "0003-bigscreen-beyond-uvc-patch";
-      patch = ./patches/0003-bsb-uvc.patch;
-    }
   ];
 
   # Udev rules for Bigscreen devices
