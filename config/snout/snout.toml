@@ -1,7 +1,7 @@
 #libonnxruntime = "/usr/lib64/libonnxruntime.so"
 [eye]
 link = true
-model = "eyeModel.onnx" # If not specified, tracking will be disabled.
+model = "eyeModel_new.onnx" # If not specified, tracking will be disabled.
 
 [eye.left]
 camera = "Bigeye: Bigeye (800x400 @ 90fps)" # If not specified, tracking will be disabled.

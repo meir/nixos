@@ -4,6 +4,7 @@
   pkg-config,
   llvm,
   onnxruntime,
+  vulkan-loader,
   makeWrapper,
   lib,
   ...
@@ -15,8 +16,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
   src = fetchFromGitHub {
     owner = "Darksecond";
     repo = "libsnout";
-    rev = "44a12f383690a1221b6023ed8671adc91f71f6a9";
-    hash = "sha256-r6/hiGqq2rr/IWXkPi5oIBwsuD3RTzFTeovrK5n+/pY=";
+    rev = "23c2cb2f840f379e302feea02a62458ca5222a4c";
+    hash = "sha256-d9tWkYrJOqKLeJGM7JS5+TjVbbzCR/5pN1F5yRecrFI=";
   };
 
   cargoHash = "sha256-pg0bMk+SjFCE9t4YMrLjNX3JzLEIMi2GNEQdv8lzDwk=";
@@ -31,11 +32,12 @@ rustPlatform.buildRustPackage (finalAttrs: {
   buildInputs = [
     llvm
     onnxruntime
+    vulkan-loader
   ];
 
   postFixup = ''
     wrapProgram "$out/bin/snout-cli" \
-      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ onnxruntime llvm ]}"
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ onnxruntime llvm vulkan-loader ]}"
   '';
 
   meta = {
