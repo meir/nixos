@@ -34,11 +34,12 @@ let
   '';
 
   sddm-astronaut = (pkgs.sddm-astronaut.override {
-    embeddedTheme = "japanese_aesthetic";  # or any other theme
+    embeddedTheme = "purple_leaves";  # or any other theme
     themeConfig = {
       # Customize colors and settings
       HeaderTextColor = "#d5c4a1";
       Background = "Backgrounds/custom.png";
+      FormPosition = "left";
       # ... other theme configuration options
     };
   }).overrideAttrs (oldAttrs: {
