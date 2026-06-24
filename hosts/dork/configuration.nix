@@ -28,7 +28,9 @@ in
   ];
 
   imports = with modules; useMods assets inputs [
-    niri
+    (niri.override {
+      login_background = assets.sddm_nixos_waves;
+    })
     amdgpu
     obs
     bluetooth

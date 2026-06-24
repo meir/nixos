@@ -3,6 +3,7 @@
   pkgs,
   lib,
   assets,
+  login_background ? assets.sddm_nixos_waves,
   ...
 }:
 with lib;
@@ -31,6 +32,23 @@ let
     ${hotkeys}
     ${config_file_content}
   '';
+
+  sddm-astronaut = (pkgs.sddm-astronaut.override {
+    embeddedTheme = "japanese_aesthetic";  # or any other theme
+    themeConfig = {
+      # Customize colors and settings
+      HeaderTextColor = "#d5c4a1";
+      Background = "Backgrounds/custom.png";
+      # ... other theme configuration options
+    };
+  }).overrideAttrs (oldAttrs: {
+    # Optional: Inject custom background image
+    installPhase = oldAttrs.installPhase + ''
+      chmod u+w $out/share/sddm/themes/sddm-astronaut-theme/Backgrounds/
+      cp ${login_background} \
+        $out/share/sddm/themes/sddm-astronaut-theme/Backgrounds/custom.png
+    '';
+  });
 in
 {
   options.niri = {
@@ -100,19 +118,34 @@ in
       wl-clipboard
       xwayland-satellite # xwayland support
       xwayland-run
+
+      sddm-astronaut
     ];
 
     security.polkit.enable = true;
 
-    services.greetd = {
+    services.displayManager.sddm = {
       enable = true;
-      package = pkgs.unstable.greetd;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd 'niri-session'";
-        };
-      };
+      wayland.enable = true;
+      
+      package = pkgs.kdePackages.sddm;
+
+      extraPackages = with pkgs; [
+        kdePackages.qtmultimedia # Required for video backgrounds/audio
+      ];
+
+      theme = "sddm-astronaut-theme";
     };
+
+    # services.greetd = {
+    #   enable = true;
+    #   package = pkgs.unstable.greetd;
+    #   settings = {
+    #     default_session = {
+    #       command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --cmd 'niri-session'";
+    #     };
+    #   };
+    # };
 
     niri.hotkeys = {
       "Super+Return".spawn = "kitty";

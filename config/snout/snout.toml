@@ -1,6 +1,6 @@
 #libonnxruntime = "/usr/lib64/libonnxruntime.so"
 [eye]
-#link = true
+link = true
 model = "eyeModel.onnx" # If not specified, tracking will be disabled.
 
 [eye.left]

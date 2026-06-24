@@ -23,4 +23,7 @@
   wayvr_config = ./wayvr/config.yaml;
 
   zen = ./zen;
+
+  sddm = ./sddm;
+  sddm_nixos_waves = ./sddm/nixos_waves.jpg;
 }
