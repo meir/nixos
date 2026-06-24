@@ -40,8 +40,8 @@ let
       HeaderTextColor = "#d5c4a1";
       Background = "Backgrounds/custom.png";
       FormPosition = "left";
-      BlurMax = "150";
-      Blur = "0.1";
+      BlurMax = "100";
+      Blur = "0.9";
       # ... other theme configuration options
     };
   }).overrideAttrs (oldAttrs: {
