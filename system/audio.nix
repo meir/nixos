@@ -27,6 +27,5 @@ with lib;
     pulse.enable = true;
     jack.enable = true;
     wireplumber.enable = true;
-    extraConfig.pipewire = { };
   };
 }
