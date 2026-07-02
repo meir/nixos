@@ -39,20 +39,22 @@ in
           env = vr_env;
         };
       };
-      EldenRing = {
-        id = 1245620;
-        launchOptions = {
-          env = {
-            VKD3D_CONFIG = "no_upload_hvv";
-            PROTON_ENABLE_WAYLAND = 1;
-            LD_PRELOAD = "";
-          };
-
-          wrappers = [
-            "gamescope -h 1080 -H 1080 -w 1920 -W 2560 -b -f -- "
-          ];
-        };
-      };
+    # Does not work with a wrapper for some reason
+    # `LD_PRELOAD="" PROTON_ENABLE_WAYLAND="1" VKD3D_CONFIG="no_upload_hvv" gamescope -h 1080 -H 1080 -w 1920 -W 2560 -b -f -- %command%`
+    #   EldenRing = {
+    #     id = 1245620;
+    #     launchOptions = {
+    #       env = {
+    #         VKD3D_CONFIG = "no_upload_hvv";
+    #         PROTON_ENABLE_WAYLAND = 1;
+    #         LD_PRELOAD = "";
+    #       };
+    #
+    #       wrappers = [
+    #         "gamescope -h 1080 -H 1080 -w 1920 -W 2560 -b -f -- "
+    #       ];
+    #     };
+    #   };
     };
   };
 }
