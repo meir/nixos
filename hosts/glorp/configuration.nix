@@ -4,6 +4,9 @@
   config,
   ...
 }@inputs:
+let
+  assets = import ../../config;
+in
 {
   # info
   user = "human";
@@ -22,28 +25,24 @@
     teams-for-linux
   ];
 
-  imports = with modules; useMods inputs [
+  imports = with modules; useMods assets inputs [
     intel
     (niri.override {
-      config_file = ../../config/niri/niri.kdl;
+      login_background = assets.sddm_nixos_waves;
     })
     bluetooth
     docker
-    (quickshell.override {
-      cwal_config = ../../config/cwal/cwal.ini;
-      cwal_templates = ../../config/cwal/templates;
-      quickshell_config = ../../config/quickshell;
-    })
-    (rofi.override {
-      config_files = ../../config/rofi;
-    })
+    quickshell
+    rofi
     mako
     awww
     nautilus
     steam
     discord
     mprisence
-    zenbrowser
+    (zenbrowser.override {
+      profile = "ticptiit";
+    })
     neovim
     onepassword
     rtl-sdr
