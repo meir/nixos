@@ -4,6 +4,7 @@
   qml-niri,
   nixpkgs-unstable,
   cwal,
+  libsnout,
   ...
 }@inputs:
 with pkgs;
@@ -20,13 +21,13 @@ final: prev: {
   pngtuber-plus = callPackage ../pkgs/pngtuber-plus { };
   steam-vdf = pkgs.python3Packages.callPackage ../pkgs/steam-vdf { };
   stremio-linux-shell = callPackage ../pkgs/stremio-linux-shell { };
-  libsnout = callPackage ../pkgs/libsnout { };
   vrcft = callPackage ../pkgs/vrcft { };
 
   zen-browser = zen-browser.packages."${sys}".default;
   zen-browser-unwrapped = zen-browser.packages."${sys}".beta-unwrapped;
   qml-niri = qml-niri.packages."${sys}".default;
   cwal = cwal.packages."${sys}".default;
+  libsnout = libsnout.packages."${sys}".default;
 
   monado_custom = import ../pkgs/monado inputs;
   xrizer_custom = import ../pkgs/xrizer inputs;

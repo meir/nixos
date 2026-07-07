@@ -25,6 +25,8 @@ in
     bs-manager
     votv
     davinci-resolve
+    vlc
+    pngtuber-plus
   ];
 
   imports = with modules; useMods assets inputs [

@@ -13,6 +13,7 @@
     cwal.url = "github:nitinbhat972/cwal";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     milk-grub.url = "github:gemakfy/MilkGrub";
+    libsnout.url = "github:Darksecond/libsnout";
   };
 
   outputs =
@@ -31,6 +32,7 @@
           qml-niri
           cwal
           spicetify-nix
+          libsnout
           ;
       };
     in
