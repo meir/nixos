@@ -58,18 +58,17 @@ in
   };
 
   # Bigscreen Beyond Kernel patches from LVRA Discord Thread
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.kernelPatches = [
-    {
-      name = "0001-bigscreen-beyond-kernel-patch";
-      patch = ./patches/0001-bsb-kernel.patch;
-    }
-    {
-      name = "0002-bigscreen-beyond-dsc-patch";
-      patch = ./patches/0002-bsb-dsc.patch;
-    }
-  ];
+  # not required anymore with cachyos kernel: https://github.com/CachyOS/linux/commits/7.2/vesa-dsc-bpp/
+  # boot.kernelPatches = [
+  #   {
+  #     name = "0001-bigscreen-beyond-kernel-patch";
+  #     patch = ./patches/0001-bsb-kernel.patch;
+  #   }
+  #   {
+  #     name = "0002-bigscreen-beyond-dsc-patch";
+  #     patch = ./patches/0002-bsb-dsc.patch;
+  #   }
+  # ];
 
   # Udev rules for Bigscreen devices
   services.udev.extraRules = ''

@@ -6,6 +6,9 @@
     nix-fs.url = "github:meir/nix-fs";
     qml-niri.url = "github:imiric/qml-niri/main";
 
+    # Kernel
+    cachyos.url = "github:xddxdd/nix-cachyos-kernel";
+
     # Overlays
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     nh.url = "github:viperML/nh";
@@ -22,6 +25,7 @@
       specialArgs = {
         modules = import ./lib/modules.nix;
         inherit (inputs)
+          cachyos
           nixpkgs-unstable
           nixpkgs-xr
           nh

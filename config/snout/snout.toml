@@ -281,5 +281,5 @@ max_pitch = 20.0
 max_yaw = 30.0
 
 
-#[output.osc]
-#destination = "127.0.01:9400" # "127.0.0.1:8889" # Set this to 127.0.0.1:8888 if you use VRCFT.Avalonia.
+# [output.osc]
+# destination = "127.0.01:9400" # "127.0.0.1:8889" # Set this to 127.0.0.1:8888 if you use VRCFT.Avalonia.

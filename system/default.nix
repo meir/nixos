@@ -5,6 +5,7 @@
 }@inputs:
 {
   imports = [
+    ./kernel.nix
     ./audio.nix
     ./locale.nix
     ./network.nix
