@@ -5,6 +5,7 @@
   nixpkgs-unstable,
   cwal,
   libsnout,
+  nixpkgs-xr,
   ...
 }@inputs:
 with pkgs;

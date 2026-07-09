@@ -6,7 +6,7 @@
 # check the logs at /tmp/wlx.log for parsing errors.
 
 ## Only if built with `osc` feature. What port to send OSC messages to.
-#osc_out_port: 9000
+osc_out_port: 9000
 
 ## Set your preferred watch timezones here.
 #timezones:

@@ -28,7 +28,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    unstable.wayvr
+    wayvr
     lighthouse-steamvr
     xr-chaperone
     libsnout
@@ -121,7 +121,7 @@ in
     wayvr = {
       name = "WayVR";
       comment = "WayVR";
-      exec = "${pkgs.unstable.wayvr}/bin/wayvr --replace --openxr";
+      exec = "${pkgs.wayvr}/bin/wayvr --replace --openxr";
     };
   };
 }

@@ -18,7 +18,7 @@ pkgs.stdenv.mkDerivation {
     runtimeInputs =
       with pkgs;
       [
-        unstable.wayvr
+        wayvr
         lighthouse-steamvr
         xr-chaperone
         libsnout
